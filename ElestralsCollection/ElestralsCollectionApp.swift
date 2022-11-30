@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct ElestralsCollectionApp: App {
-    let persistenceController = PersistenceController.shared
-
+    @StateObject var elestralsList = ElestralData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(elestralsList)
         }
     }
 }

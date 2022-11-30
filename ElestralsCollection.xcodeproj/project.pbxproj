@@ -8,14 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */; };
-		2FB59A80293712A200F14EFB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A7F293712A200F14EFB /* Persistence.swift */; };
 		2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */; };
 		2FB59A85293712A200F14EFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A84293712A200F14EFB /* ContentView.swift */; };
-		2FB59A87293712A300F14EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59A86293712A300F14EFB /* Assets.xcassets */; };
-		2FB59A8B293712A300F14EFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59A8A293712A300F14EFB /* Preview Assets.xcassets */; };
+		2FB59A87293712A300F14EFB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59A86293712A300F14EFB /* Colors.xcassets */; };
 		2FB59A95293712A300F14EFB /* ElestralsCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A94293712A300F14EFB /* ElestralsCollectionTests.swift */; };
 		2FB59A9F293712A300F14EFB /* ElestralsCollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A9E293712A300F14EFB /* ElestralsCollectionUITests.swift */; };
 		2FB59AA1293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */; };
+		2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59AAE2937137F00F14EFB /* Images.xcassets */; };
+		2FB59AB1293713A700F14EFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB0293713A700F14EFB /* HelperFunctions.swift */; };
+		2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */; };
+		2FB59AB8293713EA00F14EFB /* ElestralsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB7293713EA00F14EFB /* ElestralsData.swift */; };
+		2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABA293713F800F14EFB /* SettingsView.swift */; };
+		2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABB293713F800F14EFB /* SearchView.swift */; };
+		2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABC293713F800F14EFB /* BookmarkView.swift */; };
+		2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABD293713F800F14EFB /* ElestralsView.swift */; };
+		2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABE293713F800F14EFB /* ExpansionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,17 +45,24 @@
 /* Begin PBXFileReference section */
 		2FB59A7A293712A200F14EFB /* ElestralsCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElestralsCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionApp.swift; sourceTree = "<group>"; };
-		2FB59A7F293712A200F14EFB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElestralsCollection.xcdatamodel; sourceTree = "<group>"; };
 		2FB59A84293712A200F14EFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2FB59A86293712A300F14EFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2FB59A86293712A300F14EFB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElestralsCollection.entitlements; sourceTree = "<group>"; };
-		2FB59A8A293712A300F14EFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2FB59A90293712A300F14EFB /* ElestralsCollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElestralsCollectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB59A94293712A300F14EFB /* ElestralsCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionTests.swift; sourceTree = "<group>"; };
 		2FB59A9A293712A300F14EFB /* ElestralsCollectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElestralsCollectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB59A9E293712A300F14EFB /* ElestralsCollectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionUITests.swift; sourceTree = "<group>"; };
 		2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2FB59AAE2937137F00F14EFB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2FB59AB0293713A700F14EFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsGridItem.swift; sourceTree = "<group>"; };
+		2FB59AB7293713EA00F14EFB /* ElestralsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsData.swift; sourceTree = "<group>"; };
+		2FB59ABA293713F800F14EFB /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2FB59ABB293713F800F14EFB /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		2FB59ABC293713F800F14EFB /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		2FB59ABD293713F800F14EFB /* ElestralsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsView.swift; sourceTree = "<group>"; };
+		2FB59ABE293713F800F14EFB /* ExpansionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpansionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +93,7 @@
 		2FB59A71293712A200F14EFB = {
 			isa = PBXGroup;
 			children = (
+				2FB59AAD2937133A00F14EFB /* Assets */,
 				2FB59A7C293712A200F14EFB /* ElestralsCollection */,
 				2FB59A93293712A300F14EFB /* ElestralsCollectionTests */,
 				2FB59A9D293712A300F14EFB /* ElestralsCollectionUITests */,
@@ -99,23 +114,16 @@
 		2FB59A7C293712A200F14EFB /* ElestralsCollection */ = {
 			isa = PBXGroup;
 			children = (
-				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
-				2FB59A7F293712A200F14EFB /* Persistence.swift */,
-				2FB59A84293712A200F14EFB /* ContentView.swift */,
-				2FB59A86293712A300F14EFB /* Assets.xcassets */,
 				2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */,
 				2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */,
-				2FB59A89293712A300F14EFB /* Preview Content */,
+				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
+				2FB59AB0293713A700F14EFB /* HelperFunctions.swift */,
+				2FB59A84293712A200F14EFB /* ContentView.swift */,
+				2FB59AB2293713DB00F14EFB /* Components */,
+				2FB59AB6293713EA00F14EFB /* Model */,
+				2FB59AB9293713F800F14EFB /* Views */,
 			);
 			path = ElestralsCollection;
-			sourceTree = "<group>";
-		};
-		2FB59A89293712A300F14EFB /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2FB59A8A293712A300F14EFB /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		2FB59A93293712A300F14EFB /* ElestralsCollectionTests */ = {
@@ -133,6 +141,51 @@
 				2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */,
 			);
 			path = ElestralsCollectionUITests;
+			sourceTree = "<group>";
+		};
+		2FB59AAD2937133A00F14EFB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59A86293712A300F14EFB /* Colors.xcassets */,
+				2FB59AAE2937137F00F14EFB /* Images.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		2FB59AB2293713DB00F14EFB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59AB3293713DB00F14EFB /* Grid */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2FB59AB3293713DB00F14EFB /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		2FB59AB6293713EA00F14EFB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59AB7293713EA00F14EFB /* ElestralsData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FB59AB9293713F800F14EFB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59ABA293713F800F14EFB /* SettingsView.swift */,
+				2FB59ABB293713F800F14EFB /* SearchView.swift */,
+				2FB59ABC293713F800F14EFB /* BookmarkView.swift */,
+				2FB59ABD293713F800F14EFB /* ElestralsView.swift */,
+				2FB59ABE293713F800F14EFB /* ExpansionsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +292,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FB59A8B293712A300F14EFB /* Preview Assets.xcassets in Resources */,
-				2FB59A87293712A300F14EFB /* Assets.xcassets in Resources */,
+				2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */,
+				2FB59A87293712A300F14EFB /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +318,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */,
+				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
+				2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */,
 				2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */,
+				2FB59AB1293713A700F14EFB /* HelperFunctions.swift in Sources */,
+				2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */,
 				2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */,
 				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
-				2FB59A80293712A200F14EFB /* Persistence.swift in Sources */,
+				2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */,
+				2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */,
+				2FB59AB8293713EA00F14EFB /* ElestralsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +482,7 @@
 				CODE_SIGN_ENTITLEMENTS = ElestralsCollection/ElestralsCollection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ElestralsCollection/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L54APZ8C72;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -460,7 +520,7 @@
 				CODE_SIGN_ENTITLEMENTS = ElestralsCollection/ElestralsCollection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ElestralsCollection/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L54APZ8C72;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
