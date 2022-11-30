@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */; };
+		2FB59A80293712A200F14EFB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A7F293712A200F14EFB /* Persistence.swift */; };
+		2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */; };
+		2FB59A85293712A200F14EFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A84293712A200F14EFB /* ContentView.swift */; };
+		2FB59A87293712A300F14EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59A86293712A300F14EFB /* Assets.xcassets */; };
+		2FB59A8B293712A300F14EFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59A8A293712A300F14EFB /* Preview Assets.xcassets */; };
+		2FB59A95293712A300F14EFB /* ElestralsCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A94293712A300F14EFB /* ElestralsCollectionTests.swift */; };
+		2FB59A9F293712A300F14EFB /* ElestralsCollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A9E293712A300F14EFB /* ElestralsCollectionUITests.swift */; };
+		2FB59AA1293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FB59A91293712A300F14EFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FB59A72293712A200F14EFB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FB59A79293712A200F14EFB;
+			remoteInfo = ElestralsCollection;
+		};
+		2FB59A9B293712A300F14EFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FB59A72293712A200F14EFB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FB59A79293712A200F14EFB;
+			remoteInfo = ElestralsCollection;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2FB59A7A293712A200F14EFB /* ElestralsCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElestralsCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionApp.swift; sourceTree = "<group>"; };
+		2FB59A7F293712A200F14EFB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElestralsCollection.xcdatamodel; sourceTree = "<group>"; };
+		2FB59A84293712A200F14EFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2FB59A86293712A300F14EFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElestralsCollection.entitlements; sourceTree = "<group>"; };
+		2FB59A8A293712A300F14EFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2FB59A90293712A300F14EFB /* ElestralsCollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElestralsCollectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB59A94293712A300F14EFB /* ElestralsCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionTests.swift; sourceTree = "<group>"; };
+		2FB59A9A293712A300F14EFB /* ElestralsCollectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElestralsCollectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB59A9E293712A300F14EFB /* ElestralsCollectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionUITests.swift; sourceTree = "<group>"; };
+		2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FB59A77293712A200F14EFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FB59A8D293712A300F14EFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FB59A97293712A300F14EFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2FB59A71293712A200F14EFB = {
+			isa = PBXGroup;
+			children = (
+				2FB59A7C293712A200F14EFB /* ElestralsCollection */,
+				2FB59A93293712A300F14EFB /* ElestralsCollectionTests */,
+				2FB59A9D293712A300F14EFB /* ElestralsCollectionUITests */,
+				2FB59A7B293712A200F14EFB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2FB59A7B293712A200F14EFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59A7A293712A200F14EFB /* ElestralsCollection.app */,
+				2FB59A90293712A300F14EFB /* ElestralsCollectionTests.xctest */,
+				2FB59A9A293712A300F14EFB /* ElestralsCollectionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2FB59A7C293712A200F14EFB /* ElestralsCollection */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
+				2FB59A7F293712A200F14EFB /* Persistence.swift */,
+				2FB59A84293712A200F14EFB /* ContentView.swift */,
+				2FB59A86293712A300F14EFB /* Assets.xcassets */,
+				2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */,
+				2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */,
+				2FB59A89293712A300F14EFB /* Preview Content */,
+			);
+			path = ElestralsCollection;
+			sourceTree = "<group>";
+		};
+		2FB59A89293712A300F14EFB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59A8A293712A300F14EFB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2FB59A93293712A300F14EFB /* ElestralsCollectionTests */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59A94293712A300F14EFB /* ElestralsCollectionTests.swift */,
+			);
+			path = ElestralsCollectionTests;
+			sourceTree = "<group>";
+		};
+		2FB59A9D293712A300F14EFB /* ElestralsCollectionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59A9E293712A300F14EFB /* ElestralsCollectionUITests.swift */,
+				2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */,
+			);
+			path = ElestralsCollectionUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2FB59A79293712A200F14EFB /* ElestralsCollection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FB59AA4293712A300F14EFB /* Build configuration list for PBXNativeTarget "ElestralsCollection" */;
+			buildPhases = (
+				2FB59A76293712A200F14EFB /* Sources */,
+				2FB59A77293712A200F14EFB /* Frameworks */,
+				2FB59A78293712A200F14EFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ElestralsCollection;
+			productName = ElestralsCollection;
+			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2FB59A8F293712A300F14EFB /* ElestralsCollectionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FB59AA7293712A300F14EFB /* Build configuration list for PBXNativeTarget "ElestralsCollectionTests" */;
+			buildPhases = (
+				2FB59A8C293712A300F14EFB /* Sources */,
+				2FB59A8D293712A300F14EFB /* Frameworks */,
+				2FB59A8E293712A300F14EFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FB59A92293712A300F14EFB /* PBXTargetDependency */,
+			);
+			name = ElestralsCollectionTests;
+			productName = ElestralsCollectionTests;
+			productReference = 2FB59A90293712A300F14EFB /* ElestralsCollectionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2FB59A99293712A300F14EFB /* ElestralsCollectionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FB59AAA293712A300F14EFB /* Build configuration list for PBXNativeTarget "ElestralsCollectionUITests" */;
+			buildPhases = (
+				2FB59A96293712A300F14EFB /* Sources */,
+				2FB59A97293712A300F14EFB /* Frameworks */,
+				2FB59A98293712A300F14EFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FB59A9C293712A300F14EFB /* PBXTargetDependency */,
+			);
+			name = ElestralsCollectionUITests;
+			productName = ElestralsCollectionUITests;
+			productReference = 2FB59A9A293712A300F14EFB /* ElestralsCollectionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2FB59A72293712A200F14EFB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					2FB59A79293712A200F14EFB = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					2FB59A8F293712A300F14EFB = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 2FB59A79293712A200F14EFB;
+					};
+					2FB59A99293712A300F14EFB = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 2FB59A79293712A200F14EFB;
+					};
+				};
+			};
+			buildConfigurationList = 2FB59A75293712A200F14EFB /* Build configuration list for PBXProject "ElestralsCollection" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2FB59A71293712A200F14EFB;
+			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FB59A79293712A200F14EFB /* ElestralsCollection */,
+				2FB59A8F293712A300F14EFB /* ElestralsCollectionTests */,
+				2FB59A99293712A300F14EFB /* ElestralsCollectionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FB59A78293712A200F14EFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FB59A8B293712A300F14EFB /* Preview Assets.xcassets in Resources */,
+				2FB59A87293712A300F14EFB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FB59A8E293712A300F14EFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FB59A98293712A300F14EFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FB59A76293712A200F14EFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */,
+				2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */,
+				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
+				2FB59A80293712A200F14EFB /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FB59A8C293712A300F14EFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FB59A95293712A300F14EFB /* ElestralsCollectionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FB59A96293712A300F14EFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FB59AA1293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift in Sources */,
+				2FB59A9F293712A300F14EFB /* ElestralsCollectionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2FB59A92293712A300F14EFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FB59A79293712A200F14EFB /* ElestralsCollection */;
+			targetProxy = 2FB59A91293712A300F14EFB /* PBXContainerItemProxy */;
+		};
+		2FB59A9C293712A300F14EFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FB59A79293712A200F14EFB /* ElestralsCollection */;
+			targetProxy = 2FB59A9B293712A300F14EFB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2FB59AA2293712A300F14EFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2FB59AA3293712A300F14EFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		2FB59AA5293712A300F14EFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ElestralsCollection/ElestralsCollection.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ElestralsCollection/Preview Content\"";
+				DEVELOPMENT_TEAM = L54APZ8C72;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2FB59AA6293712A300F14EFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ElestralsCollection/ElestralsCollection.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ElestralsCollection/Preview Content\"";
+				DEVELOPMENT_TEAM = L54APZ8C72;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2FB59AA8293712A300F14EFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L54APZ8C72;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollectionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElestralsCollection.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElestralsCollection";
+			};
+			name = Debug;
+		};
+		2FB59AA9293712A300F14EFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L54APZ8C72;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollectionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElestralsCollection.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElestralsCollection";
+			};
+			name = Release;
+		};
+		2FB59AAB293712A300F14EFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L54APZ8C72;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollectionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ElestralsCollection;
+			};
+			name = Debug;
+		};
+		2FB59AAC293712A300F14EFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L54APZ8C72;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollectionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ElestralsCollection;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FB59A75293712A200F14EFB /* Build configuration list for PBXProject "ElestralsCollection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FB59AA2293712A300F14EFB /* Debug */,
+				2FB59AA3293712A300F14EFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FB59AA4293712A300F14EFB /* Build configuration list for PBXNativeTarget "ElestralsCollection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FB59AA5293712A300F14EFB /* Debug */,
+				2FB59AA6293712A300F14EFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FB59AA7293712A300F14EFB /* Build configuration list for PBXNativeTarget "ElestralsCollectionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FB59AA8293712A300F14EFB /* Debug */,
+				2FB59AA9293712A300F14EFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FB59AAA293712A300F14EFB /* Build configuration list for PBXNativeTarget "ElestralsCollectionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FB59AAB293712A300F14EFB /* Debug */,
+				2FB59AAC293712A300F14EFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */,
+			);
+			currentVersion = 2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */;
+			path = ElestralsCollection.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2FB59A72293712A200F14EFB /* Project object */;
+}
