@@ -15,6 +15,10 @@ extension ElestralsView {
             }
             return list.count
         }
+    
+    func getState(for filterType: FilterType) -> Bool {
+        return self.filtersViewModel.filters.contains(filterType)
+    }
 }
 
 extension ElestralsGridItem {

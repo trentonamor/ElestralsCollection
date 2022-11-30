@@ -12,8 +12,9 @@ struct ElestralsGridItem: View {
         }, label: {
             ZStack {
                 Rectangle()
-                    .foregroundColor(elestral.backgroundColor)
+                    .fill(Gradient(colors: [.white, elestral.backgroundColor]))
                     .cornerRadius(30)
+                    .aspectRatio(1, contentMode: .fit)
                 VStack {
                     Spacer()
                     ZStack {
@@ -48,5 +49,6 @@ struct ElestralsGridItem_Previews: PreviewProvider {
 struct appPreview: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ElestralData())
     }
 }

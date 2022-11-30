@@ -30,6 +30,7 @@ struct ContentView: View {
             SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape")
+                        .environment(\.symbolVariants, .none)
                     Text("Settings")
                 }
         }
@@ -39,5 +40,6 @@ struct ContentView: View {
 struct ContentViewPreview: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ElestralData())
     }
 }

@@ -2,8 +2,14 @@ import SwiftUI
 
 struct ElestralsView: View {
 
-    @State var searchText = ""
     @EnvironmentObject var data: ElestralData
+    @Environment(\.presentationMode) var presentation
+    
+    @State var searchText = ""
+    @State var filters: [String] = []
+    @State var presentFilters = false
+    
+    @ObservedObject var filtersViewModel: FiltersViewModel = FiltersViewModel()
     
     var earthElestrals: [String] {
         let earth = data.elestralsList.filter {
@@ -183,6 +189,33 @@ struct ElestralsView: View {
                 .searchable(text: $searchText, placement: .automatic, prompt: "Search by Elestral Name")
                 .navigationTitle("Elestrals")
                 .background(Color("backgroundBase"))
+                .sheet(isPresented: $presentFilters, content: {
+                    FiltersView(filters: $filtersViewModel.filters, ownedToggleOn: getState(for: .owned), unownedToggleOn: getState(for: .unowned), bothToggleOn: getState(for: .none), earthToggleOn: getState(for: .earth), fireToggleOn: getState(for: .fire), thunderToggleOn: getState(for: .thunder), waterToggleOn: getState(for: .water), windToggleOn: getState(for: .wind))
+                })
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
+                        Button(action: {
+                            presentFilters.toggle()
+                        }, label: {
+                            if filters.isEmpty {
+                                Image(systemName: "line.3.horizontal.decrease.circle")
+                                    .frame(height: 96, alignment: .trailing)
+                            } else {
+                                Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                    .frame(height: 96, alignment: .trailing)
+                            }
+                        })
+                    })
+                    
+                    ToolbarItem(content: {
+                        Button(action: {
+                            print(self.filtersViewModel.filters)
+                        }, label: {
+                            Text("Check Filters")
+                                .frame(height: 96, alignment: .trailing)
+                        })
+                    })
+                }
         }
     }
 }
@@ -190,5 +223,6 @@ struct ElestralsView: View {
 struct ElestralsViewPreview: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ElestralData())
     }
 }
