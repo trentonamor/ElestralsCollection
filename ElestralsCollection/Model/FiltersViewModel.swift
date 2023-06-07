@@ -9,8 +9,13 @@ import Foundation
 
 class FiltersViewModel: ObservableObject {
     @Published var filters: Set<FilterType> = Set([.none, .fire, .wind, .water, .thunder, .earth])
+    
+    func isDefault() -> Bool {
+        return self.filters == Set([.none, .fire, .wind, .water, .thunder, .earth])
+    }
 }
 enum FilterType {
+    case unknown
     case none
     //State cases
     case owned

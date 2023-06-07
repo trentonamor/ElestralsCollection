@@ -17,16 +17,16 @@ struct ContentView: View {
                     Image(systemName: "list.bullet.below.rectangle")
                     Text("Expansions")
                 }
-            BookmarkView()
-                .tabItem {
-                    Image(systemName: "bookmark")
-                    Text("Bookmarks")
-                }
-            SearchView()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Search")
-                }
+//            BookmarkView()
+//                .tabItem {
+//                    Image(systemName: "bookmark")
+//                    Text("Bookmarks")
+//                }
+//            SearchView()
+//                .tabItem {
+//                    Image(systemName: "magnifyingglass")
+//                    Text("Search")
+//                }
             SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape")

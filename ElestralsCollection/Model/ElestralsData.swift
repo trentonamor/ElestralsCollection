@@ -51,12 +51,12 @@ class Elestral : ObservableObject {
     }
 }
 
-enum Element {
-    case earth
-    case fire
-    case thunder
-    case water
-    case wind
+enum Element : Int {
+    case earth = 0
+    case fire = 1
+    case thunder = 2
+    case water = 3
+    case wind = 4
 }
 
 class ElestralData: ObservableObject {

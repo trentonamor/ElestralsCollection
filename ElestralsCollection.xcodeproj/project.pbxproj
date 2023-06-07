@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1D5F032A140B5A00821144 /* ExpansionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F022A140B5A00821144 /* ExpansionCellView.swift */; };
+		2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */; };
+		2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F062A14191B00821144 /* ExpansionFiltersView.swift */; };
+		2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */; };
+		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
+		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
+		2F1FA6112950E2E700E8216B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1FA6102950E2E700E8216B /* Charts */; };
 		2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */; };
 		2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */; };
 		2FB59A85293712A200F14EFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A84293712A200F14EFB /* ContentView.swift */; };
@@ -23,9 +30,19 @@
 		2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABC293713F800F14EFB /* BookmarkView.swift */; };
 		2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABD293713F800F14EFB /* ElestralsView.swift */; };
 		2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABE293713F800F14EFB /* ExpansionsView.swift */; };
+		2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE23070293920FC00AC4248 /* CarouselViewModel.swift */; };
+		2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE230742939213C00AC4248 /* SnapCarousel.swift */; };
+		2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2307629392CDC00AC4248 /* CardModel.swift */; };
+		2FE2307929392FC900AC4248 /* GenericCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2307829392FC900AC4248 /* GenericCardView.swift */; };
+		2FE2307B293954DA00AC4248 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2307A293954DA00AC4248 /* ProgressCircle.swift */; };
+		2FE2307D294385C800AC4248 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2307C294385C800AC4248 /* WebView.swift */; };
 		2FE3E1BB2937A995009B14C8 /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */; };
 		2FE3E1BD2937AB64009B14C8 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1BC2937AB64009B14C8 /* FiltersView.swift */; };
 		2FE3E1BF2937B278009B14C8 /* Toggle+CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1BE2937B278009B14C8 /* Toggle+CheckboxStyle.swift */; };
+		2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1C829380A2E009B14C8 /* ProgressCard.swift */; };
+		2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CA29380AB8009B14C8 /* DistributionCard.swift */; };
+		2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CC29380B00009B14C8 /* InfoCard.swift */; };
+		2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEAE6EB2938123500B9238A /* GridSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +63,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F1D5F022A140B5A00821144 /* ExpansionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCellView.swift; sourceTree = "<group>"; };
+		2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCellModel.swift; sourceTree = "<group>"; };
+		2F1D5F062A14191B00821144 /* ExpansionFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersView.swift; sourceTree = "<group>"; };
+		2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersViewModel.swift; sourceTree = "<group>"; };
+		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
 		2FB59A7A293712A200F14EFB /* ElestralsCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElestralsCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionApp.swift; sourceTree = "<group>"; };
 		2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElestralsCollection.xcdatamodel; sourceTree = "<group>"; };
@@ -66,9 +89,19 @@
 		2FB59ABC293713F800F14EFB /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		2FB59ABD293713F800F14EFB /* ElestralsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsView.swift; sourceTree = "<group>"; };
 		2FB59ABE293713F800F14EFB /* ExpansionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpansionsView.swift; sourceTree = "<group>"; };
+		2FE23070293920FC00AC4248 /* CarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
+		2FE230742939213C00AC4248 /* SnapCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
+		2FE2307629392CDC00AC4248 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		2FE2307829392FC900AC4248 /* GenericCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCardView.swift; sourceTree = "<group>"; };
+		2FE2307A293954DA00AC4248 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
+		2FE2307C294385C800AC4248 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		2FE3E1BC2937AB64009B14C8 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		2FE3E1BE2937B278009B14C8 /* Toggle+CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toggle+CheckboxStyle.swift"; sourceTree = "<group>"; };
+		2FE3E1C829380A2E009B14C8 /* ProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCard.swift; sourceTree = "<group>"; };
+		2FE3E1CA29380AB8009B14C8 /* DistributionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionCard.swift; sourceTree = "<group>"; };
+		2FE3E1CC29380B00009B14C8 /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
+		2FEAE6EB2938123500B9238A /* GridSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F1FA6112950E2E700E8216B /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +130,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F1FA6122950FC9400E8216B /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		2FB59A71293712A200F14EFB = {
 			isa = PBXGroup;
 			children = (
@@ -161,8 +202,13 @@
 		2FB59AB2293713DB00F14EFB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2FE3E1C7293809FA009B14C8 /* Carousel */,
 				2FB59AB3293713DB00F14EFB /* Grid */,
 				2FE3E1BE2937B278009B14C8 /* Toggle+CheckboxStyle.swift */,
+				2FE2307A293954DA00AC4248 /* ProgressCircle.swift */,
+				2FE2307C294385C800AC4248 /* WebView.swift */,
+				2F1D5F022A140B5A00821144 /* ExpansionCellView.swift */,
+				2F1D5F0A2A16974600821144 /* MailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -170,6 +216,7 @@
 		2FB59AB3293713DB00F14EFB /* Grid */ = {
 			isa = PBXGroup;
 			children = (
+				2FEAE6EB2938123500B9238A /* GridSection.swift */,
 				2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */,
 			);
 			path = Grid;
@@ -180,6 +227,11 @@
 			children = (
 				2FB59AB7293713EA00F14EFB /* ElestralsData.swift */,
 				2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */,
+				2FE23070293920FC00AC4248 /* CarouselViewModel.swift */,
+				2FE2307629392CDC00AC4248 /* CardModel.swift */,
+				2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */,
+				2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */,
+				2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,14 +239,68 @@
 		2FB59AB9293713F800F14EFB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2FB59ABA293713F800F14EFB /* SettingsView.swift */,
-				2FB59ABB293713F800F14EFB /* SearchView.swift */,
-				2FB59ABC293713F800F14EFB /* BookmarkView.swift */,
-				2FB59ABD293713F800F14EFB /* ElestralsView.swift */,
-				2FB59ABE293713F800F14EFB /* ExpansionsView.swift */,
-				2FE3E1BC2937AB64009B14C8 /* FiltersView.swift */,
+				2F1FA6122950FC9400E8216B /* CollectionView */,
+				2FE3E1C3293808AF009B14C8 /* Elestral */,
+				2FE3E1C2293808A6009B14C8 /* Bookmark */,
+				2FE3E1C12938089E009B14C8 /* Search */,
+				2FE3E1C029380895009B14C8 /* Settings */,
+				2FE3E1C4293808C2009B14C8 /* Expansions */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2FE3E1C029380895009B14C8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59ABA293713F800F14EFB /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2FE3E1C12938089E009B14C8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59ABB293713F800F14EFB /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		2FE3E1C2293808A6009B14C8 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59ABC293713F800F14EFB /* BookmarkView.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		2FE3E1C3293808AF009B14C8 /* Elestral */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3E1BC2937AB64009B14C8 /* FiltersView.swift */,
+				2FB59ABD293713F800F14EFB /* ElestralsView.swift */,
+			);
+			path = Elestral;
+			sourceTree = "<group>";
+		};
+		2FE3E1C4293808C2009B14C8 /* Expansions */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59ABE293713F800F14EFB /* ExpansionsView.swift */,
+				2F1D5F062A14191B00821144 /* ExpansionFiltersView.swift */,
+			);
+			path = Expansions;
+			sourceTree = "<group>";
+		};
+		2FE3E1C7293809FA009B14C8 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				2FE230742939213C00AC4248 /* SnapCarousel.swift */,
+				2FE3E1C829380A2E009B14C8 /* ProgressCard.swift */,
+				2FE3E1CA29380AB8009B14C8 /* DistributionCard.swift */,
+				2FE3E1CC29380B00009B14C8 /* InfoCard.swift */,
+				2FE2307829392FC900AC4248 /* GenericCardView.swift */,
+			);
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +319,9 @@
 			dependencies = (
 			);
 			name = ElestralsCollection;
+			packageProductDependencies = (
+				2F1FA6102950E2E700E8216B /* Charts */,
+			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
 			productType = "com.apple.product-type.application";
@@ -285,6 +394,9 @@
 				Base,
 			);
 			mainGroup = 2FB59A71293712A200F14EFB;
+			packageReferences = (
+				2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -327,17 +439,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE2307929392FC900AC4248 /* GenericCardView.swift in Sources */,
+				2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */,
 				2FE3E1BD2937AB64009B14C8 /* FiltersView.swift in Sources */,
+				2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */,
+				2FE2307B293954DA00AC4248 /* ProgressCircle.swift in Sources */,
 				2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */,
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
+				2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */,
 				2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */,
 				2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */,
+				2FE2307D294385C800AC4248 /* WebView.swift in Sources */,
 				2FB59AB1293713A700F14EFB /* HelperFunctions.swift in Sources */,
+				2F1D5F032A140B5A00821144 /* ExpansionCellView.swift in Sources */,
+				2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */,
 				2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */,
 				2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */,
 				2FE3E1BF2937B278009B14C8 /* Toggle+CheckboxStyle.swift in Sources */,
+				2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */,
 				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
+				2F1D5F0B2A16974600821144 /* MailView.swift in Sources */,
+				2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */,
+				2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */,
+				2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */,
+				2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */,
 				2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */,
+				2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */,
+				2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */,
 				2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */,
 				2FB59AB8293713EA00F14EFB /* ElestralsData.swift in Sources */,
 				2FE3E1BB2937A995009B14C8 /* FiltersViewModel.swift in Sources */,
@@ -692,6 +820,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2F1FA6102950E2E700E8216B /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */ = {

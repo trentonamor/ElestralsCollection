@@ -20,6 +20,8 @@ struct FiltersView: View {
     @State var waterToggleOn: Bool
     @State var windToggleOn: Bool
     
+    @State var selectAllButtonTitle: String = "Deselect All"
+    
     @Environment(\.presentationMode) var presentation
 
     var body: some View {
@@ -83,7 +85,7 @@ struct FiltersView: View {
                     })
                 }
                 
-                Section("Element") {
+                Section(content: {
                     Toggle(isOn: $earthToggleOn, label: {
                         Text("Earth")
                     })
@@ -149,7 +151,24 @@ struct FiltersView: View {
                                 self.filters.remove(.wind)
                             }
                     })
-                }
+                }, header: {
+                    HStack {
+                        Text("Element")
+                        Spacer()
+                        Button(action: {
+                            if selectAllButtonTitle == "Select All" {
+                                self.selectAllButtonTitle = "Deselect All"
+                                self.toggleElements(ofValue: true)
+                            } else {
+                                self.selectAllButtonTitle = "Select All"
+                                self.toggleElements(ofValue: false)
+                            }
+                        }, label: {
+                            Text(selectAllButtonTitle)
+                                .font(.caption)
+                        })
+                    }
+                })
             }
             .navigationTitle("Filters")
             .navigationBarTitleDisplayMode(.inline)
@@ -174,18 +193,22 @@ struct FiltersView: View {
         unownedToggleOn = false
         bothToggleOn = true
         
-        earthToggleOn = true
-        fireToggleOn = true
-        thunderToggleOn = true
-        waterToggleOn = true
-        windToggleOn = true
+        self.toggleElements(ofValue: true)
         
         self.filters = Set([.none, .fire, .wind, .water, .thunder, .earth])
     }
+    
+    func toggleElements(ofValue: Bool) {
+        earthToggleOn = ofValue
+        fireToggleOn = ofValue
+        thunderToggleOn = ofValue
+        waterToggleOn = ofValue
+        windToggleOn = ofValue
+    }
 }
 
-//struct FiltersView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FiltersView(viewModel: FiltersViewModel())
-//    }
-//}
+struct FiltersView_Previews: PreviewProvider {
+    static var previews: some View {
+        FiltersView(filters: .constant(Set([.none])), ownedToggleOn: false, unownedToggleOn: false, bothToggleOn: true, earthToggleOn: false, fireToggleOn: false, thunderToggleOn: false, waterToggleOn: false, windToggleOn: false)
+    }
+}
