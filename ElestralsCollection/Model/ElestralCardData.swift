@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class ElestralCard : ObservableObject {
+class ElestralCard : ObservableObject, Hashable {
     @Published var name: String
     @Published var effect: String
     @Published var elements: [Element]
@@ -41,6 +41,34 @@ class ElestralCard : ObservableObject {
         self.cardNumber = cardNumber
         self.editions = editions
         self.rarity = rarity
+    }
+    
+    static func == (lhs: ElestralCard, rhs: ElestralCard) -> Bool {
+        return lhs.name == rhs.name &&
+            lhs.effect == rhs.effect &&
+            lhs.elements == rhs.elements &&
+            lhs.subclasses == rhs.subclasses &&
+            lhs.attack == rhs.attack &&
+            lhs.defense == rhs.defense &&
+            lhs.artist == rhs.artist &&
+            lhs.cardSet == rhs.cardSet &&
+            lhs.cardNumber == rhs.cardNumber &&
+            lhs.editions == rhs.editions &&
+            lhs.rarity == rhs.rarity
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(effect)
+        hasher.combine(elements)
+        hasher.combine(subclasses)
+        hasher.combine(attack)
+        hasher.combine(defense)
+        hasher.combine(artist)
+        hasher.combine(cardSet)
+        hasher.combine(cardNumber)
+        hasher.combine(editions)
+        hasher.combine(rarity)
     }
 }
 

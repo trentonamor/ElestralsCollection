@@ -14,8 +14,10 @@
 		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
 		2F1FA6112950E2E700E8216B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1FA6102950E2E700E8216B /* Charts */; };
+		2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93452A33D5C90044F189 /* CollectionView.swift */; };
+		2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */; };
+		2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */; };
 		2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */; };
-		2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */; };
 		2FB59A85293712A200F14EFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A84293712A200F14EFB /* ContentView.swift */; };
 		2FB59A87293712A300F14EFB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59A86293712A300F14EFB /* Colors.xcassets */; };
 		2FB59A95293712A300F14EFB /* ElestralsCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A94293712A300F14EFB /* ElestralsCollectionTests.swift */; };
@@ -69,9 +71,11 @@
 		2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersViewModel.swift; sourceTree = "<group>"; };
 		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
+		2F7C93452A33D5C90044F189 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersView.swift; sourceTree = "<group>"; };
+		2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersModel.swift; sourceTree = "<group>"; };
 		2FB59A7A293712A200F14EFB /* ElestralsCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElestralsCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionApp.swift; sourceTree = "<group>"; };
-		2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElestralsCollection.xcdatamodel; sourceTree = "<group>"; };
 		2FB59A84293712A200F14EFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2FB59A86293712A300F14EFB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElestralsCollection.entitlements; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		2F1FA6122950FC9400E8216B /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				2F7C93452A33D5C90044F189 /* CollectionView.swift */,
+				2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -162,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */,
-				2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */,
 				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
 				2FB59AB0293713A700F14EFB /* HelperFunctions.swift */,
 				2FB59A84293712A200F14EFB /* ContentView.swift */,
@@ -232,6 +237,7 @@
 				2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */,
 				2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */,
 				2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */,
+				2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -445,16 +451,18 @@
 				2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */,
 				2FE2307B293954DA00AC4248 /* ProgressCircle.swift in Sources */,
 				2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */,
+				2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */,
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
 				2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */,
+				2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */,
 				2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */,
 				2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */,
 				2FE2307D294385C800AC4248 /* WebView.swift in Sources */,
+				2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */,
 				2FB59AB1293713A700F14EFB /* HelperFunctions.swift in Sources */,
 				2F1D5F032A140B5A00821144 /* ExpansionCellView.swift in Sources */,
 				2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */,
 				2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */,
-				2FB59A83293712A200F14EFB /* ElestralsCollection.xcdatamodeld in Sources */,
 				2FE3E1BF2937B278009B14C8 /* Toggle+CheckboxStyle.swift in Sources */,
 				2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */,
 				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
@@ -839,19 +847,6 @@
 			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		2FB59A81293712A200F14EFB /* ElestralsCollection.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */,
-			);
-			currentVersion = 2FB59A82293712A200F14EFB /* ElestralsCollection.xcdatamodel */;
-			path = ElestralsCollection.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2FB59A72293712A200F14EFB /* Project object */;
 }

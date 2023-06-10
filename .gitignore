@@ -1,2 +1,4 @@
 *.xcsettings
 Package.resolved
+Breakpoints_v2.xcbkptlist
+xcschememanagement.plist

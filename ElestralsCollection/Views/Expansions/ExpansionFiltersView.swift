@@ -11,13 +11,13 @@ struct ExpansionFiltersView: View {
                 Section("Sort Order") {
                     
                     Toggle(isOn: Binding(
-                        get: { self.filters.contains(.Ascending) },
+                        get: { self.filters.contains(.ascending) },
                         set: { isOn in
                             if isOn {
-                                self.filters.insert(.Ascending)
-                                self.filters.remove(.Descending) // Turn off the other toggle
+                                self.filters.insert(.ascending)
+                                self.filters.remove(.descending) // Turn off the other toggle
                             } else {
-                                self.filters.remove(.Ascending)
+                                self.filters.update(with: .ascending)
                             }
                         }
                     ), label: {
@@ -26,13 +26,13 @@ struct ExpansionFiltersView: View {
                     .toggleStyle(.checklist)
                     
                     Toggle(isOn: Binding(
-                        get: { self.filters.contains(.Descending) },
+                        get: { self.filters.contains(.descending) },
                         set: { isOn in
                             if isOn {
-                                self.filters.insert(.Descending)
-                                self.filters.remove(.Ascending) // Turn off the other toggle
+                                self.filters.insert(.descending)
+                                self.filters.remove(.ascending) // Turn off the other toggle
                             } else {
-                                self.filters.remove(.Descending)
+                                self.filters.update(with: .descending)
                             }
                         }
                     ), label: {
@@ -56,12 +56,12 @@ struct ExpansionFiltersView: View {
     }
     
     func resetFilters() {
-        self.filters = Set([.Descending])
+        self.filters = Set([.descending])
     }
 }
 
 struct ExpansionFiltersView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpansionFiltersView(filters: .constant(Set([.Ascending])))
+        ExpansionFiltersView(filters: .constant(Set([.ascending])))
     }
 }

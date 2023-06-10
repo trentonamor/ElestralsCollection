@@ -19,7 +19,7 @@ struct ExpansionsView: View {
     ]
     
     var filteredExpansionCellModels: [ExpansionCellModel] {
-        let sortedCells = returnSortedList(by: filtersViewModel.filters.first ?? .Descending, cells: expansionCellModels)
+        let sortedCells = returnSortedList(by: filtersViewModel.filters.first ?? .descending, cells: expansionCellModels)
         
         if searchText.isEmpty {
             return sortedCells
@@ -74,9 +74,9 @@ struct ExpansionsView: View {
     
     private func returnSortedList(by: ExpansionFilterType, cells: [ExpansionCellModel]) -> [ExpansionCellModel] {
         switch by {
-        case .Ascending:
+        case .ascending:
             return cells.sorted { $0.creationDate > $1.creationDate }
-        case .Descending:
+        case .descending:
             return cells.sorted { $0.creationDate < $1.creationDate }
         default:
             return cells
