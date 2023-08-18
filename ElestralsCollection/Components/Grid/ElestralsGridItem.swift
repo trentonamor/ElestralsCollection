@@ -1,34 +1,31 @@
 import SwiftUI
-import WebKit
 
 struct ElestralsGridItem: View {
 
-    @State var elestral: Elestral
-    @EnvironmentObject var data: ElestralData
+    @ObservedObject var data: ElestralCard
     
     var body: some View {
         Button(action: {
-            elestral.isOwned.toggle()
-            self.updateOwned(for: elestral)
+            // Handle button action here
         }, label: {
             ZStack {
                 Rectangle()
-                    .fill(Gradient(colors: [.white, elestral.backgroundColor]))
+                    .fill(Gradient(colors: [.white, data.getBackgroundColor()]))
                     .cornerRadius(30)
                     .aspectRatio(1, contentMode: .fit)
                 VStack {
                     Spacer()
                     ZStack {
-                        Image(elestral.sprite)
+                        Image(data.getSprite())
                             .resizable()
                             .scaledToFit()
                             .padding(.all, 0.0)
-                        if !elestral.isOwned {
+                        if data.numberOwned == 0 {
                             Color.gray
                                 .blendMode(.color)
                         }
                     }
-                    Text(elestral.name)
+                    Text(data.name)
                         .font(.footnote)
                         .bold()
                         .padding(.top, 0.0)
@@ -38,18 +35,5 @@ struct ElestralsGridItem: View {
                 .aspectRatio(1, contentMode: .fill)
             }
         })
-    }
-}
-
-struct ElestralsGridItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ElestralsGridItem(elestral: Elestral(name: "Teratlas", element: .earth, isOwned: false))
-    }
-}
-
-struct appPreview: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(ElestralData())
     }
 }

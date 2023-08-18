@@ -13,7 +13,7 @@ struct ProgressCard: View {
     @State var progressValue: Float = 0.0
     
     var foundText: String {
-        return "\(self.getNumberCollected(for: nil)) of \(cardViewModel.cardList.count)"
+        return "\(self.getNumberCollected(for: nil)) of \(self.cardViewModel.getUniqueNumberOfElestrals())"
     }
     
     var body: some View {

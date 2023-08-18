@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct ElestralsCollectionApp: App {
-    @StateObject var elestralsList = ElestralData()
-    @StateObject var elestralsCardData = ElestralCardData()
+    @StateObject var elestralsCardData = CardStore()
+    
+    init() {
+        FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(elestralsList)
                 .environmentObject(elestralsCardData)
         }
     }

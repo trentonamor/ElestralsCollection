@@ -24,6 +24,7 @@ class ExpansionCellModel: ObservableObject, Identifiable {
 }
 
 enum ExpansionId: Int {
+    case unknown
     case baseSet
     case centaurborStarterDeck
     case trifernalStarterDeck

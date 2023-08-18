@@ -16,7 +16,7 @@ struct CollectionView: View {
         UINavigationBar.appearance().standardAppearance = appearance
     }
     
-    @EnvironmentObject var data: ElestralCardData
+    @EnvironmentObject var data: CardStore
     
     @State var searchText = ""
     @State var presentFilters = false
@@ -46,7 +46,7 @@ struct CollectionView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: layout, spacing: 8) {
-                    ForEach(data.cardList, id: \.self) { card in
+                    ForEach(data.cards, id: \.self) { card in
                         Text(card.name)
                             .font(.headline)
                             .foregroundColor(.blue) // Set the desired color for the text

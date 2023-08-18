@@ -10,43 +10,28 @@ import UIKit
 
 
 extension GridSection {
-    func getTitle(for element: Element) -> String {
-        switch element {
-        case .earth:
-            return "Earth"
-        case .fire:
-            return "Fire"
-        case .thunder:
-            return "Thunder"
-        case .water:
-            return "Water"
-        case .wind:
-            return "Wind"
-        default:
-            return "Rainbow"
+    
+    func getNumberOwned(for element: String) -> Int {
+        let list = self.data.getElestralsList().filter {
+            $0.elements.contains(element) &&
+            $0.numberOwned > 0
         }
+        return list.count
     }
     
-    func getNumberOwned(for element: Element) -> Int {
-        let list = self.data.elestralsList.filter {
-                $0.element == element &&
-                $0.isOwned
-            }
-            return list.count
-        }
-    
-    func getElementalElestrals(for element: Element) -> [String]{
+    func getElementalElestrals(for element: String) -> [String] {
+        let element = element.lowercased()
         var filterType: FilterType = .unknown
         switch element {
-        case .earth:
+        case "earth":
             filterType = .earth
-        case .fire:
+        case "fire":
             filterType = .fire
-        case .thunder:
+        case "thunder":
             filterType = .thunder
-        case .water:
+        case "water":
             filterType = .water
-        case .wind:
+        case "wind":
             filterType = .wind
         default:
             filterType = .unknown
@@ -54,26 +39,36 @@ extension GridSection {
         guard filters.contains(filterType) else {
             return []
         }
-        let earth = data.elestralsList.filter {
+        
+        let elementals = data.getElestralsList().filter {
             if filters.contains(.none) {
-                return $0.element == element
+                return $0.elements.contains(element)
             } else if filters.contains(.owned) {
-                return $0.element == element && $0.isOwned
+                return $0.elements.contains(element) && $0.numberOwned > 0
             } else if filters.contains(.unowned) {
-               return $0.element == element && $0.isOwned == false
+                return $0.elements.contains(element) && $0.numberOwned == 0
             } else {
                 return false
             }
         }
-        let lcElestrals = earth.map {
-            $0.name.lowercased()
-        }.sorted()
-        return searchText == "" ? lcElestrals :
-        lcElestrals.filter {
-            $0.contains(searchText.lowercased())
+        
+        var uniqueNames = Set<String>()
+        for elemental in elementals {
+            uniqueNames.insert(elemental.name.lowercased())
         }
+        
+        var resultNames = Array(uniqueNames).sorted()
+        
+        if !searchText.isEmpty {
+            resultNames = resultNames.filter {
+                $0.contains(searchText.lowercased())
+            }
+        }
+        
+        return resultNames
     }
 }
+
 
 extension ElestralsView {
     
@@ -91,10 +86,10 @@ extension ExpansionsView {
 }
 
 extension ElestralsGridItem {
-    func updateOwned(for elestral: Elestral) {
-        let index = self.data.elestralsList.firstIndex(where: { $0.name == elestral.name })
-        self.data.elestralsList[index!].isOwned = elestral.isOwned
-    }
+//    func updateOwned(for elestral: Elestral) {
+//        let index = self.data.elestralsList.firstIndex(where: { $0.name == elestral.name })
+//        self.data.elestralsList[index!].isOwned = elestral.isOwned
+//    }
 }
 
 extension UIScreen {
@@ -104,15 +99,15 @@ extension UIScreen {
 }
 
 extension ProgressCard {
-    func getNumberCollected(for elestral: Elestral?) -> Int{
-        if let elestral = elestral {
+    func getNumberCollected(for cardName: String?) -> Int{
+        if let cardName = cardName {
             //TODO: Calculate the total owned for that elestral
             return 0
         } else {
             // Calculate the total owned out of all elestrals
             var count = 0
-            for creature in self.cardViewModel.cardList {
-                if creature.isOwned {
+            for card in self.cardViewModel.cardList {
+                if card.numberOwned > 0 {
                     count += 1
                 }
             }
@@ -120,15 +115,29 @@ extension ProgressCard {
         }
     }
     
-    func getNumberCardsOwned(for elestral: Elestral?) -> Int {
-        if let elestral = elestral {
+    func getNumberCardsOwned(for cardName: String?) -> Int {
+        if let cardName = cardName {
             //TODO: Calculate the total owned for that elestral
             return 0
         } else {
             // Calculate the total owned out of all elestrals
             var count = 0
             for creature in self.cardViewModel.cardList {
-                if creature.isOwned {
+                count += creature.numberOwned
+            }
+            return count
+        }
+    }
+    
+    private func getUniqueNumberOfCardsCollection(for cardName: String?) -> Int {
+        if let cardName = cardName {
+            //TODO: Calculate the total owned for that elestral
+            return 0
+        } else {
+            // Calculate the total owned out of all elestrals
+            var count = 0
+            for creature in self.cardViewModel.cardList {
+                if creature.numberOwned > 0 {
                     count += 1
                 }
             }
@@ -136,9 +145,9 @@ extension ProgressCard {
         }
     }
     
-    func getPercentage(for elestral: Elestral? = nil) -> Float{
-        let total = self.cardViewModel.cardList.count
-        let collected = self.getNumberCollected(for: elestral)
+    func getPercentage(for card: String? = nil) -> Float{
+        let total = self.cardViewModel.getUniqueNumberOfElestrals()
+        let collected = self.getNumberCollected(for: card)
         
         return Float(collected) / Float(total)
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GridSection: View {
     
-    @EnvironmentObject var data: ElestralData
+    @EnvironmentObject var data: CardStore
     @Binding var searchText: String
     
     private var elestralsStringList: [String] {
@@ -17,10 +17,10 @@ struct GridSection: View {
     }
     
     public var layout: [GridItem]
-    public var element: Element
+    public var element: String
     public var filters: Set<FilterType>
     
-    init(searchText: Binding<String>, layout: [GridItem], element: Element, filters: Set<FilterType>) {
+    init(searchText: Binding<String>, layout: [GridItem], element: String, filters: Set<FilterType>) {
         _searchText = searchText
         self.layout = layout
         self.element = element
@@ -31,7 +31,7 @@ struct GridSection: View {
         // MARK: - Earth
         if !self.elestralsStringList.isEmpty {
             HStack {
-                Text(self.getTitle(for: element))
+                Text(element)
                     .font(.headline)
                 let owned: Int = self.getNumberOwned(for: element)
                 Text("| \(owned) of \(self.elestralsStringList.count)")
@@ -42,8 +42,8 @@ struct GridSection: View {
         }
         LazyVGrid(columns: layout, spacing: 8) {
             ForEach(elestralsStringList, id: \.self) { elestralName in
-                if let elestral = data.elestralsList.first(where: { $0.name.lowercased() == elestralName}) {
-                    ElestralsGridItem(elestral: elestral)
+                if let elestral = data.getElestralsList().first(where: { $0.name.lowercased() == elestralName}) {
+                    ElestralsGridItem(data: elestral)
                 }
             }
         }

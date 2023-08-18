@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ElestralsView: View {
     
-    @EnvironmentObject var data: ElestralData
+    @EnvironmentObject var data: CardStore
     @Environment(\.presentationMode) var presentation
     
     @State var searchText = ""
@@ -39,7 +39,7 @@ struct ElestralsView: View {
 //                        SnapCarousel()
 //                            .environmentObject(viewModel.stateModel)
 //                            .padding(.top)
-                        GenericCardView(cardType: .progress)
+                        GenericCardView(data: data, cardType: .progress)
                             .background(.white)
                             .cornerRadius(8)
                     }
@@ -47,19 +47,24 @@ struct ElestralsView: View {
 
                     
                     // MARK: - Earth
-                    GridSection(searchText: $searchText, layout: layout, element: .earth, filters: self.filtersViewModel.filters)
+                    GridSection(searchText: $searchText, layout: layout, element: "Earth", filters: self.filtersViewModel.filters)
+                        .environmentObject(data)
                     
                     // MARK: - Fire
-                    GridSection(searchText: $searchText, layout: layout, element: .fire, filters: self.filtersViewModel.filters)
+                    GridSection(searchText: $searchText, layout: layout, element: "Fire", filters: self.filtersViewModel.filters)
+                        .environmentObject(data)
                     
                     // MARK: - Water
-                    GridSection(searchText: $searchText, layout: layout, element: .water, filters: self.filtersViewModel.filters)
+                    GridSection(searchText: $searchText, layout: layout, element: "Water", filters: self.filtersViewModel.filters)
+                        .environmentObject(data)
                     
                     // MARK: - Thunder
-                    GridSection(searchText: $searchText, layout: layout, element: .thunder, filters: self.filtersViewModel.filters)
+                    GridSection(searchText: $searchText, layout: layout, element: "Thunder", filters: self.filtersViewModel.filters)
+                        .environmentObject(data)
                     
                     // MARK: - Wind
-                    GridSection(searchText: $searchText, layout: layout, element: .wind, filters: self.filtersViewModel.filters)
+                    GridSection(searchText: $searchText, layout: layout, element: "Wind", filters: self.filtersViewModel.filters)
+                        .environmentObject(data)
                 }
             }
             .padding([.top, .horizontal])
@@ -89,9 +94,9 @@ struct ElestralsView: View {
     }
 }
 
-struct ElestralsViewPreview: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(ElestralData())
-    }
-}
+//struct ElestralsViewPreview: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//            .environmentObject(ElestralData())
+//    }
+//}

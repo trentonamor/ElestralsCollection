@@ -11,6 +11,7 @@ import SwiftUI
 
 struct SnapCarousel: View {
     @EnvironmentObject var UIState: UIStateModel
+    @ObservedObject var cardStore: CardStore
     
     var body: some View {
         let spacing: CGFloat = 8
@@ -42,7 +43,7 @@ struct SnapCarousel: View {
                             cardHeight: cardHeight
                         ) {
                             VStack {
-                                GenericCardView(cardType: item.cardType)
+                                GenericCardView(data: cardStore, cardType: item.cardType)
                                     .aspectRatio(1, contentMode: .fill)
                             }
                         }
@@ -177,10 +178,10 @@ struct Item<Content: View>: View {
     }
 }
 
-struct SnapCarousel_Previews: PreviewProvider {
-    static var previews: some View {
-        SnapCarousel()
-            .environmentObject(CarouselViewModel().stateModel)
-            .environmentObject(ElestralData())
-    }
-}
+//struct SnapCarousel_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SnapCarousel()
+//            .environmentObject(CarouselViewModel().stateModel)
+//            .environmentObject(ElestralData())
+//    }
+//}

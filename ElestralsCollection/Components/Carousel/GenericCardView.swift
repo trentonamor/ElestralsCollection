@@ -9,13 +9,13 @@ import SwiftUI
 import Charts
 
 struct GenericCardView: View {
-    @EnvironmentObject var data: ElestralData
+    @ObservedObject var data: CardStore
     
     var cardType: CardType
     var body: some View {
         switch cardType {
         case .progress:
-            ProgressCard(cardViewModel: CardModel(cardType: .progress, cardList: data.elestralsList))
+            ProgressCard(cardViewModel: CardModel(cardType: .progress, cardList: data.getElestralsList()))
         case .distribution:
             DistributionCard(entries: [
                 PieChartDataEntry(value: 7, label: "Earth"),
@@ -33,9 +33,9 @@ struct GenericCardView: View {
     }
 }
 
-struct GenericCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        GenericCardView( cardType: .distribution)
-            .environmentObject(ElestralData())
-    }
-}
+//struct GenericCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GenericCardView( cardType: .distribution)
+//            .environmentObject(ElestralData())
+//    }
+//}

@@ -14,6 +14,9 @@
 		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
 		2F1FA6112950E2E700E8216B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1FA6102950E2E700E8216B /* Charts */; };
+		2F7257A42A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
+		2F7257A52A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
+		2F7257A62A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
 		2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93452A33D5C90044F189 /* CollectionView.swift */; };
 		2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */; };
 		2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */; };
@@ -26,12 +29,14 @@
 		2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59AAE2937137F00F14EFB /* Images.xcassets */; };
 		2FB59AB1293713A700F14EFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB0293713A700F14EFB /* HelperFunctions.swift */; };
 		2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */; };
-		2FB59AB8293713EA00F14EFB /* ElestralsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB7293713EA00F14EFB /* ElestralsData.swift */; };
 		2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABA293713F800F14EFB /* SettingsView.swift */; };
 		2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABB293713F800F14EFB /* SearchView.swift */; };
 		2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABC293713F800F14EFB /* BookmarkView.swift */; };
 		2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABD293713F800F14EFB /* ElestralsView.swift */; };
 		2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABE293713F800F14EFB /* ExpansionsView.swift */; };
+		2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDC930A2A472B03001B8E5A /* CardStore.swift */; };
+		2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */; };
+		2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */; };
 		2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE23070293920FC00AC4248 /* CarouselViewModel.swift */; };
 		2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE230742939213C00AC4248 /* SnapCarousel.swift */; };
 		2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2307629392CDC00AC4248 /* CardModel.swift */; };
@@ -71,6 +76,7 @@
 		2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersViewModel.swift; sourceTree = "<group>"; };
 		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
+		2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F7C93452A33D5C90044F189 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersView.swift; sourceTree = "<group>"; };
 		2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersModel.swift; sourceTree = "<group>"; };
@@ -87,12 +93,12 @@
 		2FB59AAE2937137F00F14EFB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2FB59AB0293713A700F14EFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsGridItem.swift; sourceTree = "<group>"; };
-		2FB59AB7293713EA00F14EFB /* ElestralsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsData.swift; sourceTree = "<group>"; };
 		2FB59ABA293713F800F14EFB /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2FB59ABB293713F800F14EFB /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		2FB59ABC293713F800F14EFB /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		2FB59ABD293713F800F14EFB /* ElestralsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsView.swift; sourceTree = "<group>"; };
 		2FB59ABE293713F800F14EFB /* ExpansionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpansionsView.swift; sourceTree = "<group>"; };
+		2FDC930A2A472B03001B8E5A /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		2FE23070293920FC00AC4248 /* CarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 		2FE230742939213C00AC4248 /* SnapCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		2FE2307629392CDC00AC4248 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
@@ -114,6 +120,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F1FA6112950E2E700E8216B /* Charts in Frameworks */,
+				2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */,
+				2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +154,7 @@
 		2FB59A71293712A200F14EFB = {
 			isa = PBXGroup;
 			children = (
+				2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */,
 				2FB59AAD2937133A00F14EFB /* Assets */,
 				2FB59A7C293712A200F14EFB /* ElestralsCollection */,
 				2FB59A93293712A300F14EFB /* ElestralsCollectionTests */,
@@ -230,7 +239,6 @@
 		2FB59AB6293713EA00F14EFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2FB59AB7293713EA00F14EFB /* ElestralsData.swift */,
 				2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */,
 				2FE23070293920FC00AC4248 /* CarouselViewModel.swift */,
 				2FE2307629392CDC00AC4248 /* CardModel.swift */,
@@ -238,6 +246,7 @@
 				2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */,
 				2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */,
 				2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */,
+				2FDC930A2A472B03001B8E5A /* CardStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +336,8 @@
 			name = ElestralsCollection;
 			packageProductDependencies = (
 				2F1FA6102950E2E700E8216B /* Charts */,
+				2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */,
+				2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */,
 			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
@@ -402,6 +413,7 @@
 			mainGroup = 2FB59A71293712A200F14EFB;
 			packageReferences = (
 				2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */,
+				2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
@@ -421,6 +433,7 @@
 			files = (
 				2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */,
 				2FB59A87293712A300F14EFB /* Colors.xcassets in Resources */,
+				2F7257A42A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7257A52A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7257A62A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +469,7 @@
 				2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */,
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
 				2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */,
+				2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */,
 				2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */,
 				2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */,
 				2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */,
@@ -475,7 +491,6 @@
 				2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */,
 				2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */,
 				2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */,
-				2FB59AB8293713EA00F14EFB /* ElestralsData.swift in Sources */,
 				2FE3E1BB2937A995009B14C8 /* FiltersViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -838,6 +853,14 @@
 				kind = branch;
 			};
 		};
+		2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -845,6 +868,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

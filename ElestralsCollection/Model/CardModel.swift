@@ -9,11 +9,16 @@ import Foundation
 
 class CardModel: ObservableObject {
     @Published var cardType: CardType = .unknown
-    @Published var cardList: [Elestral] = []
+    @Published var cardList: [ElestralCard] = []
     
-    init(cardType: CardType, cardList: [Elestral] = []) {
+    init(cardType: CardType, cardList: [ElestralCard] = []) {
         self.cardType = cardType
         self.cardList = cardList
+    }
+    
+    func getUniqueNumberOfElestrals() -> Int {
+        let uniqueNames = Set(cardList.map { $0.name })
+        return uniqueNames.count
     }
     
 }
