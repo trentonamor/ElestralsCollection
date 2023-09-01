@@ -490,7 +490,7 @@ struct CollectionFiltersView: View {
     }
     
     func resetFilters() {
-        self.filters = Set([.ascending, .name, .both, .earth, .fire, .thunder, .water, .wind, .elestral, .spirit, .rune, .fullArt, .common, .rare, .uncommon, .holoRare, .stellarRare])
+        self.filters = CollectionFiltersViewModel().defaultsFilters
     }
 }
 

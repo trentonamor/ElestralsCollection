@@ -14,12 +14,25 @@
 		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
 		2F1FA6112950E2E700E8216B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1FA6102950E2E700E8216B /* Charts */; };
+		2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */; };
 		2F7257A42A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
 		2F7257A52A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
 		2F7257A62A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
 		2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93452A33D5C90044F189 /* CollectionView.swift */; };
 		2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */; };
 		2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */; };
+		2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2975A2A9525B50006BAD7 /* FirebaseStorage */; };
+		2FA2975E2A95262F0006BAD7 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */; };
+		2FA297602A9527510006BAD7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2975F2A9527510006BAD7 /* CardView.swift */; };
+		2FA297632A9531200006BAD7 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297622A9531200006BAD7 /* CardDetailView.swift */; };
+		2FA297652A97CBD70006BAD7 /* CardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297642A97CBD70006BAD7 /* CardGridView.swift */; };
+		2FA297682A9944070006BAD7 /* CardImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297672A9944070006BAD7 /* CardImageLoader.swift */; };
+		2FA2976B2A9944450006BAD7 /* ElestralCardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2976A2A9944450006BAD7 /* ElestralCardExtensions.swift */; };
+		2FA2976D2A9944C50006BAD7 /* ProgressCardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2976C2A9944C50006BAD7 /* ProgressCardExtensions.swift */; };
+		2FA2976F2A9944E30006BAD7 /* ExpansionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2976E2A9944E30006BAD7 /* ExpansionViewExtensions.swift */; };
+		2FA297712A99450F0006BAD7 /* ElestralsViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297702A99450F0006BAD7 /* ElestralsViewExtensions.swift */; };
+		2FA297732A9945330006BAD7 /* GridSectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297722A9945330006BAD7 /* GridSectionExtensions.swift */; };
+		2FA297772A996FC70006BAD7 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297762A996FC70006BAD7 /* LabelView.swift */; };
 		2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */; };
 		2FB59A85293712A200F14EFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A84293712A200F14EFB /* ContentView.swift */; };
 		2FB59A87293712A300F14EFB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59A86293712A300F14EFB /* Colors.xcassets */; };
@@ -27,13 +40,15 @@
 		2FB59A9F293712A300F14EFB /* ElestralsCollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59A9E293712A300F14EFB /* ElestralsCollectionUITests.swift */; };
 		2FB59AA1293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */; };
 		2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB59AAE2937137F00F14EFB /* Images.xcassets */; };
-		2FB59AB1293713A700F14EFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB0293713A700F14EFB /* HelperFunctions.swift */; };
+		2FB59AB1293713A700F14EFB /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB0293713A700F14EFB /* CommonExtensions.swift */; };
 		2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */; };
 		2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABA293713F800F14EFB /* SettingsView.swift */; };
 		2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABB293713F800F14EFB /* SearchView.swift */; };
 		2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABC293713F800F14EFB /* BookmarkView.swift */; };
 		2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABD293713F800F14EFB /* ElestralsView.swift */; };
 		2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABE293713F800F14EFB /* ExpansionsView.swift */; };
+		2FC773312AA280D3003D3D9F /* LineSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC773302AA280D3003D3D9F /* LineSeparator.swift */; };
+		2FC773332AA29CDC003D3D9F /* HiddenNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */; };
 		2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDC930A2A472B03001B8E5A /* CardStore.swift */; };
 		2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */; };
 		2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */; };
@@ -76,10 +91,21 @@
 		2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersViewModel.swift; sourceTree = "<group>"; };
 		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
+		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
 		2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F7C93452A33D5C90044F189 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersView.swift; sourceTree = "<group>"; };
 		2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersModel.swift; sourceTree = "<group>"; };
+		2FA2975F2A9527510006BAD7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		2FA297622A9531200006BAD7 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		2FA297642A97CBD70006BAD7 /* CardGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGridView.swift; sourceTree = "<group>"; };
+		2FA297672A9944070006BAD7 /* CardImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageLoader.swift; sourceTree = "<group>"; };
+		2FA2976A2A9944450006BAD7 /* ElestralCardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardExtensions.swift; sourceTree = "<group>"; };
+		2FA2976C2A9944C50006BAD7 /* ProgressCardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCardExtensions.swift; sourceTree = "<group>"; };
+		2FA2976E2A9944E30006BAD7 /* ExpansionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionViewExtensions.swift; sourceTree = "<group>"; };
+		2FA297702A99450F0006BAD7 /* ElestralsViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsViewExtensions.swift; sourceTree = "<group>"; };
+		2FA297722A9945330006BAD7 /* GridSectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSectionExtensions.swift; sourceTree = "<group>"; };
+		2FA297762A996FC70006BAD7 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		2FB59A7A293712A200F14EFB /* ElestralsCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElestralsCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionApp.swift; sourceTree = "<group>"; };
 		2FB59A84293712A200F14EFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,13 +117,15 @@
 		2FB59A9E293712A300F14EFB /* ElestralsCollectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionUITests.swift; sourceTree = "<group>"; };
 		2FB59AA0293712A300F14EFB /* ElestralsCollectionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralsCollectionUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2FB59AAE2937137F00F14EFB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2FB59AB0293713A700F14EFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		2FB59AB0293713A700F14EFB /* CommonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		2FB59AB4293713DB00F14EFB /* ElestralsGridItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsGridItem.swift; sourceTree = "<group>"; };
 		2FB59ABA293713F800F14EFB /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2FB59ABB293713F800F14EFB /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		2FB59ABC293713F800F14EFB /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		2FB59ABD293713F800F14EFB /* ElestralsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElestralsView.swift; sourceTree = "<group>"; };
 		2FB59ABE293713F800F14EFB /* ExpansionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpansionsView.swift; sourceTree = "<group>"; };
+		2FC773302AA280D3003D3D9F /* LineSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparator.swift; sourceTree = "<group>"; };
+		2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBar.swift; sourceTree = "<group>"; };
 		2FDC930A2A472B03001B8E5A /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		2FE23070293920FC00AC4248 /* CarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 		2FE230742939213C00AC4248 /* SnapCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
@@ -119,7 +147,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA2975E2A95262F0006BAD7 /* SDWebImageSwiftUI in Frameworks */,
 				2F1FA6112950E2E700E8216B /* Charts in Frameworks */,
+				2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */,
 				2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */,
 				2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -151,6 +181,37 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		2FA297592A9525B50006BAD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2FA297612A9531140006BAD7 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				2FA2975F2A9527510006BAD7 /* CardView.swift */,
+				2FA297622A9531200006BAD7 /* CardDetailView.swift */,
+				2FA297642A97CBD70006BAD7 /* CardGridView.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		2FA297662A9943E70006BAD7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2FB59AB0293713A700F14EFB /* CommonExtensions.swift */,
+				2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */,
+				2FA2976A2A9944450006BAD7 /* ElestralCardExtensions.swift */,
+				2FA297702A99450F0006BAD7 /* ElestralsViewExtensions.swift */,
+				2FA2976E2A9944E30006BAD7 /* ExpansionViewExtensions.swift */,
+				2FA297722A9945330006BAD7 /* GridSectionExtensions.swift */,
+				2FA2976C2A9944C50006BAD7 /* ProgressCardExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2FB59A71293712A200F14EFB = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +221,7 @@
 				2FB59A93293712A300F14EFB /* ElestralsCollectionTests */,
 				2FB59A9D293712A300F14EFB /* ElestralsCollectionUITests */,
 				2FB59A7B293712A200F14EFB /* Products */,
+				2FA297592A9525B50006BAD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,8 +240,9 @@
 			children = (
 				2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */,
 				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
-				2FB59AB0293713A700F14EFB /* HelperFunctions.swift */,
 				2FB59A84293712A200F14EFB /* ContentView.swift */,
+				2FA297672A9944070006BAD7 /* CardImageLoader.swift */,
+				2FA297662A9943E70006BAD7 /* Extensions */,
 				2FB59AB2293713DB00F14EFB /* Components */,
 				2FB59AB6293713EA00F14EFB /* Model */,
 				2FB59AB9293713F800F14EFB /* Views */,
@@ -216,6 +279,7 @@
 		2FB59AB2293713DB00F14EFB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2FA297612A9531140006BAD7 /* Cards */,
 				2FE3E1C7293809FA009B14C8 /* Carousel */,
 				2FB59AB3293713DB00F14EFB /* Grid */,
 				2FE3E1BE2937B278009B14C8 /* Toggle+CheckboxStyle.swift */,
@@ -223,6 +287,9 @@
 				2FE2307C294385C800AC4248 /* WebView.swift */,
 				2F1D5F022A140B5A00821144 /* ExpansionCellView.swift */,
 				2F1D5F0A2A16974600821144 /* MailView.swift */,
+				2FA297762A996FC70006BAD7 /* LabelView.swift */,
+				2FC773302AA280D3003D3D9F /* LineSeparator.swift */,
+				2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -239,14 +306,14 @@
 		2FB59AB6293713EA00F14EFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */,
 				2FE23070293920FC00AC4248 /* CarouselViewModel.swift */,
 				2FE2307629392CDC00AC4248 /* CardModel.swift */,
+				2FDC930A2A472B03001B8E5A /* CardStore.swift */,
+				2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */,
+				2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */,
 				2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */,
 				2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */,
-				2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */,
-				2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */,
-				2FDC930A2A472B03001B8E5A /* CardStore.swift */,
+				2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,8 +358,8 @@
 		2FE3E1C3293808AF009B14C8 /* Elestral */ = {
 			isa = PBXGroup;
 			children = (
-				2FE3E1BC2937AB64009B14C8 /* FiltersView.swift */,
 				2FB59ABD293713F800F14EFB /* ElestralsView.swift */,
+				2FE3E1BC2937AB64009B14C8 /* FiltersView.swift */,
 			);
 			path = Elestral;
 			sourceTree = "<group>";
@@ -338,6 +405,8 @@
 				2F1FA6102950E2E700E8216B /* Charts */,
 				2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */,
 				2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */,
+				2FA2975A2A9525B50006BAD7 /* FirebaseStorage */,
+				2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */,
 			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
@@ -414,6 +483,7 @@
 			packageReferences = (
 				2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */,
 				2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
@@ -467,7 +537,10 @@
 				2FE2307B293954DA00AC4248 /* ProgressCircle.swift in Sources */,
 				2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */,
 				2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */,
+				2FC773312AA280D3003D3D9F /* LineSeparator.swift in Sources */,
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
+				2FA297652A97CBD70006BAD7 /* CardGridView.swift in Sources */,
+				2FA297732A9945330006BAD7 /* GridSectionExtensions.swift in Sources */,
 				2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */,
 				2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */,
 				2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */,
@@ -475,11 +548,13 @@
 				2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */,
 				2FE2307D294385C800AC4248 /* WebView.swift in Sources */,
 				2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */,
-				2FB59AB1293713A700F14EFB /* HelperFunctions.swift in Sources */,
+				2FB59AB1293713A700F14EFB /* CommonExtensions.swift in Sources */,
 				2F1D5F032A140B5A00821144 /* ExpansionCellView.swift in Sources */,
 				2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */,
 				2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */,
 				2FE3E1BF2937B278009B14C8 /* Toggle+CheckboxStyle.swift in Sources */,
+				2FA2976B2A9944450006BAD7 /* ElestralCardExtensions.swift in Sources */,
+				2FA2976D2A9944C50006BAD7 /* ProgressCardExtensions.swift in Sources */,
 				2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */,
 				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
 				2F1D5F0B2A16974600821144 /* MailView.swift in Sources */,
@@ -487,10 +562,18 @@
 				2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */,
 				2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */,
 				2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */,
+				2FA297712A99450F0006BAD7 /* ElestralsViewExtensions.swift in Sources */,
+				2FA297632A9531200006BAD7 /* CardDetailView.swift in Sources */,
+				2FC773332AA29CDC003D3D9F /* HiddenNavigationBar.swift in Sources */,
+				2FA297772A996FC70006BAD7 /* LabelView.swift in Sources */,
 				2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */,
+				2FA2976F2A9944E30006BAD7 /* ExpansionViewExtensions.swift in Sources */,
 				2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */,
+				2FA297682A9944070006BAD7 /* CardImageLoader.swift in Sources */,
 				2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */,
 				2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */,
+				2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */,
+				2FA297602A9527510006BAD7 /* CardView.swift in Sources */,
 				2FE3E1BB2937A995009B14C8 /* FiltersViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -853,6 +936,14 @@
 				kind = branch;
 			};
 		};
+		2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -868,6 +959,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		2FA2975A2A9525B50006BAD7 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,10 +8,40 @@
 import Foundation
 
 class CollectionFiltersViewModel: ObservableObject {
-    @Published var filters: Set<CollectionFilterType> = Set([.ascending, .name, .both, .earth, .fire, .thunder, .water, .wind, .elestral, .spirit, .rune, .fullArt, .common, .rare, .uncommon, .holoRare, .stellarRare])
+    public let defaultsFilters: Set<CollectionFilterType> = Set([.ascending, .name, .both, .earth, .fire, .thunder, .water, .wind, .elestral, .spirit, .rune, .fullArt, .common, .rare, .uncommon, .holoRare, .stellarRare, .alternativeArt])
+    
+    @Published var filters: Set<CollectionFilterType>
+    
+    var sortOrder: Set<CollectionFilterType> {
+        filters.intersection([.ascending, .descending])
+    }
+    
+    var sortBy: Set<CollectionFilterType> {
+        filters.intersection([.releaseDate, .name, .artist])
+    }
+    
+    var cardState: Set<CollectionFilterType> {
+        filters.intersection([.both, .ownedOnly, .moreThan1OwnedOnly, .unowned])
+    }
+    
+    var cardType: Set<CollectionFilterType> {
+        filters.intersection([.elestral, .spirit, .rune])
+    }
+    
+    var elestralElement: Set<CollectionFilterType> {
+        filters.intersection([.earth, .fire, .thunder, .water, .wind])
+    }
+    
+    var rarity: Set<CollectionFilterType> {
+        filters.intersection([.fullArt, .common, .rare, .uncommon, .holoRare, .stellarRare, .alternativeArt])
+    }
+    
+    init() {
+        self.filters = self.defaultsFilters
+    }
     
     func isDefault() -> Bool {
-        return self.filters == Set([.ascending, .name, .both, .earth, .fire, .thunder, .water, .wind, .elestral, .spirit, .rune, .fullArt, .common, .rare, .uncommon, .holoRare, .stellarRare])
+        return self.filters == self.defaultsFilters
     }
 }
 enum CollectionFilterType {
@@ -49,6 +79,7 @@ enum CollectionFilterType {
     case uncommon
     case holoRare
     case stellarRare
+    case alternativeArt
     
     
 }

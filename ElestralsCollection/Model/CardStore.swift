@@ -48,10 +48,6 @@ class CardStore: ObservableObject {
             }
         }
     }
-    
-    func getElestralsList() -> [ElestralCard] {
-        return self.cards.filter { $0.cardType == "Elestral" }
-    }
 
     private func fetchAllCards(completion: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
         let db = Firestore.firestore()
@@ -119,3 +115,5 @@ class CardStore: ObservableObject {
         }
     }
 }
+
+

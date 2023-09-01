@@ -1,13 +1,11 @@
 import SwiftUI
 
 struct ElestralsGridItem: View {
-
     @ObservedObject var data: ElestralCard
-    
+    @EnvironmentObject var cardStore: CardStore
+
     var body: some View {
-        Button(action: {
-            // Handle button action here
-        }, label: {
+        NavigationLink(destination: CollectionView(subset: self.cardStore.getCards(for: data.name), viewTitle: data.name)) {
             ZStack {
                 Rectangle()
                     .fill(Gradient(colors: [.white, data.getBackgroundColor()]))
@@ -34,6 +32,6 @@ struct ElestralsGridItem: View {
                 }
                 .aspectRatio(1, contentMode: .fill)
             }
-        })
+        }
     }
 }

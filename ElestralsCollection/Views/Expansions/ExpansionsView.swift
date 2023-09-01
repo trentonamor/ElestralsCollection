@@ -6,6 +6,7 @@ struct ExpansionsView: View {
     
     @ObservedObject var filtersViewModel: ExpansionFiltersViewModel =
         ExpansionFiltersViewModel()
+    @EnvironmentObject var cardStore: CardStore
     
     let expansionCellModels: [ExpansionCellModel] = [
         ExpansionCellModel(imageName: "base-set", cellText: "Base Set", expansionId: .baseSet, creationDate: "01/01/2022".toDate()),
@@ -35,9 +36,7 @@ struct ExpansionsView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(filteredExpansionCellModels) { model in
-                            Button(action: {
-                                print("tappy")
-                            }) {
+                            NavigationLink(destination: CollectionView(subset: cardStore.getCards(for: model.expansionId), viewTitle: model.cellText)) {
                                 ExpansionCellView(model: model)
                                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                             }

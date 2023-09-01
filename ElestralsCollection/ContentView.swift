@@ -21,7 +21,7 @@ struct ContentView: View {
                         Text("Elestrals")
                     }
                     .tag(0)
-                CollectionView()
+                CollectionView(subset: self.cardStore.getCards(for: true))
                     .tabItem {
                         Image(systemName: "archivebox")
                             .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)

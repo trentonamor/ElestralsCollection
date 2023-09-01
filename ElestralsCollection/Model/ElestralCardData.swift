@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class ElestralCard : ObservableObject, Hashable {
+class ElestralCard : ObservableObject, Hashable, Identifiable {
     @Published var id: String
     @Published var name: String
     @Published var effect: String
@@ -27,9 +27,7 @@ class ElestralCard : ObservableObject, Hashable {
         return cardNumber
     }
     
-    var numberOwned: Int {
-        return 0
-    }
+    @Published var numberOwned: Int = 0
     
     func getBackgroundColor() -> Color {
         if self.numberOwned > 0 {

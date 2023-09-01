@@ -7,83 +7,89 @@
 
 import SwiftUI
 import UIKit
+import FirebaseStorage
+import FirebaseFirestore
+import SDWebImageSwiftUI
 
 struct CollectionView: View {
-    init() {
+    init(subset: [ElestralCard], viewTitle: String = "My Collection") {
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
         appearance.titleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
         UINavigationBar.appearance().standardAppearance = appearance
+        self.subset = subset
+        self.viewTitle = viewTitle
     }
-    
+
+    let subset: [ElestralCard]
+    let viewTitle: String
+
     @EnvironmentObject var data: CardStore
-    
+
     @State var searchText = ""
     @State var presentFilters = false
-    
+
+    @StateObject private var cardImageLoader = CardImageLoader()
+
     @ObservedObject var filtersViewModel: CollectionFiltersViewModel = CollectionFiltersViewModel()
-    
+
+    @State private var selectedCard: ElestralCard?
+
     public let layout = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(minimum: 100, maximum: .infinity)),
+        GridItem(.flexible(minimum: 100, maximum: .infinity)),
+        GridItem(.flexible(minimum: 100, maximum: .infinity))
     ]
-    
-    private func getScale(proxy: GeometryProxy) -> CGFloat {
-        var scale = CGFloat(1)
-        
-        let x = proxy.frame(in: .global).minX
-        
-        let diff = abs(x)
-        if diff < 100 {
-            scale = 1 + (100 - diff) / 500
-        }
-        
-        return scale
-    }
-    
+
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: layout, spacing: 8) {
-                    ForEach(data.cards, id: \.self) { card in
-                        Text(card.name)
-                            .font(.headline)
-                            .foregroundColor(.blue) // Set the desired color for the text
-                            .padding()
-                    }
-                }
-            }
-            .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
-            .navigationTitle("My Collection")
-            .navigationBarTitleDisplayMode(.automatic)
-            .padding([.top, .horizontal])
-            .background(Color("backgroundBase"))
+            CardGridView(
+                title: self.viewTitle,
+                subset: subset,
+                searchText: $searchText,
+                presentFilters: $presentFilters,
+                filtersViewModel: filtersViewModel,
+                layout: layout,
+                selectedCard: $selectedCard
+            )
             .sheet(isPresented: $presentFilters, content: {
                 CollectionFiltersView(filters: $filtersViewModel.filters)
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
-                    Button(action: {
-                        presentFilters.toggle()
-                    }, label: {
-                        if filtersViewModel.isDefault() {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .frame(height: 96, alignment: .trailing)
-                        } else {
-                            Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                                .frame(height: 96, alignment: .trailing)
-                        }
-                    })
-                    .tint(Color.blue)
+                    FilterButton(presentFilters: $presentFilters, filtersViewModel: filtersViewModel)
                 })
             }
         }
+        .hiddenNavigationBarStyle()
+        .sheet(item: $selectedCard) { selectedCard in
+            CardDetailView(card: selectedCard)
+        }
+    }
+}
+
+struct FilterButton: View {
+    @Binding var presentFilters: Bool
+    @ObservedObject var filtersViewModel: CollectionFiltersViewModel
+    
+    var body: some View {
+        Button(action: {
+            presentFilters.toggle()
+        }, label: {
+            if filtersViewModel.isDefault() {
+                Image(systemName: "line.3.horizontal.decrease.circle")
+                    .frame(height: 96, alignment: .trailing)
+            } else {
+                Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                    .frame(height: 96, alignment: .trailing)
+            }
+        })
+        .tint(Color.blue)
     }
 }
 
 struct CollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionView()
+        CollectionView(subset: [])
     }
 }
