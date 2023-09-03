@@ -5,7 +5,7 @@ struct CardGridView: View {
     let subset: [ElestralCard]
     let searchText: Binding<String>
     let presentFilters: Binding<Bool>
-    let filtersViewModel: CollectionFiltersViewModel
+    @ObservedObject var filtersViewModel: CollectionFiltersViewModel
     let layout: [GridItem]
     let selectedCard: Binding<ElestralCard?>
     
@@ -101,7 +101,7 @@ struct CardGridView: View {
             filtered.sort { (card1, card2) -> Bool in
                 switch sortBy.first {
                 case .releaseDate:
-                    return sortOrder.contains(.ascending) ? card1.cardSet.rawValue < card2.cardSet.rawValue : card1.cardSet.rawValue > card2.cardSet.rawValue
+                    return sortOrder.contains(.ascending) ? card1.publishedDate < card2.publishedDate : card1.publishedDate > card2.publishedDate
                 case .name:
                     return sortOrder.contains(.ascending) ? card1.name < card2.name : card1.name > card2.name
                 case .artist:

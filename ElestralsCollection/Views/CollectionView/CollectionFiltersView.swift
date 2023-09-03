@@ -482,7 +482,6 @@ struct CollectionFiltersView: View {
                     resetFilters()
                 },
                 trailing: Button("Done") {
-                    print(self.filters)
                     self.presentation.wrappedValue.dismiss()
                 }
             )

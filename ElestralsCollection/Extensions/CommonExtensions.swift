@@ -15,10 +15,17 @@ extension UIScreen {
 }
 
 extension String {
-    func toDate(format: String = "MM/dd/yyy") -> Date {
+    func toDateFromMMDDYYY(format: String = "MM/dd/yyy") -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self) ?? Date()
+    }
+    
+    func toDateFromPOSIX(format: String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        return dateFormatter.date(from: self)
     }
 }
 

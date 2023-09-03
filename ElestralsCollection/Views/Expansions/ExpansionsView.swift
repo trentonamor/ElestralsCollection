@@ -6,18 +6,9 @@ struct ExpansionsView: View {
     
     @ObservedObject var filtersViewModel: ExpansionFiltersViewModel =
         ExpansionFiltersViewModel()
-    @EnvironmentObject var cardStore: CardStore
+    @ObservedObject var cardStore: CardStore
     
-    let expansionCellModels: [ExpansionCellModel] = [
-        ExpansionCellModel(imageName: "base-set", cellText: "Base Set", expansionId: .baseSet, creationDate: "01/01/2022".toDate()),
-        ExpansionCellModel(imageName: "centaurbor-starter-deck", cellText: "Centaurbor Starter Deck", expansionId: .centaurborStarterDeck, creationDate: "02/01/2022".toDate()),
-        ExpansionCellModel(imageName: "trifernal-starter-deck", cellText: "Trifernal Starter Deck", expansionId: .trifernalStarterDeck, creationDate: "02/01/2022".toDate()),
-        ExpansionCellModel(imageName: "majesea-starter-deck", cellText: "Majesea Starter Deck", expansionId: .majeseaStarterDeck, creationDate: "02/01/2022".toDate()),
-        ExpansionCellModel(imageName: "ohmperial-starter-deck", cellText: "Ohmperial Starter Deck", expansionId: .ohmperialStarterDeck, creationDate: "02/01/2022".toDate()),
-        ExpansionCellModel(imageName: "penterror-starter-deck", cellText: "Penterror Starter Deck", expansionId: .penterrorStarterDeck, creationDate: "02/01/2022".toDate()),
-        ExpansionCellModel(imageName: "artist-collection", cellText: "Artist Collection", expansionId: .artistCollection, creationDate: "04/01/2022".toDate()),
-        ExpansionCellModel(imageName: "base-set-promo", cellText: "Base Set Promo Cards", expansionId: .baseSetPromoCards, creationDate: "04/01/2022".toDate())
-    ]
+    var expansionCellModels: [ExpansionCellModel] = []
     
     var filteredExpansionCellModels: [ExpansionCellModel] {
         let sortedCells = returnSortedList(by: filtersViewModel.filters.first ?? .descending, cells: expansionCellModels)
@@ -27,6 +18,21 @@ struct ExpansionsView: View {
         } else {
             return sortedCells.filter { $0.cellText.localizedCaseInsensitiveContains(searchText) }
         }
+    }
+    
+    init(cardStore: CardStore) {
+        self.cardStore = cardStore
+        self.expansionCellModels = [
+        ExpansionCellModel(imageName: "base-set", cellText: "Base Set", expansionId: .baseSet, creationDate: self.cardStore.getAverageReleaseDate(for: .baseSet)),
+        ExpansionCellModel(imageName: "centaurbor-starter-deck", cellText: "Centaurbor Starter Deck", expansionId: .centaurborStarterDeck, creationDate: self.cardStore.getAverageReleaseDate(for: .centaurborStarterDeck)),
+        ExpansionCellModel(imageName: "trifernal-starter-deck", cellText: "Trifernal Starter Deck", expansionId: .trifernalStarterDeck, creationDate: self.cardStore.getAverageReleaseDate(for: .trifernalStarterDeck)),
+        ExpansionCellModel(imageName: "majesea-starter-deck", cellText: "Majesea Starter Deck", expansionId: .majeseaStarterDeck, creationDate: self.cardStore.getAverageReleaseDate(for: .majeseaStarterDeck)),
+        ExpansionCellModel(imageName: "ohmperial-starter-deck", cellText: "Ohmperial Starter Deck", expansionId: .ohmperialStarterDeck, creationDate: self.cardStore.getAverageReleaseDate(for: .ohmperialStarterDeck)),
+        ExpansionCellModel(imageName: "penterror-starter-deck", cellText: "Penterror Starter Deck", expansionId: .penterrorStarterDeck, creationDate: self.cardStore.getAverageReleaseDate(for: .penterrorStarterDeck)),
+        ExpansionCellModel(imageName: "artist-collection", cellText: "Artist Collection", expansionId: .artistCollection, creationDate: self.cardStore.getAverageReleaseDate(for: .artistCollection)),
+        ExpansionCellModel(imageName: "base-set-promo", cellText: "Base Set Promo Cards", expansionId: .baseSetPromoCards, creationDate: self.cardStore.getAverageReleaseDate(for: .baseSetPromoCards)),
+        ExpansionCellModel(imageName: "base-set-promo", cellText: "Prototype Promo Cards", expansionId: .prototypePromoCards, creationDate: self.cardStore.getAverageReleaseDate(for: .prototypePromoCards))
+        ]
     }
     
     
@@ -80,12 +86,5 @@ struct ExpansionsView: View {
         default:
             return cells
         }
-    }
-}
-
-
-struct ExpansionViewPreview: PreviewProvider {
-    static var previews: some View {
-        ExpansionsView()
     }
 }

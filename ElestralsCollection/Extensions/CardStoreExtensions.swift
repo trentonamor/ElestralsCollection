@@ -29,6 +29,16 @@ extension CardStore {
         }
     }
     
+    func getAverageReleaseDate(for expansion: ExpansionId) -> Date{
+        let cards = self.getCards(for: expansion)
+        
+        let totalTimeInterval = cards.reduce(0) { (result, card) in
+            return result + card.publishedDate.timeIntervalSince1970
+        }
+        
+        let averageTimeInterval = totalTimeInterval / Double(cards.count)
+        return Date(timeIntervalSince1970: averageTimeInterval)
+    }
     
     func getElestralsList() -> [ElestralCard] {
         return self.cards.filter { $0.cardType == "Elestral" }

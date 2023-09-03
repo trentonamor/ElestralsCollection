@@ -28,7 +28,7 @@ struct ContentView: View {
                         Text("My Collection")
                     }
                     .tag(1)
-                ExpansionsView()
+                ExpansionsView(cardStore: cardStore)
                     .tabItem {
                         Image(systemName: "list.bullet.below.rectangle")
                         Text("Expansions")

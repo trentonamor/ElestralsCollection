@@ -180,7 +180,6 @@ struct FiltersView: View {
                 })
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button("Done", action: {
-                        print(self.filters)
                         self.presentation.wrappedValue.dismiss()
                     })
                 })

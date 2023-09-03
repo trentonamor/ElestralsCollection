@@ -33,4 +33,5 @@ enum ExpansionId: Int {
     case penterrorStarterDeck
     case artistCollection
     case baseSetPromoCards
+    case prototypePromoCards
 }

@@ -107,6 +107,6 @@ struct CardDetailView: View {
 
 struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailView(card: ElestralCard(id: "1", name: "Cool Name", effect: "This is a really cool effect you wouldn't even believe how awesome this effect is.", elements: ["water", "rainbow"], subclasses: ["ursa", "insectoid"], attack: 1, defense: 1, artist: "Trenton Parrotte", cardSet: .baseSet, cardNumber: "TP-2452", rarity: "stellar-rare", cardType: "Elestral", runeType: nil))
+        CardDetailView(card: ElestralCard(id: "1", name: "Cool Name", effect: "This is a really cool effect you wouldn't even believe how awesome this effect is.", elements: ["water", "rainbow"], subclasses: ["ursa", "insectoid"], attack: 1, defense: 1, artist: "Trenton Parrotte", cardSet: .baseSet, cardNumber: "TP-2452", rarity: "stellar-rare", cardType: "Elestral", runeType: nil, date: Date.now))
     }
 }

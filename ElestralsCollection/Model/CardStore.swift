@@ -40,7 +40,8 @@ class CardStore: ObservableObject {
                                             cardNumber: data["setNumber"] as? String ?? "",
                                             rarity: data["rarity"] as? String ?? "",
                                             cardType: data["cardType"] as? String ?? "",
-                                            runeType: data["runeType"] as? String)
+                                            runeType: data["runeType"] as? String,
+                                            date: (data["publishedDate"] as? String ?? "").toDateFromPOSIX() ?? Date.distantPast)
                     self.cards.append(card)
                 }
             } else {
@@ -109,8 +110,10 @@ class CardStore: ObservableObject {
             return .ohmperialStarterDeck
         case "penterror starter deck":
             return .penterrorStarterDeck
+        case "prototype promo cards":
+            return .prototypePromoCards
         default:
-            print("Error in finding rarity for \(set)")
+            print("Error in finding set for \(set)")
             return .unknown
         }
     }

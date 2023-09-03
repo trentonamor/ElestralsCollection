@@ -22,6 +22,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
     @Published var rarity: String
     @Published var cardType: String
     @Published var runeType: String?
+    @Published var publishedDate: Date
     var art: String {
         guard UIImage(named: cardNumber) != nil else { return "" }
         return cardNumber
@@ -30,21 +31,22 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
     @Published var numberOwned: Int = 0
     
     func getBackgroundColor() -> Color {
-        if self.numberOwned > 0 {
+        if self.numberOwned == 0 {
             return .white
         }
-        switch self.elements.first {
-            case "Earth":
+        switch self.elements.first?.lowercased() {
+            case "earth":
                 return Color("EarthGreen")
-            case "Fire":
+            case "fire":
                 return Color("FireRed")
-            case "Thunder":
+            case "thunder":
                 return Color("ThunderYellow")
-            case "Water":
+            case "water":
                 return Color("WaterBlue")
-            case "Wind":
+            case "wind":
                 return Color("AirWhite")
             default:
+            print("Error cannot find elements: \(self.elements.first ?? "")")
                 return .white
         }
     }
@@ -56,7 +58,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         return self.name
     }
     
-    init(id: String, name: String, effect: String, elements: [String], subclasses: [String], attack: Int?, defense: Int?, artist: String, cardSet: ExpansionId, cardNumber: String, rarity: String, cardType: String, runeType: String?) {
+    init(id: String, name: String, effect: String, elements: [String], subclasses: [String], attack: Int?, defense: Int?, artist: String, cardSet: ExpansionId, cardNumber: String, rarity: String, cardType: String, runeType: String?, date: Date) {
         self.id = id
         self.name = name
         self.effect = effect
@@ -70,6 +72,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         self.rarity = rarity
         self.cardType = cardType
         self.runeType = runeType
+        self.publishedDate = date
     }
     
     static func == (lhs: ElestralCard, rhs: ElestralCard) -> Bool {
@@ -82,7 +85,8 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
             lhs.artist == rhs.artist &&
             lhs.cardSet == rhs.cardSet &&
             lhs.cardNumber == rhs.cardNumber &&
-            lhs.rarity == rhs.rarity
+            lhs.rarity == rhs.rarity &&
+            lhs.publishedDate == rhs.publishedDate
     }
     
     func hash(into hasher: inout Hasher) {
@@ -96,5 +100,6 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         hasher.combine(cardSet)
         hasher.combine(cardNumber)
         hasher.combine(rarity)
+        hasher.combine(publishedDate)
     }
 }

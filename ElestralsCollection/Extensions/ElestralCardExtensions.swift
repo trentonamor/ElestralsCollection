@@ -44,6 +44,8 @@ extension ElestralCard: CustomStringConvertible {
             return "Penterror Starter Deck"
         case .trifernalStarterDeck:
             return "Trifernal Starter Deck"
+        case .prototypePromoCards:
+            return "Prototype Promo Cards"
         default:
             return ""
         }
