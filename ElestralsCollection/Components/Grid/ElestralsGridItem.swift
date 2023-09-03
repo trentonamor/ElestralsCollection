@@ -7,8 +7,9 @@ struct ElestralsGridItem: View {
     var body: some View {
         NavigationLink(destination: CollectionView(subset: self.cardStore.getCards(for: data.name), viewTitle: data.name)) {
             ZStack {
+                let isOwned = cardStore.getTotalOwned(for: data.name) == 0
                 Rectangle()
-                    .fill(Gradient(colors: [.white, data.getBackgroundColor()]))
+                    .fill(Gradient(colors: [.white, data.getBackgroundColor(isColor: isOwned)]))
                     .cornerRadius(30)
                     .aspectRatio(1, contentMode: .fit)
                 VStack {
@@ -18,7 +19,7 @@ struct ElestralsGridItem: View {
                             .resizable()
                             .scaledToFit()
                             .padding(.all, 0.0)
-                        if data.numberOwned == 0 {
+                        if isOwned {
                             Color.gray
                                 .blendMode(.color)
                         }

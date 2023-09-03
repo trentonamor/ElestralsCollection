@@ -30,8 +30,8 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
     
     @Published var numberOwned: Int = 0
     
-    func getBackgroundColor() -> Color {
-        if self.numberOwned == 0 {
+    func getBackgroundColor(isColor: Bool) -> Color {
+        if isColor {
             return .white
         }
         switch self.elements.first?.lowercased() {
