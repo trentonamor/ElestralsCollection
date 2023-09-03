@@ -49,7 +49,6 @@
 		2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB59ABE293713F800F14EFB /* ExpansionsView.swift */; };
 		2FC773312AA280D3003D3D9F /* LineSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC773302AA280D3003D3D9F /* LineSeparator.swift */; };
 		2FC773332AA29CDC003D3D9F /* HiddenNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */; };
-		2FC773352AA42D37003D3D9F /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC773342AA42D37003D3D9F /* CardDetailViewModel.swift */; };
 		2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDC930A2A472B03001B8E5A /* CardStore.swift */; };
 		2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */; };
 		2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */; };
@@ -127,7 +126,6 @@
 		2FB59ABE293713F800F14EFB /* ExpansionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpansionsView.swift; sourceTree = "<group>"; };
 		2FC773302AA280D3003D3D9F /* LineSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparator.swift; sourceTree = "<group>"; };
 		2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBar.swift; sourceTree = "<group>"; };
-		2FC773342AA42D37003D3D9F /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		2FDC930A2A472B03001B8E5A /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		2FE23070293920FC00AC4248 /* CarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 		2FE230742939213C00AC4248 /* SnapCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 				2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */,
 				2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */,
 				2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */,
-				2FC773342AA42D37003D3D9F /* CardDetailViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -560,7 +557,6 @@
 				2FA2976D2A9944C50006BAD7 /* ProgressCardExtensions.swift in Sources */,
 				2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */,
 				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
-				2FC773352AA42D37003D3D9F /* CardDetailViewModel.swift in Sources */,
 				2F1D5F0B2A16974600821144 /* MailView.swift in Sources */,
 				2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */,
 				2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */,
