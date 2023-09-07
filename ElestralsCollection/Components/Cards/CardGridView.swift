@@ -135,6 +135,7 @@ struct CardGridView: View {
                     }
                 }
                 .searchable(text: searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
+                .autocorrectionDisabled()
             }
         }
         .navigationTitle(title)

@@ -33,7 +33,7 @@ struct GridSection: View {
             HStack {
                 Text(element)
                     .font(.headline)
-                let owned: Int = self.getNumberOwned(for: element)
+                let owned: Int = data.getUniqueElestralsOwned(for: element)
                 Text("| \(owned) of \(self.elestralsStringList.count)")
                     .foregroundColor(.gray)
                     .font(.headline)

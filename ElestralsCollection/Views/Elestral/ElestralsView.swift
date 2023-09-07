@@ -69,6 +69,7 @@ struct ElestralsView: View {
             }
             .padding([.top, .horizontal])
             .searchable(text: $searchText, placement: .automatic, prompt: "Search by Elestral Name")
+            .autocorrectionDisabled()
             .navigationTitle("Elestrals")
             .navigationBarTitleDisplayMode(.automatic)
             .background(Color("backgroundBase"))

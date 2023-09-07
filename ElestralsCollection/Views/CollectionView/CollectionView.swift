@@ -31,7 +31,7 @@ struct CollectionView: View {
 
     @StateObject private var cardImageLoader = CardImageLoader()
 
-    @ObservedObject var filtersViewModel: CollectionFiltersViewModel = CollectionFiltersViewModel()
+    @StateObject var filtersViewModel: CollectionFiltersViewModel = CollectionFiltersViewModel()
 
     @State private var selectedCard: ElestralCard?
 

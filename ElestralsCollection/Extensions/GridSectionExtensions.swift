@@ -11,7 +11,7 @@ extension GridSection {
     
     func getNumberOwned(for element: String) -> Int {
         let list = self.data.getElestralsList().filter {
-            $0.elements.contains(element) &&
+            $0.elements.contains(element.lowercased()) &&
             $0.numberOwned > 0
         }
         return list.count

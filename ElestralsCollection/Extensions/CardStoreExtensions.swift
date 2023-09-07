@@ -37,6 +37,19 @@ extension CardStore {
         return cardTotal
     }
     
+    func getUniqueElestralsOwned(for element: String) -> Int {
+        let cards = self.cards.filter { $0.elements.contains(element.lowercased()) && $0.cardType.lowercased() == "elestral"}
+        var totalOwned = 0
+        var cardsAdded: Set<String> = Set()
+        for card in cards {
+            if !cardsAdded.contains(card.name) && card.numberOwned > 0 {
+                totalOwned += 1
+                cardsAdded.insert(card.name)
+            }
+        }
+        return totalOwned
+    }
+    
     func getAverageReleaseDate(for expansion: ExpansionId) -> Date{
         let cards = self.getCards(for: expansion)
         
@@ -50,5 +63,9 @@ extension CardStore {
     
     func getElestralsList() -> [ElestralCard] {
         return self.cards.filter { $0.cardType == "Elestral" }
+    }
+    
+    func cardUpdated(_ card: ElestralCard) {
+        self.lastUpdatedCard = card
     }
 }

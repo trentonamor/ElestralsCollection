@@ -21,6 +21,19 @@ class CardModel: ObservableObject {
         return uniqueNames.count
     }
     
+    func getUniqueOwned(for cardType: String) -> Int {
+        let cards = self.cardList.filter { $0.cardType.lowercased() == cardType.lowercased() }
+        var totalOwned = 0
+        var cardsAdded: Set<String> = Set()
+        for card in cards {
+            if !cardsAdded.contains(card.name) && card.numberOwned > 0 {
+                totalOwned += 1
+                cardsAdded.insert(card.name)
+            }
+        }
+        return totalOwned
+    }
+    
 }
 
 enum CardType: Codable {

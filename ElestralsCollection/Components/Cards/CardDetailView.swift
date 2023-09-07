@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardDetailView: View {
     @ObservedObject var card: ElestralCard
+    @EnvironmentObject var cardStore: CardStore
     
     var body: some View {
         ZStack {
@@ -34,6 +35,7 @@ struct CardDetailView: View {
                             Button(action: {
                                 if card.numberOwned > 0 {
                                     card.numberOwned -= 1
+                                    cardStore.cardUpdated(card)
                                 }
                             }) {
                                 VStack(alignment: .center) {
@@ -68,6 +70,7 @@ struct CardDetailView: View {
 
                             Button(action: {
                                 card.numberOwned += 1
+                                cardStore.cardUpdated(card)
                             }) {
                                 VStack(alignment: .center) {
                                     Text("+")

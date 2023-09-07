@@ -52,6 +52,7 @@ struct ExpansionsView: View {
                 }
             }
             .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name")
+            .autocorrectionDisabled()
             .navigationTitle("Expansions")
             .navigationBarTitleDisplayMode(.automatic)
             .background(Color("backgroundBase"))

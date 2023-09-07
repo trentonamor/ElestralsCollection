@@ -13,6 +13,7 @@ import FirebaseFirestoreSwift
 class CardStore: ObservableObject {
     @Published var cards: [ElestralCard] = []
     @Published var isLoading: Bool = false
+    @Published var lastUpdatedCard: ElestralCard?
     
     init() {
         self.isLoading = true
