@@ -15,9 +15,9 @@
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
 		2F1FA6112950E2E700E8216B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1FA6102950E2E700E8216B /* Charts */; };
 		2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */; };
-		2F7257A42A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
-		2F7257A52A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
-		2F7257A62A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */; };
+		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
+		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
+		2F52FDC22AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93452A33D5C90044F189 /* CollectionView.swift */; };
 		2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */; };
 		2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */; };
@@ -92,7 +92,7 @@
 		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
 		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
-		2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F7C93452A33D5C90044F189 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersView.swift; sourceTree = "<group>"; };
 		2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersModel.swift; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 		2FB59A71293712A200F14EFB = {
 			isa = PBXGroup;
 			children = (
-				2F7257A32A8AB33C00CD8A0E /* GoogleService-Info.plist */,
+				2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */,
 				2FB59AAD2937133A00F14EFB /* Assets */,
 				2FB59A7C293712A200F14EFB /* ElestralsCollection */,
 				2FB59A93293712A300F14EFB /* ElestralsCollectionTests */,
@@ -502,8 +502,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */,
+				2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */,
 				2FB59A87293712A300F14EFB /* Colors.xcassets in Resources */,
-				2F7257A42A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F7257A52A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */,
+				2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F7257A62A8AB33C00CD8A0E /* GoogleService-Info.plist in Resources */,
+				2F52FDC22AAB8677005C41DF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
