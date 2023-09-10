@@ -10,6 +10,34 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
+                Section(header: Text("Account")) {
+                    List {
+                        Button(action: {
+                            self.logoutUser()
+                        }) {
+                            Label(title: {
+                                Text("Logout")
+                                    .foregroundColor(.primary)
+                            }, icon: {
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .foregroundColor(.accentColor)
+                            })
+                        }
+                        NavigationLink(destination: {
+                            ChangePassword()
+                                .navigationBarTitleDisplayMode(.inline)
+                        }, label: {
+                            Label(title: {
+                                Text("Change Password")
+                                    .foregroundColor(.primary)
+                            }, icon: {
+                                Image(systemName: "person.badge.key")
+                                    .foregroundColor(.accentColor)
+                            })
+                        })
+                        
+                    }
+                }
                 Section(header: Text("About")) {
                     List {
                         Button(action: {
@@ -55,8 +83,8 @@ struct SettingsView: View {
                             }
                         } else {
                             Button(action: {
-                                // Handle alternative contact method here
                                 print("Device cannot send email")
+                                
                             }) {
                                 Label(title: {
                                     Text("Send us an Email")
@@ -88,23 +116,6 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
         }
-    }
-    
-    func openWebpage(url: URL) {
-        UIApplication.shared.open(url)
-    }
-    
-    func rateApp() {
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
-        }
-    }
-}
-
-class MailComposerDelegate: NSObject, MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        // Handle email composition result here
-        controller.dismiss(animated: true)
     }
 }
 
