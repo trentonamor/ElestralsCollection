@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Charts
+import DGCharts
 
 struct GraphItem: Identifiable {
     var id = UUID()
@@ -25,11 +25,11 @@ struct DistributionCard: UIViewRepresentable {
     let title: String = "Distribution by kind"
     let entries: [PieChartDataEntry]
     let pieView = PieChartView()
-    func makeUIView(context: Context) -> Charts.PieChartView {
+    func makeUIView(context: Context) -> DGCharts.PieChartView {
         return pieView
     }
     
-    func updateUIView(_ uiView: Charts.PieChartView, context: Context) {
+    func updateUIView(_ uiView: DGCharts.PieChartView, context: Context) {
         let dataSet = PieChartDataSet(entries: entries)
         dataSet.label = ""
         uiView.noDataText = "No Data Available"

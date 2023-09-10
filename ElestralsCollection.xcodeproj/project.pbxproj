@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1B11002AAE195C00072C7C /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1B10FF2AAE195C00072C7C /* DGCharts */; };
 		2F1D5F032A140B5A00821144 /* ExpansionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F022A140B5A00821144 /* ExpansionCellView.swift */; };
 		2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */; };
 		2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F062A14191B00821144 /* ExpansionFiltersView.swift */; };
 		2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */; };
 		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
-		2F1FA6112950E2E700E8216B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1FA6102950E2E700E8216B /* Charts */; };
 		2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */; };
 		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
@@ -148,8 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA2975E2A95262F0006BAD7 /* SDWebImageSwiftUI in Frameworks */,
-				2F1FA6112950E2E700E8216B /* Charts in Frameworks */,
 				2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */,
+				2F1B11002AAE195C00072C7C /* DGCharts in Frameworks */,
 				2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */,
 				2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -402,11 +402,11 @@
 			);
 			name = ElestralsCollection;
 			packageProductDependencies = (
-				2F1FA6102950E2E700E8216B /* Charts */,
 				2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */,
 				2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */,
 				2FA2975A2A9525B50006BAD7 /* FirebaseStorage */,
 				2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */,
+				2F1B10FF2AAE195C00072C7C /* DGCharts */,
 			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
@@ -481,9 +481,9 @@
 			);
 			mainGroup = 2FB59A71293712A200F14EFB;
 			packageReferences = (
-				2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */,
 				2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
@@ -928,12 +928,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */ = {
+		2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 		2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
@@ -955,10 +955,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2F1FA6102950E2E700E8216B /* Charts */ = {
+		2F1B10FF2AAE195C00072C7C /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2F1FA60F2950E2E700E8216B /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
+			package = 2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 		2FA2975A2A9525B50006BAD7 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
