@@ -42,7 +42,7 @@ struct ExpansionsView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(filteredExpansionCellModels) { model in
-                            NavigationLink(destination: CollectionView(subset: cardStore.getCards(for: model.expansionId), viewTitle: model.cellText)) {
+                            NavigationLink(destination: CollectionView(subset: cardStore.getCards(for: model.expansionId), viewTitle: model.cellText, noResultsText: "We couldn't find any card based on the current filters.")) {
                                 ExpansionCellView(model: model)
                                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                             }

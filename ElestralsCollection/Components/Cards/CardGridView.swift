@@ -8,6 +8,7 @@ struct CardGridView: View {
     @ObservedObject var filtersViewModel: CollectionFiltersViewModel
     let layout: [GridItem]
     let selectedCard: Binding<ElestralCard?>
+    let noResultsString: String
     
     @State private var currentImageLoaded: String = ""
     @EnvironmentObject var cardStore: CardStore
@@ -118,7 +119,7 @@ struct CardGridView: View {
     var body: some View {
         ZStack {
             if filteredCards.isEmpty {
-                Text("No Cards found, start collecting to see cards appear here!")
+                Text(noResultsString)
                     .multilineTextAlignment(.center)
                     .font(.headline)
                     .foregroundColor(.black)

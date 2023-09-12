@@ -5,7 +5,7 @@ struct ElestralsGridItem: View {
     @EnvironmentObject var cardStore: CardStore
 
     var body: some View {
-        NavigationLink(destination: CollectionView(subset: self.cardStore.getCards(for: data.name), viewTitle: data.name)) {
+        NavigationLink(destination: CollectionView(subset: self.cardStore.getCards(for: data.name), viewTitle: data.name, noResultsText: "We couldn't find any card based on your current filters.")) {
             ZStack {
                 let isOwned = cardStore.getTotalOwned(for: data.name) == 0
                 Rectangle()

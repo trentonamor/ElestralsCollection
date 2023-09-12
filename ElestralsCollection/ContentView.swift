@@ -21,17 +21,17 @@ struct ContentView: View {
                         Text("Elestrals")
                     }
                     .tag(0)
+                ExpansionsView(cardStore: cardStore)
+                    .tabItem {
+                        Image(systemName: "list.bullet.below.rectangle")
+                        Text("Expansions")
+                    }
+                    .tag(1)
                 CollectionView(subset: self.cardStore.getCards(for: true))
                     .tabItem {
                         Image(systemName: "archivebox")
                             .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
                         Text("My Collection")
-                    }
-                    .tag(1)
-                ExpansionsView(cardStore: cardStore)
-                    .tabItem {
-                        Image(systemName: "list.bullet.below.rectangle")
-                        Text("Expansions")
                     }
                     .tag(2)
                 //            BookmarkView()
@@ -39,18 +39,19 @@ struct ContentView: View {
                 //                    Image(systemName: "bookmark")
                 //                    Text("Bookmarks")
                 //                }
-                //            SearchView()
-                //                .tabItem {
-                //                    Image(systemName: "magnifyingglass")
-                //                    Text("Search")
-                //                }
+                SearchView()
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Search")
+                    }
+                    .tag(3)
                 SettingsView()
                     .tabItem {
                         Image(systemName: "gearshape")
                             .environment(\.symbolVariants, .none)
                         Text("Settings")
                     }
-                    .tag(3)
+                    .tag(4)
             }
         }
     }

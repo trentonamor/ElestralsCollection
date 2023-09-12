@@ -26,17 +26,29 @@ struct CardView: View {
             AsyncImage(url: self.imageUrl) { phase in
                 switch phase {
                 case .empty:
-                    Image("MainCardBackground")
-                        .resizable()
+                    ZStack {
+                        Image("MainCardBackground")
+                            .resizable()
+                        Text(card.name)
+                            .foregroundColor(.white)
+                    }
                 case .success(let image):
                     image
                         .resizable()
                 case .failure:
-                    Image("MainCardBackground")
-                        .resizable()
+                    ZStack {
+                        Image("MainCardBackground")
+                            .resizable()
+                        Text(card.name)
+                            .foregroundColor(.white)
+                    }
                 @unknown default:
-                    Image("MainCardBackground")
-                        .resizable()
+                    ZStack {
+                        Image("MainCardBackground")
+                            .resizable()
+                        Text(card.name)
+                            .foregroundColor(.white)
+                    }
                 }
             }
             .aspectRatio(contentMode: .fit)
