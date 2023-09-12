@@ -10,6 +10,7 @@ struct CardGridView: View {
     let selectedCard: Binding<ElestralCard?>
     
     @State private var currentImageLoaded: String = ""
+    @EnvironmentObject var cardStore: CardStore
 
     private var filteredCards: [ElestralCard] {
             let sortOrder = filtersViewModel.sortOrder
