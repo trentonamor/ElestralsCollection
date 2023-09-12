@@ -42,7 +42,7 @@ struct CollectionView: View {
     ]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             CardGridView(
                 title: self.viewTitle,
                 subset: subset,

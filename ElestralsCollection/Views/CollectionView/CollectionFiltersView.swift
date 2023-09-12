@@ -17,7 +17,7 @@ struct CollectionFiltersView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("Sort Order") {
                     Toggle(isOn: Binding(

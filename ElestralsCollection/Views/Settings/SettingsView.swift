@@ -8,7 +8,7 @@ struct SettingsView: View {
     let mailComposerDelegate = MailComposerDelegate()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(header: Text("About")) {
                     List {

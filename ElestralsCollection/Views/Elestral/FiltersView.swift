@@ -25,7 +25,7 @@ struct FiltersView: View {
     @Environment(\.presentationMode) var presentation
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("State") {
                     Toggle(isOn: $bothToggleOn, label: {

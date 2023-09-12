@@ -6,7 +6,7 @@ struct ExpansionFiltersView: View {
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("Sort Order") {
                     

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BookmarkView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color.purple
             }
