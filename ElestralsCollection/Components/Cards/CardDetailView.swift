@@ -10,7 +10,6 @@ import SwiftUI
 struct CardDetailView: View {
     @ObservedObject var card: ElestralCard
     @EnvironmentObject var cardStore: CardStore
-    @Environment (\.dismiss) var dismiss
     var body: some View {
         NavigationStack{
             ZStack {
