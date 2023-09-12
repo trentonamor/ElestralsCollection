@@ -30,7 +30,7 @@ struct ContentView: View {
                 CollectionView(subset: self.cardStore.getCards(for: true))
                     .tabItem {
                         Image(systemName: "archivebox")
-                            .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
+                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                         Text("My Collection")
                     }
                     .tag(2)
