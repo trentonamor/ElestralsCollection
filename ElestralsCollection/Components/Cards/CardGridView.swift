@@ -115,21 +115,22 @@ struct CardGridView: View {
         }
 
     var body: some View {
-        ZStack {
-            if filteredCards.isEmpty {
-                Text("No Cards found, start collecting to see cards appear here!")
-                    .multilineTextAlignment(.center)
-                    .font(.headline)
-                    .foregroundColor(.black)
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                ScrollView {
-                    LazyVGrid(columns: layout, spacing: 8) {
-                        ForEach(filteredCards, id: \.self) { card in
-                            CardView(card: card)
-                                .onTapGesture {
-                                    selectedCard.wrappedValue = card
+            ZStack {
+                if filteredCards.isEmpty {
+                    Text("No Cards found, start collecting to see cards appear here!")
+                        .multilineTextAlignment(.center)
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: layout, spacing: 8) {
+                            ForEach(filteredCards, id: \.self) { card in
+                                NavigationLink {
+                              CardDetailView(card: card)
+                                } label: {
+                                    CardView(card: card)
                                 }
                         }
                     }

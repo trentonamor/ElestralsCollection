@@ -42,7 +42,7 @@ struct CollectionView: View {
     ]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             CardGridView(
                 title: self.viewTitle,
                 subset: subset,
@@ -62,9 +62,6 @@ struct CollectionView: View {
             }
         }
         .hiddenNavigationBarStyle()
-        .sheet(item: $selectedCard) { selectedCard in
-            CardDetailView(card: selectedCard)
-        }
     }
 }
 

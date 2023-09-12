@@ -10,28 +10,30 @@ import SwiftUI
 struct CardDetailView: View {
     @ObservedObject var card: ElestralCard
     @EnvironmentObject var cardStore: CardStore
-    
+    @Environment (\.dismiss) var dismiss
     var body: some View {
-        ZStack {
-            ScrollView {
-                VStack {
-                    CardView(card: card)
-                        .padding(.horizontal)
-                        .padding(.top)
-                    Text(card.name)
-                        .font(.title2)
-                        .bold()
-                        .italic()
-                        .foregroundColor(.black)
-                        .padding(.horizontal, 8)
-                    Text(card.getCardSet())
-                        .foregroundColor(.gray)
-                        .padding(.vertical, 0)
-                        .padding(.horizontal, 8)
-                    
-                    LabelView(topText: "Rarity", mainText: card.getCardRarity())
-                    
-                    HStack {
+        NavigationStack{
+            ZStack {
+                ScrollView {
+                    VStack {
+                        
+                        CardView(card: card)
+                            .padding(.horizontal)
+                            .padding(.top)
+                        Text(card.name)
+                            .font(.title2)
+                            .bold()
+                            .italic()
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 8)
+                        Text(card.getCardSet())
+                            .foregroundColor(.gray)
+                            .padding(.vertical, 0)
+                            .padding(.horizontal, 8)
+                        
+                        LabelView(topText: "Rarity", mainText: card.getCardRarity())
+                        
+                        HStack {
                             Button(action: {
                                 if card.numberOwned > 0 {
                                     card.numberOwned -= 1
@@ -86,21 +88,22 @@ struct CardDetailView: View {
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         }
                         .padding(.horizontal, 16)
-                    
-                    LineSeparator()
-                        .padding(.vertical, 16)
-                    
-                    LabelView(topText: "Card Type", mainText: card.cardType)
-                    
-                    Group {
-                        if let runeType = card.runeType, !runeType.isEmpty {
-                            LabelView(topText: "Rune Type", mainText: runeType.capitalized)
+                        
+                        LineSeparator()
+                            .padding(.vertical, 16)
+                        
+                        LabelView(topText: "Card Type", mainText: card.cardType)
+                        
+                        Group {
+                            if let runeType = card.runeType, !runeType.isEmpty {
+                                LabelView(topText: "Rune Type", mainText: runeType.capitalized)
+                            }
+                        }
+                        Group{
+                            LabelView(topText: "Artist", mainText: card.artist)
+                            LabelView(topText: "Card Number", mainText: card.cardNumber)
                         }
                     }
-                    
-                    LabelView(topText: "Artist", mainText: card.artist)
-                    LabelView(topText: "Card Number", mainText: card.cardNumber)
-
                 }
             }
             .background(Color("backgroundBase"))
