@@ -10,6 +10,7 @@ import SwiftUI
 struct CardDetailView: View {
     @ObservedObject var card: ElestralCard
     @EnvironmentObject var cardStore: CardStore
+    @State var showingBookmarkView: Bool = false
     
     var body: some View {
         ZStack {
@@ -32,60 +33,85 @@ struct CardDetailView: View {
                     LabelView(topText: "Rarity", mainText: card.getCardRarity())
                     
                     HStack {
-                            Button(action: {
-                                if card.numberOwned > 0 {
-                                    card.numberOwned -= 1
-                                    cardStore.cardUpdated(card)
-                                }
-                            }) {
-                                VStack(alignment: .center) {
-                                    Text("-")
-                                        .font(.body)
-                                        .bold()
-                                        .foregroundColor(Color.black)
-                                }
+                        Button(action: {
+                            if card.numberOwned > 0 {
+                                card.numberOwned -= 1
+                                cardStore.cardUpdated(card)
                             }
-                            .disabled(card.numberOwned == 0) 
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
-                            .background(Color(.white))
-                            .cornerRadius(8)
-                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
-                            
-                            HStack {
-                                Spacer()
-                                
-                                Text(card.getNumberOwned())
+                        }) {
+                            VStack(alignment: .center) {
+                                Text("-")
                                     .font(.body)
                                     .bold()
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                
-                                Spacer()
+                                    .foregroundColor(Color.black)
                             }
-                            .background(Color(.white))
-                            .cornerRadius(8)
-                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
-                            .padding(.horizontal, 4)
-
-                            Button(action: {
-                                card.numberOwned += 1
-                                cardStore.cardUpdated(card)
-                            }) {
-                                VStack(alignment: .center) {
-                                    Text("+")
-                                        .font(.body)
-                                        .bold()
-                                        .foregroundColor(Color.black)
-                                }
-                            }
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 8)
-                            .background(Color(.white))
-                            .cornerRadius(8)
-                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         }
-                        .padding(.horizontal, 16)
+                        .disabled(card.numberOwned == 0)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .background(Color(.white))
+                        .cornerRadius(8)
+                        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                        
+                        HStack {
+                            Spacer()
+                            
+                            Text(card.getNumberOwned())
+                                .font(.body)
+                                .bold()
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                            
+                            Spacer()
+                        }
+                        .background(Color(.white))
+                        .cornerRadius(8)
+                        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                        .padding(.horizontal, 4)
+                        
+                        Button(action: {
+                            card.numberOwned += 1
+                            cardStore.cardUpdated(card)
+                        }) {
+                            VStack(alignment: .center) {
+                                Text("+")
+                                    .font(.body)
+                                    .bold()
+                                    .foregroundColor(Color.black)
+                            }
+                        }
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .background(Color(.white))
+                        .cornerRadius(8)
+                        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    Button(action: {
+                        self.showingBookmarkView.toggle()
+                    }, label: {
+                        HStack {
+                            Spacer()
+                            
+                            Image(systemName: "bookmark")
+                                .foregroundColor(.black)
+                            
+                            Text("Add to bookmarks")
+                                .foregroundColor(.black)
+                                .font(.body)
+                                .bold()
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                            
+                            Spacer()
+                        }
+                        .background(Color(.white))
+                        .cornerRadius(8)
+                        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                        .padding(.horizontal)
+                        .padding(.top, 4)
+                    })
                     
                     LineSeparator()
                         .padding(.vertical, 16)
@@ -97,13 +123,17 @@ struct CardDetailView: View {
                             LabelView(topText: "Rune Type", mainText: runeType.capitalized)
                         }
                     }
+                    Group {
+                        LabelView(topText: "Artist", mainText: card.artist)
+                        LabelView(topText: "Card Number", mainText: card.cardNumber)
+                    }
                     
-                    LabelView(topText: "Artist", mainText: card.artist)
-                    LabelView(topText: "Card Number", mainText: card.cardNumber)
-
                 }
             }
             .background(Color("backgroundBase"))
+        }
+        .sheet(isPresented: $showingBookmarkView) {
+            BookmarkView()
         }
     }
 }

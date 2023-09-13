@@ -14,14 +14,7 @@ struct CollectionTabView: View {
     var body: some View {
         VStack {
             // The segmented control
-            Picker("Collection Segment", selection: $selectedSegment) {
-                ForEach(CollectionSegment.allCases, id: \.self) { segment in
-                    Text(segment.rawValue).tag(segment)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding(.horizontal)
-            .padding(.vertical, 4)
+            
             
 
             // Switch views based on the selected segment
@@ -31,6 +24,15 @@ struct CollectionTabView: View {
             case .bookmarks:
                 BookmarkView() // Your new bookmarks view
             }
+            
+            Picker("Collection Segment", selection: $selectedSegment) {
+                ForEach(CollectionSegment.allCases, id: \.self) { segment in
+                    Text(segment.rawValue).tag(segment)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
+            .padding(.vertical, 4)
         }
     }
 }
