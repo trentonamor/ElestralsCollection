@@ -27,7 +27,7 @@ struct ContentView: View {
                         Text("Expansions")
                     }
                     .tag(1)
-                CollectionView(subset: self.cardStore.getCards(for: true))
+                CollectionTabView()
                     .tabItem {
                         Image(systemName: "archivebox")
                             .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)

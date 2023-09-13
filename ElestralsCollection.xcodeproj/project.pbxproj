@@ -18,6 +18,8 @@
 		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC22AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
+		2F6A4BEE2AB1764F0001AC12 /* CollectionTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A4BED2AB1764F0001AC12 /* CollectionTabView.swift */; };
+		2F6A4BF02AB176830001AC12 /* CollectionTabViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6A4BEF2AB176830001AC12 /* CollectionTabViewExtensions.swift */; };
 		2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93452A33D5C90044F189 /* CollectionView.swift */; };
 		2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */; };
 		2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */; };
@@ -65,6 +67,7 @@
 		2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CA29380AB8009B14C8 /* DistributionCard.swift */; };
 		2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CC29380B00009B14C8 /* InfoCard.swift */; };
 		2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEAE6EB2938123500B9238A /* GridSection.swift */; };
+		2FF3CBA22AB169840012531B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF3CBA12AB169840012531B /* AlertToast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,8 @@
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
 		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
 		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F6A4BED2AB1764F0001AC12 /* CollectionTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTabView.swift; sourceTree = "<group>"; };
+		2F6A4BEF2AB176830001AC12 /* CollectionTabViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTabViewExtensions.swift; sourceTree = "<group>"; };
 		2F7C93452A33D5C90044F189 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersView.swift; sourceTree = "<group>"; };
 		2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFiltersModel.swift; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 				2FA2975E2A95262F0006BAD7 /* SDWebImageSwiftUI in Frameworks */,
 				2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */,
 				2F1B11002AAE195C00072C7C /* DGCharts in Frameworks */,
+				2FF3CBA22AB169840012531B /* AlertToast in Frameworks */,
 				2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */,
 				2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -177,6 +183,7 @@
 			children = (
 				2F7C93452A33D5C90044F189 /* CollectionView.swift */,
 				2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */,
+				2F6A4BED2AB1764F0001AC12 /* CollectionTabView.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 				2FA2976E2A9944E30006BAD7 /* ExpansionViewExtensions.swift */,
 				2FA297722A9945330006BAD7 /* GridSectionExtensions.swift */,
 				2FA2976C2A9944C50006BAD7 /* ProgressCardExtensions.swift */,
+				2F6A4BEF2AB176830001AC12 /* CollectionTabViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -407,6 +415,7 @@
 				2FA2975A2A9525B50006BAD7 /* FirebaseStorage */,
 				2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */,
 				2F1B10FF2AAE195C00072C7C /* DGCharts */,
+				2FF3CBA12AB169840012531B /* AlertToast */,
 			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
@@ -484,6 +493,7 @@
 				2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */,
+				2FF3CBA02AB169840012531B /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
@@ -536,6 +546,7 @@
 				2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */,
 				2FE2307B293954DA00AC4248 /* ProgressCircle.swift in Sources */,
 				2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */,
+				2F6A4BEE2AB1764F0001AC12 /* CollectionTabView.swift in Sources */,
 				2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */,
 				2FC773312AA280D3003D3D9F /* LineSeparator.swift in Sources */,
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
@@ -544,6 +555,7 @@
 				2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */,
 				2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */,
 				2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */,
+				2F6A4BF02AB176830001AC12 /* CollectionTabViewExtensions.swift in Sources */,
 				2FB59AB5293713DB00F14EFB /* ElestralsGridItem.swift in Sources */,
 				2FB59A7E293712A200F14EFB /* ElestralsCollectionApp.swift in Sources */,
 				2FE2307D294385C800AC4248 /* WebView.swift in Sources */,
@@ -952,6 +964,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		2FF3CBA02AB169840012531B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -979,6 +999,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		2FF3CBA12AB169840012531B /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FF3CBA02AB169840012531B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

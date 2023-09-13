@@ -12,7 +12,7 @@ import FirebaseFirestore
 import SDWebImageSwiftUI
 
 struct CollectionView: View {
-    init(subset: [ElestralCard], viewTitle: String = "My Collection", noResultsText: String = "No Cards found, start collecting to see cards appear here!") {
+    init(subset: [ElestralCard], viewTitle: String = "My Collection", noResultsText: String = "No Cards found, start collecting to see cards appear here!", showOwnedIndicator: Bool = true, showNumberOwned: Bool = true) {
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
         appearance.titleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
@@ -20,11 +20,15 @@ struct CollectionView: View {
         self.subset = subset
         self.viewTitle = viewTitle
         self.noResultsText = noResultsText
+        self.showNumberOwned = showNumberOwned
+        self.showOwnedIndicator = showOwnedIndicator
     }
 
     var noResultsText: String = ""
     let subset: [ElestralCard]
     let viewTitle: String
+    let showNumberOwned: Bool
+    let showOwnedIndicator: Bool
 
     @EnvironmentObject var data: CardStore
 
@@ -53,7 +57,9 @@ struct CollectionView: View {
                 filtersViewModel: filtersViewModel,
                 layout: layout,
                 selectedCard: $selectedCard,
-                noResultsString: self.noResultsText
+                noResultsString: self.noResultsText,
+                showOwnedIndicator: self.showOwnedIndicator,
+                showNumberOwned: self.showNumberOwned
             )
             .sheet(isPresented: $presentFilters, content: {
                 CollectionFiltersView(filters: $filtersViewModel.filters)
