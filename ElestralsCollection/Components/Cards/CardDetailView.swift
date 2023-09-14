@@ -15,7 +15,7 @@ struct CardDetailView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                VStack {
+                VStack(spacing: 8) {
                     CardView(card: card)
                         .padding(.horizontal)
                         .padding(.top)
@@ -110,7 +110,7 @@ struct CardDetailView: View {
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         .padding(.horizontal)
-                        .padding(.top, 4)
+                        .padding(.top, 0)
                     })
                     
                     LineSeparator()
