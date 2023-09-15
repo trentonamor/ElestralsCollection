@@ -23,6 +23,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
     @Published var cardType: String
     @Published var runeType: String?
     @Published var publishedDate: Date
+    @Published var bookmarks: [BookmarkModel]
     var art: String {
         guard UIImage(named: cardNumber) != nil else { return "" }
         return cardNumber
@@ -35,19 +36,19 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
             return .white
         }
         switch self.elements.first?.lowercased() {
-            case "earth":
-                return Color("EarthGreen")
-            case "fire":
-                return Color("FireRed")
-            case "thunder":
-                return Color("ThunderYellow")
-            case "water":
-                return Color("WaterBlue")
-            case "wind":
-                return Color("AirWhite")
-            default:
+        case "earth":
+            return Color("EarthGreen")
+        case "fire":
+            return Color("FireRed")
+        case "thunder":
+            return Color("ThunderYellow")
+        case "water":
+            return Color("WaterBlue")
+        case "wind":
+            return Color("AirWhite")
+        default:
             print("Error cannot find elements: \(self.elements.first ?? "")")
-                return .white
+            return .white
         }
     }
     
@@ -58,7 +59,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         return self.name
     }
     
-    init(id: String, name: String, effect: String, elements: [String], subclasses: [String], attack: Int?, defense: Int?, artist: String, cardSet: ExpansionId, cardNumber: String, rarity: String, cardType: String, runeType: String?, date: Date) {
+    init(id: String, name: String, effect: String, elements: [String], subclasses: [String], attack: Int?, defense: Int?, artist: String, cardSet: ExpansionId, cardNumber: String, rarity: String, cardType: String, runeType: String?, date: Date, bookmarks: [BookmarkModel] = []) {
         self.id = id
         self.name = name
         self.effect = effect
@@ -73,20 +74,22 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         self.cardType = cardType
         self.runeType = runeType
         self.publishedDate = date
+        self.bookmarks = bookmarks
     }
     
     static func == (lhs: ElestralCard, rhs: ElestralCard) -> Bool {
         return lhs.name == rhs.name &&
-            lhs.effect == rhs.effect &&
-            lhs.elements == rhs.elements &&
-            lhs.subclasses == rhs.subclasses &&
-            lhs.attack == rhs.attack &&
-            lhs.defense == rhs.defense &&
-            lhs.artist == rhs.artist &&
-            lhs.cardSet == rhs.cardSet &&
-            lhs.cardNumber == rhs.cardNumber &&
-            lhs.rarity == rhs.rarity &&
-            lhs.publishedDate == rhs.publishedDate
+        lhs.effect == rhs.effect &&
+        lhs.elements == rhs.elements &&
+        lhs.subclasses == rhs.subclasses &&
+        lhs.attack == rhs.attack &&
+        lhs.defense == rhs.defense &&
+        lhs.artist == rhs.artist &&
+        lhs.cardSet == rhs.cardSet &&
+        lhs.cardNumber == rhs.cardNumber &&
+        lhs.rarity == rhs.rarity &&
+        lhs.publishedDate == rhs.publishedDate &&
+        lhs.bookmarks == rhs.bookmarks
     }
     
     func hash(into hasher: inout Hasher) {
@@ -101,5 +104,6 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         hasher.combine(cardNumber)
         hasher.combine(rarity)
         hasher.combine(publishedDate)
+        hasher.combine(bookmarks)
     }
 }

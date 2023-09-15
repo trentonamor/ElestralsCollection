@@ -57,6 +57,9 @@
 		2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDC930A2A472B03001B8E5A /* CardStore.swift */; };
 		2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */; };
 		2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */; };
+		2FDFB20D2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB20B2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld */; };
+		2FDFB20F2AB4D76F002E5A3D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */; };
+		2FDFB2112AB4E13E002E5A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */; };
 		2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE23070293920FC00AC4248 /* CarouselViewModel.swift */; };
 		2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE230742939213C00AC4248 /* SnapCarousel.swift */; };
 		2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2307629392CDC00AC4248 /* CardModel.swift */; };
@@ -138,6 +141,9 @@
 		2FC773302AA280D3003D3D9F /* LineSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparator.swift; sourceTree = "<group>"; };
 		2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBar.swift; sourceTree = "<group>"; };
 		2FDC930A2A472B03001B8E5A /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
+		2FDFB20C2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElestralsCoreData.xcdatamodel; sourceTree = "<group>"; };
+		2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FE23070293920FC00AC4248 /* CarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 		2FE230742939213C00AC4248 /* SnapCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		2FE2307629392CDC00AC4248 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
@@ -253,9 +259,12 @@
 			isa = PBXGroup;
 			children = (
 				2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */,
+				2FDFB20B2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld */,
+				2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */,
 				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
 				2FB59A84293712A200F14EFB /* ContentView.swift */,
 				2FA297672A9944070006BAD7 /* CardImageLoader.swift */,
+				2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */,
 				2FA297662A9943E70006BAD7 /* Extensions */,
 				2FB59AB2293713DB00F14EFB /* Components */,
 				2FB59AB6293713EA00F14EFB /* Model */,
@@ -574,6 +583,7 @@
 				2FB59AB1293713A700F14EFB /* CommonExtensions.swift in Sources */,
 				2F1D5F032A140B5A00821144 /* ExpansionCellView.swift in Sources */,
 				2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */,
+				2FDFB20D2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld in Sources */,
 				2FB59AC0293713F800F14EFB /* SearchView.swift in Sources */,
 				2F6776762AB23ACF00DCCA33 /* EditBookmarkView.swift in Sources */,
 				2FE3E1BF2937B278009B14C8 /* Toggle+CheckboxStyle.swift in Sources */,
@@ -585,6 +595,7 @@
 				2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */,
 				2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */,
 				2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */,
+				2FDFB20F2AB4D76F002E5A3D /* DataManager.swift in Sources */,
 				2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */,
 				2FA297712A99450F0006BAD7 /* ElestralsViewExtensions.swift in Sources */,
 				2FA297632A9531200006BAD7 /* CardDetailView.swift in Sources */,
@@ -599,6 +610,7 @@
 				2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */,
 				2FA297602A9527510006BAD7 /* CardView.swift in Sources */,
 				2FE3E1BB2937A995009B14C8 /* FiltersViewModel.swift in Sources */,
+				2FDFB2112AB4E13E002E5A3D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,6 +1030,19 @@
 			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		2FDFB20B2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2FDFB20C2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodel */,
+			);
+			currentVersion = 2FDFB20C2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodel */;
+			path = ElestralsCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2FB59A72293712A200F14EFB /* Project object */;
 }

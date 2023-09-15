@@ -2,13 +2,15 @@ import SwiftUI
 
 import SwiftUI
 
+import SwiftUI
+
 struct BookmarkView: View {
     var navigationTitle: String = "Bookmarks"
     @State var presentNewBookmark: Bool = false
     @State var searchText: String = ""
     
     @State private var temporaryBookmark: BookmarkModel = BookmarkModel()
-
+    
     @EnvironmentObject var cardStore: CardStore
     
     @State var bookmarkModels: [BookmarkModel] = []
@@ -20,38 +22,57 @@ struct BookmarkView: View {
         }
     }
     
+    @State var editMode: EditMode = .new
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 8) {
-                    if filteredBookmarks.count > 0 {
-                        ForEach(filteredBookmarks) { bookmark in
-                            NavigationLink(destination: {
-                                CollectionView(subset: bookmark.cards,
-                                        viewTitle: bookmark.name,
-                                        noResultsText: bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters.",
-                                        showOwnedIndicator: bookmark.showOwnedIndicator,
-                                        showNumberOwned: true)
-                            }, label: {
-                                BookmarkCellView(model: bookmark)
-                                    .padding(.horizontal)
-                            })
-                        }
-                        Spacer()
-                    } else {
-                        VStack(alignment: .center, spacing: 16) {
-                            Spacer()
-                            Text("You don't have any bookmarks!")
-                                .multilineTextAlignment(.center)
-                                .font(.headline)
+                if filteredBookmarks.count > 0 {
+                    ForEach(filteredBookmarks) { bookmark in
+                        NavigationLink(destination: {
+                            CollectionView(subset: bookmark.cards,
+                                           viewTitle: bookmark.name,
+                                           noResultsText: bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters.",
+                                           showOwnedIndicator: bookmark.showOwnedIndicator,
+                                           showNumberOwned: true)
+                        }, label: {
+                            BookmarkCellView(model: bookmark)
                                 .padding(.horizontal)
-                            Text("Here are a few ideas for your bookmarks: \"Cards you would like to have\", \"My Powerful Deck\", or \"Stellars\"")
-                                .multilineTextAlignment(.center)
-                                .font(.headline)
-                                .padding(.horizontal)
-                            Spacer()
-                        }
-                        
+                                .contextMenu(menuItems: {
+                                    Button {
+                                        self.temporaryBookmark = bookmark
+                                        self.editMode = .edit
+                                        self.presentNewBookmark.toggle()
+                                    } label: {
+                                        Label("Edit", systemImage: "slider.horizontal.3")
+                                    }
+                                    Button {
+                                        self.bookmarkModels.removeAll(where: {
+                                            $0.id == bookmark.id
+                                        })
+                                    } label: {
+                                        Label("Delete", systemImage: "multiply")
+                                            .foregroundColor(Color.red)
+                                    }
+                                })
+                        })
                     }
+                    Spacer()
+                } else {
+                    VStack(alignment: .center, spacing: 16) {
+                        Spacer()
+                        Text("You don't have any bookmarks!")
+                            .multilineTextAlignment(.center)
+                            .font(.headline)
+                            .padding(.horizontal)
+                        Text("Here are a few ideas for your bookmarks: \"Cards you would like to have\", \"My Powerful Deck\", or \"Stellars\"")
+                            .multilineTextAlignment(.center)
+                            .font(.headline)
+                            .padding(.horizontal)
+                        Spacer()
+                    }
+                    
+                }
             }
             .frame(maxWidth: .infinity)
             .searchable(text: $searchText, placement: .automatic, prompt: "Search by Name")
@@ -61,17 +82,18 @@ struct BookmarkView: View {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {
                         self.temporaryBookmark = BookmarkModel()
+                        self.editMode = .new
                         self.presentNewBookmark.toggle()
                     }, label: {
                         Image(systemName: "plus")
                     })
-
+                    
                 })
             }
             .sheet(isPresented: $presentNewBookmark, content: {
-                EditBookmarkView(model: self.$temporaryBookmark)
+                EditBookmarkView(model: self.$temporaryBookmark, mode: editMode)
                     .onDisappear(perform: {
-                        if self.temporaryBookmark.isSaved {
+                        if !self.temporaryBookmark.name.isEmpty {
                             self.$bookmarkModels.wrappedValue.append(self.temporaryBookmark)
                         } else {
                             temporaryBookmark = BookmarkModel()

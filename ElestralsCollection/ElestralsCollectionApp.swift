@@ -11,6 +11,8 @@ import FirebaseCore
 @main
 struct ElestralsCollectionApp: App {
     @StateObject var elestralsCardData = CardStore()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @Environment(\.scenePhase) private var scenePhase
     
     init() {
         FirebaseApp.configure()
@@ -20,6 +22,23 @@ struct ElestralsCollectionApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(elestralsCardData)
+                .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
+        }
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .background:
+                // App is in the background
+                appDelegate.saveContext()
+            case .inactive:
+                // App is about to become inactive (e.g., going to the background)
+                appDelegate.saveContext()
+            case .active:
+                // App is active
+                break
+            @unknown default:
+                // Handle any future cases
+                break
+            }
         }
     }
 }

@@ -19,7 +19,6 @@ class BookmarkModel: Hashable, Identifiable {
     
     @Published var icon: String = ""
     @Published var color: Color
-    var isSaved = false
     
     init(cards: [ElestralCard], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color) {
         self.cards = cards
