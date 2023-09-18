@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookmarkCellView: View {
-    let model: BookmarkModel
+    var model: BookmarkModel
     let framsize: CGFloat = 64
     
     var body: some View {
@@ -64,6 +64,7 @@ struct BookmarkCellView: View {
             .background(Color.white)
             .cornerRadius(12)
     }
+    
 }
 
 

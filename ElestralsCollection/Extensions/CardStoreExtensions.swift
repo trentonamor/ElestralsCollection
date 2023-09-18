@@ -29,6 +29,10 @@ extension CardStore {
         }
     }
     
+    func getCards(for cardIds: Set<String>) -> [ElestralCard] {
+        return self.cards.filter { cardIds.contains($0.id) }
+    }
+    
     func getTotalOwned(for cardName: String) -> Int {
         let cards = self.cards.filter {$0.name == cardName}
         let cardTotal = cards.reduce(0) { (result, card) in

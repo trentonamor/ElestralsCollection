@@ -1,17 +1,20 @@
 import SwiftUI
 
-import SwiftUI
-
-import SwiftUI
+protocol EditBookmarkViewDelegate {
+    func saveBookmark(_ bookmark: BookmarkModel)
+    func deleteBookmark(_ bookmark: BookmarkModel)
+}
 
 struct BookmarkView: View {
     var navigationTitle: String = "Bookmarks"
     @State var presentNewBookmark: Bool = false
     @State var searchText: String = ""
+    @State var refreshID = UUID()
     
     @State private var temporaryBookmark: BookmarkModel = BookmarkModel()
     
     @EnvironmentObject var cardStore: CardStore
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     @State var bookmarkModels: [BookmarkModel] = []
     var filteredBookmarks: [BookmarkModel] {
@@ -57,6 +60,7 @@ struct BookmarkView: View {
                                 })
                         })
                     }
+                    .id(refreshID)
                     Spacer()
                 } else {
                     VStack(alignment: .center, spacing: 16) {
@@ -91,14 +95,7 @@ struct BookmarkView: View {
                 })
             }
             .sheet(isPresented: $presentNewBookmark, content: {
-                EditBookmarkView(model: self.$temporaryBookmark, mode: editMode)
-                    .onDisappear(perform: {
-                        if !self.temporaryBookmark.name.isEmpty {
-                            self.$bookmarkModels.wrappedValue.append(self.temporaryBookmark)
-                        } else {
-                            temporaryBookmark = BookmarkModel()
-                        }
-                    })
+                EditBookmarkView(model: self.$temporaryBookmark, mode: editMode, delegate: self)
             })
         }
         

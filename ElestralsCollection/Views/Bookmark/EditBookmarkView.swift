@@ -2,7 +2,7 @@ import SwiftUI
 
 struct EditBookmarkView: View {
     @Environment(\.dismiss) var dismiss
-    
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var navigationTitle: String {
         return (mode == .new) ? "New Bookmark" : "Edit Bookmark"
@@ -11,6 +11,8 @@ struct EditBookmarkView: View {
     var actionButtonString: String {
         return (mode == .new) ? "Add Bookmark" : "Edit Bookmark"
     }
+    
+    var delegate: EditBookmarkViewDelegate?
 
     
     @State var name = ""
@@ -38,9 +40,10 @@ struct EditBookmarkView: View {
     ]
     
     
-    init(model: Binding<BookmarkModel>, mode: EditMode) {
+    init(model: Binding<BookmarkModel>, mode: EditMode, delegate: EditBookmarkViewDelegate) {
         self._model = model
         self.mode = mode
+        self.delegate = delegate
         
         if mode == .edit {
             _name = State(initialValue: model.wrappedValue.name)
@@ -53,6 +56,14 @@ struct EditBookmarkView: View {
             _icon = State(initialValue: "heart.fill")
             _color = State(initialValue: .blue)
         }
+    }
+    
+    func onSaveButtonPressed() {
+        delegate?.saveBookmark(self.model)
+    }
+
+    func onDeleteButtonPressed() {
+        delegate?.deleteBookmark(self.model)
     }
 
     
@@ -122,7 +133,7 @@ struct EditBookmarkView: View {
                         HStack {
                             Text("Show Progress in List")
                             Spacer()
-                            Toggle("", isOn: self.$model.showOwnedIndicator)
+                            Toggle("", isOn: self.$model.showProgres)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: self.color))
                         }
@@ -197,6 +208,7 @@ struct EditBookmarkView: View {
                 VStack {
                     Button(action: {
                         model.name = name
+                        self.delegate?.saveBookmark(model)
                         dismiss()
                     }, label: {
                         Text(actionButtonString)
@@ -208,6 +220,7 @@ struct EditBookmarkView: View {
                     
                     if self.showDeleteButton {
                         Button(action: {
+                            self.delegate?.deleteBookmark(model)
                             dismiss()
                         }, label: {
                             Text("Delete")

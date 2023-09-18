@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F01F5492AB60E9E00F9334F /* BookmarkViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01F5482AB60E9E00F9334F /* BookmarkViewExtensions.swift */; };
 		2F1B11002AAE195C00072C7C /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1B10FF2AAE195C00072C7C /* DGCharts */; };
 		2F1D5F032A140B5A00821144 /* ExpansionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F022A140B5A00821144 /* ExpansionCellView.swift */; };
 		2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */; };
@@ -94,6 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F01F5482AB60E9E00F9334F /* BookmarkViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewExtensions.swift; sourceTree = "<group>"; };
 		2F1D5F022A140B5A00821144 /* ExpansionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCellView.swift; sourceTree = "<group>"; };
 		2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionCellModel.swift; sourceTree = "<group>"; };
 		2F1D5F062A14191B00821144 /* ExpansionFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				2FA297722A9945330006BAD7 /* GridSectionExtensions.swift */,
 				2FA2976C2A9944C50006BAD7 /* ProgressCardExtensions.swift */,
 				2F6A4BEF2AB176830001AC12 /* CollectionTabViewExtensions.swift */,
+				2F01F5482AB60E9E00F9334F /* BookmarkViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 			files = (
 				2FE2307929392FC900AC4248 /* GenericCardView.swift in Sources */,
 				2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */,
+				2F01F5492AB60E9E00F9334F /* BookmarkViewExtensions.swift in Sources */,
 				2FE3E1BD2937AB64009B14C8 /* FiltersView.swift in Sources */,
 				2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */,
 				2FE2307B293954DA00AC4248 /* ProgressCircle.swift in Sources */,

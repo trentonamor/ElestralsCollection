@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-class BookmarkModel: Hashable, Identifiable {
+class BookmarkModel: ObservableObject, Hashable, Identifiable {
     var cards: [ElestralCard] = []
-    let id = UUID()
+    var id: UUID
     
     @Published var name: String
     @Published var type: BookmarkType
@@ -21,6 +21,7 @@ class BookmarkModel: Hashable, Identifiable {
     @Published var color: Color
     
     init(cards: [ElestralCard], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color) {
+        self.id = UUID()
         self.cards = cards
         self.name = name
         self.type = type
@@ -28,6 +29,23 @@ class BookmarkModel: Hashable, Identifiable {
         self.showProgres = showProgres
         self.icon = icon
         self.color = color
+    }
+    
+    init(from entity: Bookmark, cardStore: CardStore) {
+        self.id = entity.id ?? UUID()
+        self.name = entity.name ?? ""
+        
+        if let cardIdsSet = entity.cards as? Set<String> {
+            self.cards = cardStore.getCards(for: cardIdsSet)
+        } else {
+            self.cards = []
+        }
+        
+        self.type = BookmarkType(rawValue: entity.type ?? BookmarkType.standard.rawValue) ?? .standard
+        self.showOwnedIndicator = entity.showOwnedIndicator
+        self.showProgres = entity.showProgress
+        self.icon = entity.icon ?? ""
+        self.color = Color(hex: entity.color ?? "FFFFFF")
     }
     
     init() {
@@ -38,7 +56,25 @@ class BookmarkModel: Hashable, Identifiable {
         self.showProgres = true
         self.icon = "heart.fill"
         self.color = .blue
+        self.id = UUID()
     }
+    
+    convenience init(copying original: BookmarkModel) {
+        self.init()
+        self.id = original.id
+        self.name = original.name
+        self.cards = original.cards
+        self.type = original.type
+        self.showOwnedIndicator = original.showOwnedIndicator
+        self.showProgres = original.showProgres
+        self.icon = original.icon
+        self.showProgres = original.showProgres
+    }
+    
+    func copy() -> BookmarkModel {
+        return BookmarkModel(cards: self.cards, name: self.name, type: self.type, showOwnedIndicator: self.showOwnedIndicator, showProgres: self.showProgres, icon: self.icon, color: self.color)
+    }
+
     
     static func == (lhs: BookmarkModel, rhs: BookmarkModel) -> Bool {
         return lhs.cards == rhs.cards &&
