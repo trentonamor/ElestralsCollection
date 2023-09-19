@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class BookmarkModel: ObservableObject, Hashable, Identifiable {
+class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConvertible {
     var cards: [ElestralCard] = []
     var id: UUID
     
@@ -19,6 +19,21 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable {
     
     @Published var icon: String = ""
     @Published var color: Color
+    
+    var description: String {
+        return """
+        BookmarkModel:
+        - ID: \(id)
+        - Name: \(name)
+        - Type: \(type.rawValue)
+        - Show Owned Indicator: \(showOwnedIndicator)
+        - Show Progress: \(showProgres)
+        - Icon: \(icon)
+        - Color: \(color.description)
+        - Cards: \(cards.map { $0.description }.joined(separator: "\n"))
+        """
+    }
+
     
     init(cards: [ElestralCard], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color) {
         self.id = UUID()

@@ -44,6 +44,38 @@ class DataManager {
         }
     }
     
+    func createOrUpdateBookmark(bookmark: BookmarkModel) {
+        // Check if the bookmark already exists
+        let request: NSFetchRequest<NSFetchRequestResult> = Bookmark.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", bookmark.id as CVarArg)
+
+        if let matches = try? context.fetch(request) as? [Bookmark], let match = matches.first {
+            // Existing bookmark, update it
+            updateBookmark(
+                bookmark: match,
+                name: bookmark.name,
+                type: bookmark.type.rawValue,
+                showOwnedIndicator: bookmark.showOwnedIndicator,
+                showProgress: bookmark.showProgres,
+                icon: bookmark.icon,
+                color: bookmark.color.hexString ?? "FFFFFF",
+                elestralCards: bookmark.cards
+            )
+        } else {
+            // New bookmark, create it
+            _ = createBookmark(
+                cards: bookmark.cards,
+                name: bookmark.name,
+                type: bookmark.type.rawValue,
+                showOwnedIndicator: bookmark.showOwnedIndicator,
+                showProgress: bookmark.showProgres,
+                icon: bookmark.icon,
+                color: bookmark.color.hexString ?? "FFFFFF"
+            )
+        }
+    }
+
+    
     //MARK: Read
     func fetchAllBookmarks() -> [Bookmark]? {
         let request: NSFetchRequest<Bookmark> = Bookmark.fetchRequest()
@@ -101,6 +133,20 @@ class DataManager {
     }
     
     //MARK: Delete
+    func deleteBookmark(bookmark: BookmarkModel) {
+        let request: NSFetchRequest<NSFetchRequestResult> = Bookmark.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", bookmark.id as CVarArg)
+
+        if let matches = try? context.fetch(request) as? [Bookmark], let match = matches.first {
+            context.delete(match)
+            do {
+                try context.save()
+            } catch {
+                print("Error deleting bookmark: \(error)")
+            }
+        }
+    }
+    
     func deleteBookmark(bookmark: Bookmark) {
         context.delete(bookmark)
         do {

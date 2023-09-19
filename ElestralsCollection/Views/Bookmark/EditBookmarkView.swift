@@ -16,10 +16,12 @@ struct EditBookmarkView: View {
 
     
     @State var name = ""
-    @Binding var model: BookmarkModel
+    var model: BookmarkModel
     var mode: EditMode = .new
     
     @State var type: BookmarkType
+    @State var showOwnedIndicator: Bool = true
+    @State var showProgressIndicator: Bool = true
     
     @State var icon: String
     @State var color: Color
@@ -40,22 +42,25 @@ struct EditBookmarkView: View {
     ]
     
     
-    init(model: Binding<BookmarkModel>, mode: EditMode, delegate: EditBookmarkViewDelegate) {
-        self._model = model
-        self.mode = mode
+    init(model: BookmarkModel, delegate: EditBookmarkViewDelegate) {
+        self.model = model
         self.delegate = delegate
+        self.mode = self.model.name.isEmpty ? .new : .edit
         
         if mode == .edit {
-            _name = State(initialValue: model.wrappedValue.name)
-            _type = State(initialValue: model.wrappedValue.type)
-            _icon = State(initialValue: model.wrappedValue.icon)
-            _color = State(initialValue: model.wrappedValue.color)
+            _name = State(initialValue: model.name)
+            _type = State(initialValue: model.type)
+            _icon = State(initialValue: model.icon)
+            _color = State(initialValue: model.color)
+            _showOwnedIndicator =  State(initialValue: model.showOwnedIndicator)
+            _showProgressIndicator =  State(initialValue: model.showProgres)
         } else {
             _name = State(initialValue: "")
             _type = State(initialValue: .standard)
             _icon = State(initialValue: "heart.fill")
             _color = State(initialValue: .blue)
         }
+        print("Bookmark in EditBookmarkView: ", model)
     }
     
     func onSaveButtonPressed() {
@@ -122,7 +127,7 @@ struct EditBookmarkView: View {
                         HStack {
                             Text("Show Owned Indicator")
                             Spacer()
-                            Toggle("", isOn: self.$model.showOwnedIndicator)
+                            Toggle("", isOn: self.$showOwnedIndicator)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: self.color))
                         }
@@ -133,7 +138,7 @@ struct EditBookmarkView: View {
                         HStack {
                             Text("Show Progress in List")
                             Spacer()
-                            Toggle("", isOn: self.$model.showProgres)
+                            Toggle("", isOn: self.$showProgressIndicator)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: self.color))
                         }
@@ -208,6 +213,8 @@ struct EditBookmarkView: View {
                 VStack {
                     Button(action: {
                         model.name = name
+                        model.showProgres = self.showProgressIndicator
+                        model.showOwnedIndicator = self.showOwnedIndicator
                         self.delegate?.saveBookmark(model)
                         dismiss()
                     }, label: {
