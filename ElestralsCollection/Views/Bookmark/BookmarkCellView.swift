@@ -14,7 +14,7 @@ struct BookmarkCellView: View {
     @State var didSelectCell: Bool = false
     
     var body: some View {
-            HStack {
+            let content = HStack {
                 ZStack {
                     Image(systemName: model.icon)
                         .foregroundColor(model.color)
@@ -73,10 +73,16 @@ struct BookmarkCellView: View {
             .frame(maxWidth: .infinity)
             .background(Color.white)
             .cornerRadius(12)
-            .allowsHitTesting(self.isViewOnly)
-            .onTapGesture {
-                self.didSelectCell.toggle()
-            }
+        
+        // Conditionally add the tap gesture based on isViewOnly
+        if isViewOnly {
+            return AnyView(content
+                .onTapGesture {
+                    self.didSelectCell.toggle()
+                })
+        } else {
+            return AnyView(content)
+        }
     }
     
 }
