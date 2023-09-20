@@ -133,7 +133,7 @@ struct CardDetailView: View {
             .background(Color("backgroundBase"))
         }
         .sheet(isPresented: $showingBookmarkView) {
-            BookmarkView()
+            BookmarkView(isViewOnly: true)
         }
     }
 }

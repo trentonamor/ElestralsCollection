@@ -7,7 +7,6 @@ protocol EditBookmarkViewDelegate {
 
 struct BookmarkView: View {
     var navigationTitle: String = "Bookmarks"
-    @State var presentNewBookmark: Bool = false
     @State var searchText: String = ""
     @State var refreshID = UUID()
     
@@ -17,6 +16,7 @@ struct BookmarkView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @State var bookmarkModels: [BookmarkModel] = []
+    @State var isViewOnly: Bool
     
     var filteredBookmarks: [BookmarkModel] {
         if searchText.isEmpty {
@@ -30,36 +30,10 @@ struct BookmarkView: View {
        NavigationStack {
                 VStack(alignment: .leading, spacing: 8) {
                     if filteredBookmarks.count > 0 {
-                        ScrollView {
-                            ForEach(filteredBookmarks) { bookmark in
-                                NavigationLink(destination: {
-                                    CollectionView(subset: bookmark.cards,
-                                                   viewTitle: bookmark.name,
-                                                   noResultsText: bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters.",
-                                                   showOwnedIndicator: bookmark.showOwnedIndicator,
-                                                   showNumberOwned: true)
-                                }, label: {
-                                    BookmarkCellView(model: bookmark)
-                                        .padding(.horizontal)
-                                        .contextMenu(menuItems: {
-                                            Button {
-                                                self.temporaryBookmark = bookmark
-                                            } label: {
-                                                Label("Edit", systemImage: "slider.horizontal.3")
-                                            }
-                                            Button {
-                                                let index = self.bookmarkModels.firstIndex(where: { $0.id == bookmark.id })
-                                                let model = self.bookmarkModels[index ?? 0]
-                                                self.deleteBookmark(model)
-                                            } label: {
-                                                Label("Delete", systemImage: "multiply")
-                                                    .foregroundColor(Color.red)
-                                            }
-                                        })
-                                })
-                            }
-                            .id(refreshID)
-                        }
+                        BookmarkList(filteredBookmarks: filteredBookmarks, isViewOnly: isViewOnly, onDeleteBookmark: deleteBookmark, onEditBookmark: { bookmark in
+                            self.temporaryBookmark = bookmark
+                        })
+                        .id(refreshID)
                     } else {
                         VStack(alignment: .center, spacing: 16) {
                             Spacer()
@@ -84,7 +58,6 @@ struct BookmarkView: View {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {
                         self.temporaryBookmark = BookmarkModel()
-                        self.presentNewBookmark.toggle()
                     }, label: {
                         Image(systemName: "plus")
                     })

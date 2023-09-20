@@ -15,6 +15,7 @@
 		2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */; };
 		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
+		2F3570BE2ABA42220068E2C7 /* BookmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */; };
 		2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */; };
 		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
@@ -102,6 +103,7 @@
 		2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersViewModel.swift; sourceTree = "<group>"; };
 		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
+		2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkList.swift; sourceTree = "<group>"; };
 		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
 		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				2FB59ABC293713F800F14EFB /* BookmarkView.swift */,
 				2F6776712AB22A8300DCCA33 /* BookmarkCellView.swift */,
 				2F6776752AB23ACF00DCCA33 /* EditBookmarkView.swift */,
+				2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
 				2FA297652A97CBD70006BAD7 /* CardGridView.swift in Sources */,
 				2FA297732A9945330006BAD7 /* GridSectionExtensions.swift in Sources */,
+				2F3570BE2ABA42220068E2C7 /* BookmarkList.swift in Sources */,
 				2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */,
 				2F6776722AB22A8300DCCA33 /* BookmarkCellView.swift in Sources */,
 				2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */,

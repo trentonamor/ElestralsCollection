@@ -22,7 +22,7 @@ struct CollectionTabView: View {
             case .normal:
                 CollectionView(subset: self.cardStore.getCards(for: true), showOwnedIndicator: false, showNumberOwned: true)
             case .bookmarks:
-                BookmarkView() // Your new bookmarks view
+                BookmarkView(isViewOnly: false) // Your new bookmarks view
             }
             
             Picker("Collection Segment", selection: $selectedSegment) {
