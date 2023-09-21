@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct BookmarkList: View {
+    var cardId: String?
     var filteredBookmarks: [BookmarkModel]
     var isViewOnly: Bool
     var onDeleteBookmark: (BookmarkModel) -> Void
     var onEditBookmark: (BookmarkModel) -> Void
-
-    @State private var selectedBookmarks: Set<UUID> = []
+    
+    var delegate: BookmarkCellDelegate?
 
     var body: some View {
         ScrollView {
             ForEach(filteredBookmarks) { bookmark in
                 if isViewOnly {
-                    BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: false)
+                    BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: self.doSelectCell(bookmark: bookmark), delegate: delegate)
                     .padding(.horizontal)
                     .contextMenu(menuItems: {
                         Button {
@@ -42,7 +43,7 @@ struct BookmarkList: View {
                                        showOwnedIndicator: bookmark.showOwnedIndicator,
                                        showNumberOwned: true)
                     }, label: {
-                        BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: false)
+                        BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: false, delegate: delegate)
                             .padding(.horizontal)
                             .contextMenu(menuItems: {
                                 Button {

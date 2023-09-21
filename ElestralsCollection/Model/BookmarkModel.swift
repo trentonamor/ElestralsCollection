@@ -50,7 +50,8 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
         self.id = entity.id ?? UUID()
         self.name = entity.name ?? ""
         
-        if let cardIdsSet = entity.cards as? Set<String> {
+        if let cardEntitiesSet = entity.cards as? Set<Card> {
+            let cardIdsSet: [String] = cardEntitiesSet.compactMap { $0.id }
             self.cards = cardStore.getCards(for: cardIdsSet)
         } else {
             self.cards = []

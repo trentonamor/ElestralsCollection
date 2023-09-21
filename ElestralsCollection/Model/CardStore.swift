@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import CoreData
 
 class CardStore: ObservableObject {
     @Published var cards: [ElestralCard] = []

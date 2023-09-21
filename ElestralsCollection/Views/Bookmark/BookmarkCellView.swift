@@ -13,6 +13,8 @@ struct BookmarkCellView: View {
     var isViewOnly: Bool
     @State var didSelectCell: Bool = false
     
+    var delegate: BookmarkCellDelegate?
+    
     var body: some View {
             let content = HStack {
                 ZStack {
@@ -79,6 +81,7 @@ struct BookmarkCellView: View {
             return AnyView(content
                 .onTapGesture {
                     self.didSelectCell.toggle()
+                    self.delegate?.selectBookmark(self.model)
                 })
         } else {
             return AnyView(content)
@@ -88,8 +91,8 @@ struct BookmarkCellView: View {
 }
 
 
-struct BookmarkCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookmarkCellView(model: BookmarkModel(cards: [ElestralCard(id: "123", name: "Trenton", effect: "Trenton is cool", elements: ["water"], subclasses: ["human"], attack: 24, defense: 52, artist: "Trenton Parrotte", cardSet: .baseSet, cardNumber: "Tp-24", rarity: "full-art", cardType: "elestral", runeType: nil, date: Date.now)], name: "Cool Bookmark with a really long name that is so incredibly long my guy", type: .standard, showOwnedIndicator: false, showProgres: true, icon: "heart.fill", color: .green), isViewOnly: true, didSelectCell: true)
-    }
-}
+//struct BookmarkCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookmarkCellView(model: BookmarkModel(cards: [ElestralCard(id: "123", name: "Trenton", effect: "Trenton is cool", elements: ["water"], subclasses: ["human"], attack: 24, defense: 52, artist: "Trenton Parrotte", cardSet: .baseSet, cardNumber: "Tp-24", rarity: "full-art", cardType: "elestral", runeType: nil, date: Date.now)], name: "Cool Bookmark with a really long name that is so incredibly long my guy", type: .standard, showOwnedIndicator: false, showProgres: true, icon: "heart.fill", color: .green), isViewOnly: true, didSelectCell: true)
+//    }
+//}

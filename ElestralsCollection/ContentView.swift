@@ -7,6 +7,7 @@ struct ContentView: View {
     
     @State private var selectedTab = 0
     @EnvironmentObject var cardStore: CardStore
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         if cardStore.isLoading {
@@ -52,6 +53,9 @@ struct ContentView: View {
                         Text("Settings")
                     }
                     .tag(4)
+            }
+            .onAppear {
+                self.cardStore.setBookmarks(context: self.managedObjectContext)
             }
         }
     }

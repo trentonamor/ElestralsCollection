@@ -104,6 +104,5 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         hasher.combine(cardNumber)
         hasher.combine(rarity)
         hasher.combine(publishedDate)
-        hasher.combine(bookmarks)
     }
 }

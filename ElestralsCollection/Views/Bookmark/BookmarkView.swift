@@ -5,6 +5,11 @@ protocol EditBookmarkViewDelegate {
     func deleteBookmark(_ bookmark: BookmarkModel)
 }
 
+protocol BookmarkCellDelegate {
+    func saveBookmark(_ bookmark: BookmarkModel)
+    func selectBookmark(_ bookmark: BookmarkModel)
+}
+
 struct BookmarkView: View {
     var navigationTitle: String = "Bookmarks"
     @State var searchText: String = ""
@@ -14,9 +19,13 @@ struct BookmarkView: View {
     
     @EnvironmentObject var cardStore: CardStore
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.dismiss) var dismiss
     
     @State var bookmarkModels: [BookmarkModel] = []
     @State var isViewOnly: Bool
+    
+    @State var selectedBookmarkIDs: Set<UUID> = []
+    var cardToAdd: ElestralCard?
     
     var filteredBookmarks: [BookmarkModel] {
         if searchText.isEmpty {
@@ -30,9 +39,9 @@ struct BookmarkView: View {
        NavigationStack {
                 VStack(alignment: .leading, spacing: 8) {
                     if filteredBookmarks.count > 0 {
-                        BookmarkList(filteredBookmarks: filteredBookmarks, isViewOnly: isViewOnly, onDeleteBookmark: deleteBookmark, onEditBookmark: { bookmark in
+                        BookmarkList(cardId: self.cardToAdd?.id, filteredBookmarks: filteredBookmarks, isViewOnly: isViewOnly, onDeleteBookmark: deleteBookmark, onEditBookmark: { bookmark in
                             self.temporaryBookmark = bookmark
-                        })
+                        }, delegate: self)
                         .id(refreshID)
                     } else {
                         VStack(alignment: .center, spacing: 16) {
@@ -63,6 +72,17 @@ struct BookmarkView: View {
                     })
                     
                 })
+                
+                if self.isViewOnly {
+                    ToolbarItem(placement: .navigationBarLeading, content: {
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Text("Done")
+                                .foregroundColor(.accentColor)
+                        })
+                    })
+                }
             }
             .sheet(item: self.$temporaryBookmark, onDismiss: { self.temporaryBookmark = nil}, content: { item in
                 EditBookmarkView(model: item, delegate: self)
@@ -70,6 +90,9 @@ struct BookmarkView: View {
         }
         .onAppear {
             loadBookmarks()
+        }
+        .onDisappear {
+            self.addOrRemoveCardFromBookmarks()
         }
         
     }

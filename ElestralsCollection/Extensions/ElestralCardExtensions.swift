@@ -66,4 +66,28 @@ extension ElestralCard: CustomStringConvertible {
         
         return "\(self.numberOwned) Owned"
     }
+    
+    func getBookmarks() -> String {
+        switch bookmarks.count {
+        case 0:
+            return "Add to Bookmarks"
+        case 1:
+            return "In \(truncatedName(bookmarks[0].name))"
+        case 2:
+            return "In \(truncatedName(bookmarks[0].name)) and \(truncatedName(bookmarks[1].name))"
+        default:
+            let extraCount = bookmarks.count - 2
+            return "In \(truncatedName(bookmarks[0].name)), \(truncatedName(bookmarks[1].name)), +\(extraCount)"
+        }
+    }
+
+    func truncatedName(_ name: String) -> String {
+        let maxLength = 20  // Adjust as needed
+        if name.count > maxLength {
+            return String(name.prefix(maxLength)) + "..."
+        } else {
+            return name
+        }
+    }
+
 }

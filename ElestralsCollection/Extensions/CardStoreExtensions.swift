@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension CardStore {
     func getExpansionList() -> [ExpansionId] {
@@ -29,7 +30,7 @@ extension CardStore {
         }
     }
     
-    func getCards(for cardIds: Set<String>) -> [ElestralCard] {
+    func getCards(for cardIds: [String]) -> [ElestralCard] {
         return self.cards.filter { cardIds.contains($0.id) }
     }
     
@@ -71,5 +72,24 @@ extension CardStore {
     
     func cardUpdated(_ card: ElestralCard) {
         self.lastUpdatedCard = card
+    }
+    
+    func fetchBookmarksForCard(cardID: String, context: NSManagedObjectContext) -> [BookmarkModel] {
+        let request: NSFetchRequest<Bookmark> = Bookmark.fetchRequest()
+        request.predicate = NSPredicate(format: "ANY cards.id == %@", cardID)
+
+        do {
+            let matchingBookmarks = try context.fetch(request)
+            return matchingBookmarks.map { BookmarkModel(from: $0, cardStore: self) }
+        } catch {
+            print("Failed to fetch bookmarks for card \(cardID): \(error)")
+            return []
+        }
+    }
+    
+    func setBookmarks(context: NSManagedObjectContext) {
+        for card in self.cards {
+            card.bookmarks = self.fetchBookmarksForCard(cardID: card.id, context: context)
+        }
     }
 }

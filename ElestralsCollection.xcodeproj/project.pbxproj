@@ -20,6 +20,7 @@
 		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC22AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
+		2F5AC09F2ABCA5F900D1571C /* BookmarkListExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */; };
 		2F6776702AB2291900DCCA33 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */; };
 		2F6776722AB22A8300DCCA33 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6776712AB22A8300DCCA33 /* BookmarkCellView.swift */; };
 		2F6776762AB23ACF00DCCA33 /* EditBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6776752AB23ACF00DCCA33 /* EditBookmarkView.swift */; };
@@ -106,6 +107,7 @@
 		2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkList.swift; sourceTree = "<group>"; };
 		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
 		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListExtensions.swift; sourceTree = "<group>"; };
 		2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		2F6776712AB22A8300DCCA33 /* BookmarkCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		2F6776752AB23ACF00DCCA33 /* EditBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookmarkView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				2FA2976C2A9944C50006BAD7 /* ProgressCardExtensions.swift */,
 				2F6A4BEF2AB176830001AC12 /* CollectionTabViewExtensions.swift */,
 				2F01F5482AB60E9E00F9334F /* BookmarkViewExtensions.swift */,
+				2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				2FE3E1BF2937B278009B14C8 /* Toggle+CheckboxStyle.swift in Sources */,
 				2FA2976B2A9944450006BAD7 /* ElestralCardExtensions.swift in Sources */,
 				2FA2976D2A9944C50006BAD7 /* ProgressCardExtensions.swift in Sources */,
+				2F5AC09F2ABCA5F900D1571C /* BookmarkListExtensions.swift in Sources */,
 				2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */,
 				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
 				2F1D5F0B2A16974600821144 /* MailView.swift in Sources */,

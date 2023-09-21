@@ -19,6 +19,77 @@ extension BookmarkView {
             print("Failed to fetch bookmarks: \(error)")
         }
     }
+    
+    private func ensureCardExistsInCoreData(card: ElestralCard) -> Card {
+        // Check if the card already exists
+        let cardFetchRequest: NSFetchRequest<NSFetchRequestResult> = Card.fetchRequest()
+        cardFetchRequest.predicate = NSPredicate(format: "id == %@", card.id as CVarArg)
+        
+        let matches = try? managedObjectContext.fetch(cardFetchRequest) as? [Card]
+        if let existingCard = matches?.first {
+            return existingCard
+        } else {
+            // If the card doesn't exist, create a new Card entity
+            let newCardEntity = Card(context: managedObjectContext)
+            newCardEntity.id = card.id
+            // Add any other properties of the card that need to be saved
+            return newCardEntity
+        }
+    }
+
+    
+    func addOrRemoveCardFromBookmarks() {
+        guard let card = cardToAdd else {
+            print("No card to add.")
+            return
+        }
+        
+        let cardEntity = ensureCardExistsInCoreData(card: card)
+
+        // 1. Add the card to the selected bookmarks
+        let request: NSFetchRequest<NSFetchRequestResult> = Bookmark.fetchRequest()
+        request.predicate = NSPredicate(format: "id IN %@", selectedBookmarkIDs)
+        
+        do {
+            let matchingBookmarks = try managedObjectContext.fetch(request) as! [Bookmark]
+            for bookmarkEntity in matchingBookmarks {
+                var cards = bookmarkEntity.cards as? Set<Card> ?? Set()
+                cards.insert(cardEntity)
+                bookmarkEntity.cards = cards as NSSet
+                if let bookmark = self.bookmarkModels.first(where: {$0.id.uuidString == bookmarkEntity.id?.uuidString}) {
+                    card.bookmarks.append(bookmark)
+                }
+            }
+            
+            // 2. Remove the card from the bookmarks it has been deselected from
+            let requestForDeselected: NSFetchRequest<NSFetchRequestResult> = Bookmark.fetchRequest()
+            requestForDeselected.predicate = NSPredicate(format: "NOT (id IN %@)", selectedBookmarkIDs)
+            let deselectedBookmarks = try managedObjectContext.fetch(requestForDeselected) as! [Bookmark]
+            
+            for bookmarkEntity in deselectedBookmarks {
+                var cards = bookmarkEntity.cards as? Set<Card> ?? Set()
+                cards.remove(cardEntity)
+                bookmarkEntity.cards = cards as NSSet
+                if let index = card.bookmarks.firstIndex(where: { $0.id.uuidString == bookmarkEntity.id?.uuidString }) {
+                    card.bookmarks.remove(at: index)
+                }
+            }
+            
+            // 3. If the card is no longer in any bookmarks, delete the card entity from CoreData
+            if card.bookmarks.isEmpty {
+                managedObjectContext.delete(cardEntity)
+            }
+            
+            try managedObjectContext.save()
+            self.cardStore.lastUpdatedCard = card
+            self.refreshID = UUID()
+            
+        } catch {
+            print("Failed to update card and bookmarks relationship: \(error)")
+        }
+    }
+
+
 }
 
 import SwiftUI
@@ -79,5 +150,15 @@ extension BookmarkView: EditBookmarkViewDelegate {
             }
         }
 
+    }
+}
+
+extension BookmarkView: BookmarkCellDelegate {
+    func selectBookmark(_ bookmark: BookmarkModel) {
+        if self.selectedBookmarkIDs.contains(bookmark.id) {
+            self.selectedBookmarkIDs.remove(bookmark.id)
+        } else {
+            self.selectedBookmarkIDs.insert(bookmark.id)
+        }
     }
 }

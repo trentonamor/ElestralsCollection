@@ -93,11 +93,17 @@ struct CardDetailView: View {
                     }, label: {
                         HStack {
                             Spacer()
+                            Group {
+                                if card.bookmarks.isEmpty {
+                                    Image(systemName: "bookmark")
+                                        .foregroundColor(.black)
+                                } else {
+                                    Image(systemName: "bookmark.fill")
+                                        .foregroundColor(.black)
+                                }
+                            }
                             
-                            Image(systemName: "bookmark")
-                                .foregroundColor(.black)
-                            
-                            Text("Add to bookmarks")
+                            Text(card.getBookmarks())
                                 .foregroundColor(.black)
                                 .font(.body)
                                 .bold()
@@ -133,7 +139,7 @@ struct CardDetailView: View {
             .background(Color("backgroundBase"))
         }
         .sheet(isPresented: $showingBookmarkView) {
-            BookmarkView(isViewOnly: true)
+            BookmarkView(isViewOnly: true, cardToAdd: self.card)
         }
     }
 }
