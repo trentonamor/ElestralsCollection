@@ -67,6 +67,10 @@ extension ElestralCard: CustomStringConvertible {
         return "\(self.numberOwned) Owned"
     }
     
+    func getTotalOwned() -> Int {
+        return self.numberOwned
+    }
+    
     func getBookmarks() -> String {
         switch bookmarks.count {
         case 0:

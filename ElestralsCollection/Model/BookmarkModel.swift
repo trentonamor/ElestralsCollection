@@ -118,7 +118,7 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
 
 enum BookmarkType: String, Decodable, Encodable {
     case standard = "Standard"
-    case smart = "Smart"
+    //case smart = "Smart"
     case deck = "Deck"
 }
 

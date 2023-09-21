@@ -37,11 +37,19 @@ struct BookmarkList: View {
                     })
                 } else {
                     NavigationLink(destination: {
-                        CollectionView(subset: bookmark.cards,
-                                       viewTitle: bookmark.name,
-                                       noResultsText: bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters.",
-                                       showOwnedIndicator: bookmark.showOwnedIndicator,
-                                       showNumberOwned: true)
+                        if bookmark.type == .standard {
+                            CollectionView(subset: bookmark.cards,
+                                           viewTitle: bookmark.name,
+                                           noResultsText: bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters.",
+                                           showOwnedIndicator: bookmark.showOwnedIndicator,
+                                           showNumberOwned: true)
+                        } else {
+                            DeckView(subset: bookmark.cards,
+                                           viewTitle: bookmark.name,
+                                           noResultsText: bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters.",
+                                           showOwnedIndicator: bookmark.showOwnedIndicator,
+                                           showNumberOwned: true)
+                        }
                     }, label: {
                         BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: false, delegate: delegate)
                             .padding(.horizontal)

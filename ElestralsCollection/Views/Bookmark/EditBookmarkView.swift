@@ -95,6 +95,7 @@ struct EditBookmarkView: View {
                             Text("Type")
                             Spacer()
                             Menu(content: {
+                                /*
                                 Button(action: {
                                     self.type = .standard
                                     self.model.type = .standard
@@ -107,11 +108,13 @@ struct EditBookmarkView: View {
                                 }, label: {
                                     Text("Smart")
                                 })
+                                 */
+                                 
                                 Button(action: {
-                                    self.type = .deck
-                                    self.model.type = .deck
+                                    self.type = .standard
+                                    self.model.type = .standard
                                 }, label: {
-                                    Text("Deck")
+                                    Text("Standard")
                                 })
                             }, label: {
                                 Text(self.type.rawValue)
