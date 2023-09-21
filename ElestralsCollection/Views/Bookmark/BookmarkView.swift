@@ -36,30 +36,30 @@ struct BookmarkView: View {
     }
     
     var body: some View {
-       NavigationStack {
-                VStack(alignment: .leading, spacing: 8) {
-                    if filteredBookmarks.count > 0 {
-                        BookmarkList(cardId: self.cardToAdd?.id, filteredBookmarks: filteredBookmarks, isViewOnly: isViewOnly, onDeleteBookmark: deleteBookmark, onEditBookmark: { bookmark in
-                            self.temporaryBookmark = bookmark
-                        }, delegate: self)
-                        .id(refreshID)
-                    } else {
-                        VStack(alignment: .center, spacing: 16) {
-                            Spacer()
-                            Text("You don't have any bookmarks!")
-                                .multilineTextAlignment(.center)
-                                .font(.headline)
-                                .padding(.horizontal)
-                            Text("Here are a few ideas for your bookmarks: \"Cards you would like to have\", \"My Powerful Deck\", or \"Stellars\"")
-                                .multilineTextAlignment(.center)
-                                .font(.headline)
-                                .padding(.horizontal)
-                            Spacer()
-                        }
-                        
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 8) {
+                if filteredBookmarks.count > 0 {
+                    BookmarkList(cardId: self.cardToAdd?.id, filteredBookmarks: filteredBookmarks, isViewOnly: isViewOnly, onDeleteBookmark: deleteBookmark, onEditBookmark: { bookmark in
+                        self.temporaryBookmark = bookmark
+                    }, delegate: self)
+                    .id(refreshID)
+                } else {
+                    VStack(alignment: .center, spacing: 16) {
+                        Spacer()
+                        Text("You don't have any bookmarks!")
+                            .multilineTextAlignment(.center)
+                            .font(.headline)
+                            .padding(.horizontal)
+                        Text("Here are a few ideas for your bookmarks: \"Cards you would like to have\", \"My Powerful Deck\", or \"Stellars\"")
+                            .multilineTextAlignment(.center)
+                            .font(.headline)
+                            .padding(.horizontal)
+                        Spacer()
                     }
+                    
                 }
-                .frame(maxWidth: .infinity)
+            }
+            .frame(maxWidth: .infinity)
             .searchable(text: $searchText, placement: .automatic, prompt: "Search by Name")
             .navigationTitle(navigationTitle)
             .background(Color("backgroundBase"))
@@ -90,6 +90,14 @@ struct BookmarkView: View {
         }
         .onAppear {
             loadBookmarks()
+            NotificationCenter.default.addObserver(
+                forName: .bookmarkDataDidChange,
+                object: nil,
+                queue: nil) { [self] _ in
+                    // Handle the notification by updating the view's data
+                    self.loadBookmarks() // Or perform any necessary updates
+                    
+                }
         }
         .onDisappear {
             self.addOrRemoveCardFromBookmarks()

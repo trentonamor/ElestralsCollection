@@ -87,6 +87,7 @@ extension BookmarkView {
         } catch {
             print("Failed to update card and bookmarks relationship: \(error)")
         }
+        NotificationCenter.default.post(name: .bookmarkDataDidChange, object: nil)
     }
 
 
@@ -130,6 +131,7 @@ extension BookmarkView: EditBookmarkViewDelegate {
         } catch {
             print("Failed to save bookmark: \(error)")
         }
+        NotificationCenter.default.post(name: .bookmarkDataDidChange, object: nil)
     }
     
     func deleteBookmark(_ bookmark: BookmarkModel) {
@@ -149,7 +151,7 @@ extension BookmarkView: EditBookmarkViewDelegate {
                 try? managedObjectContext.save()
             }
         }
-
+        NotificationCenter.default.post(name: .bookmarkDataDidChange, object: nil)
     }
 }
 
@@ -161,4 +163,8 @@ extension BookmarkView: BookmarkCellDelegate {
             self.selectedBookmarkIDs.insert(bookmark.id)
         }
     }
+}
+
+extension Notification.Name {
+    static let bookmarkDataDidChange = Notification.Name("BookmarkDataDidChange")
 }
