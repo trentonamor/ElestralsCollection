@@ -93,5 +93,21 @@ extension ElestralCard: CustomStringConvertible {
             return name
         }
     }
+    
+    func updateCardCount(inBookmark bookmarkId: UUID, byCount: Int) {
+        guard let _ = cardsInDeck[bookmarkId] else {
+            cardsInDeck[bookmarkId] = 1
+            return
+        }
+        cardsInDeck[bookmarkId]! += byCount
+        
+        if cardsInDeck[bookmarkId] == 0 {
+            cardsInDeck.removeValue(forKey: bookmarkId)
+        }
+    }
+    
+    func getCount(forBookmark bookmarkId: UUID) -> Int {
+        return cardsInDeck[bookmarkId] ?? 0
+    }
 
 }

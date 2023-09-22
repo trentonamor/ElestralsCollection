@@ -12,7 +12,7 @@ import FirebaseStorage
 import FirebaseFirestore
 
 struct DeckView: View {
-    init(subset: [ElestralCard], viewTitle: String = "My Deck", noResultsText: String = "No Cards found, start collecting to see cards appear here!", showOwnedIndicator: Bool = true, showNumberOwned: Bool = true) {
+    init(subset: [ElestralCard], viewTitle: String = "My Deck", noResultsText: String = "No Cards found, start collecting to see cards appear here!", showOwnedIndicator: Bool = true, showNumberOwned: Bool = true, bookmarkId: UUID) {
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
         appearance.titleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
@@ -22,6 +22,7 @@ struct DeckView: View {
         self.noResultsText = noResultsText
         self.showNumberOwned = showNumberOwned
         self.showOwnedIndicator = showOwnedIndicator
+        self.bookmarkId = bookmarkId
     }
     
     var noResultsText: String = ""
@@ -29,17 +30,30 @@ struct DeckView: View {
     let viewTitle: String
     let showNumberOwned: Bool
     let showOwnedIndicator: Bool
+    let bookmarkId: UUID
     
     private var spiritCards: [ElestralCard] {
-        return subset.filter { $0.cardType == "spirit" }
+        return subset.filter { $0.cardType.lowercased() == "spirit" }
+    }
+    
+    private var spiritTotal: Int {
+        self.getTotalInBookmark(cards: self.spiritCards, bookmarkId: self.bookmarkId)
     }
 
     private var elestralCards: [ElestralCard] {
-        return subset.filter { $0.cardType == "elestral" }
+        return subset.filter { $0.cardType.lowercased() == "elestral" }
+    }
+    
+    private var elestralTotal: Int {
+        self.getTotalInBookmark(cards: self.elestralCards, bookmarkId: self.bookmarkId)
     }
 
-    private var otherCards: [ElestralCard] {
-        return subset.filter { $0.cardType != "spirit" && $0.cardType != "elestral" }
+    private var runeCards: [ElestralCard] {
+        return subset.filter { $0.cardType.lowercased() != "spirit" && $0.cardType.lowercased() != "elestral" }
+    }
+    
+    private var runeTotal: Int {
+        self.getTotalInBookmark(cards: self.runeCards, bookmarkId: self.bookmarkId)
     }
     
     @EnvironmentObject var data: CardStore
@@ -65,7 +79,7 @@ struct DeckView: View {
                 LazyVStack(spacing: 16) {
                     // Section for Spirit cards
                     Section(content: {
-                        CardGridView(
+                        DeckCardGridView(
                             title: self.viewTitle,
                             subset: spiritCards,
                             searchText: $searchText,
@@ -75,17 +89,17 @@ struct DeckView: View {
                             selectedCard: $selectedCard,
                             noResultsString: "",
                             showOwnedIndicator: self.showOwnedIndicator,
-                            showNumberOwned: self.showNumberOwned
+                            showNumberOwned: self.showNumberOwned,
+                            bookmarkId: self.bookmarkId
                         )
                     }, header: {
                         HStack(alignment: .center, content: {
-                            let total = spiritCards.map { $0.numberOwned }.reduce(0, +)
                             Group {
-                                if total <= 20 {
-                                    Text("Spirit Cards: \(total) of 20")
+                                if self.spiritTotal <= 20 {
+                                    Text("Spirit Cards: \(self.spiritTotal) of 20")
                                         .foregroundColor(.secondary)
                                 } else {
-                                    Text("Spirit Cards: \(total) of 20")
+                                    Text("Spirit Cards: \(self.spiritTotal) of 20")
                                         .foregroundColor(.red)
                                 }
                             }
@@ -94,9 +108,9 @@ struct DeckView: View {
                     
                     // Section for Elestral cards
                     Section(content: {
-                        CardGridView(
+                        DeckCardGridView(
                             title: self.viewTitle,
-                            subset: spiritCards,
+                            subset: elestralCards,
                             searchText: $searchText,
                             presentFilters: $presentSearch,
                             filtersViewModel: filtersViewModel,
@@ -104,21 +118,27 @@ struct DeckView: View {
                             selectedCard: $selectedCard,
                             noResultsString: "",
                             showOwnedIndicator: self.showOwnedIndicator,
-                            showNumberOwned: self.showNumberOwned
+                            showNumberOwned: self.showNumberOwned,
+                            bookmarkId: self.bookmarkId
                         )
                     }, header: {
                         HStack(alignment: .center, content: {
-                            let total = spiritCards.map { $0.numberOwned }.reduce(0, +)
-                            Text("Elestral Cards: \(total)")
-                                .foregroundColor(.secondary)
+                            let remaining = 40 - self.runeTotal
+                            if remaining >= self.elestralTotal {
+                                Text("Elestral Cards: \(self.elestralTotal) of \(remaining)")
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Text("Elestral Cards: \(self.elestralTotal) of \(remaining)")
+                                    .foregroundColor(.red)
+                            }
                         })
                     })
                     
                     // Section for other cards
                     Section(content: {
-                        CardGridView(
+                        DeckCardGridView(
                             title: self.viewTitle,
-                            subset: spiritCards,
+                            subset: runeCards,
                             searchText: $searchText,
                             presentFilters: $presentSearch,
                             filtersViewModel: filtersViewModel,
@@ -126,13 +146,19 @@ struct DeckView: View {
                             selectedCard: $selectedCard,
                             noResultsString: "",
                             showOwnedIndicator: self.showOwnedIndicator,
-                            showNumberOwned: self.showNumberOwned
+                            showNumberOwned: self.showNumberOwned,
+                            bookmarkId: self.bookmarkId
                         )
                     }, header: {
                         HStack(alignment: .center, content: {
-                            let total = spiritCards.map { $0.numberOwned }.reduce(0, +)
-                            Text("Rune Cards: \(total)")
-                                .foregroundColor(.secondary)
+                            let remaining = 40 - self.elestralTotal
+                            if remaining >= self.runeTotal {
+                                Text("Rune Cards: \(self.runeTotal) of \(remaining)")
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Text("Rune Cards: \(self.runeTotal) of \(remaining)")
+                                    .foregroundColor(.red)
+                            }
                         })
                     })
                 }
@@ -153,14 +179,14 @@ struct DeckView: View {
         }
         .hiddenNavigationBarStyle()
         .sheet(item: $selectedCard) { selectedCard in
-            CardDetailView(card: selectedCard)
+            DeckCardDetailView(card: selectedCard, bookmarkId: bookmarkId)
         }
     }
 }
 
 struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckView(subset: [])
+        DeckView(subset: [], bookmarkId: UUID())
     }
 }
 

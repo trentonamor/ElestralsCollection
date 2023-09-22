@@ -47,8 +47,9 @@ struct BookmarkList: View {
                             DeckView(subset: bookmark.cards,
                                            viewTitle: bookmark.name,
                                            noResultsText: bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters.",
-                                           showOwnedIndicator: bookmark.showOwnedIndicator,
-                                           showNumberOwned: true)
+                                           showOwnedIndicator: false,
+                                           showNumberOwned: true,
+                                     bookmarkId: bookmark.id)
                         }
                     }, label: {
                         BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: false, delegate: delegate)

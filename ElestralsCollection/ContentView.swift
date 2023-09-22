@@ -15,7 +15,7 @@ struct ContentView: View {
                 Image("Launch")
                 .resizable()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea(.all)
+                .ignoresSafeArea()
                 .scaledToFill()
             }
         } else {

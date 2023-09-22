@@ -23,6 +23,9 @@
 		2F5AC09F2ABCA5F900D1571C /* BookmarkListExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */; };
 		2F5AC0A62ABCE1DE00D1571C /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC0A52ABCE1DE00D1571C /* DeckView.swift */; };
 		2F5AC0BC2ABD353600D1571C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AC0BB2ABD353600D1571C /* LaunchScreen.storyboard */; };
+		2F5AC0BF2ABD3E4E00D1571C /* DeckCardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC0BE2ABD3E4E00D1571C /* DeckCardGridView.swift */; };
+		2F5AC0C12ABD3E7400D1571C /* DeckCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC0C02ABD3E7400D1571C /* DeckCardView.swift */; };
+		2F5AC0C32ABD408100D1571C /* DeckCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC0C22ABD408100D1571C /* DeckCardDetailView.swift */; };
 		2F6776702AB2291900DCCA33 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */; };
 		2F6776722AB22A8300DCCA33 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6776712AB22A8300DCCA33 /* BookmarkCellView.swift */; };
 		2F6776762AB23ACF00DCCA33 /* EditBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6776752AB23ACF00DCCA33 /* EditBookmarkView.swift */; };
@@ -61,6 +64,7 @@
 		2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDC930A2A472B03001B8E5A /* CardStore.swift */; };
 		2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */; };
 		2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */; };
+		2FDCCA4B2ABE043A0064D051 /* DeckViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */; };
 		2FDFB20D2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB20B2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld */; };
 		2FDFB20F2AB4D76F002E5A3D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */; };
 		2FDFB2112AB4E13E002E5A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */; };
@@ -111,6 +115,9 @@
 		2F5AC0A52ABCE1DE00D1571C /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		2F5AC0A92ABD224900D1571C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2F5AC0BB2ABD353600D1571C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2F5AC0BE2ABD3E4E00D1571C /* DeckCardGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCardGridView.swift; sourceTree = "<group>"; };
+		2F5AC0C02ABD3E7400D1571C /* DeckCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCardView.swift; sourceTree = "<group>"; };
+		2F5AC0C22ABD408100D1571C /* DeckCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCardDetailView.swift; sourceTree = "<group>"; };
 		2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		2F6776712AB22A8300DCCA33 /* BookmarkCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		2F6776752AB23ACF00DCCA33 /* EditBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookmarkView.swift; sourceTree = "<group>"; };
@@ -150,6 +157,7 @@
 		2FC773302AA280D3003D3D9F /* LineSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparator.swift; sourceTree = "<group>"; };
 		2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBar.swift; sourceTree = "<group>"; };
 		2FDC930A2A472B03001B8E5A /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
+		2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewExtensions.swift; sourceTree = "<group>"; };
 		2FDFB20C2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElestralsCoreData.xcdatamodel; sourceTree = "<group>"; };
 		2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,9 +211,19 @@
 				2F7C93452A33D5C90044F189 /* CollectionView.swift */,
 				2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */,
 				2F6A4BED2AB1764F0001AC12 /* CollectionTabView.swift */,
-				2F5AC0A52ABCE1DE00D1571C /* DeckView.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		2F5AC0BD2ABD3CB900D1571C /* Deck */ = {
+			isa = PBXGroup;
+			children = (
+				2F5AC0A52ABCE1DE00D1571C /* DeckView.swift */,
+				2F5AC0BE2ABD3E4E00D1571C /* DeckCardGridView.swift */,
+				2F5AC0C02ABD3E7400D1571C /* DeckCardView.swift */,
+				2F5AC0C22ABD408100D1571C /* DeckCardDetailView.swift */,
+			);
+			path = Deck;
 			sourceTree = "<group>";
 		};
 		2FA297592A9525B50006BAD7 /* Frameworks */ = {
@@ -238,6 +256,7 @@
 				2F6A4BEF2AB176830001AC12 /* CollectionTabViewExtensions.swift */,
 				2F01F5482AB60E9E00F9334F /* BookmarkViewExtensions.swift */,
 				2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */,
+				2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,7 +333,6 @@
 		2FB59AB2293713DB00F14EFB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				2FA297612A9531140006BAD7 /* Cards */,
 				2FE3E1C7293809FA009B14C8 /* Carousel */,
 				2FB59AB3293713DB00F14EFB /* Grid */,
 				2FE3E1BE2937B278009B14C8 /* Toggle+CheckboxStyle.swift */,
@@ -357,6 +375,8 @@
 		2FB59AB9293713F800F14EFB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F5AC0BD2ABD3CB900D1571C /* Deck */,
+				2FA297612A9531140006BAD7 /* Cards */,
 				2F1FA6122950FC9400E8216B /* CollectionView */,
 				2FE3E1C3293808AF009B14C8 /* Elestral */,
 				2FE3E1C2293808A6009B14C8 /* Bookmark */,
@@ -569,6 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FE2307929392FC900AC4248 /* GenericCardView.swift in Sources */,
+				2F5AC0BF2ABD3E4E00D1571C /* DeckCardGridView.swift in Sources */,
 				2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */,
 				2F01F5492AB60E9E00F9334F /* BookmarkViewExtensions.swift in Sources */,
 				2FE3E1BD2937AB64009B14C8 /* FiltersView.swift in Sources */,
@@ -609,7 +630,10 @@
 				2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */,
 				2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */,
 				2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */,
+				2F5AC0C32ABD408100D1571C /* DeckCardDetailView.swift in Sources */,
 				2FDFB20F2AB4D76F002E5A3D /* DataManager.swift in Sources */,
+				2F5AC0C12ABD3E7400D1571C /* DeckCardView.swift in Sources */,
+				2FDCCA4B2ABE043A0064D051 /* DeckViewExtensions.swift in Sources */,
 				2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */,
 				2FA297712A99450F0006BAD7 /* ElestralsViewExtensions.swift in Sources */,
 				2FA297632A9531200006BAD7 /* CardDetailView.swift in Sources */,
