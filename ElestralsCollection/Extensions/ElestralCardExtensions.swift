@@ -71,6 +71,14 @@ extension ElestralCard: CustomStringConvertible {
         return self.numberOwned
     }
     
+    func addToBookmarks(bookmark: BookmarkModel) {
+        if self.bookmarks.contains(where: {$0.id == bookmark.id}) {
+            self.bookmarks.removeAll(where: {$0.id == bookmark.id})
+        }
+        
+        self.bookmarks.append(bookmark)
+    }
+    
     func getBookmarks() -> String {
         switch bookmarks.count {
         case 0:

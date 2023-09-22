@@ -68,7 +68,7 @@ extension DeckCardDetailView {
 
                     // Create the bookmark model and add to the card's bookmarks.
                     let newBookmarkModel = BookmarkModel(from: bookmarkEntity, cardStore: self.cardStore)
-                    card.bookmarks.append(newBookmarkModel)
+                    card.addToBookmarks(bookmark: newBookmarkModel)
                     if newBookmarkModel.type == .deck {
                         card.cardsInDeck[newBookmarkModel.id] = 1
                     }
