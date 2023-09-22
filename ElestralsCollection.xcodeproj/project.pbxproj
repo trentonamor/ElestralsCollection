@@ -22,6 +22,7 @@
 		2F52FDC22AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F5AC09F2ABCA5F900D1571C /* BookmarkListExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */; };
 		2F5AC0A62ABCE1DE00D1571C /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AC0A52ABCE1DE00D1571C /* DeckView.swift */; };
+		2F5AC0BC2ABD353600D1571C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AC0BB2ABD353600D1571C /* LaunchScreen.storyboard */; };
 		2F6776702AB2291900DCCA33 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */; };
 		2F6776722AB22A8300DCCA33 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6776712AB22A8300DCCA33 /* BookmarkCellView.swift */; };
 		2F6776762AB23ACF00DCCA33 /* EditBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6776752AB23ACF00DCCA33 /* EditBookmarkView.swift */; };
@@ -31,7 +32,6 @@
 		2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */; };
 		2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */; };
 		2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2975A2A9525B50006BAD7 /* FirebaseStorage */; };
-		2FA2975E2A95262F0006BAD7 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */; };
 		2FA297602A9527510006BAD7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2975F2A9527510006BAD7 /* CardView.swift */; };
 		2FA297632A9531200006BAD7 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297622A9531200006BAD7 /* CardDetailView.swift */; };
 		2FA297652A97CBD70006BAD7 /* CardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297642A97CBD70006BAD7 /* CardGridView.swift */; };
@@ -77,7 +77,6 @@
 		2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CA29380AB8009B14C8 /* DistributionCard.swift */; };
 		2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CC29380B00009B14C8 /* InfoCard.swift */; };
 		2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEAE6EB2938123500B9238A /* GridSection.swift */; };
-		2FF3CBA22AB169840012531B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF3CBA12AB169840012531B /* AlertToast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +109,8 @@
 		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListExtensions.swift; sourceTree = "<group>"; };
 		2F5AC0A52ABCE1DE00D1571C /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
+		2F5AC0A92ABD224900D1571C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2F5AC0BB2ABD353600D1571C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		2F6776712AB22A8300DCCA33 /* BookmarkCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		2F6776752AB23ACF00DCCA33 /* EditBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookmarkView.swift; sourceTree = "<group>"; };
@@ -172,10 +173,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FA2975E2A95262F0006BAD7 /* SDWebImageSwiftUI in Frameworks */,
 				2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */,
 				2F1B11002AAE195C00072C7C /* DGCharts in Frameworks */,
-				2FF3CBA22AB169840012531B /* AlertToast in Frameworks */,
 				2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */,
 				2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -269,8 +268,10 @@
 		2FB59A7C293712A200F14EFB /* ElestralsCollection */ = {
 			isa = PBXGroup;
 			children = (
+				2F5AC0A92ABD224900D1571C /* Info.plist */,
 				2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */,
 				2FDFB20B2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld */,
+				2F5AC0BB2ABD353600D1571C /* LaunchScreen.storyboard */,
 				2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */,
 				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
 				2FB59A84293712A200F14EFB /* ContentView.swift */,
@@ -443,9 +444,7 @@
 				2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */,
 				2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */,
 				2FA2975A2A9525B50006BAD7 /* FirebaseStorage */,
-				2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */,
 				2F1B10FF2AAE195C00072C7C /* DGCharts */,
-				2FF3CBA12AB169840012531B /* AlertToast */,
 			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
@@ -521,9 +520,7 @@
 			mainGroup = 2FB59A71293712A200F14EFB;
 			packageReferences = (
 				2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */,
-				2FF3CBA02AB169840012531B /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
@@ -542,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */,
+				2F5AC0BC2ABD353600D1571C /* LaunchScreen.storyboard in Resources */,
 				2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */,
 				2FB59A87293712A300F14EFB /* Colors.xcassets in Resources */,
 			);
@@ -785,12 +783,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ElestralsCollection/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -823,12 +823,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ElestralsCollection/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -988,28 +990,12 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.0.0;
-			};
-		};
-		2FF3CBA02AB169840012531B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elai950/AlertToast.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1025,11 +1011,6 @@
 			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
-		2FA2975D2A95262F0006BAD7 /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FA2975C2A95262F0006BAD7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
 		2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1039,11 +1020,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
-		};
-		2FF3CBA12AB169840012531B /* AlertToast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FF3CBA02AB169840012531B /* XCRemoteSwiftPackageReference "AlertToast" */;
-			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -9,7 +9,6 @@ import SwiftUI
 import UIKit
 import FirebaseStorage
 import FirebaseFirestore
-import SDWebImageSwiftUI
 
 struct CollectionView: View {
     init(subset: [ElestralCard], viewTitle: String = "My Collection", noResultsText: String = "No Cards found, start collecting to see cards appear here!", showOwnedIndicator: Bool = true, showNumberOwned: Bool = true) {

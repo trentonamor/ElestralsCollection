@@ -11,8 +11,13 @@ struct ContentView: View {
     
     var body: some View {
         if cardStore.isLoading {
-            ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(alignment: .center) {
+                Image("Launch")
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea(.all)
+                .scaledToFill()
+            }
         } else {
             TabView(selection: $selectedTab) {
                 ElestralsView()
