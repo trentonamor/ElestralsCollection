@@ -114,6 +114,7 @@ struct EditBookmarkView: View {
                                 Button(action: {
                                     self.type = .deck
                                     self.model.type = .deck
+                                    self.showOwnedIndicator = false
                                 }, label: {
                                     Text("Deck")
                                 })
@@ -134,6 +135,7 @@ struct EditBookmarkView: View {
                             Toggle("", isOn: self.$showOwnedIndicator)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: self.color))
+                                .disabled(self.type == .deck)
                         }
                         .padding(12)
                         .background(.white)

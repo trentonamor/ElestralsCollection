@@ -60,6 +60,7 @@ struct CollectionView: View {
                 showOwnedIndicator: self.showOwnedIndicator,
                 showNumberOwned: self.showNumberOwned
             )
+            .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
             .sheet(isPresented: $presentFilters, content: {
                 CollectionFiltersView(filters: $filtersViewModel.filters)
             })

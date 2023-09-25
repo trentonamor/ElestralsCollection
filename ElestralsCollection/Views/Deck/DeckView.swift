@@ -31,6 +31,7 @@ struct DeckView: View {
     let showNumberOwned: Bool
     let showOwnedIndicator: Bool
     let bookmarkId: UUID
+    @EnvironmentObject var cardStore: CardStore
     
     private var spiritCards: [ElestralCard] {
         return subset.filter { $0.cardType.lowercased() == "spirit" }
@@ -165,8 +166,9 @@ struct DeckView: View {
             }
             .background(Color("backgroundBase"))
             .sheet(isPresented: $presentSearch, content: {
-                SearchView()
+                CollectionView(subset: cardStore.cards, viewTitle: "Search", noResultsText: "We couldn't find any cards based on your search and the current filters.")
             })
+            .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {
