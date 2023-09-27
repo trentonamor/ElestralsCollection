@@ -5,11 +5,29 @@ import MessageUI
 struct SettingsView: View {
     @State private var isShowingMailView = false
     @State private var isShowingAlert = false
+    @State private var isShowingSubscription = false
     let mailComposerDelegate = MailComposerDelegate()
     
     var body: some View {
         NavigationStack {
             Form {
+                List {
+                    Button(action: {
+                        self.isShowingSubscription = true
+                    }, label: {
+                        Text("Subscribe to Caster Pro")
+                            .padding(.vertical, 16)
+                            .font(.title2)
+                            .foregroundStyle(.white)
+                            .bold()
+                            .background(content: {
+                                Image("WaterBackground")
+                            })
+                    })
+                    .sheet(isPresented: self.$isShowingSubscription, content: {
+                        UpsellView()
+                    })
+                }
                 Section(header: Text("About")) {
                     List {
                         Button(action: {

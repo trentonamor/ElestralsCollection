@@ -16,6 +16,9 @@
 		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
 		2F3570BE2ABA42220068E2C7 /* BookmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */; };
+		2F3D9F202AC4BEAA00733D24 /* UpsellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F1F2AC4BEAA00733D24 /* UpsellView.swift */; };
+		2F3D9F222AC4C0F200733D24 /* StoreSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F212AC4C0F200733D24 /* StoreSelectionCell.swift */; };
+		2F3D9F242AC4D17800733D24 /* FeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F232AC4D17800733D24 /* FeatureCell.swift */; };
 		2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */; };
 		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
@@ -111,6 +114,9 @@
 		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
 		2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkList.swift; sourceTree = "<group>"; };
+		2F3D9F1F2AC4BEAA00733D24 /* UpsellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellView.swift; sourceTree = "<group>"; };
+		2F3D9F212AC4C0F200733D24 /* StoreSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSelectionCell.swift; sourceTree = "<group>"; };
+		2F3D9F232AC4D17800733D24 /* FeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell.swift; sourceTree = "<group>"; };
 		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
 		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListExtensions.swift; sourceTree = "<group>"; };
@@ -217,6 +223,16 @@
 				2F6A4BED2AB1764F0001AC12 /* CollectionTabView.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		2F3D9F1E2AC4BE1100733D24 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				2F3D9F1F2AC4BEAA00733D24 /* UpsellView.swift */,
+				2F3D9F212AC4C0F200733D24 /* StoreSelectionCell.swift */,
+				2F3D9F232AC4D17800733D24 /* FeatureCell.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		2F5AC0BD2ABD3CB900D1571C /* Deck */ = {
@@ -381,6 +397,7 @@
 		2FB59AB9293713F800F14EFB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F3D9F1E2AC4BE1100733D24 /* Store */,
 				2F5AC0BD2ABD3CB900D1571C /* Deck */,
 				2FA297612A9531140006BAD7 /* Cards */,
 				2F1FA6122950FC9400E8216B /* CollectionView */,
@@ -607,6 +624,7 @@
 				2F6A4BEE2AB1764F0001AC12 /* CollectionTabView.swift in Sources */,
 				2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */,
 				2FC773312AA280D3003D3D9F /* LineSeparator.swift in Sources */,
+				2F3D9F222AC4C0F200733D24 /* StoreSelectionCell.swift in Sources */,
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
 				2FA297652A97CBD70006BAD7 /* CardGridView.swift in Sources */,
 				2FA297732A9945330006BAD7 /* GridSectionExtensions.swift in Sources */,
@@ -649,10 +667,12 @@
 				2FA297772A996FC70006BAD7 /* LabelView.swift in Sources */,
 				2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */,
 				2FA2976F2A9944E30006BAD7 /* ExpansionViewExtensions.swift in Sources */,
+				2F3D9F242AC4D17800733D24 /* FeatureCell.swift in Sources */,
 				2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */,
 				2FA297682A9944070006BAD7 /* CardImageLoader.swift in Sources */,
 				2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */,
 				2FB59AC3293713F800F14EFB /* ExpansionsView.swift in Sources */,
+				2F3D9F202AC4BEAA00733D24 /* UpsellView.swift in Sources */,
 				2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */,
 				2FA297602A9527510006BAD7 /* CardView.swift in Sources */,
 				2FE3E1BB2937A995009B14C8 /* FiltersViewModel.swift in Sources */,
@@ -827,7 +847,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -867,7 +887,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.3;

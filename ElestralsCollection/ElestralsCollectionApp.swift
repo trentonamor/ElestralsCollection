@@ -23,6 +23,7 @@ struct ElestralsCollectionApp: App {
             ContentView()
                 .environmentObject(elestralsCardData)
                 .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
+                .environment(\.colorScheme, .light)
         }
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {
