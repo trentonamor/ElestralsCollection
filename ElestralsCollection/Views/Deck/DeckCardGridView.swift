@@ -1,6 +1,13 @@
+//
+//  DeckCardGridView.swift
+//  ElestralsCollection
+//
+//  Created by Trenton Parrotte on 9/21/23.
+//
+
 import SwiftUI
 
-struct CardGridView: View {
+struct DeckCardGridView: View {
     let title: String
     let subset: [ElestralCard]
     let searchText: Binding<String>
@@ -11,6 +18,7 @@ struct CardGridView: View {
     let noResultsString: String
     var showOwnedIndicator: Bool = false
     var showNumberOwned: Bool = false
+    let bookmarkId: UUID
     
     @State private var currentImageLoaded: String = ""
     @EnvironmentObject var cardStore: CardStore
@@ -132,16 +140,7 @@ struct CardGridView: View {
                     LazyVGrid(columns: layout, spacing: 8) {
                         ForEach(filteredCards, id: \.self) { card in
                             ZStack {
-                                CardView(card: card, showOwnedIndicator: self.showOwnedIndicator, showNumberOwned: self.showNumberOwned)
-                                    .onTapGesture(count: 2) {
-                                        if card.numberOwned == 0 {
-                                            card.numberOwned += 1
-                                            cardStore.cardUpdated(card)
-                                        } else {
-                                            card.numberOwned = 0
-                                            cardStore.cardUpdated(card)
-                                        }
-                                    }
+                                DeckCardView(card: card, bookmarkId: bookmarkId, showOwnedIndicator: self.showOwnedIndicator, showNumberOwned: self.showNumberOwned)
                                     .onTapGesture {
                                         selectedCard.wrappedValue = card
                                     }
@@ -149,7 +148,6 @@ struct CardGridView: View {
                         }
                     }
                 }
-                .searchable(text: searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
                 .autocorrectionDisabled()
             }
         }
@@ -159,3 +157,4 @@ struct CardGridView: View {
         .background(Color("backgroundBase"))
     }
 }
+

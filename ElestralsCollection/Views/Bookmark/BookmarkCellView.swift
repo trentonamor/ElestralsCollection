@@ -55,7 +55,7 @@ struct BookmarkCellView: View {
                                 ProgressView(value: percentage)
                                 if percentage == 1 {
                                     Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(.green)
                                 }
                             }
                         }
@@ -81,7 +81,7 @@ struct BookmarkCellView: View {
             return AnyView(content
                 .onTapGesture {
                     self.didSelectCell.toggle()
-                    self.delegate?.selectBookmark(self.model)
+                    self.delegate?.selectBookmark(self.model, doSelect: self.didSelectCell)
                 })
         } else {
             return AnyView(content)

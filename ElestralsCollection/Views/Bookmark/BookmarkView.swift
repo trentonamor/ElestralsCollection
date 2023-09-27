@@ -7,7 +7,7 @@ protocol EditBookmarkViewDelegate {
 
 protocol BookmarkCellDelegate {
     func saveBookmark(_ bookmark: BookmarkModel)
-    func selectBookmark(_ bookmark: BookmarkModel)
+    func selectBookmark(_ bookmark: BookmarkModel, doSelect: Bool)
 }
 
 struct BookmarkView: View {

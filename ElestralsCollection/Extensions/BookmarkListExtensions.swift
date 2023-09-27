@@ -11,7 +11,7 @@ extension BookmarkList {
     func doSelectCell(bookmark: BookmarkModel) -> Bool {
         let doesContain = bookmark.cards.contains(where: { $0.id == cardId})
         if doesContain {
-            delegate?.selectBookmark(bookmark)
+            delegate?.selectBookmark(bookmark, doSelect: true)
         }
         return doesContain
     }

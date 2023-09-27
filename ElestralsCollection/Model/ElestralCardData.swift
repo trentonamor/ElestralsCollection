@@ -24,6 +24,8 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
     @Published var runeType: String?
     @Published var publishedDate: Date
     @Published var bookmarks: [BookmarkModel]
+    @Published var cardsInDeck: [UUID: Int] = [:] // Dictionary to store counts per deck
+
     var art: String {
         guard UIImage(named: cardNumber) != nil else { return "" }
         return cardNumber

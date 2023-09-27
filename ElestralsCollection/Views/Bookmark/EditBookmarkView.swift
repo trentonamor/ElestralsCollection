@@ -95,13 +95,14 @@ struct EditBookmarkView: View {
                             Text("Type")
                             Spacer()
                             Menu(content: {
-                                /*
+                                
                                 Button(action: {
                                     self.type = .standard
                                     self.model.type = .standard
                                 }, label: {
                                     Text("Standard")
                                 })
+                                /*
                                 Button(action: {
                                     self.type = .smart
                                     self.model.type = .smart
@@ -111,10 +112,11 @@ struct EditBookmarkView: View {
                                  */
                                  
                                 Button(action: {
-                                    self.type = .standard
-                                    self.model.type = .standard
+                                    self.type = .deck
+                                    self.model.type = .deck
+                                    self.showOwnedIndicator = false
                                 }, label: {
-                                    Text("Standard")
+                                    Text("Deck")
                                 })
                             }, label: {
                                 Text(self.type.rawValue)
@@ -133,6 +135,7 @@ struct EditBookmarkView: View {
                             Toggle("", isOn: self.$showOwnedIndicator)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: self.color))
+                                .disabled(self.type == .deck)
                         }
                         .padding(12)
                         .background(.white)

@@ -1,25 +1,27 @@
 //
-//  CardView.swift
+//  DeckCardView.swift
 //  ElestralsCollection
 //
-//  Created by Trenton Parrotte on 8/22/23.
+//  Created by Trenton Parrotte on 9/21/23.
 //
 
 import SwiftUI
 import Foundation
 
-struct CardView: View {
+struct DeckCardView: View {
     @State var imageUrl: URL?
     
     let card: ElestralCard
+    let bookmarkId: UUID
     let cardImageLoader: CardImageLoader = CardImageLoader()
     
     let cornerRadius: CGFloat = 12
     var showNumberOwned: Bool = false
     var showOwnedIndicator: Bool = false
     
-    init(card: ElestralCard, showOwnedIndicator: Bool = false, showNumberOwned: Bool = false) {
+    init(card: ElestralCard, bookmarkId: UUID, showOwnedIndicator: Bool = false, showNumberOwned: Bool = false) {
         self.card = card
+        self.bookmarkId = bookmarkId
         self.imageUrl = cardImageLoader.imageUrls[card.id]
         self.showNumberOwned = showNumberOwned
         self.showOwnedIndicator = showOwnedIndicator
@@ -84,7 +86,7 @@ struct CardView: View {
                 }
                 
                 // Position circle in the top right-hand corner
-            if card.numberOwned >= 1 && self.showNumberOwned {
+            if card.cardsInDeck[bookmarkId] ?? 0 >= 1 && self.showNumberOwned {
                     VStack {
                         HStack {
                             Spacer()
@@ -94,7 +96,7 @@ struct CardView: View {
                                 .shadow(color: Color.black, radius: 4, x: 0, y: 2)
                                 .padding([.horizontal, .top], 8)
                                 .overlay {
-                                    Text(card.numberOwned.description)
+                                    Text(card.cardsInDeck[bookmarkId]?.description ?? "0")
                                         .font(.system(size: 10))
                                         .minimumScaleFactor(0.01)
                                         .lineLimit(1)
@@ -113,3 +115,4 @@ struct CardView: View {
 
 
 }
+

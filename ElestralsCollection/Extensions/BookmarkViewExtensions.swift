@@ -57,7 +57,10 @@ extension BookmarkView {
                 cards.insert(cardEntity)
                 bookmarkEntity.cards = cards as NSSet
                 if let bookmark = self.bookmarkModels.first(where: {$0.id.uuidString == bookmarkEntity.id?.uuidString}) {
-                    card.bookmarks.append(bookmark)
+                    card.addToBookmarks(bookmark: bookmark)
+                    if bookmark.type == .deck {
+                        card.cardsInDeck[bookmark.id] = 1
+                    }
                 }
             }
             
@@ -70,8 +73,12 @@ extension BookmarkView {
                 var cards = bookmarkEntity.cards as? Set<Card> ?? Set()
                 cards.remove(cardEntity)
                 bookmarkEntity.cards = cards as NSSet
-                if let index = card.bookmarks.firstIndex(where: { $0.id.uuidString == bookmarkEntity.id?.uuidString }) {
+                if let index = card.bookmarks.firstIndex(where: { $0.id.uuidString == bookmarkEntity.id?.uuidString }),
+                   let bookmark = self.bookmarkModels.first(where: {$0.id.uuidString == bookmarkEntity.id?.uuidString}) {
                     card.bookmarks.remove(at: index)
+                    if bookmark.type == .deck {
+                        card.cardsInDeck.removeValue(forKey: bookmark.id)
+                    }
                 }
             }
             
@@ -156,11 +163,13 @@ extension BookmarkView: EditBookmarkViewDelegate {
 }
 
 extension BookmarkView: BookmarkCellDelegate {
-    func selectBookmark(_ bookmark: BookmarkModel) {
-        if self.selectedBookmarkIDs.contains(bookmark.id) {
-            self.selectedBookmarkIDs.remove(bookmark.id)
-        } else {
-            self.selectedBookmarkIDs.insert(bookmark.id)
+    func selectBookmark(_ bookmark: BookmarkModel, doSelect: Bool) {
+        DispatchQueue.main.async {
+            if doSelect {
+                self.selectedBookmarkIDs.insert(bookmark.id)
+            } else {
+                self.selectedBookmarkIDs.remove(bookmark.id)
+            }
         }
     }
 }
