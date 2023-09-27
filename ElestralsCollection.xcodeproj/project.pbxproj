@@ -66,6 +66,7 @@
 		2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */; };
 		2FDCCA4B2ABE043A0064D051 /* DeckViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */; };
 		2FDCCA4D2AC490FE0064D051 /* CardViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCCA4C2AC490FE0064D051 /* CardViewExtensions.swift */; };
+		2FDCCA4F2AC4A4910064D051 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCCA4E2AC4A4910064D051 /* ToastView.swift */; };
 		2FDFB20D2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB20B2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld */; };
 		2FDFB20F2AB4D76F002E5A3D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */; };
 		2FDFB2112AB4E13E002E5A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */; };
@@ -160,6 +161,7 @@
 		2FDC930A2A472B03001B8E5A /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewExtensions.swift; sourceTree = "<group>"; };
 		2FDCCA4C2AC490FE0064D051 /* CardViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewExtensions.swift; sourceTree = "<group>"; };
+		2FDCCA4E2AC4A4910064D051 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		2FDFB20C2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElestralsCoreData.xcdatamodel; sourceTree = "<group>"; };
 		2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				2FA297762A996FC70006BAD7 /* LabelView.swift */,
 				2FC773302AA280D3003D3D9F /* LineSeparator.swift */,
 				2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */,
+				2FDCCA4E2AC4A4910064D051 /* ToastView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */,
 				2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */,
 				2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */,
+				2FDCCA4F2AC4A4910064D051 /* ToastView.swift in Sources */,
 				2F5AC0C32ABD408100D1571C /* DeckCardDetailView.swift in Sources */,
 				2FDFB20F2AB4D76F002E5A3D /* DataManager.swift in Sources */,
 				2F5AC0C12ABD3E7400D1571C /* DeckCardView.swift in Sources */,

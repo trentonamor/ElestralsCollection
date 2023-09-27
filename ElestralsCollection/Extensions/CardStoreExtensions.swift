@@ -92,4 +92,30 @@ extension CardStore {
             card.bookmarks = self.fetchBookmarksForCard(cardID: card.id, context: context)
         }
     }
+    
+    func cleanAndFormatEffect(effect: String) -> String {
+        let replacements: [String: String] = [
+            "A": "(Air Symbol)",
+            "E": "(Earth Symbol)",
+            "F": "(Fire Symbol)",
+            "I": "(Ice Symbol)",
+            "J": "(Attach Symbol)",
+            "O": "(Defense Symbol)",
+            "S": "(Stellar Symbol)",
+            "T": "(Thunder Symbol)",
+            "W": "(Water Symbol)",
+            "X": "(Any Element Symbol)"
+        ]
+        
+        var cleanedEffect = effect
+        for (key, value) in replacements {
+            cleanedEffect = cleanedEffect.replacingOccurrences(of: "<span class=\"elestrals-font\">\(key)</span>", with: value, options: .caseInsensitive)
+            cleanedEffect = cleanedEffect.replacingOccurrences(of: "<span class=\"elestrals-font\">\(key.lowercased())</span>", with: value, options: .caseInsensitive)
+        }
+        
+        cleanedEffect = cleanedEffect.replacingOccurrences(of: "``` embed", with: "")
+        cleanedEffect = cleanedEffect.replacingOccurrences(of: "\n```", with: "")
+        cleanedEffect = cleanedEffect.replacingOccurrences(of: "\n", with: " ")
+        return cleanedEffect
+    }
 }

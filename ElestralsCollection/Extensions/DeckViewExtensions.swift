@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension DeckView {
     func getTotalInBookmark(cards: [ElestralCard], bookmarkId: UUID) -> Int {
@@ -16,6 +17,62 @@ extension DeckView {
         }
         return total
     }
+    
+    func exportJson() {
+        let formatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            return formatter
+        }()
+        
+        var cardsData: [[String: Any]] = []
+        
+        for card in subset {
+            var cardRepresentation: [String: Any] = [
+                "name": card.name,
+                "effect": card.effect,
+                "elements": card.elements,
+                "subclasses": card.subclasses,
+                "artist": card.artist,
+                "cardSet": card.getCardSet(),
+                "cardNumber": card.cardNumber,
+                "rarity": card.getCardRarity(),
+                "cardType": card.cardType,
+                "publishedDate": formatter.string(from: card.publishedDate)
+            ]
+            
+            if let attack = card.attack, attack > 0 {
+                cardRepresentation["attack"] = card.attack
+            }
+            
+            if let defense = card.defense, defense > 0 {
+                cardRepresentation["defense"] = card.defense
+            }
+            
+            if let runeType = card.runeType, !runeType.isEmpty {
+                cardRepresentation["runeType"] = runeType
+            }
+            
+            // Get the count of this card in the deck from card.cardsInDeck[bookmarkId]
+            let cardCountInDeck = card.cardsInDeck[bookmarkId] ?? 0
+            
+            // Append the cardRepresentation to cardsData multiple times based on cardCountInDeck
+            for _ in 0..<cardCountInDeck {
+                cardsData.append(cardRepresentation)
+            }
+        }
+        
+        let jsonRepresentation = [bookmark.name: cardsData]
+        
+        if let jsonData = try? JSONSerialization.data(withJSONObject: jsonRepresentation, options: .prettyPrinted),
+           let jsonString = String(data: jsonData, encoding: .utf8) {
+            
+            UIPasteboard.general.string = jsonString
+        }
+    }
+    
+    
 }
 
 extension DeckCardDetailView {
@@ -35,7 +92,7 @@ extension DeckCardDetailView {
             return newCardEntity
         }
     }
-
+    
     
     func addOrRemoveBookmarks() {
         // Fetch the card from CoreData or ensure it exists.
@@ -65,7 +122,7 @@ extension DeckCardDetailView {
                     // Card is not in the bookmark, add it.
                     cards.insert(cardEntity)
                     bookmarkEntity.cards = cards as NSSet
-
+                    
                     // Create the bookmark model and add to the card's bookmarks.
                     let newBookmarkModel = BookmarkModel(from: bookmarkEntity, cardStore: self.cardStore)
                     card.addToBookmarks(bookmark: newBookmarkModel)
@@ -88,7 +145,7 @@ extension DeckCardDetailView {
         }
         NotificationCenter.default.post(name: .bookmarkDataDidChange, object: nil)
     }
-
-
-
+    
+    
+    
 }

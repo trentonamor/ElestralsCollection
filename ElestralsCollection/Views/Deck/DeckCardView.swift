@@ -71,7 +71,7 @@ struct DeckCardView: View {
                 }
             }
             
-            if card.cardsInDeck[bookmarkId] ?? 0 >= 1 && self.showOwnedIndicator {
+            if card.numberOwned >= 1 && self.showOwnedIndicator {
                     Circle()
                         .frame(width: 32, height: 32)
                         .foregroundColor(.white)
