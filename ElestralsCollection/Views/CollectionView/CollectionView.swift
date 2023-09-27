@@ -11,7 +11,7 @@ import FirebaseStorage
 import FirebaseFirestore
 
 struct CollectionView: View {
-    init(subset: [ElestralCard], viewTitle: String = "My Collection", noResultsText: String = "No Cards found, start collecting to see cards appear here!", showOwnedIndicator: Bool = true, showNumberOwned: Bool = true) {
+    init(subset: [ElestralCard], viewTitle: String = "My Collection", noResultsText: String = "No Cards found, start collecting to see cards appear here!", showOwnedIndicator: Bool = true, showNumberOwned: Bool = true, bookmark: BookmarkModel? = nil) {
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
         appearance.titleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
@@ -21,6 +21,7 @@ struct CollectionView: View {
         self.noResultsText = noResultsText
         self.showNumberOwned = showNumberOwned
         self.showOwnedIndicator = showOwnedIndicator
+        self.bookmark = bookmark
     }
 
     var noResultsText: String = ""
@@ -28,6 +29,7 @@ struct CollectionView: View {
     let viewTitle: String
     let showNumberOwned: Bool
     let showOwnedIndicator: Bool
+    let bookmark: BookmarkModel?
 
     @EnvironmentObject var data: CardStore
 
@@ -58,7 +60,8 @@ struct CollectionView: View {
                 selectedCard: $selectedCard,
                 noResultsString: self.noResultsText,
                 showOwnedIndicator: self.showOwnedIndicator,
-                showNumberOwned: self.showNumberOwned
+                showNumberOwned: self.showNumberOwned,
+                bookmark: self.bookmark
             )
             .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
             .sheet(isPresented: $presentFilters, content: {
@@ -72,7 +75,9 @@ struct CollectionView: View {
         }
         .hiddenNavigationBarStyle()
         .sheet(item: $selectedCard) { selectedCard in
-            CardDetailView(card: selectedCard)
+            if bookmark == nil {
+                CardDetailView(card: selectedCard)
+            }
         }
     }
 }

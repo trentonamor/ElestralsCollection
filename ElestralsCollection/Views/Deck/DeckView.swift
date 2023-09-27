@@ -12,17 +12,18 @@ import FirebaseStorage
 import FirebaseFirestore
 
 struct DeckView: View {
-    init(subset: [ElestralCard], viewTitle: String = "My Deck", noResultsText: String = "No Cards found, start collecting to see cards appear here!", showOwnedIndicator: Bool = true, showNumberOwned: Bool = true, bookmarkId: UUID) {
+    
+    init(bookmark: BookmarkModel, showOwnedIndicator: Bool, showNumberOwned: Bool) {
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
         appearance.titleTextAttributes = [.foregroundColor: UIColor(Color.blue)]
         UINavigationBar.appearance().standardAppearance = appearance
-        self.subset = subset
-        self.viewTitle = viewTitle
-        self.noResultsText = noResultsText
+        self.subset = bookmark.cards
+        self.viewTitle = bookmark.name
+        self.noResultsText = bookmark.cards.count == 0 ? "Looks like you haven't added a single card to this bookmark yet!" : "We couldn't find any cards based on your search and current filters."
         self.showNumberOwned = showNumberOwned
         self.showOwnedIndicator = showOwnedIndicator
-        self.bookmarkId = bookmarkId
+        self.bookmark = bookmark
     }
     
     var noResultsText: String = ""
@@ -30,8 +31,13 @@ struct DeckView: View {
     let viewTitle: String
     let showNumberOwned: Bool
     let showOwnedIndicator: Bool
-    let bookmarkId: UUID
+    let bookmark: BookmarkModel
     @EnvironmentObject var cardStore: CardStore
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    var bookmarkId: UUID {
+        self.bookmark.id
+    }
     
     private var spiritCards: [ElestralCard] {
         return subset.filter { $0.cardType.lowercased() == "spirit" }
@@ -166,7 +172,7 @@ struct DeckView: View {
             }
             .background(Color("backgroundBase"))
             .sheet(isPresented: $presentSearch, content: {
-                CollectionView(subset: cardStore.cards, viewTitle: "Search", noResultsText: "We couldn't find any cards based on your search and the current filters.")
+                CollectionView(subset: cardStore.cards, viewTitle: "Search", noResultsText: "We couldn't find any cards based on your search and the current filters.", bookmark: self.bookmark)
             })
             .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
             .toolbar {
@@ -186,9 +192,9 @@ struct DeckView: View {
     }
 }
 
-struct DeckView_Previews: PreviewProvider {
-    static var previews: some View {
-        DeckView(subset: [], bookmarkId: UUID())
-    }
-}
+//struct DeckView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DeckView(subset: [], bookmarkId: UUID())
+//    }
+//}
 

@@ -11,9 +11,11 @@ struct CardGridView: View {
     let noResultsString: String
     var showOwnedIndicator: Bool = false
     var showNumberOwned: Bool = false
+    var bookmark: BookmarkModel? = nil
     
     @State private var currentImageLoaded: String = ""
     @EnvironmentObject var cardStore: CardStore
+    
     
     private var filteredCards: [ElestralCard] {
         let sortOrder = filtersViewModel.sortOrder
@@ -132,18 +134,22 @@ struct CardGridView: View {
                     LazyVGrid(columns: layout, spacing: 8) {
                         ForEach(filteredCards, id: \.self) { card in
                             ZStack {
-                                CardView(card: card, showOwnedIndicator: self.showOwnedIndicator, showNumberOwned: self.showNumberOwned)
+                                CardView(card: card, showOwnedIndicator: self.showOwnedIndicator, showNumberOwned: self.showNumberOwned, bookmark: self.bookmark)
                                     .onTapGesture(count: 2) {
-                                        if card.numberOwned == 0 {
-                                            card.numberOwned += 1
-                                            cardStore.cardUpdated(card)
-                                        } else {
-                                            card.numberOwned = 0
-                                            cardStore.cardUpdated(card)
+                                        if bookmark == nil {
+                                            if card.numberOwned == 0 {
+                                                card.numberOwned += 1
+                                                cardStore.cardUpdated(card)
+                                            } else {
+                                                card.numberOwned = 0
+                                                cardStore.cardUpdated(card)
+                                            }
                                         }
                                     }
                                     .onTapGesture {
-                                        selectedCard.wrappedValue = card
+                                        if self.bookmark == nil {
+                                            selectedCard.wrappedValue = card
+                                        }
                                     }
                             }
                         }

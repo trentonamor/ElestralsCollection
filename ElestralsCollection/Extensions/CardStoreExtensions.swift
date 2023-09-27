@@ -77,7 +77,7 @@ extension CardStore {
     func fetchBookmarksForCard(cardID: String, context: NSManagedObjectContext) -> [BookmarkModel] {
         let request: NSFetchRequest<Bookmark> = Bookmark.fetchRequest()
         request.predicate = NSPredicate(format: "ANY cards.id == %@", cardID)
-
+        
         do {
             let matchingBookmarks = try context.fetch(request)
             return matchingBookmarks.map { BookmarkModel(from: $0, cardStore: self) }
