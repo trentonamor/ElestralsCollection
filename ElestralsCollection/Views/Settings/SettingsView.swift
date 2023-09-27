@@ -43,7 +43,7 @@ struct SettingsView: View {
                                 isShowingMailView = true
                             }) {
                                 Label(title: {
-                                    Text("Send us an Email")
+                                    Text("Send us Feedback")
                                         .foregroundColor(.primary)
                                 }, icon: {
                                     Image(systemName: "paperplane")
