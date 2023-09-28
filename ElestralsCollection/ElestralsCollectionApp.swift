@@ -11,7 +11,7 @@ import RevenueCat
 
 @main
 struct ElestralsCollectionApp: App {
-    @StateObject var elestralsCardData = CardStore()
+    @StateObject var elestralsCardData: CardStore = CardStore()
     @StateObject var entitlementsManager = EntitlementsManager()
     @StateObject var authViewModel = AuthenticationViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate

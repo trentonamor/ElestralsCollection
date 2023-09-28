@@ -19,8 +19,6 @@ class CardStore: ObservableObject {
     
     init() {
         self.isLoading = true
-        
-        self.setup()
     }
     
     func setup() {

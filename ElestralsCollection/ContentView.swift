@@ -24,6 +24,9 @@ struct ContentView: View {
                     .ignoresSafeArea()
                     .scaledToFill()
             }
+            .onAppear(perform: {
+                self.cardStore.setup()
+            })
         } else if cardStore.errorOccurred {
             VStack {
                 Text("Failed to load data. Please try again.")
@@ -81,9 +84,9 @@ struct ContentView: View {
                     }
                     .tag(4)
             }
-            .onAppear {
+            .onAppear(perform: {
                 self.cardStore.setBookmarks(context: self.managedObjectContext)
-            }
+            })
         }
     }
 }

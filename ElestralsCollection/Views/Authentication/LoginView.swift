@@ -13,6 +13,7 @@ struct LoginView: View {
     @State var isSigningIn: Bool = false
     @State var isShowingAlert: Bool = false
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var cardStore: CardStore
     var body: some View {
         NavigationStack {
             VStack {
