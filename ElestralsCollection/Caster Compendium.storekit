@@ -1,0 +1,143 @@
+{
+  "identifier" : "A7426B04",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "109.99",
+      "familyShareable" : false,
+      "internalID" : "6468003068",
+      "localizations" : [
+        {
+          "description" : "Lifetime subscription for all features",
+          "displayName" : "Caster Pro (Lifetime)",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tparrotte.ElestralsCollection.Lifetime",
+      "referenceName" : "Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6467991490",
+    "_developerTeamID" : "4P4WEF5DNU",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 717561421.04974401,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21393843",
+      "localizations" : [
+
+      ],
+      "name" : "Caster Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "34.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6468002853",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlock all features of Caster Compendium",
+              "displayName" : "Caster Pro (Annual)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "tparrotte.ElestralsCollection.Annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Annual",
+          "subscriptionGroupID" : "21393843",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "3.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6468002839",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlock all features of Caster Compendium",
+              "displayName" : "Caster Pro (Monthly)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "tparrotte.ElestralsCollection.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly",
+          "subscriptionGroupID" : "21393843",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

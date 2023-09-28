@@ -19,6 +19,11 @@
 		2F3D9F202AC4BEAA00733D24 /* UpsellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F1F2AC4BEAA00733D24 /* UpsellView.swift */; };
 		2F3D9F222AC4C0F200733D24 /* StoreSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F212AC4C0F200733D24 /* StoreSelectionCell.swift */; };
 		2F3D9F242AC4D17800733D24 /* FeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F232AC4D17800733D24 /* FeatureCell.swift */; };
+		2F3D9F272AC5093E00733D24 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 2F3D9F262AC5093E00733D24 /* RevenueCat */; };
+		2F3D9F292AC5093E00733D24 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F3D9F282AC5093E00733D24 /* RevenueCatUI */; };
+		2F3D9F2B2AC5097100733D24 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3D9F2A2AC5097100733D24 /* StoreKit.framework */; };
+		2F3D9F2D2AC51C6F00733D24 /* UpsellViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F2C2AC51C6F00733D24 /* UpsellViewExtensions.swift */; };
+		2F3D9F312AC51EE300733D24 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D9F302AC51EE300733D24 /* StoreKitTestCertificate.cer */; };
 		2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */; };
 		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
@@ -117,6 +122,10 @@
 		2F3D9F1F2AC4BEAA00733D24 /* UpsellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellView.swift; sourceTree = "<group>"; };
 		2F3D9F212AC4C0F200733D24 /* StoreSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSelectionCell.swift; sourceTree = "<group>"; };
 		2F3D9F232AC4D17800733D24 /* FeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell.swift; sourceTree = "<group>"; };
+		2F3D9F2A2AC5097100733D24 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		2F3D9F2C2AC51C6F00733D24 /* UpsellViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellViewExtensions.swift; sourceTree = "<group>"; };
+		2F3D9F2F2AC51E4900733D24 /* Caster Compendium.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Caster Compendium.storekit"; sourceTree = "<group>"; };
+		2F3D9F302AC51EE300733D24 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../../StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
 		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListExtensions.swift; sourceTree = "<group>"; };
@@ -192,7 +201,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */,
+				2F3D9F2B2AC5097100733D24 /* StoreKit.framework in Frameworks */,
 				2F1B11002AAE195C00072C7C /* DGCharts in Frameworks */,
+				2F3D9F292AC5093E00733D24 /* RevenueCatUI in Frameworks */,
+				2F3D9F272AC5093E00733D24 /* RevenueCat in Frameworks */,
 				2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */,
 				2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -249,6 +261,7 @@
 		2FA297592A9525B50006BAD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F3D9F2A2AC5097100733D24 /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,6 +291,7 @@
 				2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */,
 				2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */,
 				2FDCCA4C2AC490FE0064D051 /* CardViewExtensions.swift */,
+				2F3D9F2C2AC51C6F00733D24 /* UpsellViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +322,8 @@
 		2FB59A7C293712A200F14EFB /* ElestralsCollection */ = {
 			isa = PBXGroup;
 			children = (
+				2F3D9F2F2AC51E4900733D24 /* Caster Compendium.storekit */,
+				2F3D9F302AC51EE300733D24 /* StoreKitTestCertificate.cer */,
 				2F5AC0A92ABD224900D1571C /* Info.plist */,
 				2FB59A88293712A300F14EFB /* ElestralsCollection.entitlements */,
 				2FDFB20B2AB4CA72002E5A3D /* ElestralsCoreData.xcdatamodeld */,
@@ -488,6 +504,8 @@
 				2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */,
 				2FA2975A2A9525B50006BAD7 /* FirebaseStorage */,
 				2F1B10FF2AAE195C00072C7C /* DGCharts */,
+				2F3D9F262AC5093E00733D24 /* RevenueCat */,
+				2F3D9F282AC5093E00733D24 /* RevenueCatUI */,
 			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
@@ -564,6 +582,7 @@
 			packageReferences = (
 				2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */,
+				2F3D9F252AC5093D00733D24 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
@@ -581,6 +600,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3D9F312AC51EE300733D24 /* StoreKitTestCertificate.cer in Resources */,
 				2FB59AAF2937137F00F14EFB /* Images.xcassets in Resources */,
 				2F5AC0BC2ABD353600D1571C /* LaunchScreen.storyboard in Resources */,
 				2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */,
@@ -611,6 +631,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3D9F2D2AC51C6F00733D24 /* UpsellViewExtensions.swift in Sources */,
 				2FE2307929392FC900AC4248 /* GenericCardView.swift in Sources */,
 				2F5AC0BF2ABD3E4E00D1571C /* DeckCardGridView.swift in Sources */,
 				2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */,
@@ -836,6 +857,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElestralsCollection/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caster Compendium";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -845,8 +868,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -855,7 +878,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -876,6 +899,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElestralsCollection/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caster Compendium";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -885,8 +910,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -895,7 +920,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1042,6 +1067,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		2F3D9F252AC5093D00733D24 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.26.1;
+			};
+		};
 		2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1057,6 +1090,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
+		};
+		2F3D9F262AC5093E00733D24 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F3D9F252AC5093D00733D24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		2F3D9F282AC5093E00733D24 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F3D9F252AC5093D00733D24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCatUI;
 		};
 		2FA2975A2A9525B50006BAD7 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;

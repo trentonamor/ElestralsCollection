@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import RevenueCat
 
 @main
 struct ElestralsCollectionApp: App {
@@ -16,6 +17,8 @@ struct ElestralsCollectionApp: App {
     
     init() {
         FirebaseApp.configure()
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_fptHqUwZQNGfxGoHPaqevgdVgqM")
     }
     
     var body: some Scene {
