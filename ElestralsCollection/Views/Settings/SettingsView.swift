@@ -19,27 +19,42 @@ struct SettingsView: View {
                         self.isShowingSubscription.toggle()
                     }, label: {
                         if !self.entitlementsManager.hasEntitlements {
-                            Text("Subscribe to Caster Pro")
-                                .padding(.vertical, 16)
-                                .font(.title2)
-                                .foregroundStyle(.white)
-                                .bold()
-                                .background(content: {
+                            HStack {
+                                Text("Subscribe to Caster Pro")
+                                    .padding(.vertical, 16)
+                                    .font(.title2)
+                                    .foregroundStyle(.white)
+                                    .bold()
+                                Spacer()
+                            }
+                            .background(content: {
+                                ZStack {
                                     Image("WaterBackground")
-                                        .resizable()
-                                        .scaledToFill()
-                                })
+                                    
+                                    LinearGradient(gradient: Gradient(colors: [.clear, Color(.dynamicNavy)]),
+                                                   startPoint: .leading,
+                                                   endPoint: .trailing)
+                                }
+                            })
+
                         } else {
-                            Text("You are a Caster Pro Subscriber! 🎉")
-                                .padding(.vertical, 4)
-                                .font(.body)
-                                .foregroundStyle(Color(.dynamicGrey0))
-                                .bold()
-                                .background(content: {
+                            HStack {
+                                Text("You are a Caster Pro Subscriber! 🎉")
+                                    .padding(.vertical, 4)
+                                    .font(.body)
+                                    .foregroundStyle(Color(.dynamicGrey0))
+                                    .bold()
+                                Spacer()
+                            }
+                            .background(content: {
+                                ZStack {
                                     Image("WaterBackground")
-                                        .resizable()
-                                        .scaledToFill()
-                                })
+                                    
+                                    LinearGradient(gradient: Gradient(colors: [.clear, Color(.dynamicNavy)]),
+                                                   startPoint: .leading,
+                                                   endPoint: .trailing)
+                                }
+                            })
                         }
                     })
                     .sheet(isPresented: self.$isShowingSubscription, content: {
