@@ -12,6 +12,7 @@ import RevenueCat
 @main
 struct ElestralsCollectionApp: App {
     @StateObject var elestralsCardData = CardStore()
+    @StateObject var entitlementsManager = EntitlementsManager()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
     
@@ -25,6 +26,7 @@ struct ElestralsCollectionApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(elestralsCardData)
+                .environmentObject(entitlementsManager)
                 .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
                 .environment(\.colorScheme, .light)
         }

@@ -14,10 +14,12 @@ struct BookmarkView: View {
     var navigationTitle: String = "Bookmarks"
     @State var searchText: String = ""
     @State var refreshID = UUID()
+    @State private var showUpsell = false
     
     @State var temporaryBookmark: BookmarkModel?
     
     @EnvironmentObject var cardStore: CardStore
+    @EnvironmentObject var entitilementManager: EntitlementsManager
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.dismiss) var dismiss
     
@@ -66,7 +68,11 @@ struct BookmarkView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {
-                        self.temporaryBookmark = BookmarkModel()
+                        if self.entitilementManager.hasEntitlements || self.bookmarkModels.count < 2 {
+                            self.temporaryBookmark = BookmarkModel()
+                        } else {
+                            self.showUpsell = true
+                        }
                     }, label: {
                         Image(systemName: "plus")
                     })
@@ -86,6 +92,9 @@ struct BookmarkView: View {
             }
             .sheet(item: self.$temporaryBookmark, onDismiss: { self.temporaryBookmark = nil}, content: { item in
                 EditBookmarkView(model: item, delegate: self)
+            })
+            .sheet(isPresented: self.$showUpsell, content: {
+                UpsellView()
             })
         }
         .onAppear {

@@ -31,10 +31,14 @@ extension UpsellView {
     private func purchase(package: Package) {
         Purchases.shared.purchase(package: package, completion: { transaction, info, error, userCancelled in
             guard let _ = transaction,
-                  let _ = info,
+                  let info = info,
                   error == nil, !userCancelled else {
                 return
             }
+            DispatchQueue.main.async {
+                self.setHiddenState(info: info)
+            }
+            self.entitlements.fetchEntitlements()
         })
     }
     
@@ -45,6 +49,7 @@ extension UpsellView {
             DispatchQueue.main.async {
                 self.setHiddenState(info: info)
             }
+            self.entitlements.fetchEntitlements()
         })
     }
     

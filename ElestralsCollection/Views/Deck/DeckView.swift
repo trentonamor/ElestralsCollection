@@ -33,8 +33,10 @@ struct DeckView: View {
     let showOwnedIndicator: Bool
     let bookmark: BookmarkModel
     @EnvironmentObject var cardStore: CardStore
+    @EnvironmentObject var entitlements: EntitlementsManager
     @Environment(\.managedObjectContext) var managedObjectContext
     @State private var showToast: Bool = false
+    @State private var showUpsell: Bool = false
     
     var bookmarkId: UUID {
         self.bookmark.id
@@ -180,17 +182,24 @@ struct DeckView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing, content: {
                         Button(action: {
-                            self.exportJson()
-                            withAnimation {
-                                showToast.toggle()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    withAnimation {
-                                        showToast.toggle()
+                            if self.entitlements.hasEntitlements {
+                                self.exportJson()
+                                withAnimation {
+                                    showToast.toggle()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                        withAnimation {
+                                            showToast.toggle()
+                                        }
                                     }
                                 }
+                            } else {
+                                self.showUpsell.toggle()
                             }
                         }, label: {
                             Text("Export")
+                        })
+                        .sheet(isPresented: self.$showUpsell, content: {
+                            UpsellView()
                         })
                     })
                     ToolbarItem(placement: .navigationBarTrailing, content: {

@@ -24,6 +24,8 @@
 		2F3D9F2B2AC5097100733D24 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3D9F2A2AC5097100733D24 /* StoreKit.framework */; };
 		2F3D9F2D2AC51C6F00733D24 /* UpsellViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F2C2AC51C6F00733D24 /* UpsellViewExtensions.swift */; };
 		2F3D9F312AC51EE300733D24 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D9F302AC51EE300733D24 /* StoreKitTestCertificate.cer */; };
+		2F3D9F332AC52E2700733D24 /* ApplicationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F322AC52E2700733D24 /* ApplicationIconView.swift */; };
+		2F3D9F352AC5384500733D24 /* EntitlementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F342AC5384500733D24 /* EntitlementsManager.swift */; };
 		2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */; };
 		2F52FDC02AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
 		2F52FDC12AAB8677005C41DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */; };
@@ -126,6 +128,8 @@
 		2F3D9F2C2AC51C6F00733D24 /* UpsellViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellViewExtensions.swift; sourceTree = "<group>"; };
 		2F3D9F2F2AC51E4900733D24 /* Caster Compendium.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Caster Compendium.storekit"; sourceTree = "<group>"; };
 		2F3D9F302AC51EE300733D24 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../../StoreKitTestCertificate.cer; sourceTree = "<group>"; };
+		2F3D9F322AC52E2700733D24 /* ApplicationIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationIconView.swift; sourceTree = "<group>"; };
+		2F3D9F342AC5384500733D24 /* EntitlementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementsManager.swift; sourceTree = "<group>"; };
 		2F47CED12A8F00AA006F5162 /* CardStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreExtensions.swift; sourceTree = "<group>"; };
 		2F52FDBF2AAB8677005C41DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListExtensions.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				2FB59A84293712A200F14EFB /* ContentView.swift */,
 				2FA297672A9944070006BAD7 /* CardImageLoader.swift */,
 				2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */,
+				2F3D9F342AC5384500733D24 /* EntitlementsManager.swift */,
 				2FA297662A9943E70006BAD7 /* Extensions */,
 				2FB59AB2293713DB00F14EFB /* Components */,
 				2FB59AB6293713EA00F14EFB /* Model */,
@@ -430,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB59ABA293713F800F14EFB /* SettingsView.swift */,
+				2F3D9F322AC52E2700733D24 /* ApplicationIconView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -631,6 +637,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3D9F352AC5384500733D24 /* EntitlementsManager.swift in Sources */,
+				2F3D9F332AC52E2700733D24 /* ApplicationIconView.swift in Sources */,
 				2F3D9F2D2AC51C6F00733D24 /* UpsellViewExtensions.swift in Sources */,
 				2FE2307929392FC900AC4248 /* GenericCardView.swift in Sources */,
 				2F5AC0BF2ABD3E4E00D1571C /* DeckCardGridView.swift in Sources */,
@@ -846,8 +854,10 @@
 		2FB59AA5293712A300F14EFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES[sdk=*]" = "AlternateIcon2 AlternateIcon1 AppIcon";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ElestralsCollection/ElestralsCollection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -888,8 +898,10 @@
 		2FB59AA6293712A300F14EFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES[sdk=*]" = "AlternateIcon2 AlternateIcon1 AppIcon";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ElestralsCollection/ElestralsCollection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

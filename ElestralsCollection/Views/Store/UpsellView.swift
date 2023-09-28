@@ -14,6 +14,7 @@ struct UpsellView: View {
     @State var index: Int = 0
     
     @State var userIsSubscribed: Bool = false
+    @EnvironmentObject var entitlements: EntitlementsManager
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
