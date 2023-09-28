@@ -18,7 +18,7 @@ struct ElestralsCollectionApp: App {
     
     init() {
         FirebaseApp.configure()
-        Purchases.logLevel = .debug
+        Purchases.logLevel = .error
         Purchases.configure(withAPIKey: "appl_fptHqUwZQNGfxGoHPaqevgdVgqM")
     }
     

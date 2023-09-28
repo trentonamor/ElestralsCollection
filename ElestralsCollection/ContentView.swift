@@ -13,10 +13,26 @@ struct ContentView: View {
         if cardStore.isLoading {
             VStack(alignment: .center) {
                 Image("Launch")
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-                .scaledToFill()
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
+                    .scaledToFill()
+            }
+        } else if cardStore.errorOccurred {
+            VStack {
+                Text("Failed to load data. Please try again.")
+                    .padding()
+                Button(action: {
+                    cardStore.errorOccurred = false
+                    cardStore.isLoading = true
+                    self.cardStore.setup()
+                }) {
+                    Text("Retry")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
             }
         } else {
             TabView(selection: $selectedTab) {

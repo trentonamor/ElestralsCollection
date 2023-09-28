@@ -15,14 +15,20 @@ class CardStore: ObservableObject {
     @Published var cards: [ElestralCard] = []
     @Published var isLoading: Bool = false
     @Published var lastUpdatedCard: ElestralCard?
+    @Published var errorOccurred: Bool = false
     
     init() {
         self.isLoading = true
         
+        self.setup()
+    }
+    
+    func setup() {
         fetchAllCards { (documents, error) in
             defer { self.isLoading = false }
             if let error = error {
                 print("Error fetching documents: \(error)")
+                self.errorOccurred = true
                 return
             }
             
@@ -48,6 +54,7 @@ class CardStore: ObservableObject {
                 }
             } else {
                 print("No documents found.")
+                self.errorOccurred = true
             }
         }
     }

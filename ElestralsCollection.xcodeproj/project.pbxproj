@@ -334,6 +334,7 @@
 				2F5AC0BB2ABD353600D1571C /* LaunchScreen.storyboard */,
 				2FDFB2102AB4E13E002E5A3D /* AppDelegate.swift */,
 				2FB59A7D293712A200F14EFB /* ElestralsCollectionApp.swift */,
+				2FDC930A2A472B03001B8E5A /* CardStore.swift */,
 				2FB59A84293712A200F14EFB /* ContentView.swift */,
 				2FA297672A9944070006BAD7 /* CardImageLoader.swift */,
 				2FDFB20E2AB4D76F002E5A3D /* DataManager.swift */,
@@ -404,7 +405,6 @@
 			children = (
 				2FE23070293920FC00AC4248 /* CarouselViewModel.swift */,
 				2FE2307629392CDC00AC4248 /* CardModel.swift */,
-				2FDC930A2A472B03001B8E5A /* CardStore.swift */,
 				2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */,
 				2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */,
 				2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */,
@@ -887,6 +887,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -931,6 +932,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tparrotte.ElestralsCollection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
