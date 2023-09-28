@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MinimumRequirementsView: View {
-    @StateObject private var viewModel = MinimumRequirementsViewModel()
+    @EnvironmentObject var viewModel: MinimumRequirementsViewModel
     
     var body: some View {
         HStack {

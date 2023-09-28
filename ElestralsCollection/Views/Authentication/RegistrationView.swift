@@ -12,66 +12,90 @@ struct RegistrationView: View {
     @State var fullName = ""
     @State var password = ""
     @State var confirmedPassword = ""
-    @StateObject private var requirementsViewModel = MinimumRequirementsViewModel()
+    @StateObject var requirementsViewModel = MinimumRequirementsViewModel()
     @State private var passwordStrength: PasswordStrength = .weak
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     
     var body: some View {
-        VStack {
-            Image("StoneSquare")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 120)
-                .padding(.vertical, 32)
-            VStack(spacing: 24) {
-                InputView(text: $email, title: "Email", placeholder: "yourEmail@email.com")
-                    .textInputAutocapitalization(.never)
-                InputView(text: $fullName, title: "Full Name", placeholder: "Enter Your Name")
-                    .textInputAutocapitalization(.words)
-                InputView(text: $password, title: "Password", placeholder: "Enter Your Password", isSecureField: true)
-                    .textInputAutocapitalization(.never)
-                    .onChange(of: password) { newValue in
-                        requirementsViewModel.password = newValue
-                        passwordStrength = PasswordStrengthViewModel.calculateStrength(password: newValue)
+        ScrollView {
+            VStack {
+                Image("StoneSquare")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 120)
+                    .padding(.vertical, 16)
+                VStack(spacing: 24) {
+                    InputView(text: $email, title: "Email", placeholder: "yourEmail@email.com")
+                        .textInputAutocapitalization(.never)
+                    InputView(text: $fullName, title: "Full Name", placeholder: "Enter Your Name")
+                        .textInputAutocapitalization(.words)
+                    InputView(text: $password, title: "Password", placeholder: "Enter Your Password", isSecureField: true)
+                        .textInputAutocapitalization(.never)
+                        .onChange(of: password) { newValue in
+                            requirementsViewModel.password = newValue
+                            passwordStrength = PasswordStrengthViewModel.calculateStrength(password: newValue)
+                        }
+                    ZStack(alignment: .trailing) {
+                        InputView(text: $confirmedPassword, title: "Confirm Password", placeholder: "Confirm Your Password", isSecureField: true)
+                            .textInputAutocapitalization(.never)
+                        
+                        if !password.isEmpty && !confirmedPassword.isEmpty {
+                            if password == confirmedPassword {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.dynamicGreen))
+                            } else {
+                                Image(systemName: "x.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.dynamicRed))
+                            }
+                        }
                     }
-                InputView(text: $confirmedPassword, title: "Confirm Password", placeholder: "Confirm Your Password", isSecureField: true)
-                    .textInputAutocapitalization(.never)
+                    
+                    PasswordStrengthMeter(passwordStrength: passwordStrength)
+                    
+                    MinimumRequirementsView()
+                        .environmentObject(requirementsViewModel)
+                }
+                .padding(.horizontal)
+                .padding(.top, 12)
                 
-                PasswordStrengthMeter(passwordStrength: passwordStrength)
+                Button(action: {
+                    Task {
+                        try await viewModel.createUser(withEmail: email, password:password, fullname:fullName)
+                    }
+                }, label: {
+                    HStack {
+                        Text("SIGN UP")
+                            .fontWeight(.semibold)
+                        Image(systemName: "arrow.right")
+                    }
+                    .foregroundColor(.white)
+                    .frame(width:UIScreen.screenWidth - 32,height:48 )
+                })
+                .opacity(self.requirementsViewModel.meetsRequirements() ? 1.0 : 0.5)
+                .disabled(!self.formIsValid)
+                .background(Color(.dynamicUiBlue)
+                    .opacity(self.formIsValid ? 1.0 : 0.5))
+                .cornerRadius(10)
+                .padding(.top, 24)
                 
-                MinimumRequirementsView()
-                    .environmentObject(requirementsViewModel)
+                Spacer()
+                
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    HStack(spacing: 4) {
+                        Text("Already have an account?")
+                        Text("Sign In")
+                            .fontWeight(.bold)
+                    }
+                    .font(.system(size: 14))
+                })
             }
-            .padding(.horizontal)
-            .padding(.top, 12)
-            
-            Button(action: {
-                print("Sign user up")
-            }, label: {
-                HStack {
-                    Text("SIGN UP")
-                        .fontWeight(.semibold)
-                    Image(systemName: "arrow.right")
-                }
-                .foregroundColor(.white)
-                .frame(width:UIScreen.screenWidth - 32,height:48 )
-            })
-            .background(Color(.systemBlue))
-            .cornerRadius(10)
-            .padding(.top, 24)
-            
-            Spacer()
-            
-            Button(action: {
-                dismiss()
-            }, label: {
-                HStack(spacing: 4) {
-                    Text("Already have an account?")
-                    Text("Sign In")
-                        .fontWeight(.bold)
-                }
-                .font(.system(size: 14))
-            })
         }
     }
 }

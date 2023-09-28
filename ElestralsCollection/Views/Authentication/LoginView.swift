@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     var body: some View {
         NavigationStack {
             VStack {
@@ -29,7 +30,9 @@ struct LoginView: View {
                 .padding(.horizontal)
                 // Sign In Button
                 Button(action: {
-                    print("Sign user in")
+                    Task {
+                        try await viewModel.signIn(withEmail: email, password: password)
+                    }
                 }, label: {
                     HStack {
                         Text("SIGN IN")
@@ -39,10 +42,12 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .frame(width:UIScreen.screenWidth - 32,height:48 )
                 })
-                .background(Color(.systemBlue))
+                .background(Color(.dynamicUiBlue)
+                    .opacity(formIsValid ? 1.0 : 0.5))
                 .cornerRadius(10)
                 .padding(.top, 24)
-                
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1.0 : 0.5)
                 Spacer()
                 
                 // Sign Up Button

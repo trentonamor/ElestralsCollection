@@ -9,6 +9,7 @@ struct SettingsView: View {
     @State private var isShowingIcons = false
     
     @EnvironmentObject var entitlementsManager: EntitlementsManager
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     let mailComposerDelegate = MailComposerDelegate()
     
     var body: some View {
@@ -64,7 +65,7 @@ struct SettingsView: View {
                 Section(header: Text("Account")) {
                     List {
                         Button(action: {
-                            self.logoutUser()
+                            self.authViewModel.signOut()
                         }) {
                             Label(title: {
                                 Text("Logout")

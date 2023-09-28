@@ -13,6 +13,7 @@ import RevenueCat
 struct ElestralsCollectionApp: App {
     @StateObject var elestralsCardData = CardStore()
     @StateObject var entitlementsManager = EntitlementsManager()
+    @StateObject var authViewModel = AuthenticationViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
     
@@ -25,6 +26,7 @@ struct ElestralsCollectionApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authViewModel)
                 .environmentObject(elestralsCardData)
                 .environmentObject(entitlementsManager)
                 .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)

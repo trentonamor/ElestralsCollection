@@ -47,6 +47,7 @@ struct ChangePassword: View {
                 }, label: {
                     Text("Save")
                 })
+                .disabled(!self.requirementsViewModel.meetsRequirements())
             })
             
             ToolbarItem(placement: .navigationBarLeading, content: {

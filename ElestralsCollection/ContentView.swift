@@ -8,9 +8,12 @@ struct ContentView: View {
     @State private var selectedTab = 0
     @EnvironmentObject var cardStore: CardStore
     @Environment(\.managedObjectContext) var managedObjectContext
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
-        if cardStore.isLoading {
+        if authViewModel.userSession == nil {
+            LoginView()
+        } else if cardStore.isLoading {
             VStack(alignment: .center) {
                 Image("Launch")
                     .resizable()

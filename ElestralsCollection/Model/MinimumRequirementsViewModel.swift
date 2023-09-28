@@ -22,4 +22,11 @@ class MinimumRequirementsViewModel: ObservableObject {
         containsLetter = password.rangeOfCharacter(from: .letters) != nil
         containsMinimumCharacters = password.count >= 10
     }
+    
+    func meetsRequirements() -> Bool {
+        return self.containsNumber
+            && self.containsSymbol
+            && self.containsLetter
+            && self.containsMinimumCharacters
+    }
 }

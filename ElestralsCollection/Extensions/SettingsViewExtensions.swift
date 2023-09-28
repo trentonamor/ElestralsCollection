@@ -20,10 +20,6 @@ extension SettingsView {
             SKStoreReviewController.requestReview(in: scene)
         }
     }
-    
-    func logoutUser() {
-        print("Logout")
-    }
 }
 
 class MailComposerDelegate: NSObject, MFMailComposeViewControllerDelegate {
