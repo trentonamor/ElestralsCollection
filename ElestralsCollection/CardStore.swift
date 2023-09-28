@@ -9,19 +9,26 @@ import Foundation
 import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import CoreData
 
 class CardStore: ObservableObject {
     @Published var cards: [ElestralCard] = []
     @Published var isLoading: Bool = false
     @Published var lastUpdatedCard: ElestralCard?
+    @Published var errorOccurred: Bool = false
     
     init() {
         self.isLoading = true
         
+        self.setup()
+    }
+    
+    func setup() {
         fetchAllCards { (documents, error) in
             defer { self.isLoading = false }
             if let error = error {
                 print("Error fetching documents: \(error)")
+                self.errorOccurred = true
                 return
             }
             
@@ -31,11 +38,11 @@ class CardStore: ObservableObject {
                     let data = document.data()
                     let card = ElestralCard(id: data["id"] as? String ?? "",
                                             name: data["cardName"] as? String ?? "",
-                                            effect: data["cardEffect"] as? String ?? "",
+                                            effect: self.cleanAndFormatEffect(effect: data["cardEffect"] as? String ?? ""),
                                             elements: data["elements"] as? [String] ?? [],
                                             subclasses: data["subclasses"] as? [String] ?? [],
-                                            attack: data["attack"] as? Int,
-                                            defense: data["defense"] as? Int,
+                                            attack: Int(data["attack"] as? String ?? "-1"),
+                                            defense: Int(data["defense"] as? String ?? "-1"),
                                             artist: data["artistName"] as? String ?? "",
                                             cardSet: self.getSetId(set: data["setName"] as? String ?? ""),
                                             cardNumber: data["setNumber"] as? String ?? "",
@@ -47,6 +54,7 @@ class CardStore: ObservableObject {
                 }
             } else {
                 print("No documents found.")
+                self.errorOccurred = true
             }
         }
     }

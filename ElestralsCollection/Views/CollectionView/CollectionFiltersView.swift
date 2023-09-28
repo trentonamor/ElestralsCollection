@@ -17,7 +17,7 @@ struct CollectionFiltersView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("Sort Order") {
                     Toggle(isOn: Binding(
@@ -371,11 +371,11 @@ struct CollectionFiltersView: View {
                         Text("Rarity")
                         Spacer()
                         Button(action: {
-                            let allSelected = Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .fullArt]).isSubset(of: filters)
+                            let allSelected = Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]).isSubset(of: filters)
                             if allSelected {
-                                filters.subtract(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .fullArt]))
+                                filters.subtract(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]))
                             } else {
-                                filters.formUnion(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .fullArt]))
+                                filters.formUnion(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]))
                             }
                         }, label: {
                             Text(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .fullArt]).isSubset(of: filters) ? "Deselect All" : "Select All")
@@ -456,6 +456,21 @@ struct CollectionFiltersView: View {
                     ), label: {
                         Image(systemName: "sparkles")
                         Text("Stellar Rare")
+                    })
+                    .toggleStyle(.checklist)
+                    
+                    Toggle(isOn: Binding(
+                        get: { self.filters.contains(.alternativeArt) },
+                        set: { isOn in
+                            if isOn {
+                                self.filters.insert(.alternativeArt)
+                            } else {
+                                self.filters.remove(.alternativeArt)
+                            }
+                        }
+                    ), label: {
+                        Image(systemName: "seal")
+                        Text("Alternative Art")
                     })
                     .toggleStyle(.checklist)
                     

@@ -5,11 +5,47 @@ import MessageUI
 struct SettingsView: View {
     @State private var isShowingMailView = false
     @State private var isShowingAlert = false
+    @State private var isShowingSubscription = false
+    @State private var isShowingIcons = false
+    
+    @EnvironmentObject var entitlementsManager: EntitlementsManager
     let mailComposerDelegate = MailComposerDelegate()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
+                List {
+                    Button(action: {
+                        self.isShowingSubscription.toggle()
+                    }, label: {
+                        if !self.entitlementsManager.hasEntitlements {
+                            Text("Subscribe to Caster Pro")
+                                .padding(.vertical, 16)
+                                .font(.title2)
+                                .foregroundStyle(.white)
+                                .bold()
+                                .background(content: {
+                                    Image("WaterBackground")
+                                        .resizable()
+                                        .scaledToFill()
+                                })
+                        } else {
+                            Text("You are a Caster Pro Subscriber! 🎉")
+                                .padding(.vertical, 4)
+                                .font(.body)
+                                .foregroundStyle(Color(.dynamicGrey0))
+                                .bold()
+                                .background(content: {
+                                    Image("WaterBackground")
+                                        .resizable()
+                                        .scaledToFill()
+                                })
+                        }
+                    })
+                    .sheet(isPresented: self.$isShowingSubscription, content: {
+                        UpsellView()
+                    })
+                }
                 Section(header: Text("Account")) {
                     List {
                         Button(action: {
@@ -35,7 +71,28 @@ struct SettingsView: View {
                                     .foregroundColor(.accentColor)
                             })
                         })
-                        
+                    }
+                }
+                Section(header: Text("Appearance")) {
+                    List {
+                        Button(action: {
+                            if self.entitlementsManager.hasEntitlements {
+                                self.isShowingIcons.toggle()
+                            } else {
+                                self.isShowingSubscription.toggle()
+                            }
+                        }) {
+                            Label(title: {
+                                Text("Customize App Icon")
+                                    .foregroundColor(Color(.dynamicGrey80))
+                            }, icon: {
+                                Image(systemName: "apps.iphone")
+                                    .foregroundColor(.accentColor)
+                            })
+                        }
+                        .sheet(isPresented: self.$isShowingIcons, content: {
+                            ApplicationIconView()
+                        })
                     }
                 }
                 Section(header: Text("About")) {
@@ -45,7 +102,7 @@ struct SettingsView: View {
                         }) {
                             Label(title: {
                                 Text("Review Caster Companion")
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "star")
                                     .foregroundColor(.accentColor)
@@ -59,7 +116,7 @@ struct SettingsView: View {
                             
                             Label(title: {
                                 Text("Visit the Official Elestrals Website")
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "globe")
                                     .foregroundColor(.accentColor)
@@ -71,8 +128,8 @@ struct SettingsView: View {
                                 isShowingMailView = true
                             }) {
                                 Label(title: {
-                                    Text("Send us an Email")
-                                        .foregroundColor(.primary)
+                                    Text("Send us Feedback")
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }, icon: {
                                     Image(systemName: "paperplane")
                                         .foregroundColor(.accentColor)
@@ -88,7 +145,7 @@ struct SettingsView: View {
                             }) {
                                 Label(title: {
                                     Text("Send us an Email")
-                                        .foregroundColor(.primary)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }, icon: {
                                     Image(systemName: "paperplane")
                                         .foregroundColor(.accentColor)
@@ -101,7 +158,7 @@ struct SettingsView: View {
                         }) {
                             Label(title: {
                                 Text("About")
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "questionmark.circle")
                                     .foregroundColor(.accentColor)
@@ -109,7 +166,7 @@ struct SettingsView: View {
                         }
                         .alert(isPresented: $isShowingAlert) {
                             let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "app"
-                            return Alert(title: Text("Version \(appVersion)"), message: Text("The Caster Companion app is not owned or operated by Elestrals. This app is entirely fan owned and operated. Any logos, images, or card text are all owned by Elestrals"), dismissButton: .default(Text("OK")))
+                            return Alert(title: Text("Version \(appVersion)"), message: Text("The Caster Compendium app is not owned or operated by Elestrals. This app is entirely fan owned and operated. Any logos, images, or card text are all owned by Elestrals"), dismissButton: .default(Text("OK")))
                         }
                     }
                 }
@@ -122,5 +179,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(EntitlementsManager())
     }
 }

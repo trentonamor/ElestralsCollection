@@ -66,4 +66,56 @@ extension ElestralCard: CustomStringConvertible {
         
         return "\(self.numberOwned) Owned"
     }
+    
+    func getTotalOwned() -> Int {
+        return self.numberOwned
+    }
+    
+    func addToBookmarks(bookmark: BookmarkModel) {
+        if self.bookmarks.contains(where: {$0.id == bookmark.id}) {
+            self.bookmarks.removeAll(where: {$0.id == bookmark.id})
+        }
+        
+        self.bookmarks.append(bookmark)
+    }
+    
+    func getBookmarks() -> String {
+        switch bookmarks.count {
+        case 0:
+            return "Add to Bookmarks"
+        case 1:
+            return "In \(truncatedName(bookmarks[0].name))"
+        case 2:
+            return "In \(truncatedName(bookmarks[0].name)) and \(truncatedName(bookmarks[1].name))"
+        default:
+            let extraCount = bookmarks.count - 2
+            return "In \(truncatedName(bookmarks[0].name)), \(truncatedName(bookmarks[1].name)), +\(extraCount)"
+        }
+    }
+
+    func truncatedName(_ name: String) -> String {
+        let maxLength = 20  // Adjust as needed
+        if name.count > maxLength {
+            return String(name.prefix(maxLength)) + "..."
+        } else {
+            return name
+        }
+    }
+    
+    func updateCardCount(inBookmark bookmarkId: UUID, byCount: Int) {
+        guard let _ = cardsInDeck[bookmarkId] else {
+            cardsInDeck[bookmarkId] = 1
+            return
+        }
+        cardsInDeck[bookmarkId]! += byCount
+        
+        if cardsInDeck[bookmarkId] == 0 {
+            cardsInDeck.removeValue(forKey: bookmarkId)
+        }
+    }
+    
+    func getCount(forBookmark bookmarkId: UUID) -> Int {
+        return cardsInDeck[bookmarkId] ?? 0
+    }
+
 }

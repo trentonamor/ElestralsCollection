@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension CardStore {
     func getExpansionList() -> [ExpansionId] {
@@ -27,6 +28,10 @@ extension CardStore {
         } else {
             return self.cards.filter { $0.numberOwned == 0 }
         }
+    }
+    
+    func getCards(for cardIds: [String]) -> [ElestralCard] {
+        return self.cards.filter { cardIds.contains($0.id) }
     }
     
     func getTotalOwned(for cardName: String) -> Int {
@@ -67,5 +72,50 @@ extension CardStore {
     
     func cardUpdated(_ card: ElestralCard) {
         self.lastUpdatedCard = card
+    }
+    
+    func fetchBookmarksForCard(cardID: String, context: NSManagedObjectContext) -> [BookmarkModel] {
+        let request: NSFetchRequest<Bookmark> = Bookmark.fetchRequest()
+        request.predicate = NSPredicate(format: "ANY cards.id == %@", cardID)
+        
+        do {
+            let matchingBookmarks = try context.fetch(request)
+            return matchingBookmarks.map { BookmarkModel(from: $0, cardStore: self) }
+        } catch {
+            print("Failed to fetch bookmarks for card \(cardID): \(error)")
+            return []
+        }
+    }
+    
+    func setBookmarks(context: NSManagedObjectContext) {
+        for card in self.cards {
+            card.bookmarks = self.fetchBookmarksForCard(cardID: card.id, context: context)
+        }
+    }
+    
+    func cleanAndFormatEffect(effect: String) -> String {
+        let replacements: [String: String] = [
+            "A": "(Air Symbol)",
+            "E": "(Earth Symbol)",
+            "F": "(Fire Symbol)",
+            "I": "(Ice Symbol)",
+            "J": "(Attach Symbol)",
+            "O": "(Defense Symbol)",
+            "S": "(Stellar Symbol)",
+            "T": "(Thunder Symbol)",
+            "W": "(Water Symbol)",
+            "X": "(Any Element Symbol)"
+        ]
+        
+        var cleanedEffect = effect
+        for (key, value) in replacements {
+            cleanedEffect = cleanedEffect.replacingOccurrences(of: "<span class=\"elestrals-font\">\(key)</span>", with: value, options: .caseInsensitive)
+            cleanedEffect = cleanedEffect.replacingOccurrences(of: "<span class=\"elestrals-font\">\(key.lowercased())</span>", with: value, options: .caseInsensitive)
+        }
+        
+        cleanedEffect = cleanedEffect.replacingOccurrences(of: "``` embed", with: "")
+        cleanedEffect = cleanedEffect.replacingOccurrences(of: "\n```", with: "")
+        cleanedEffect = cleanedEffect.replacingOccurrences(of: "\n", with: " ")
+        return cleanedEffect
     }
 }

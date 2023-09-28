@@ -32,7 +32,7 @@ struct ElestralsView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack() {
                     VStack(spacing: 8) {

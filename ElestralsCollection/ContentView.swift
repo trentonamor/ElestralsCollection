@@ -7,11 +7,33 @@ struct ContentView: View {
     
     @State private var selectedTab = 0
     @EnvironmentObject var cardStore: CardStore
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         if cardStore.isLoading {
-            ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(alignment: .center) {
+                Image("Launch")
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
+                    .scaledToFill()
+            }
+        } else if cardStore.errorOccurred {
+            VStack {
+                Text("Failed to load data. Please try again.")
+                    .padding()
+                Button(action: {
+                    cardStore.errorOccurred = false
+                    cardStore.isLoading = true
+                    self.cardStore.setup()
+                }) {
+                    Text("Retry")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+            }
         } else {
             TabView(selection: $selectedTab) {
                 ElestralsView()
@@ -21,17 +43,17 @@ struct ContentView: View {
                         Text("Elestrals")
                     }
                     .tag(0)
-                CollectionView(subset: self.cardStore.getCards(for: true))
-                    .tabItem {
-                        Image(systemName: "archivebox")
-                            .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
-                        Text("My Collection")
-                    }
-                    .tag(1)
                 ExpansionsView(cardStore: cardStore)
                     .tabItem {
                         Image(systemName: "list.bullet.below.rectangle")
                         Text("Expansions")
+                    }
+                    .tag(1)
+                CollectionTabView()
+                    .tabItem {
+                        Image(systemName: "archivebox")
+                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
+                        Text("My Collection")
                     }
                     .tag(2)
                 //            BookmarkView()
@@ -39,18 +61,22 @@ struct ContentView: View {
                 //                    Image(systemName: "bookmark")
                 //                    Text("Bookmarks")
                 //                }
-                //            SearchView()
-                //                .tabItem {
-                //                    Image(systemName: "magnifyingglass")
-                //                    Text("Search")
-                //                }
+                SearchView()
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Search")
+                    }
+                    .tag(3)
                 SettingsView()
                     .tabItem {
                         Image(systemName: "gearshape")
                             .environment(\.symbolVariants, .none)
                         Text("Settings")
                     }
-                    .tag(3)
+                    .tag(4)
+            }
+            .onAppear {
+                self.cardStore.setBookmarks(context: self.managedObjectContext)
             }
         }
     }
