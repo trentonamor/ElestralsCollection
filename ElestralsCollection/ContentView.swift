@@ -13,6 +13,9 @@ struct ContentView: View {
     var body: some View {
         if authViewModel.userSession == nil {
             LoginView()
+                .onAppear(perform: {
+                    self.selectedTab = 0
+                })
         } else if cardStore.isLoading {
             VStack(alignment: .center) {
                 Image("Launch")

@@ -165,6 +165,28 @@ class DataManager {
         }
     }
 
+    func deleteAllCardsAndBookmarks() {
+        // Delete all cards
+        if let allCards = fetchAllCards() {
+            for card in allCards {
+                context.delete(card)
+            }
+        }
+
+        // Delete all bookmarks
+        if let allBookmarks = fetchAllBookmarks() {
+            for bookmark in allBookmarks {
+                context.delete(bookmark)
+            }
+        }
+        
+        // Save changes
+        do {
+            try context.save()
+        } catch {
+            print("Error deleting all cards and bookmarks: \(error)")
+        }
+    }
     
     
 }

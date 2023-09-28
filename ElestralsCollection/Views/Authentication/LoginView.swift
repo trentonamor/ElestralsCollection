@@ -10,6 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
+    @State var isSigningIn: Bool = false
+    @State var isShowingAlert: Bool = false
     @EnvironmentObject var viewModel: AuthenticationViewModel
     var body: some View {
         NavigationStack {
@@ -30,17 +32,30 @@ struct LoginView: View {
                 .padding(.horizontal)
                 // Sign In Button
                 Button(action: {
+                    isSigningIn = true
                     Task {
-                        try await viewModel.signIn(withEmail: email, password: password)
+                        do {
+                            try await viewModel.signIn(withEmail: email, password: password)
+                        } catch {
+                            self.isShowingAlert = true
+                            print("DEBUG: Failed to log in with error \(error.localizedDescription)")
+                        }
+                        isSigningIn = false
                     }
                 }, label: {
-                    HStack {
-                        Text("SIGN IN")
-                            .fontWeight(.semibold)
-                        Image(systemName: "arrow.right")
+                    if !self.isSigningIn {
+                        HStack {
+                            Text("SIGN IN")
+                                .fontWeight(.semibold)
+                            Image(systemName: "arrow.right")
+                        }
+                        .foregroundColor(.white)
+                        .frame(width:UIScreen.screenWidth - 32,height:48 )
+                    } else {
+                        ProgressView()
+                            .foregroundColor(Color(.dynamicGrey0))
+                            .frame(width:UIScreen.screenWidth - 32,height:48 )
                     }
-                    .foregroundColor(.white)
-                    .frame(width:UIScreen.screenWidth - 32,height:48 )
                 })
                 .background(Color(.dynamicUiBlue)
                     .opacity(formIsValid ? 1.0 : 0.5))
@@ -48,6 +63,11 @@ struct LoginView: View {
                 .padding(.top, 24)
                 .disabled(!formIsValid)
                 .opacity(formIsValid ? 1.0 : 0.5)
+                .alert(isPresented: $isShowingAlert, content: {
+                    Alert(title: Text("Error Logging In"),
+                          message: Text("An account with that email and password could not be found. Please try again."),
+                          dismissButton: .default(Text("OK")))
+                })
                 Spacer()
                 
                 // Sign Up Button

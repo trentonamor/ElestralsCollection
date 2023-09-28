@@ -8,7 +8,15 @@
 import Foundation
 
 extension ChangePassword {
-    func savePassword() {
-        print("Saving new password")
+    func savePassword() async throws {
+        
+    }
+}
+
+extension ChangePassword: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return self.requirementsViewModel.meetsRequirements()
+        && !self.currentPassword.isEmpty
+        && self.newPassword == self.confirmPassword
     }
 }

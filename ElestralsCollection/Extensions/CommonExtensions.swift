@@ -16,6 +16,12 @@ extension UIScreen {
    static let screenSize = UIScreen.main.bounds.size
 }
 
+extension Character {
+    var isSymbol: Bool {
+        return "!@#$%^&*()_+-=[]{}|;:,.<>?/\\~".contains(self)
+    }
+}
+
 extension String {
     func toDateFromMMDDYYY(format: String = "MM/dd/yyy") -> Date {
         let dateFormatter = DateFormatter()

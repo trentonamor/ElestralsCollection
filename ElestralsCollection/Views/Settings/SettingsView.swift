@@ -5,11 +5,13 @@ import MessageUI
 struct SettingsView: View {
     @State private var isShowingMailView = false
     @State private var isShowingAlert = false
+    @State private var isShowingDeleteAlert = false
     @State private var isShowingSubscription = false
     @State private var isShowingIcons = false
     
     @EnvironmentObject var entitlementsManager: EntitlementsManager
     @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @Environment(\.managedObjectContext) var managedObjectContext
     let mailComposerDelegate = MailComposerDelegate()
     
     var body: some View {
@@ -86,6 +88,29 @@ struct SettingsView: View {
                                 Image(systemName: "person.badge.key")
                                     .foregroundColor(.accentColor)
                             })
+                        })
+                        Button(action: {
+                            self.isShowingDeleteAlert = true
+                        }, label: {
+                            Label(title: {
+                                Text("Delete Account")
+                                    .foregroundStyle(Color(.dynamicRed))
+                            }, icon: {
+                                Image(systemName: "xmark")
+                                    .foregroundStyle(Color(.dynamicRed))
+                            })
+                        })
+                        .alert(isPresented: $isShowingDeleteAlert, content: {
+                            Alert(
+                                title: Text("Confirm Account Deletion"),
+                                message: Text("Are you sure you want to delete your account? This will delete all content and settings."),
+                                primaryButton: .destructive(Text("Delete")) {
+                                    let dataManager = DataManager(context: self.managedObjectContext)
+                                    dataManager.deleteAllCardsAndBookmarks()
+                                    authViewModel.deleteAccount()
+                                },
+                                secondaryButton: .cancel()
+                            )
                         })
                     }
                 }

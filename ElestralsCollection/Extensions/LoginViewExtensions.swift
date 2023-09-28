@@ -12,6 +12,7 @@ extension LoginView: AuthenticationFormProtocol {
         && email.contains("@")
         && !password.isEmpty
         && password.count > 6
+        && !self.isSigningIn
     }
 }
 
@@ -22,5 +23,6 @@ extension RegistrationView: AuthenticationFormProtocol {
         && self.requirementsViewModel.meetsRequirements()
         && confirmedPassword == password
         && !fullName.isEmpty
+        && !self.isSigningIn
     }
 }

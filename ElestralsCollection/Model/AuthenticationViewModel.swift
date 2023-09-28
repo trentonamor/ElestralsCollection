@@ -27,13 +27,9 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signIn(withEmail email: String, password: String) async throws {
-        do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+        let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
             await fetchUser()
-        } catch {
-            print("DEBUG: Failed to log in with error \(error.localizedDescription)")
-        }
     }
     
     func createUser(withEmail email: String, password: String, fullname: String) async throws {
@@ -60,7 +56,12 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func deleteAccount() {
-        
+        do {
+            guard let user = Auth.auth().currentUser else { return }
+            user.delete()
+            self.userSession = nil
+            self.currentUser = nil
+        }
     }
     
     func fetchUser() async {
@@ -73,4 +74,16 @@ class AuthenticationViewModel: ObservableObject {
             print("DEBUG: Failed to retrieve user with error \(error.localizedDescription)")
         }
     }
+    
+    func updatePassword(newPassword: String) async throws {
+        try await Auth.auth().currentUser?.updatePassword(to: newPassword)
+    }
+    
+    func reauthenticateUser(currentPassword: String) async throws {
+        let user = Auth.auth().currentUser
+        let credential = EmailAuthProvider.credential(withEmail: self.currentUser?.email ?? "", password: currentPassword)
+        
+        try await user?.reauthenticate(with: credential)
+    }
+
 }

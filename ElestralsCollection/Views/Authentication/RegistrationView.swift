@@ -12,6 +12,7 @@ struct RegistrationView: View {
     @State var fullName = ""
     @State var password = ""
     @State var confirmedPassword = ""
+    @State var isSigningIn: Bool = false
     @StateObject var requirementsViewModel = MinimumRequirementsViewModel()
     @State private var passwordStrength: PasswordStrength = .weak
     @Environment(\.dismiss) var dismiss
@@ -64,14 +65,21 @@ struct RegistrationView: View {
                 .padding(.top, 12)
                 
                 Button(action: {
+                    self.isSigningIn = true
                     Task {
                         try await viewModel.createUser(withEmail: email, password:password, fullname:fullName)
+                        self.isSigningIn = false
                     }
                 }, label: {
                     HStack {
-                        Text("SIGN UP")
-                            .fontWeight(.semibold)
-                        Image(systemName: "arrow.right")
+                        if !self.isSigningIn {
+                            Text("SIGN UP")
+                                .fontWeight(.semibold)
+                            Image(systemName: "arrow.right")
+                        } else {
+                            ProgressView()
+                                .foregroundColor(Color(.dynamicGrey0))
+                        }
                     }
                     .foregroundColor(.white)
                     .frame(width:UIScreen.screenWidth - 32,height:48 )
