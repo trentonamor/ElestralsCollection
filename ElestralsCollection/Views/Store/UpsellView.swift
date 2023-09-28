@@ -67,15 +67,16 @@ struct UpsellView: View {
                             FeatureCell(imageName: "paintbrush", imageColor: Color(.dynamicLime), featureTitle: "App Icon Customization", featureDescription: "Unleash your personal style with Caster Compendium's customizable icons! Dive into a diverse selection and make the app truly yours.")
                             FeatureCell(imageName: "doc.text", imageColor: Color(.dynamicOrange), featureTitle: "Ascend into the Real World", featureDescription: "Unleash the full potential of your decks beyond Caster Compendium. Seamlessly export them in JSON format and integrate them anywhere you desire!")
                             FeatureCell(imageName: "atom", imageColor: Color(.dynamicRed), featureTitle: "Experimental Features", featureDescription: "Unlock exclusive early access with Caster Compendium! By joining, you secure a front-row seat to our future enhancements. Await the release of innovative features like Dark Mode, Push Notifications, CSV Exports, Intelligent Bookmarking, and many others. It's a promise of what's to come, all for our dedicated members!")
-                            if self.userIsSubscribed {
-                                LineSeparator()
-                                    .padding(.top)
-                                Button(action: {
-                                    self.restorePurchases()
-                                }, label: {
-                                    Text("Restore Purchases")
-                                })
-                            }
+                            
+                            LineSeparator()
+                                .padding(.top)
+                            Button(action: {
+                                self.restorePurchases()
+                            }, label: {
+                                Text("Restore Purchases")
+                            })
+                            .padding(.bottom)
+                            
                         }
                         .padding(.horizontal, 8)
                     }
@@ -118,7 +119,6 @@ struct UpsellView: View {
             }
         }
         .onAppear {
-            //self.fetchOfferings()
             self.getUserSubscriptionState()
         }
     }
