@@ -84,3 +84,11 @@ extension Color {
     }
 }
 
+enum AuthError: Error {
+    case verifyEmail
+    case emailAlreadyInUse
+    case other(Error)
+    case none
+}
+
+

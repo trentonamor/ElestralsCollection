@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    @State var currentAlertType: AuthError = .none
     @State var email = ""
     @State var fullName = ""
     @State var password = ""
     @State var confirmedPassword = ""
-    @State var isSigningIn: Bool = false
+    @State var isSigningUp: Bool = false
+    @State var displayAlert: Bool = false
     @StateObject var requirementsViewModel = MinimumRequirementsViewModel()
     @State private var passwordStrength: PasswordStrength = .weak
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
         ScrollView {
@@ -49,14 +51,28 @@ struct RegistrationView: View {
                 .padding(.top, 12)
                 
                 Button(action: {
-                    self.isSigningIn = true
+                    self.isSigningUp = true
                     Task {
-                        try await viewModel.createUser(withEmail: email, password:password, fullname:fullName)
-                        self.isSigningIn = false
+                        do {
+                            try await authViewModel.createUser(withEmail: email, password: password, fullname: fullName)
+                            self.currentAlertType = .verifyEmail
+                            self.displayAlert = true
+                        } catch let error as AuthError {
+                            switch error {
+                            case .emailAlreadyInUse:
+                                self.currentAlertType = .emailAlreadyInUse
+                                self.displayAlert = true
+                            case .other(let originalError):
+                                print("DEBUG: Failed with error \(originalError.localizedDescription)")
+                            default:
+                                print("Error not caught")
+                            }
+                        }
+                        self.isSigningUp = false
                     }
                 }, label: {
                     HStack {
-                        if !self.isSigningIn {
+                        if !self.isSigningUp {
                             Text("SIGN UP")
                                 .fontWeight(.semibold)
                             Image(systemName: "arrow.right")
@@ -74,6 +90,31 @@ struct RegistrationView: View {
                     .opacity(self.formIsValid ? 1.0 : 0.5))
                 .cornerRadius(10)
                 .padding(.top, 24)
+                .alert(isPresented: self.$displayAlert, content: {
+                    switch self.currentAlertType {
+                    case .verifyEmail:
+                        return Alert(title: Text("Verify Your Email"),
+                                             message: Text("Please check your inbox and verify your email before signing in."),
+                                             dismissButton: .default({
+                            Text("Ok")
+                        }(), action: {
+                            dismiss()
+                        }))
+                    case .emailAlreadyInUse:
+                        return Alert(title: Text("Cannot Create User"),
+                                             message: Text("A user with this email already exists."),
+                                             primaryButton: .default(Text("Forgot Password"), action: {
+                                                 Task {
+                                                     try await self.authViewModel.resetPassword(email: self.email)
+                                                 }
+                                             }),
+                                             secondaryButton: .cancel(Text("Try Again Later")))
+                    case .other(let error):
+                        return Alert(title: Text("Error"), message: Text(error.localizedDescription))
+                    case .none:
+                        return Alert(title: Text("Unkown Error Occurred"))
+                    }
+                })
                 
                 Spacer()
                 

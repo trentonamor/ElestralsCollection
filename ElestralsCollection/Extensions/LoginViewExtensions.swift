@@ -23,6 +23,6 @@ extension RegistrationView: AuthenticationFormProtocol {
         && self.requirementsViewModel.meetsRequirements()
         && confirmedPassword == password
         && !fullName.isEmpty
-        && !self.isSigningIn
+        && !self.isSigningUp
     }
 }

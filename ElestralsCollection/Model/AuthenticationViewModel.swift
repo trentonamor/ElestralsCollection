@@ -19,7 +19,13 @@ class AuthenticationViewModel: ObservableObject {
     @Published var currentUser: User?
     
     init() {
-        self.userSession = Auth.auth().currentUser
+        guard let user = Auth.auth().currentUser else {
+            self.signOut()
+            return
+        }
+        if user.isEmailVerified {
+            self.userSession = user
+        }
         
         Task {
             await self.fetchUser()
@@ -27,21 +33,44 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func signIn(withEmail email: String, password: String) async throws {
-        let result = try await Auth.auth().signIn(withEmail: email, password: password)
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            
+            // Check if email is verified
+            guard result.user.isEmailVerified else {
+                throw AuthError.verifyEmail
+            }
             self.userSession = result.user
             await fetchUser()
+        } catch let error as NSError {
+            print("DEBUG: Error signing in with \(error.localizedDescription)")
+            throw AuthError.other(error)
+        }
+            
     }
     
     func createUser(withEmail email: String, password: String, fullname: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            self.userSession = result.user
+            
+            // Send verification email
+            try await result.user.sendEmailVerification()
+            
+            // Set the display name for the user
+            let changeRequest = result.user.createProfileChangeRequest()
+            changeRequest.displayName = fullname
+            try await changeRequest.commitChanges()
+            
             let user = User(id: result.user.uid, fullname: fullname, email: email)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
-            await fetchUser()
-        } catch {
-            print("DEBUG: Failed to create user with error \(error.localizedDescription)")
+            try Auth.auth().signOut()
+        } catch let error as NSError {
+            if error.domain == AuthErrorDomain && error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
+                throw AuthError.emailAlreadyInUse
+            } else {
+                throw AuthError.other(error)
+            }
         }
     }
     
@@ -79,11 +108,19 @@ class AuthenticationViewModel: ObservableObject {
         try await Auth.auth().currentUser?.updatePassword(to: newPassword)
     }
     
+    func resetPassword(email: String) async throws {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+        } catch {
+            print("DEBUG: Could not send email to \(email)")
+        }
+    }
+    
     func reauthenticateUser(currentPassword: String) async throws {
         let user = Auth.auth().currentUser
         let credential = EmailAuthProvider.credential(withEmail: self.currentUser?.email ?? "", password: currentPassword)
         
         try await user?.reauthenticate(with: credential)
     }
-
+    
 }

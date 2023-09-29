@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State var authError: AuthError = .none
     @State var email: String = ""
     @State var password: String = ""
     @State var isSigningIn: Bool = false
     @State var isShowingAlert: Bool = false
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @State var didCompleteForgotPassword: Bool = false
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var cardStore: CardStore
     var body: some View {
         NavigationStack {
@@ -31,43 +33,84 @@ struct LoginView: View {
                         .textInputAutocapitalization(.never)
                 }
                 .padding(.horizontal)
+                //Reset Button
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        Task {
+                            try await self.authViewModel.resetPassword(email: self.email)
+                            self.didCompleteForgotPassword = true
+                        }
+                        
+                    }, label: {
+                        Text("Forgot Password?")
+                    })
+                    .alert(isPresented: self.$didCompleteForgotPassword, content: {
+                        Alert(title: Text("Email Sent"), message: Text("Check your inbox to reset your password"))
+                    })
+                }
+                .padding(.horizontal)
+                .padding(.top, 8)
+                
                 // Sign In Button
                 Button(action: {
                     isSigningIn = true
                     Task {
                         do {
-                            try await viewModel.signIn(withEmail: email, password: password)
-                        } catch {
-                            self.isShowingAlert = true
-                            print("DEBUG: Failed to log in with error \(error.localizedDescription)")
+                            try await authViewModel.signIn(withEmail: email, password: password)
+                            isSigningIn = false
+                        } catch let error as AuthError {
+                            switch error {
+                            case .verifyEmail:
+                                self.authError = error
+                                self.isShowingAlert = true
+                            default:
+                                self.authError = .other(error)
+                                self.isShowingAlert = true
+                                
+                            }
+                            isSigningIn = false
                         }
-                        isSigningIn = false
+                        
                     }
                 }, label: {
                     if !self.isSigningIn {
                         HStack {
+                            Spacer()
                             Text("SIGN IN")
                                 .fontWeight(.semibold)
                             Image(systemName: "arrow.right")
+                            Spacer()
+                        }
+                        .foregroundColor(Color(.dynamicGrey0))
+                        .frame(maxWidth: .infinity, minHeight: 55)
+                    } else {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
                         }
                         .foregroundColor(.white)
-                        .frame(width:UIScreen.screenWidth - 32,height:48 )
-                    } else {
-                        ProgressView()
-                            .foregroundColor(Color(.dynamicGrey0))
-                            .frame(width:UIScreen.screenWidth - 32,height:48 )
+                        .frame(maxWidth: .infinity, minHeight: 55)
                     }
                 })
                 .background(Color(.dynamicUiBlue)
                     .opacity(formIsValid ? 1.0 : 0.5))
                 .cornerRadius(10)
-                .padding(.top, 24)
+                .padding(.top)
+                .padding(.horizontal)
                 .disabled(!formIsValid)
                 .opacity(formIsValid ? 1.0 : 0.5)
                 .alert(isPresented: $isShowingAlert, content: {
-                    Alert(title: Text("Error Logging In"),
-                          message: Text("An account with that email and password could not be found. Please try again."),
-                          dismissButton: .default(Text("OK")))
+                    switch self.authError {
+                    case .verifyEmail:
+                        return Alert(title: Text("Verify Email"), message: Text("Your email must be verified before you can sign in."))
+                    default:
+                        return Alert(title: Text("Error Logging In"),
+                              message: Text("An account with that email and password could not be found. Or email has not been verified. Please try again."),
+                              dismissButton: .default(Text("OK")))
+                        
+                    }
                 })
                 Spacer()
                 
