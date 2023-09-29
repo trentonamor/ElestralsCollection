@@ -11,6 +11,7 @@ struct SettingsView: View {
     
     @EnvironmentObject var entitlementsManager: EntitlementsManager
     @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var cardStore: CardStore
     @Environment(\.managedObjectContext) var managedObjectContext
     let mailComposerDelegate = MailComposerDelegate()
     
@@ -68,6 +69,7 @@ struct SettingsView: View {
                     List {
                         Button(action: {
                             self.authViewModel.signOut()
+                            self.cardStore.isLoading = true
                         }) {
                             Label(title: {
                                 Text("Logout")
@@ -107,6 +109,7 @@ struct SettingsView: View {
                                 primaryButton: .destructive(Text("Delete")) {
                                     let dataManager = DataManager(context: self.managedObjectContext)
                                     dataManager.deleteAllCardsAndBookmarks()
+                                    self.cardStore.isLoading = true
                                     authViewModel.deleteAccount()
                                 },
                                 secondaryButton: .cancel()

@@ -37,24 +37,8 @@ struct RegistrationView: View {
                             requirementsViewModel.password = newValue
                             passwordStrength = PasswordStrengthViewModel.calculateStrength(password: newValue)
                         }
-                    ZStack(alignment: .trailing) {
-                        InputView(text: $confirmedPassword, title: "Confirm Password", placeholder: "Confirm Your Password", isSecureField: true)
-                            .textInputAutocapitalization(.never)
-                        
-                        if !password.isEmpty && !confirmedPassword.isEmpty {
-                            if password == confirmedPassword {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .imageScale(.large)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color(.dynamicGreen))
-                            } else {
-                                Image(systemName: "x.circle.fill")
-                                    .imageScale(.large)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color(.dynamicRed))
-                            }
-                        }
-                    }
+                    InputView(text: $confirmedPassword, title: "Confirm Password", placeholder: "Confirm Your Password", isSecureField: true, showConfirmationField: true, isConfirmationValid: (self.confirmedPassword == self.password) && !self.confirmedPassword.isEmpty)
+                        .textInputAutocapitalization(.never)
                     
                     PasswordStrengthMeter(passwordStrength: passwordStrength)
                     
