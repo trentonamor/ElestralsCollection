@@ -15,6 +15,14 @@
 		2F1D5F092A1419A300821144 /* ExpansionFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */; };
 		2F1D5F0B2A16974600821144 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0A2A16974600821144 /* MailView.swift */; };
 		2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */; };
+		2F1DBEF52AAB90430064454E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBEF42AAB90430064454E /* LoginView.swift */; };
+		2F1DBEF72AAB966F0064454E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBEF62AAB966F0064454E /* InputView.swift */; };
+		2F1DBEF92AABD6440064454E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBEF82AABD6440064454E /* RegistrationView.swift */; };
+		2F1DBEFB2AABDAEC0064454E /* SettingsViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBEFA2AABDAEC0064454E /* SettingsViewExtensions.swift */; };
+		2F1DBEFD2AABDC530064454E /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBEFC2AABDC530064454E /* ChangePassword.swift */; };
+		2F1DBEFF2AABDDCB0064454E /* ChangePasswordExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBEFE2AABDDCB0064454E /* ChangePasswordExtensions.swift */; };
+		2F1DBF012AACB6F20064454E /* PasswordStrengthMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBF002AACB6F20064454E /* PasswordStrengthMeter.swift */; };
+		2F1DBF032AACB7290064454E /* PasswordStrengthMeterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DBF022AACB7290064454E /* PasswordStrengthMeterExtensions.swift */; };
 		2F3570BE2ABA42220068E2C7 /* BookmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */; };
 		2F3D9F202AC4BEAA00733D24 /* UpsellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F1F2AC4BEAA00733D24 /* UpsellView.swift */; };
 		2F3D9F222AC4C0F200733D24 /* StoreSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D9F212AC4C0F200733D24 /* StoreSelectionCell.swift */; };
@@ -44,7 +52,6 @@
 		2F7C93462A33D5C90044F189 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93452A33D5C90044F189 /* CollectionView.swift */; };
 		2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93472A34BB0C0044F189 /* CollectionFiltersView.swift */; };
 		2F7C934A2A34C0380044F189 /* CollectionFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C93492A34C0380044F189 /* CollectionFiltersModel.swift */; };
-		2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA2975A2A9525B50006BAD7 /* FirebaseStorage */; };
 		2FA297602A9527510006BAD7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2975F2A9527510006BAD7 /* CardView.swift */; };
 		2FA297632A9531200006BAD7 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297622A9531200006BAD7 /* CardDetailView.swift */; };
 		2FA297652A97CBD70006BAD7 /* CardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA297642A97CBD70006BAD7 /* CardGridView.swift */; };
@@ -72,8 +79,6 @@
 		2FC773312AA280D3003D3D9F /* LineSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC773302AA280D3003D3D9F /* LineSeparator.swift */; };
 		2FC773332AA29CDC003D3D9F /* HiddenNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */; };
 		2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDC930A2A472B03001B8E5A /* CardStore.swift */; };
-		2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */; };
-		2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */; };
 		2FDCCA4B2ABE043A0064D051 /* DeckViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */; };
 		2FDCCA4D2AC490FE0064D051 /* CardViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCCA4C2AC490FE0064D051 /* CardViewExtensions.swift */; };
 		2FDCCA4F2AC4A4910064D051 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDCCA4E2AC4A4910064D051 /* ToastView.swift */; };
@@ -93,6 +98,17 @@
 		2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CA29380AB8009B14C8 /* DistributionCard.swift */; };
 		2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3E1CC29380B00009B14C8 /* InfoCard.swift */; };
 		2FEAE6EC2938123500B9238A /* GridSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEAE6EB2938123500B9238A /* GridSection.swift */; };
+		2FF5A4992AC5D9C700BC7F8D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5A4982AC5D9C700BC7F8D /* User.swift */; };
+		2FF5A49B2AC5E0A900BC7F8D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5A49A2AC5E0A900BC7F8D /* AuthenticationViewModel.swift */; };
+		2FF5A4D52AC5E77A00BC7F8D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF5A4D42AC5E77A00BC7F8D /* FirebaseAuth */; };
+		2FF5A4D72AC5E77A00BC7F8D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF5A4D62AC5E77A00BC7F8D /* FirebaseDatabase */; };
+		2FF5A4D92AC5E77A00BC7F8D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF5A4D82AC5E77A00BC7F8D /* FirebaseFirestore */; };
+		2FF5A4DB2AC5E77A00BC7F8D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF5A4DA2AC5E77A00BC7F8D /* FirebaseFirestoreSwift */; };
+		2FF5A4DD2AC5E77A00BC7F8D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF5A4DC2AC5E77A00BC7F8D /* FirebaseStorage */; };
+		2FF5A4DF2AC5F26500BC7F8D /* LoginViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5A4DE2AC5F26500BC7F8D /* LoginViewExtensions.swift */; };
+		2FFA5FE62AACBF100090B77F /* MinimumRequirementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA5FE52AACBF100090B77F /* MinimumRequirementsView.swift */; };
+		2FFA5FE82AACC2350090B77F /* MinimumRequirementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA5FE72AACC2350090B77F /* MinimumRequirementsViewModel.swift */; };
+		2FFA5FEA2AACC61D0090B77F /* PasswordStrengthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA5FE92AACC61D0090B77F /* PasswordStrengthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +136,14 @@
 		2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionFiltersViewModel.swift; sourceTree = "<group>"; };
 		2F1D5F0A2A16974600821144 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		2F1D5F0C2A18F18C00821144 /* ElestralCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElestralCardData.swift; sourceTree = "<group>"; };
+		2F1DBEF42AAB90430064454E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2F1DBEF62AAB966F0064454E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		2F1DBEF82AABD6440064454E /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		2F1DBEFA2AABDAEC0064454E /* SettingsViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewExtensions.swift; sourceTree = "<group>"; };
+		2F1DBEFC2AABDC530064454E /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
+		2F1DBEFE2AABDDCB0064454E /* ChangePasswordExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordExtensions.swift; sourceTree = "<group>"; };
+		2F1DBF002AACB6F20064454E /* PasswordStrengthMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStrengthMeter.swift; sourceTree = "<group>"; };
+		2F1DBF022AACB7290064454E /* PasswordStrengthMeterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStrengthMeterExtensions.swift; sourceTree = "<group>"; };
 		2F3570BD2ABA42220068E2C7 /* BookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkList.swift; sourceTree = "<group>"; };
 		2F3D9F1F2AC4BEAA00733D24 /* UpsellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellView.swift; sourceTree = "<group>"; };
 		2F3D9F212AC4C0F200733D24 /* StoreSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSelectionCell.swift; sourceTree = "<group>"; };
@@ -197,6 +221,12 @@
 		2FE3E1CA29380AB8009B14C8 /* DistributionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionCard.swift; sourceTree = "<group>"; };
 		2FE3E1CC29380B00009B14C8 /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
 		2FEAE6EB2938123500B9238A /* GridSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSection.swift; sourceTree = "<group>"; };
+		2FF5A4982AC5D9C700BC7F8D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2FF5A49A2AC5E0A900BC7F8D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		2FF5A4DE2AC5F26500BC7F8D /* LoginViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewExtensions.swift; sourceTree = "<group>"; };
+		2FFA5FE52AACBF100090B77F /* MinimumRequirementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimumRequirementsView.swift; sourceTree = "<group>"; };
+		2FFA5FE72AACC2350090B77F /* MinimumRequirementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimumRequirementsViewModel.swift; sourceTree = "<group>"; };
+		2FFA5FE92AACC61D0090B77F /* PasswordStrengthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStrengthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,13 +234,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FA2975B2A9525B50006BAD7 /* FirebaseStorage in Frameworks */,
+				2FF5A4D72AC5E77A00BC7F8D /* FirebaseDatabase in Frameworks */,
 				2F3D9F2B2AC5097100733D24 /* StoreKit.framework in Frameworks */,
+				2FF5A4DD2AC5E77A00BC7F8D /* FirebaseStorage in Frameworks */,
+				2FF5A4D52AC5E77A00BC7F8D /* FirebaseAuth in Frameworks */,
 				2F1B11002AAE195C00072C7C /* DGCharts in Frameworks */,
 				2F3D9F292AC5093E00733D24 /* RevenueCatUI in Frameworks */,
 				2F3D9F272AC5093E00733D24 /* RevenueCat in Frameworks */,
-				2FDC930E2A472CF1001B8E5A /* FirebaseFirestore in Frameworks */,
-				2FDC93102A472CF1001B8E5A /* FirebaseFirestoreSwift in Frameworks */,
+				2FF5A4D92AC5E77A00BC7F8D /* FirebaseFirestore in Frameworks */,
+				2FF5A4DB2AC5E77A00BC7F8D /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +263,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F1DBEF32AAB90210064454E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2F1DBF002AACB6F20064454E /* PasswordStrengthMeter.swift */,
+				2F1DBEF42AAB90430064454E /* LoginView.swift */,
+				2F1DBEF82AABD6440064454E /* RegistrationView.swift */,
+				2F1DBEFC2AABDC530064454E /* ChangePassword.swift */,
+				2FFA5FE52AACBF100090B77F /* MinimumRequirementsView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		2F1FA6122950FC9400E8216B /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,12 +334,16 @@
 				2FA2976E2A9944E30006BAD7 /* ExpansionViewExtensions.swift */,
 				2FA297722A9945330006BAD7 /* GridSectionExtensions.swift */,
 				2FA2976C2A9944C50006BAD7 /* ProgressCardExtensions.swift */,
+				2F1DBEFA2AABDAEC0064454E /* SettingsViewExtensions.swift */,
+				2F1DBEFE2AABDDCB0064454E /* ChangePasswordExtensions.swift */,
+				2F1DBF022AACB7290064454E /* PasswordStrengthMeterExtensions.swift */,
 				2F6A4BEF2AB176830001AC12 /* CollectionTabViewExtensions.swift */,
 				2F01F5482AB60E9E00F9334F /* BookmarkViewExtensions.swift */,
 				2F5AC09E2ABCA5F900D1571C /* BookmarkListExtensions.swift */,
 				2FDCCA4A2ABE043A0064D051 /* DeckViewExtensions.swift */,
 				2FDCCA4C2AC490FE0064D051 /* CardViewExtensions.swift */,
 				2F3D9F2C2AC51C6F00733D24 /* UpsellViewExtensions.swift */,
+				2FF5A4DE2AC5F26500BC7F8D /* LoginViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -386,6 +434,7 @@
 				2FA297762A996FC70006BAD7 /* LabelView.swift */,
 				2FC773302AA280D3003D3D9F /* LineSeparator.swift */,
 				2FC773322AA29CDC003D3D9F /* HiddenNavigationBar.swift */,
+				2F1DBEF62AAB966F0064454E /* InputView.swift */,
 				2FDCCA4E2AC4A4910064D051 /* ToastView.swift */,
 			);
 			path = Components;
@@ -410,7 +459,11 @@
 				2F1D5F042A14175D00821144 /* ExpansionCellModel.swift */,
 				2F1D5F082A1419A300821144 /* ExpansionFiltersViewModel.swift */,
 				2FE3E1BA2937A995009B14C8 /* FiltersViewModel.swift */,
+				2FFA5FE72AACC2350090B77F /* MinimumRequirementsViewModel.swift */,
+				2FFA5FE92AACC61D0090B77F /* PasswordStrengthViewModel.swift */,
 				2F67766F2AB2291900DCCA33 /* BookmarkModel.swift */,
+				2FF5A4982AC5D9C700BC7F8D /* User.swift */,
+				2FF5A49A2AC5E0A900BC7F8D /* AuthenticationViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +471,7 @@
 		2FB59AB9293713F800F14EFB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F1DBEF32AAB90210064454E /* Authentication */,
 				2F3D9F1E2AC4BE1100733D24 /* Store */,
 				2F5AC0BD2ABD3CB900D1571C /* Deck */,
 				2FA297612A9531140006BAD7 /* Cards */,
@@ -506,12 +560,14 @@
 			);
 			name = ElestralsCollection;
 			packageProductDependencies = (
-				2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */,
-				2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */,
-				2FA2975A2A9525B50006BAD7 /* FirebaseStorage */,
 				2F1B10FF2AAE195C00072C7C /* DGCharts */,
 				2F3D9F262AC5093E00733D24 /* RevenueCat */,
 				2F3D9F282AC5093E00733D24 /* RevenueCatUI */,
+				2FF5A4D42AC5E77A00BC7F8D /* FirebaseAuth */,
+				2FF5A4D62AC5E77A00BC7F8D /* FirebaseDatabase */,
+				2FF5A4D82AC5E77A00BC7F8D /* FirebaseFirestore */,
+				2FF5A4DA2AC5E77A00BC7F8D /* FirebaseFirestoreSwift */,
+				2FF5A4DC2AC5E77A00BC7F8D /* FirebaseStorage */,
 			);
 			productName = ElestralsCollection;
 			productReference = 2FB59A7A293712A200F14EFB /* ElestralsCollection.app */;
@@ -586,9 +642,9 @@
 			);
 			mainGroup = 2FB59A71293712A200F14EFB;
 			packageReferences = (
-				2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2F1B10FE2AAE195C00072C7C /* XCRemoteSwiftPackageReference "Charts" */,
 				2F3D9F252AC5093D00733D24 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				2FF5A4D32AC5E77A00BC7F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 2FB59A7B293712A200F14EFB /* Products */;
 			projectDirPath = "";
@@ -645,7 +701,11 @@
 				2FE23071293920FC00AC4248 /* CarouselViewModel.swift in Sources */,
 				2F01F5492AB60E9E00F9334F /* BookmarkViewExtensions.swift in Sources */,
 				2FE3E1BD2937AB64009B14C8 /* FiltersView.swift in Sources */,
+				2FFA5FE62AACBF100090B77F /* MinimumRequirementsView.swift in Sources */,
+				2F1DBF032AACB7290064454E /* PasswordStrengthMeterExtensions.swift in Sources */,
 				2F1D5F052A14175D00821144 /* ExpansionCellModel.swift in Sources */,
+				2F1DBEF52AAB90430064454E /* LoginView.swift in Sources */,
+				2FFA5FE82AACC2350090B77F /* MinimumRequirementsViewModel.swift in Sources */,
 				2FE2307B293954DA00AC4248 /* ProgressCircle.swift in Sources */,
 				2F6776702AB2291900DCCA33 /* BookmarkModel.swift in Sources */,
 				2FB59AC1293713F800F14EFB /* BookmarkView.swift in Sources */,
@@ -656,9 +716,11 @@
 				2F3D9F222AC4C0F200733D24 /* StoreSelectionCell.swift in Sources */,
 				2FB59ABF293713F800F14EFB /* SettingsView.swift in Sources */,
 				2FA297652A97CBD70006BAD7 /* CardGridView.swift in Sources */,
+				2FF5A49B2AC5E0A900BC7F8D /* AuthenticationViewModel.swift in Sources */,
 				2FA297732A9945330006BAD7 /* GridSectionExtensions.swift in Sources */,
 				2F3570BE2ABA42220068E2C7 /* BookmarkList.swift in Sources */,
 				2FE3E1C929380A2E009B14C8 /* ProgressCard.swift in Sources */,
+				2FFA5FEA2AACC61D0090B77F /* PasswordStrengthViewModel.swift in Sources */,
 				2F6776722AB22A8300DCCA33 /* BookmarkCellView.swift in Sources */,
 				2FDC930B2A472B03001B8E5A /* CardStore.swift in Sources */,
 				2F7C93482A34BB0C0044F189 /* CollectionFiltersView.swift in Sources */,
@@ -676,25 +738,32 @@
 				2F6776762AB23ACF00DCCA33 /* EditBookmarkView.swift in Sources */,
 				2FE3E1BF2937B278009B14C8 /* Toggle+CheckboxStyle.swift in Sources */,
 				2FA2976B2A9944450006BAD7 /* ElestralCardExtensions.swift in Sources */,
+				2F1DBF012AACB6F20064454E /* PasswordStrengthMeter.swift in Sources */,
+				2F1DBEF72AAB966F0064454E /* InputView.swift in Sources */,
 				2FA2976D2A9944C50006BAD7 /* ProgressCardExtensions.swift in Sources */,
 				2F5AC09F2ABCA5F900D1571C /* BookmarkListExtensions.swift in Sources */,
 				2F1D5F072A14191B00821144 /* ExpansionFiltersView.swift in Sources */,
 				2FB59A85293712A200F14EFB /* ContentView.swift in Sources */,
 				2F1D5F0B2A16974600821144 /* MailView.swift in Sources */,
 				2FE3E1CB29380AB8009B14C8 /* DistributionCard.swift in Sources */,
+				2FF5A4DF2AC5F26500BC7F8D /* LoginViewExtensions.swift in Sources */,
 				2FE230752939213C00AC4248 /* SnapCarousel.swift in Sources */,
+				2F1DBEFD2AABDC530064454E /* ChangePassword.swift in Sources */,
 				2FE3E1CD29380B00009B14C8 /* InfoCard.swift in Sources */,
 				2FDCCA4F2AC4A4910064D051 /* ToastView.swift in Sources */,
 				2F5AC0C32ABD408100D1571C /* DeckCardDetailView.swift in Sources */,
 				2FDFB20F2AB4D76F002E5A3D /* DataManager.swift in Sources */,
 				2F5AC0C12ABD3E7400D1571C /* DeckCardView.swift in Sources */,
+				2FF5A4992AC5D9C700BC7F8D /* User.swift in Sources */,
 				2FDCCA4B2ABE043A0064D051 /* DeckViewExtensions.swift in Sources */,
 				2F1D5F0D2A18F18C00821144 /* ElestralCardData.swift in Sources */,
 				2FA297712A99450F0006BAD7 /* ElestralsViewExtensions.swift in Sources */,
 				2FA297632A9531200006BAD7 /* CardDetailView.swift in Sources */,
 				2FC773332AA29CDC003D3D9F /* HiddenNavigationBar.swift in Sources */,
 				2FA297772A996FC70006BAD7 /* LabelView.swift in Sources */,
+				2F1DBEFB2AABDAEC0064454E /* SettingsViewExtensions.swift in Sources */,
 				2FB59AC2293713F800F14EFB /* ElestralsView.swift in Sources */,
+				2F1DBEF92AABD6440064454E /* RegistrationView.swift in Sources */,
 				2FA2976F2A9944E30006BAD7 /* ExpansionViewExtensions.swift in Sources */,
 				2F3D9F242AC4D17800733D24 /* FeatureCell.swift in Sources */,
 				2FE2307729392CDC00AC4248 /* CardModel.swift in Sources */,
@@ -705,6 +774,7 @@
 				2F47CED22A8F00AA006F5162 /* CardStoreExtensions.swift in Sources */,
 				2FA297602A9527510006BAD7 /* CardView.swift in Sources */,
 				2FE3E1BB2937A995009B14C8 /* FiltersViewModel.swift in Sources */,
+				2F1DBEFF2AABDDCB0064454E /* ChangePasswordExtensions.swift in Sources */,
 				2FDFB2112AB4E13E002E5A3D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1089,12 +1159,12 @@
 				minimumVersion = 4.26.1;
 			};
 		};
-		2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		2FF5A4D32AC5E77A00BC7F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
+				minimumVersion = 10.15.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1115,20 +1185,30 @@
 			package = 2F3D9F252AC5093D00733D24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCatUI;
 		};
-		2FA2975A2A9525B50006BAD7 /* FirebaseStorage */ = {
+		2FF5A4D42AC5E77A00BC7F8D /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
+			package = 2FF5A4D32AC5E77A00BC7F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
-		2FDC930D2A472CF1001B8E5A /* FirebaseFirestore */ = {
+		2FF5A4D62AC5E77A00BC7F8D /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 2FF5A4D32AC5E77A00BC7F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		2FF5A4D82AC5E77A00BC7F8D /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FF5A4D32AC5E77A00BC7F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		2FDC930F2A472CF1001B8E5A /* FirebaseFirestoreSwift */ = {
+		2FF5A4DA2AC5E77A00BC7F8D /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2FDC930C2A472CF1001B8E5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 2FF5A4D32AC5E77A00BC7F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		2FF5A4DC2AC5E77A00BC7F8D /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FF5A4D32AC5E77A00BC7F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

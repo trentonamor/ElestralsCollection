@@ -5,10 +5,14 @@ import MessageUI
 struct SettingsView: View {
     @State private var isShowingMailView = false
     @State private var isShowingAlert = false
+    @State private var isShowingDeleteAlert = false
     @State private var isShowingSubscription = false
     @State private var isShowingIcons = false
     
     @EnvironmentObject var entitlementsManager: EntitlementsManager
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var cardStore: CardStore
+    @Environment(\.managedObjectContext) var managedObjectContext
     let mailComposerDelegate = MailComposerDelegate()
     
     var body: some View {
@@ -19,28 +23,107 @@ struct SettingsView: View {
                         self.isShowingSubscription.toggle()
                     }, label: {
                         if !self.entitlementsManager.hasEntitlements {
-                            Text("Subscribe to Caster Pro")
-                                .padding(.vertical, 16)
-                                .font(.title2)
-                                .foregroundStyle(.white)
-                                .bold()
-                                .background(content: {
+                            HStack {
+                                Text("Subscribe to Caster Pro")
+                                    .padding(.vertical, 16)
+                                    .font(.title2)
+                                    .foregroundStyle(.white)
+                                    .bold()
+                                Spacer()
+                            }
+                            .background(content: {
+                                ZStack {
                                     Image("WaterBackground")
-                                })
+                                    
+                                    LinearGradient(gradient: Gradient(colors: [.clear, Color(.dynamicNavy)]),
+                                                   startPoint: .leading,
+                                                   endPoint: .trailing)
+                                }
+                            })
+
                         } else {
-                            Text("You are a Caster Pro Subscriber! 🎉")
-                                .padding(.vertical, 4)
-                                .font(.body)
-                                .foregroundStyle(Color(.dynamicGrey0))
-                                .bold()
-                                .background(content: {
+                            HStack {
+                                Text("You are a Caster Pro Subscriber! 🎉")
+                                    .padding(.vertical, 4)
+                                    .font(.body)
+                                    .foregroundStyle(Color(.dynamicGrey0))
+                                    .bold()
+                                Spacer()
+                            }
+                            .background(content: {
+                                ZStack {
                                     Image("WaterBackground")
-                                })
+                                    
+                                    LinearGradient(gradient: Gradient(colors: [.clear, Color(.dynamicNavy)]),
+                                                   startPoint: .leading,
+                                                   endPoint: .trailing)
+                                }
+                            })
                         }
                     })
                     .sheet(isPresented: self.$isShowingSubscription, content: {
                         UpsellView()
                     })
+                }
+                Section(header: Text("Account")) {
+                    List {
+                        Button(action: {
+                            
+                            let dataManager = DataManager(context: self.managedObjectContext)
+                            let userId = self.authViewModel.currentUser?.id ?? "-1"
+                            Task {
+                                try await dataManager.saveCardStoreToFirebase(cardStore: self.cardStore, for: userId)
+                                self.authViewModel.signOut()
+                                self.cardStore.isLoading = true
+                            }
+                        }) {
+                            Label(title: {
+                                Text("Logout")
+                                    .foregroundColor(.primary)
+                            }, icon: {
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .foregroundColor(.accentColor)
+                            })
+                        }
+                        NavigationLink(destination: {
+                            ChangePassword()
+                                .navigationBarTitleDisplayMode(.inline)
+                        }, label: {
+                            Label(title: {
+                                Text("Change Password")
+                                    .foregroundColor(.primary)
+                            }, icon: {
+                                Image(systemName: "person.badge.key")
+                                    .foregroundColor(.accentColor)
+                            })
+                        })
+                        Button(action: {
+                            self.isShowingDeleteAlert = true
+                        }, label: {
+                            Label(title: {
+                                Text("Delete Account")
+                                    .foregroundStyle(Color(.dynamicRed))
+                            }, icon: {
+                                Image(systemName: "xmark")
+                                    .foregroundStyle(Color(.dynamicRed))
+                            })
+                        })
+                        .alert(isPresented: $isShowingDeleteAlert, content: {
+                            Alert(
+                                title: Text("Confirm Account Deletion"),
+                                message: Text("Are you sure you want to delete your account? This will delete all content and settings."),
+                                primaryButton: .destructive(Text("Delete")) {
+                                    let dataManager = DataManager(context: self.managedObjectContext)
+                                    dataManager.deleteAllCardsAndBookmarks()
+                                    self.cardStore.isLoading = true
+                                    Task {
+                                        await authViewModel.deleteAccount()
+                                    }
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        })
+                    }
                 }
                 Section(header: Text("Appearance")) {
                     List {
@@ -109,8 +192,8 @@ struct SettingsView: View {
                             }
                         } else {
                             Button(action: {
-                                // Handle alternative contact method here
                                 print("Device cannot send email")
+                                
                             }) {
                                 Label(title: {
                                     Text("Send us an Email")
@@ -142,23 +225,6 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
         }
-    }
-    
-    func openWebpage(url: URL) {
-        UIApplication.shared.open(url)
-    }
-    
-    func rateApp() {
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
-        }
-    }
-}
-
-class MailComposerDelegate: NSObject, MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        // Handle email composition result here
-        controller.dismiss(animated: true)
     }
 }
 

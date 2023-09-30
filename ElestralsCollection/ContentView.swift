@@ -8,9 +8,15 @@ struct ContentView: View {
     @State private var selectedTab = 0
     @EnvironmentObject var cardStore: CardStore
     @Environment(\.managedObjectContext) var managedObjectContext
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
-        if cardStore.isLoading {
+        if authViewModel.userSession == nil {
+            LoginView()
+                .onAppear(perform: {
+                    self.selectedTab = 0
+                })
+        } else if cardStore.isLoading {
             VStack(alignment: .center) {
                 Image("Launch")
                     .resizable()
@@ -18,6 +24,12 @@ struct ContentView: View {
                     .ignoresSafeArea()
                     .scaledToFill()
             }
+            .onAppear(perform: {
+                Task {
+                    await self.authViewModel.fetchUser()
+                    await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                }
+            })
         } else if cardStore.errorOccurred {
             VStack {
                 Text("Failed to load data. Please try again.")
@@ -25,7 +37,10 @@ struct ContentView: View {
                 Button(action: {
                     cardStore.errorOccurred = false
                     cardStore.isLoading = true
-                    self.cardStore.setup()
+                    Task {
+                        await self.authViewModel.fetchUser()
+                        await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                    }
                 }) {
                     Text("Retry")
                         .padding()
@@ -56,11 +71,6 @@ struct ContentView: View {
                         Text("My Collection")
                     }
                     .tag(2)
-                //            BookmarkView()
-                //                .tabItem {
-                //                    Image(systemName: "bookmark")
-                //                    Text("Bookmarks")
-                //                }
                 SearchView()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
@@ -74,9 +84,6 @@ struct ContentView: View {
                         Text("Settings")
                     }
                     .tag(4)
-            }
-            .onAppear {
-                self.cardStore.setBookmarks(context: self.managedObjectContext)
             }
         }
     }

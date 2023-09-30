@@ -127,7 +127,7 @@ extension BookmarkView: EditBookmarkViewDelegate {
         bookmarkEntity.showOwnedIndicator = bookmark.showOwnedIndicator
         bookmarkEntity.showProgress = bookmark.showProgres
         bookmarkEntity.icon = bookmark.icon
-        bookmarkEntity.color = bookmark.color.hexString ?? "FFFFFF"
+        bookmarkEntity.color = bookmark.color.name
 
         do {
             try managedObjectContext.save()

@@ -19,20 +19,19 @@ class CardStore: ObservableObject {
     
     init() {
         self.isLoading = true
-        
-        self.setup()
     }
     
-    func setup() {
-        fetchAllCards { (documents, error) in
-            defer { self.isLoading = false }
-            if let error = error {
-                print("Error fetching documents: \(error)")
-                self.errorOccurred = true
-                return
-            }
+    @MainActor func setup(userId: String, context: NSManagedObjectContext) async {
+        Task {
+            var cards: [ElestralCard] = []
+            self.isLoading = true
             
-            if let documents = documents {
+            do {
+                let documents = try await fetchAllCards()
+                let dataManager = DataManager(context: context)
+                dataManager.deleteAllCardsAndBookmarks()
+                let bookmarks = try await dataManager.fetchBookmarks(for: userId)
+                
                 // Process the fetched documents
                 for document in documents {
                     let data = document.data()
@@ -50,16 +49,41 @@ class CardStore: ObservableObject {
                                             cardType: data["cardType"] as? String ?? "",
                                             runeType: data["runeType"] as? String,
                                             date: (data["publishedDate"] as? String ?? "").toDateFromPOSIX() ?? Date.distantPast)
-                    self.cards.append(card)
+                    
+                    for bookmark in bookmarks {
+                        if bookmark.cardIds.contains(card.id) {
+                            bookmark.cards.append(card)
+                        }
+                    }
+                    // Link the card with all bookmarks that have its ID
+                    if card.name == "Elechik" {
+                        print(card.id)
+                    }
+                    card.bookmarks = bookmarks.filter { $0.cardIds.contains(card.id) }
+                    
+                    cards.append(card)
                 }
-            } else {
-                print("No documents found.")
+                
+                // Fetch user cards
+                let fetchedCards = try await dataManager.fetchCards(for: userId)
+                cards = self.mergeElestralCards(firstArray: cards, secondArray: fetchedCards)
+                self.isLoading = false
+                
+                for bookmark in bookmarks {
+                    dataManager.createOrUpdateBookmark(bookmark: bookmark)
+                }
+                
+            } catch {
+                print("Error fetching documents: \(error)")
                 self.errorOccurred = true
+                self.isLoading = false
             }
+            self.cards = cards
         }
     }
-
-    private func fetchAllCards(completion: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
+    
+    
+    private func fetchAllCards() async throws -> [QueryDocumentSnapshot] {
         let db = Firestore.firestore()
         
         let cardTypesCollectionRef = db.collection("Cards").document("CardTypes")
@@ -68,38 +92,43 @@ class CardStore: ObservableObject {
         
         let subcollectionNames = ["Elestral", "Rune", "Spirit"]
         
-        let dispatchGroup = DispatchGroup()
-        
-        for subcollectionName in subcollectionNames {
-            dispatchGroup.enter()
+        // Use the new `Task` to gather all documents concurrently
+        try await withThrowingTaskGroup(of: [QueryDocumentSnapshot].self) { group in
+            for subcollectionName in subcollectionNames {
+                group.addTask {
+                    try await cardTypesCollectionRef.collection(subcollectionName).getDocuments().documents
+                }
+            }
             
-            cardTypesCollectionRef.collection(subcollectionName).getDocuments { (querySnapshot, error) in
-                defer {
-                    dispatchGroup.leave()
-                }
-                
-                if let error = error {
-                    completion(nil, error)
-                    return
-                }
-                
-                if let documents = querySnapshot?.documents {
-                    allDocuments.append(contentsOf: documents)
-                }
+            // Gather all documents from each task into the allDocuments array
+            for try await documents in group {
+                allDocuments += documents
             }
         }
         
-        dispatchGroup.notify(queue: .main) {
-            if allDocuments.isEmpty {
-                completion(nil, nil) // No documents found
+        return allDocuments
+    }
+    
+    private func mergeElestralCards(firstArray: [ElestralCard], secondArray: [ElestralCard]) -> [ElestralCard] {
+        // Convert second array to a dictionary for fast lookup by ID
+        var secondArrayDict = Dictionary(uniqueKeysWithValues: secondArray.map { ($0.id, $0) })
+
+        // Incorporate bookmarks from the first array into the corresponding card in the second array
+        for card in firstArray {
+            if let existingCard = secondArrayDict[card.id] {
+                existingCard.bookmarks.append(contentsOf: card.bookmarks)
+                existingCard.bookmarks = Array(Set(existingCard.bookmarks)) // remove potential duplicates
             } else {
-                completion(allDocuments, nil)
+                secondArrayDict[card.id] = card
             }
         }
+
+        return Array(secondArrayDict.values)
     }
 
-
-
+    
+    
+    
     
     private func getSetId(set: String) -> ExpansionId {
         switch set.lowercased(){

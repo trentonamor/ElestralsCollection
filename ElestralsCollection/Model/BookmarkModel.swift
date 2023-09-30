@@ -11,6 +11,7 @@ import SwiftUI
 class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConvertible {
     var cards: [ElestralCard] = []
     var id: UUID
+    var cardIds: [String] = []
     
     @Published var name: String
     @Published var type: BookmarkType
@@ -18,7 +19,7 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
     @Published var showProgres: Bool
     
     @Published var icon: String = ""
-    @Published var color: Color
+    @Published var color: Color = Color(.dynamicBlue)
     
     var description: String {
         return """
@@ -29,15 +30,26 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
         - Show Owned Indicator: \(showOwnedIndicator)
         - Show Progress: \(showProgres)
         - Icon: \(icon)
-        - Color: \(color.description)
+        - Color: \(color.name)
         - Cards: \(cards.map { $0.description }.joined(separator: "\n"))
         """
     }
 
     
-    init(cards: [ElestralCard], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color) {
-        self.id = UUID()
+    init(cards: [ElestralCard], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color, id: UUID) {
+        self.id = id
         self.cards = cards
+        self.name = name
+        self.type = type
+        self.showOwnedIndicator = showOwnedIndicator
+        self.showProgres = showProgres
+        self.icon = icon
+        self.color = color
+    }
+    
+    init(cardIds: [String], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color, id: UUID) {
+        self.id = id
+        self.cardIds = cardIds
         self.name = name
         self.type = type
         self.showOwnedIndicator = showOwnedIndicator
@@ -61,7 +73,7 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
         self.showOwnedIndicator = entity.showOwnedIndicator
         self.showProgres = entity.showProgress
         self.icon = entity.icon ?? ""
-        self.color = Color(hex: entity.color ?? "FFFFFF")
+        self.color = Color(entity.color ?? "dynamicBlue")
     }
     
     init() {
@@ -71,7 +83,7 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
         self.showOwnedIndicator = true
         self.showProgres = true
         self.icon = "heart.fill"
-        self.color = .blue
+        self.color = Color(.dynamicBlue)
         self.id = UUID()
     }
     
@@ -85,10 +97,6 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
         self.showProgres = original.showProgres
         self.icon = original.icon
         self.showProgres = original.showProgres
-    }
-    
-    func copy() -> BookmarkModel {
-        return BookmarkModel(cards: self.cards, name: self.name, type: self.type, showOwnedIndicator: self.showOwnedIndicator, showProgres: self.showProgres, icon: self.icon, color: self.color)
     }
 
     
