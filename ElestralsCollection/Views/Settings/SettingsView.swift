@@ -115,9 +115,9 @@ struct SettingsView: View {
                                 primaryButton: .destructive(Text("Delete")) {
                                     let dataManager = DataManager(context: self.managedObjectContext)
                                     dataManager.deleteAllCardsAndBookmarks()
-                                    self.cardStore.isLoading = true
                                     Task {
                                         await authViewModel.deleteAccount()
+                                        self.cardStore.isLoading = true
                                     }
                                 },
                                 secondaryButton: .cancel()

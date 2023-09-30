@@ -89,15 +89,14 @@ class AuthenticationViewModel: ObservableObject {
         
         let db = Firestore.firestore()
         let userDocumentRef = db.collection("users").document(user.uid)
+        self.userSession = nil
+        self.currentUser = nil
         
         do {
             // Delete user from Firebase Auth
             try await user.delete()
             // Delete user's document from Firestore
             try await userDocumentRef.delete()
-            
-            self.userSession = nil
-            self.currentUser = nil
             
         } catch let error {
             print("Error deleting account: \(error.localizedDescription)")
