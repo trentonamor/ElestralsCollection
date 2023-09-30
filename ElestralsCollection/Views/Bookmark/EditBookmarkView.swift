@@ -38,7 +38,7 @@ struct EditBookmarkView: View {
     ]
     
     let colors: [Color] = [
-        .red, .pink, .orange, .yellow, .green, .mint, .teal, .cyan, .blue, .indigo, .purple, .brown, .black, .gray
+        Color(.dynamicRed), Color(.dynamicPink), Color(.dynamicOrange), Color(.dynamicYellow), Color(.dynamicLime), Color(.dynamicGreen), Color(.dynamicGreenBlue), Color(.dynamicGreenCyan), Color(.dynamicCyanBlue), Color(.dynamicBlue), Color(.dynamicNavy), Color(.dynamicPurple), Color(.dynamicGrey100), Color(.dynamicGrey40)
     ]
     
     
@@ -58,7 +58,7 @@ struct EditBookmarkView: View {
             _name = State(initialValue: "")
             _type = State(initialValue: .standard)
             _icon = State(initialValue: "heart.fill")
-            _color = State(initialValue: .blue)
+            _color = State(initialValue: Color(.dynamicBlue))
         }
         print("Bookmark in EditBookmarkView: ", model)
     }

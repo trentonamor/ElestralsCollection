@@ -7,7 +7,10 @@
 
 import Foundation
 import CoreData
+import FirebaseFirestore
+import SwiftUI
 
+@MainActor
 class DataManager {
     let context: NSManagedObjectContext
     
@@ -16,9 +19,9 @@ class DataManager {
     }
     
     //MARK: Create
-    func createBookmark(cards: [ElestralCard], name: String, type: String, showOwnedIndicator: Bool, showProgress: Bool, icon: String, color: String) -> Bookmark? {
+    func createBookmark(cards: [ElestralCard], name: String, type: String, showOwnedIndicator: Bool, showProgress: Bool, icon: String, color: String, id: UUID) -> Bookmark? {
         let newBookmark = Bookmark(context: self.context)
-        newBookmark.id = UUID() // Automatically generating a new UUID
+        newBookmark.id = id
         
         let cards = cards.map { cards -> Card in
             let card = Card(context: self.context)
@@ -58,22 +61,61 @@ class DataManager {
                 showOwnedIndicator: bookmark.showOwnedIndicator,
                 showProgress: bookmark.showProgres,
                 icon: bookmark.icon,
-                color: bookmark.color.hexString ?? "FFFFFF",
+                color: bookmark.color.name ?? "dynamicLime",
                 elestralCards: bookmark.cards
             )
+            
+            // Ensure the cards exist in CoreData and add them to the bookmark
+            var cardEntities: Set<Card> = []
+            for card in bookmark.cards {
+                let cardEntity = ensureCardExistsInCoreData(card: card)
+                cardEntities.insert(cardEntity)
+            }
+            match.cards = cardEntities as NSSet
+            
         } else {
             // New bookmark, create it
-            _ = createBookmark(
-                cards: bookmark.cards,
+            let newBookmark = createBookmark(
+                cards: [], // Intentionally empty as we will add cards next
                 name: bookmark.name,
                 type: bookmark.type.rawValue,
                 showOwnedIndicator: bookmark.showOwnedIndicator,
                 showProgress: bookmark.showProgres,
                 icon: bookmark.icon,
-                color: bookmark.color.hexString ?? "FFFFFF"
+                color: bookmark.color.name ?? "dynamicLime",
+                id: bookmark.id
             )
+            
+            // Ensure the cards exist in CoreData and add them to the new bookmark
+            var cardEntities: Set<Card> = []
+            for card in bookmark.cards {
+                let cardEntity = ensureCardExistsInCoreData(card: card)
+                cardEntities.insert(cardEntity)
+            }
+            newBookmark?.cards = cardEntities as NSSet
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed to save bookmark: \(error)")
         }
     }
+
+    func ensureCardExistsInCoreData(card: ElestralCard) -> Card {
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", card.id as CVarArg)
+        
+        if let matches = try? context.fetch(request), let match = matches.first {
+            return match
+        } else {
+            let newCardEntity = Card(context: context)
+            // Fill the newCardEntity properties using the ElestralCard object
+            // ...
+            return newCardEntity
+        }
+    }
+
 
     
     //MARK: Read
@@ -188,5 +230,256 @@ class DataManager {
         }
     }
     
+    //MARK: Firebase Functions
+    func saveCardStoreToFirebase(cardStore: CardStore, for userId: String) async throws {
+        // Save all cards to Firebase
+        try await save(elestralCards: cardStore.cards.filter({ $0.numberOwned > 0 || !$0.bookmarks.isEmpty}), for: userId)
+        
+        // Extract unique bookmarks from all cards
+        let fetchRequest: NSFetchRequest<Bookmark> = Bookmark.fetchRequest()
+        var uniqueBookmarks: [BookmarkModel] = []
+        
+        do {
+            let bookmarkEntities = try context.fetch(fetchRequest)
+            uniqueBookmarks = bookmarkEntities.map { BookmarkModel(from: $0, cardStore: cardStore) }
+        } catch {
+            print("Failed to fetch bookmarks: \(error)")
+        }
+        
+        // Delete bookmarks from Firebase that aren't in the local copy
+        try await deleteFirebaseBookmarksNotIn(uniqueBookmarks, for: userId)
+        
+        // Save all unique bookmarks to Firebase
+        try await save(bookmarks: uniqueBookmarks, for: userId)
+    }
+
+    func save(elestralCards: [ElestralCard], for userId: String) async throws {
+        let db = Firestore.firestore()
+        for card in elestralCards {
+            let documentRef = db.collection("users").document(userId).collection("cards").document(card.id)
+            
+            // Convert UUID keys to strings for Firestore compatibility
+            let cardsInDeckStringKeys = card.cardsInDeck.mapKeys { $0.uuidString }
+            
+            try await documentRef.setData([
+                "id": card.id,
+                "name": card.name,
+                "effect": card.effect,
+                "elements": card.elements,
+                "subclasses": card.subclasses,
+                "attack": card.attack ?? NSNull(),
+                "defense": card.defense ?? NSNull(),
+                "artist": card.artist,
+                "cardSet": self.getSetId(set: card.cardSet),
+                "cardNumber": card.cardNumber,
+                "rarity": card.rarity,
+                "cardType": card.cardType,
+                "runeType": card.runeType ?? NSNull(),
+                "publishedDate": card.publishedDate,
+                "cardsInDeck": cardsInDeckStringKeys, // Store the cardsInDeck dictionary
+                "numberOwned": card.numberOwned
+            ])
+        }
+    }
     
+    func save(bookmarks: [BookmarkModel], for userId: String) async throws {
+        let db = Firestore.firestore()
+        for bookmark in bookmarks {
+            let bookmarkRef = db.collection("users").document(userId).collection("bookmarks").document(bookmark.id.uuidString)
+            try await bookmarkRef.setData([
+                "id": bookmark.id.uuidString,
+                "name": bookmark.name,
+                "type": bookmark.type.rawValue,
+                "showOwnedIndicator": bookmark.showOwnedIndicator,
+                "showProgres": bookmark.showProgres,
+                "icon": bookmark.icon,
+                "color": bookmark.color.name
+            ])
+        }
+    }
+    
+    func deleteFirebaseBookmarksNotIn(_ localBookmarks: [BookmarkModel], for userId: String) async throws {
+        let db = Firestore.firestore()
+        let bookmarksRef = db.collection("users").document(userId).collection("bookmarks")
+        
+        // Fetch all bookmarks from Firebase
+        let snapshot = try await bookmarksRef.getDocuments()
+        
+        let firebaseBookmarksIDs = snapshot.documents.map { $0.documentID }
+        let localBookmarksIDs = localBookmarks.map { $0.id.uuidString }
+        
+        let bookmarksToDelete = firebaseBookmarksIDs.filter { !localBookmarksIDs.contains($0) }
+        
+        for bookmarkID in bookmarksToDelete {
+            let bookmarkRef = bookmarksRef.document(bookmarkID)
+            try await bookmarkRef.delete()
+        }
+    }
+    
+    func fetchBookmarks(for userId: String) async throws -> [BookmarkModel] {
+        do {
+            let db = Firestore.firestore()
+            let bookmarksQuerySnapshot = try await db.collection("users").document(userId).collection("bookmarks").getDocuments()
+            var bookmarks: [BookmarkModel] = []
+            
+            for document in bookmarksQuerySnapshot.documents {
+                let data = document.data()
+                let cards = try await fetchElestralCards(forBookmarkId: document.documentID, userId: userId)
+                let uuid: UUID = UUID(uuidString: (data["id"] as? String)!)!
+                let bookmark = BookmarkModel(
+                    cards: cards,
+                    name: data["name"] as? String ?? "",
+                    type: BookmarkType(rawValue: data["type"] as? String ?? "") ?? .standard,
+                    showOwnedIndicator: data["showOwnedIndicator"] as? Bool ?? false,
+                    showProgres: data["showProgres"] as? Bool ?? false,
+                    icon: data["icon"] as? String ?? "",
+                    color: Color(data["color"] as? String ?? "dynamicGreen"),
+                    id: uuid
+                )
+                
+                bookmarks.append(bookmark)
+                
+            }
+            return bookmarks
+        } catch {
+            return []
+        }
+    }
+    
+    func fetchCards(for userId: String) async throws -> [ElestralCard] {
+        let db = Firestore.firestore()
+
+        // 1. Fetch all bookmarks for the user
+        let bookmarks = try await fetchBookmarks(for: userId)
+
+        let cardsQuerySnapshot = try await db.collection("users").document(userId).collection("cards").getDocuments()
+        
+        var elestralCards: [ElestralCard] = []
+        for document in cardsQuerySnapshot.documents {
+            let data = document.data()
+            
+            // Convert string keys back to UUID for in-app use
+            let cardsInDeckUUIDKeys = (data["cardsInDeck"] as? [String: Int])?.mapKeys { UUID(uuidString: $0)! } ?? [:]
+            
+            // 2. Use the cardsInDeck dictionary to determine which bookmarks the card belongs to
+            let associatedBookmarks = bookmarks.filter { bookmark in
+                if let id = UUID(uuidString: bookmark.id.uuidString) {
+                    return cardsInDeckUUIDKeys.keys.contains(id)
+                }
+                return false
+            }
+            
+            var card = ElestralCard(
+                id: data["id"] as? String ?? "",
+                name: data["name"] as? String ?? "",
+                effect: data["effect"] as? String ?? "",
+                elements: data["elements"] as? [String] ?? [],
+                subclasses: data["subclasses"] as? [String] ?? [],
+                attack: data["attack"] as? Int,
+                defense: data["defense"] as? Int,
+                artist: data["artist"] as? String ?? "",
+                cardSet: getSetId(set: data["cardSet"] as? String ?? ""),
+                cardNumber: data["cardNumber"] as? String ?? "",
+                rarity: data["rarity"] as? String ?? "",
+                cardType: data["cardType"] as? String ?? "",
+                runeType: data["runeType"] as? String,
+                date: (data["publishedDate"] as? Timestamp)?.dateValue() ?? Date(),
+                bookmarks: associatedBookmarks
+            )
+            card.cardsInDeck = cardsInDeckUUIDKeys
+            card.numberOwned = data["numberOwned"] as? Int ?? -1
+            
+            elestralCards.append(card)
+        }
+        
+        return elestralCards
+    }
+
+
+    func fetchElestralCards(forBookmarkId bookmarkId: String, userId: String) async throws -> [ElestralCard] {
+        let db = Firestore.firestore()
+        let cardsQuerySnapshot = try await db.collection("users").document(userId).collection("cards").whereField("cardsInDeck.\(bookmarkId)", isGreaterThan: 0).getDocuments()
+        
+        var elestralCards: [ElestralCard] = []
+        for document in cardsQuerySnapshot.documents {
+            let data = document.data()
+            
+            // Convert string keys back to UUID for in-app use
+            let cardsInDeckUUIDKeys = (data["cardsInDeck"] as? [String: Int])?.mapKeys { UUID(uuidString: $0)! } ?? [:]
+            
+            var card = ElestralCard(
+                id: data["id"] as? String ?? "",
+                name: data["name"] as? String ?? "",
+                effect: data["effect"] as? String ?? "",
+                elements: data["elements"] as? [String] ?? [],
+                subclasses: data["subclasses"] as? [String] ?? [],
+                attack: data["attack"] as? Int,
+                defense: data["defense"] as? Int,
+                artist: data["artist"] as? String ?? "",
+                cardSet: getSetId(set: data["cardSet"] as? String ?? ""),
+                cardNumber: data["cardNumber"] as? String ?? "",
+                rarity: data["rarity"] as? String ?? "",
+                cardType: data["cardType"] as? String ?? "",
+                runeType: data["runeType"] as? String,
+                date: (data["publishedDate"] as? Timestamp)?.dateValue() ?? Date(),
+                bookmarks: []
+            )
+            card.cardsInDeck = cardsInDeckUUIDKeys
+            
+            elestralCards.append(card)
+        }
+        
+        return elestralCards
+    }
+
+    private func getSetId(set: String) -> ExpansionId {
+        switch set.lowercased(){
+        case "artist collection":
+            return .artistCollection
+        case "base set":
+            return .baseSet
+        case "base set promo cards":
+            return .baseSetPromoCards
+        case "centaurbor starter deck":
+            return .centaurborStarterDeck
+        case "trifernal starter deck":
+            return .trifernalStarterDeck
+        case "majesea starter deck":
+            return .majeseaStarterDeck
+        case "ohmperial starter deck":
+            return .ohmperialStarterDeck
+        case "penterror starter deck":
+            return .penterrorStarterDeck
+        case "prototype promo cards":
+            return .prototypePromoCards
+        default:
+            print("Error in finding set for \(set)")
+            return .unknown
+        }
+    }
+    
+    private func getSetId(set: ExpansionId) -> String {
+        switch set {
+        case .artistCollection:
+            return "artist collection"
+        case .unknown:
+            return ""
+        case .baseSet:
+            return "base set"
+        case .centaurborStarterDeck:
+            return "centaurbor starter deck"
+        case .trifernalStarterDeck:
+            return "trifernal starter deck"
+        case .majeseaStarterDeck:
+            return "majesea starter deck"
+        case .ohmperialStarterDeck:
+            return "ohmperial starter deck"
+        case .penterrorStarterDeck:
+            return "penterror starter deck"
+        case .baseSetPromoCards:
+            return "base set promo cards"
+        case .prototypePromoCards:
+            return "prototype promo cards"
+        }
+    }
 }

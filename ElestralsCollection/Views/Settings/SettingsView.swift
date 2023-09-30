@@ -68,8 +68,14 @@ struct SettingsView: View {
                 Section(header: Text("Account")) {
                     List {
                         Button(action: {
-                            self.authViewModel.signOut()
-                            self.cardStore.isLoading = true
+                            
+                            let dataManager = DataManager(context: self.managedObjectContext)
+                            let userId = self.authViewModel.currentUser?.id ?? "-1"
+                            Task {
+                                try await dataManager.saveCardStoreToFirebase(cardStore: self.cardStore, for: userId)
+                                self.authViewModel.signOut()
+                                self.cardStore.isLoading = true
+                            }
                         }) {
                             Label(title: {
                                 Text("Logout")
@@ -110,7 +116,9 @@ struct SettingsView: View {
                                     let dataManager = DataManager(context: self.managedObjectContext)
                                     dataManager.deleteAllCardsAndBookmarks()
                                     self.cardStore.isLoading = true
-                                    authViewModel.deleteAccount()
+                                    Task {
+                                        await authViewModel.deleteAccount()
+                                    }
                                 },
                                 secondaryButton: .cancel()
                             )

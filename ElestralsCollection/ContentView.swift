@@ -25,7 +25,10 @@ struct ContentView: View {
                     .scaledToFill()
             }
             .onAppear(perform: {
-                self.cardStore.setup()
+                Task {
+                    await self.authViewModel.fetchUser()
+                    await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                }
             })
         } else if cardStore.errorOccurred {
             VStack {
@@ -34,7 +37,10 @@ struct ContentView: View {
                 Button(action: {
                     cardStore.errorOccurred = false
                     cardStore.isLoading = true
-                    self.cardStore.setup()
+                    Task {
+                        await self.authViewModel.fetchUser()
+                        await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                    }
                 }) {
                     Text("Retry")
                         .padding()
@@ -65,11 +71,6 @@ struct ContentView: View {
                         Text("My Collection")
                     }
                     .tag(2)
-                //            BookmarkView()
-                //                .tabItem {
-                //                    Image(systemName: "bookmark")
-                //                    Text("Bookmarks")
-                //                }
                 SearchView()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
@@ -84,9 +85,6 @@ struct ContentView: View {
                     }
                     .tag(4)
             }
-            .onAppear(perform: {
-                self.cardStore.setBookmarks(context: self.managedObjectContext)
-            })
         }
     }
 }

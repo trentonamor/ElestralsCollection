@@ -84,12 +84,23 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    func deleteAccount() {
+    func deleteAccount() async {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        let db = Firestore.firestore()
+        let userDocumentRef = db.collection("users").document(user.uid)
+        
         do {
-            guard let user = Auth.auth().currentUser else { return }
-            user.delete()
+            // Delete user from Firebase Auth
+            try await user.delete()
+            // Delete user's document from Firestore
+            try await userDocumentRef.delete()
+            
             self.userSession = nil
             self.currentUser = nil
+            
+        } catch let error {
+            print("Error deleting account: \(error.localizedDescription)")
         }
     }
     
