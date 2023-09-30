@@ -26,8 +26,12 @@ struct ContentView: View {
             }
             .onAppear(perform: {
                 Task {
-                    await self.authViewModel.fetchUser()
-                    await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                    do {
+                        try await self.authViewModel.fetchUser()
+                        await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                    } catch {
+                        print("DEDBUG: Failed to fetch user")
+                    }
                 }
             })
         } else if cardStore.errorOccurred {
@@ -38,11 +42,33 @@ struct ContentView: View {
                     cardStore.errorOccurred = false
                     cardStore.isLoading = true
                     Task {
-                        await self.authViewModel.fetchUser()
-                        await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                        do {
+                            try await self.authViewModel.fetchUser()
+                            await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                        } catch {
+                            self.authViewModel.signOut()
+                        }
                     }
                 }) {
                     Text("Retry")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                Button(action: {
+                    cardStore.errorOccurred = false
+                    cardStore.isLoading = true
+                    Task {
+                        do {
+                            try await self.authViewModel.fetchUser()
+                            await self.cardStore.setup(userId: self.authViewModel.currentUser?.id ?? "", context: self.managedObjectContext)
+                        } catch {
+                            self.authViewModel.signOut()
+                        }
+                    }
+                }) {
+                    Text("Sign Out")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)

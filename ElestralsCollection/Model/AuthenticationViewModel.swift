@@ -28,7 +28,11 @@ class AuthenticationViewModel: ObservableObject {
         }
         
         Task {
-            await self.fetchUser()
+            do {
+                try await self.fetchUser()
+            } catch {
+                print("DEBUG: Failed to fetch user")
+            }
         }
     }
     
@@ -41,7 +45,7 @@ class AuthenticationViewModel: ObservableObject {
                 throw AuthError.verifyEmail
             }
             self.userSession = result.user
-            await fetchUser()
+            try await fetchUser()
         } catch let error as NSError {
             print("DEBUG: Error signing in with \(error.localizedDescription)")
             throw AuthError.other(error)
@@ -103,7 +107,7 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    func fetchUser() async {
+    func fetchUser() async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         do {
@@ -111,6 +115,7 @@ class AuthenticationViewModel: ObservableObject {
             self.currentUser = try snapshot.data(as: User.self)
         } catch {
             print("DEBUG: Failed to retrieve user with error \(error.localizedDescription)")
+            throw(error)
         }
     }
     

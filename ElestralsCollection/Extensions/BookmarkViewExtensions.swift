@@ -121,8 +121,20 @@ extension BookmarkView: EditBookmarkViewDelegate {
         // Map properties from BookmarkModel to Bookmark
         bookmarkEntity.id = bookmark.id
         bookmarkEntity.name = bookmark.name
+
+        // Fetch the Card entities using cardIDs
         let cardIDs = Set(bookmark.cards.map { $0.id })
-        bookmarkEntity.cards = cardIDs as NSSet
+        let cardFetchRequest: NSFetchRequest<NSFetchRequestResult> = Card.fetchRequest()
+        cardFetchRequest.predicate = NSPredicate(format: "id IN %@", cardIDs)
+
+        if let fetchedCards = try? managedObjectContext.fetch(cardFetchRequest) as? [Card] {
+            let cardSet = NSSet(array: fetchedCards)
+            bookmarkEntity.cards = cardSet
+        } else {
+            // Handle error in fetching cards
+            print("Error fetching cards by ID.")
+        }
+
         bookmarkEntity.type = bookmark.type.rawValue
         bookmarkEntity.showOwnedIndicator = bookmark.showOwnedIndicator
         bookmarkEntity.showProgress = bookmark.showProgres
@@ -140,6 +152,7 @@ extension BookmarkView: EditBookmarkViewDelegate {
         }
         NotificationCenter.default.post(name: .bookmarkDataDidChange, object: nil)
     }
+
     
     func deleteBookmark(_ bookmark: BookmarkModel) {
         withAnimation(.easeIn(duration: 0.3)) {
