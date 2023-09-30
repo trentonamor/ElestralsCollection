@@ -102,16 +102,18 @@ class DataManager {
         }
     }
 
-    func ensureCardExistsInCoreData(card: ElestralCard) -> Card {
-        let request: NSFetchRequest<Card> = Card.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", card.id as CVarArg)
+    private func ensureCardExistsInCoreData(card: ElestralCard) -> Card {
+        // Check if the card already exists
+        let cardFetchRequest: NSFetchRequest<NSFetchRequestResult> = Card.fetchRequest()
+        cardFetchRequest.predicate = NSPredicate(format: "id == %@", card.id as CVarArg)
         
-        if let matches = try? context.fetch(request), let match = matches.first {
-            return match
+        let matches = try? self.context.fetch(cardFetchRequest) as? [Card]
+        if let existingCard = matches?.first {
+            return existingCard
         } else {
-            let newCardEntity = Card(context: context)
-            // Fill the newCardEntity properties using the ElestralCard object
-            // ...
+            let newCardEntity = Card(context: self.context)
+            newCardEntity.id = card.id
+
             return newCardEntity
         }
     }
@@ -293,7 +295,8 @@ class DataManager {
                 "showOwnedIndicator": bookmark.showOwnedIndicator,
                 "showProgres": bookmark.showProgres,
                 "icon": bookmark.icon,
-                "color": bookmark.color.name
+                "color": bookmark.color.name,
+                "cards": bookmark.cards.map { $0.id }
             ])
         }
     }
@@ -327,7 +330,7 @@ class DataManager {
                 let cards = try await fetchElestralCards(forBookmarkId: document.documentID, userId: userId)
                 let uuid: UUID = UUID(uuidString: (data["id"] as? String)!)!
                 let bookmark = BookmarkModel(
-                    cards: cards,
+                    cardIds: data["cards"] as? [String] ?? [],
                     name: data["name"] as? String ?? "",
                     type: BookmarkType(rawValue: data["type"] as? String ?? "") ?? .standard,
                     showOwnedIndicator: data["showOwnedIndicator"] as? Bool ?? false,

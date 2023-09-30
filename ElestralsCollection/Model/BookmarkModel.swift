@@ -11,6 +11,7 @@ import SwiftUI
 class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConvertible {
     var cards: [ElestralCard] = []
     var id: UUID
+    var cardIds: [String] = []
     
     @Published var name: String
     @Published var type: BookmarkType
@@ -38,6 +39,17 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
     init(cards: [ElestralCard], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color, id: UUID) {
         self.id = id
         self.cards = cards
+        self.name = name
+        self.type = type
+        self.showOwnedIndicator = showOwnedIndicator
+        self.showProgres = showProgres
+        self.icon = icon
+        self.color = color
+    }
+    
+    init(cardIds: [String], name: String, type: BookmarkType, showOwnedIndicator: Bool, showProgres: Bool, icon: String, color: Color, id: UUID) {
+        self.id = id
+        self.cardIds = cardIds
         self.name = name
         self.type = type
         self.showOwnedIndicator = showOwnedIndicator

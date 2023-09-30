@@ -28,6 +28,9 @@ class CardStore: ObservableObject {
             
             do {
                 let documents = try await fetchAllCards()
+                let dataManager = DataManager(context: context)
+                dataManager.deleteAllCardsAndBookmarks()
+                let bookmarks = try await dataManager.fetchBookmarks(for: userId)
                 
                 // Process the fetched documents
                 for document in documents {
@@ -46,22 +49,29 @@ class CardStore: ObservableObject {
                                             cardType: data["cardType"] as? String ?? "",
                                             runeType: data["runeType"] as? String,
                                             date: (data["publishedDate"] as? String ?? "").toDateFromPOSIX() ?? Date.distantPast)
+                    
+                    for bookmark in bookmarks {
+                        if bookmark.cardIds.contains(card.id) {
+                            bookmark.cards.append(card)
+                        }
+                    }
+                    // Link the card with all bookmarks that have its ID
+                    if card.name == "Elechik" {
+                        print(card.id)
+                    }
+                    card.bookmarks = bookmarks.filter { $0.cardIds.contains(card.id) }
+                    
                     cards.append(card)
                 }
                 
                 // Fetch user cards
-                let dataManager = DataManager(context: context)
                 let fetchedCards = try await dataManager.fetchCards(for: userId)
                 cards = self.mergeElestralCards(firstArray: cards, secondArray: fetchedCards)
                 self.isLoading = false
                 
-                dataManager.deleteAllCardsAndBookmarks()
-                let bookmarks = try await dataManager.fetchBookmarks(for: userId)
                 for bookmark in bookmarks {
-                               let associatedCards = cards.filter { $0.bookmarks.contains(where: { $0.id == bookmark.id }) }
-                               bookmark.cards = associatedCards
-                               dataManager.createOrUpdateBookmark(bookmark: bookmark)
-                           }
+                    dataManager.createOrUpdateBookmark(bookmark: bookmark)
+                }
                 
             } catch {
                 print("Error fetching documents: \(error)")
@@ -71,7 +81,7 @@ class CardStore: ObservableObject {
             self.cards = cards
         }
     }
-
+    
     
     private func fetchAllCards() async throws -> [QueryDocumentSnapshot] {
         let db = Firestore.firestore()
@@ -89,7 +99,7 @@ class CardStore: ObservableObject {
                     try await cardTypesCollectionRef.collection(subcollectionName).getDocuments().documents
                 }
             }
-
+            
             // Gather all documents from each task into the allDocuments array
             for try await documents in group {
                 allDocuments += documents
@@ -101,17 +111,24 @@ class CardStore: ObservableObject {
     
     private func mergeElestralCards(firstArray: [ElestralCard], secondArray: [ElestralCard]) -> [ElestralCard] {
         // Convert second array to a dictionary for fast lookup by ID
-        let secondArrayDict = Dictionary(uniqueKeysWithValues: secondArray.map { ($0.id, $0) })
+        var secondArrayDict = Dictionary(uniqueKeysWithValues: secondArray.map { ($0.id, $0) })
 
-        // Filter out cards from the first array that have an ID present in the second array
-        let filteredFirstArray = firstArray.filter { secondArrayDict[$0.id] == nil }
+        // Incorporate bookmarks from the first array into the corresponding card in the second array
+        for card in firstArray {
+            if let existingCard = secondArrayDict[card.id] {
+                existingCard.bookmarks.append(contentsOf: card.bookmarks)
+                existingCard.bookmarks = Array(Set(existingCard.bookmarks)) // remove potential duplicates
+            } else {
+                secondArrayDict[card.id] = card
+            }
+        }
 
-        // Combine the filtered first array with the second array
-        return filteredFirstArray + secondArray
+        return Array(secondArrayDict.values)
     }
 
-
-
+    
+    
+    
     
     private func getSetId(set: String) -> ExpansionId {
         switch set.lowercased(){
