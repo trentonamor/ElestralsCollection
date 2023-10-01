@@ -64,10 +64,14 @@ struct CardGridView: View {
                     return card.elements.contains("water")
                 case .wind:
                     return card.elements.contains("wind")
+                case .frost:
+                    return card.elements.contains("frost")
+                case .rainbow:
+                    return card.elements.contains("rainbow")
                 default:
                     return false
                 }
-            }) || card.elements.contains("rainbow")
+            })
             
             let rarityMatch = rarity.first(where: { filter in
                 switch filter {

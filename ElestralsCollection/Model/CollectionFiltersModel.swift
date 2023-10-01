@@ -8,7 +8,7 @@
 import Foundation
 
 class CollectionFiltersViewModel: ObservableObject {
-    public let defaultsFilters: Set<CollectionFilterType> = Set([.ascending, .name, .both, .earth, .fire, .thunder, .water, .wind, .elestral, .spirit, .rune, .fullArt, .common, .rare, .uncommon, .holoRare, .stellarRare, .alternativeArt])
+    public let defaultsFilters: Set<CollectionFilterType> = Set([.ascending, .name, .both, .earth, .fire, .thunder, .water, .wind, .frost, .rainbow, .elestral, .spirit, .rune, .fullArt, .common, .rare, .uncommon, .holoRare, .stellarRare, .alternativeArt])
     
     @Published var filters: Set<CollectionFilterType>
     
@@ -29,7 +29,7 @@ class CollectionFiltersViewModel: ObservableObject {
     }
     
     var elestralElement: Set<CollectionFilterType> {
-        filters.intersection([.earth, .fire, .thunder, .water, .wind])
+        filters.intersection([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow])
     }
     
     var rarity: Set<CollectionFilterType> {
@@ -71,6 +71,8 @@ enum CollectionFilterType {
     case thunder
     case water
     case wind
+    case frost
+    case rainbow
     
     //Rarity
     case fullArt

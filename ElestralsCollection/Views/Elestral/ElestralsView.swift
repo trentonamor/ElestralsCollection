@@ -65,6 +65,10 @@ struct ElestralsView: View {
                     // MARK: - Wind
                     GridSection(searchText: $searchText, layout: layout, element: "Wind", filters: self.filtersViewModel.filters)
                         .environmentObject(data)
+                    
+                    // MARK: - Frost
+                    GridSection(searchText: $searchText, layout: layout, element: "Frost", filters: self.filtersViewModel.filters)
+                        .environmentObject(data)
                 }
             }
             .padding([.top, .horizontal])
@@ -74,7 +78,7 @@ struct ElestralsView: View {
             .navigationBarTitleDisplayMode(.automatic)
             .background(Color("backgroundBase"))
             .sheet(isPresented: $presentFilters, content: {
-                FiltersView(filters: $filtersViewModel.filters, ownedToggleOn: getState(for: .owned), unownedToggleOn: getState(for: .unowned), bothToggleOn: getState(for: .none), earthToggleOn: getState(for: .earth), fireToggleOn: getState(for: .fire), thunderToggleOn: getState(for: .thunder), waterToggleOn: getState(for: .water), windToggleOn: getState(for: .wind))
+                FiltersView(filters: $filtersViewModel.filters, ownedToggleOn: getState(for: .owned), unownedToggleOn: getState(for: .unowned), bothToggleOn: getState(for: .none), earthToggleOn: getState(for: .earth), fireToggleOn: getState(for: .fire), thunderToggleOn: getState(for: .thunder), waterToggleOn: getState(for: .water), windToggleOn: getState(for: .wind), frostToggleOn: getState(for: .frost))
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {

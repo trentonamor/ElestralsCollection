@@ -31,6 +31,8 @@ extension GridSection {
             filterType = .water
         case "wind":
             filterType = .wind
+        case "frost":
+            filterType = .frost
         default:
             filterType = .unknown
         }

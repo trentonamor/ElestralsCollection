@@ -8,10 +8,10 @@
 import Foundation
 
 class FiltersViewModel: ObservableObject {
-    @Published var filters: Set<FilterType> = Set([.none, .fire, .wind, .water, .thunder, .earth])
+    @Published var filters: Set<FilterType> = Set([.none, .fire, .wind, .water, .thunder, .earth, .frost])
     
     func isDefault() -> Bool {
-        return self.filters == Set([.none, .fire, .wind, .water, .thunder, .earth])
+        return self.filters == Set([.none, .fire, .wind, .water, .thunder, .earth, .frost])
     }
 }
 enum FilterType {
@@ -27,4 +27,5 @@ enum FilterType {
     case thunder
     case water
     case wind
+    case frost
 }

@@ -63,6 +63,7 @@ struct BookmarkView: View {
             }
             .frame(maxWidth: .infinity)
             .searchable(text: $searchText, placement: .automatic, prompt: "Search by Name")
+            .autocorrectionDisabled()
             .navigationTitle(navigationTitle)
             .background(Color("backgroundBase"))
             .toolbar {

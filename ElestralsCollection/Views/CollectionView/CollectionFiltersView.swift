@@ -265,14 +265,14 @@ struct CollectionFiltersView: View {
                             Text("Elestral Element")
                             Spacer()
                             Button(action: {
-                                let allSelected = Set([.earth, .fire, .thunder, .water, .wind]).isSubset(of: filters)
+                                let allSelected = Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]).isSubset(of: filters)
                                 if allSelected {
-                                    filters.subtract(Set([.earth, .fire, .thunder, .water, .wind]))
+                                    filters.subtract(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]))
                                 } else {
-                                    filters.formUnion(Set([.earth, .fire, .thunder, .water, .wind]))
+                                    filters.formUnion(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]))
                                 }
                             }, label: {
-                                Text(Set([.earth, .fire, .thunder, .water, .wind]).isSubset(of: filters) ? "Deselect All" : "Select All")
+                                Text(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]).isSubset(of: filters) ? "Deselect All" : "Select All")
                                     .font(.caption)
                             })
                             .foregroundColor(.blue)
@@ -310,6 +310,23 @@ struct CollectionFiltersView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                             Text("Fire")
+                        })
+                        .toggleStyle(.checklist)
+                        
+                        Toggle(isOn: Binding(
+                            get: { self.filters.contains(.frost) },
+                            set: { isOn in
+                                if isOn {
+                                    self.filters.insert(.frost)
+                                } else {
+                                    self.filters.remove(.frost)
+                                }
+                            }
+                        ), label: {
+                            Image("Frost")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                            Text("Frost")
                         })
                         .toggleStyle(.checklist)
                         
@@ -361,6 +378,23 @@ struct CollectionFiltersView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                             Text("Wind")
+                        })
+                        .toggleStyle(.checklist)
+                        
+                        Toggle(isOn: Binding(
+                            get: { self.filters.contains(.rainbow) },
+                            set: { isOn in
+                                if isOn {
+                                    self.filters.insert(.rainbow)
+                                } else {
+                                    self.filters.remove(.rainbow)
+                                }
+                            }
+                        ), label: {
+                            Image("Rainbow")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                            Text("Rainbow")
                         })
                         .toggleStyle(.checklist)
                     }

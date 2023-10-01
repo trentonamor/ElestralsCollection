@@ -64,6 +64,7 @@ struct CollectionView: View {
                 bookmark: self.bookmark
             )
             .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
+            .autocorrectionDisabled()
             .sheet(isPresented: $presentFilters, content: {
                 CollectionFiltersView(filters: $filtersViewModel.filters)
             })

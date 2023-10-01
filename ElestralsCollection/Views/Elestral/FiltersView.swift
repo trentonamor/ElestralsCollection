@@ -19,6 +19,7 @@ struct FiltersView: View {
     @State var thunderToggleOn: Bool
     @State var waterToggleOn: Bool
     @State var windToggleOn: Bool
+    @State var frostToggleOn: Bool
     
     @State var selectAllButtonTitle: String = "Deselect All"
     
@@ -87,6 +88,9 @@ struct FiltersView: View {
                 
                 Section(content: {
                     Toggle(isOn: $earthToggleOn, label: {
+                        Image("Earth")
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text("Earth")
                     })
                     .toggleStyle(.checklist)
@@ -100,6 +104,9 @@ struct FiltersView: View {
                     })
 
                     Toggle(isOn: $fireToggleOn, label: {
+                        Image("Fire")
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text("Fire")
                     })
                     .toggleStyle(.checklist)
@@ -111,8 +118,27 @@ struct FiltersView: View {
                                 self.filters.remove(.fire)
                             }
                     })
+                    
+                    Toggle(isOn: $earthToggleOn, label: {
+                        Image("Frost")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                        Text("Frost")
+                    })
+                    .toggleStyle(.checklist)
+                    .onChange(of: frostToggleOn, perform: {
+                        newValue in
+                            if newValue {
+                                self.filters.insert(.frost)
+                            } else {
+                                self.filters.remove(.frost)
+                            }
+                    })
                    
                     Toggle(isOn: $thunderToggleOn, label: {
+                        Image("Thunder")
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text("Thunder")
                     })
                     .toggleStyle(.checklist)
@@ -126,6 +152,9 @@ struct FiltersView: View {
                     })
                     
                     Toggle(isOn: $waterToggleOn, label: {
+                        Image("Water")
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text("Water")
                     })
                     .toggleStyle(.checklist)
@@ -139,8 +168,10 @@ struct FiltersView: View {
                     })
                     
                     Toggle(isOn: $windToggleOn, label: {
+                        Image("Wind")
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text("Wind")
-                            .foregroundColor(.black)
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: windToggleOn, perform: {
@@ -194,7 +225,7 @@ struct FiltersView: View {
         
         self.toggleElements(ofValue: true)
         
-        self.filters = Set([.none, .fire, .wind, .water, .thunder, .earth])
+        self.filters = Set([.none, .fire, .wind, .water, .thunder, .earth, .frost])
     }
     
     func toggleElements(ofValue: Bool) {
@@ -208,6 +239,6 @@ struct FiltersView: View {
 
 struct FiltersView_Previews: PreviewProvider {
     static var previews: some View {
-        FiltersView(filters: .constant(Set([.none])), ownedToggleOn: false, unownedToggleOn: false, bothToggleOn: true, earthToggleOn: false, fireToggleOn: false, thunderToggleOn: false, waterToggleOn: false, windToggleOn: false)
+        FiltersView(filters: .constant(Set([.none])), ownedToggleOn: false, unownedToggleOn: false, bothToggleOn: true, earthToggleOn: false, fireToggleOn: false, thunderToggleOn: false, waterToggleOn: false, windToggleOn: false, frostToggleOn: true)
     }
 }
