@@ -153,7 +153,7 @@ struct SettingsView: View {
                             rateApp()
                         }) {
                             Label(title: {
-                                Text("Review Caster Companion")
+                                Text("Review Caster Compendium")
                                     .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "star")
