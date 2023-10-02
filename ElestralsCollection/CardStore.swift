@@ -56,9 +56,6 @@ class CardStore: ObservableObject {
                         }
                     }
                     // Link the card with all bookmarks that have its ID
-                    if card.name == "Elechik" {
-                        print(card.id)
-                    }
                     card.bookmarks = bookmarks.filter { $0.cardIds.contains(card.id) }
                     
                     cards.append(card)

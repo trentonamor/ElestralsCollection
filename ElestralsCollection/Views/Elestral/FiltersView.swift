@@ -119,7 +119,7 @@ struct FiltersView: View {
                             }
                     })
                     
-                    Toggle(isOn: $earthToggleOn, label: {
+                    Toggle(isOn: $frostToggleOn, label: {
                         Image("Frost")
                             .resizable()
                             .frame(width: 24, height: 24)
@@ -234,6 +234,7 @@ struct FiltersView: View {
         thunderToggleOn = ofValue
         waterToggleOn = ofValue
         windToggleOn = ofValue
+        frostToggleOn = ofValue
     }
 }
 

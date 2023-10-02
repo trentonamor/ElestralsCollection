@@ -44,6 +44,9 @@ struct ProgressCard: View {
             }
             .padding()
         }
+        .onAppear(perform: {
+            self.progressValue = self.getPercentage()
+        })
     }
 }
 

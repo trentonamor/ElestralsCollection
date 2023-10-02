@@ -39,15 +39,17 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
         }
         switch self.elements.first?.lowercased() {
         case "earth":
-            return Color("EarthGreen")
+            return Color(.earthGreen)
         case "fire":
-            return Color("FireRed")
+            return Color(.fireRed)
         case "thunder":
-            return Color("ThunderYellow")
+            return Color(.thunderYellow)
         case "water":
-            return Color("WaterBlue")
+            return Color(.waterBlue)
         case "wind":
-            return Color("AirWhite")
+            return Color(.airWhite)
+        case "frost":
+            return Color(.frostWhite)
         default:
             print("Error cannot find elements: \(self.elements.first ?? "")")
             return .white
