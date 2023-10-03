@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     init() {
-        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().backgroundColor = UIColor(Color(.backgroundTabBar))
     }
     
     @State private var selectedTab = 0
@@ -121,7 +121,6 @@ struct ContentView: View {
                     }
                     .tag(4)
             }
-            .foregroundStyle(Color(.dynamicRed))
         }
     }
 }

@@ -34,7 +34,7 @@ struct BookmarkList: View {
             }, header: {
                 HStack(alignment: .center, content: {
                     Text("Decks")
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color(.dynamicGrey60))
                 })
             })
 
@@ -46,7 +46,7 @@ struct BookmarkList: View {
             }, header: {
                 HStack(alignment: .center, content: {
                     Text("Bookmarks")
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color(.dynamicGrey60))
                 })
             })
         }
@@ -67,7 +67,6 @@ struct BookmarkList: View {
                         onDeleteBookmark(bookmark)
                     } label: {
                         Label("Delete", systemImage: "multiply")
-                            .foregroundColor(Color.red)
                     }
                 })
         } else {
@@ -94,7 +93,6 @@ struct BookmarkList: View {
                             onDeleteBookmark(bookmark)
                         } label: {
                             Label("Delete", systemImage: "multiply")
-                                .foregroundColor(Color.red)
                         }
                     })
             })

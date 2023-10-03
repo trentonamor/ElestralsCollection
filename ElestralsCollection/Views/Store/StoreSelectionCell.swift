@@ -18,15 +18,15 @@ struct StoreSelectionCell: View {
     var body: some View {
         HStack {
             Text(cellTitle)
-                .foregroundStyle(.white)
+                .foregroundStyle(Color(.dynamicGrey0))
             Spacer()
             Text("$\(cost.formatted(.currency(code: "en_US")))")
-                .foregroundStyle(.white)
+                .foregroundStyle(Color(.dynamicGrey0))
         }
         .padding(16)
         .background(color)
         .cornerRadius(12)
-        .shadow(color: Color(.dynamicGrey10), radius: 5)
+        .shadow(color: Color(.dynamicGrey0), radius: 5)
     }
 }
 

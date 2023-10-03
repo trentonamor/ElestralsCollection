@@ -20,7 +20,7 @@ struct ChangePassword: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
+            VStack(spacing: 16) {
                 InputView(text: $currentPassword, title: "Current Password", placeholder: "Enter Your Current Password", isSecureField: true)
                     .textInputAutocapitalization(.never)
                 InputView(text: $newPassword, title: "New Password", placeholder: "Enter Your New Password", isSecureField: true)
@@ -40,7 +40,7 @@ struct ChangePassword: View {
                         Alert(title: Text("Server Error"), message: Text("There was a problem updating your password. Try again later."))
                     })
             }
-            .padding(.horizontal)
+            .padding([.horizontal, .top])
             .alert(isPresented: self.$showInvalidCredentials, content: {
                 Alert(title: Text("Invalid Credentials"), message: Text("The current password is incorrect"))
             })
@@ -67,6 +67,7 @@ struct ChangePassword: View {
                     }
                 }, label: {
                     Text("Save")
+                        .foregroundStyle(Color(.dynamicUiBlue))
                 })
                 .disabled(!self.formIsValid)
             })
@@ -76,6 +77,7 @@ struct ChangePassword: View {
                     dismiss()
                 }, label: {
                     Text("Cancel")
+                        .foregroundStyle(Color(.dynamicUiBlue))
                 })
             })
         }

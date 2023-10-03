@@ -15,6 +15,7 @@ struct MinimumRequirementsView: View {
             VStack(alignment: .leading) {
                 Text("Minimum Requirements")
                     .font(.headline)
+                    .foregroundStyle(Color(.dynamicGrey80))
                     .padding(.bottom, 4)
                 RequirementRowView(requirement: "Must contain at least 1 number.", isMet: viewModel.containsNumber)
                 RequirementRowView(requirement: "Must contain at least 1 symbol.", isMet: viewModel.containsSymbol)
@@ -36,15 +37,9 @@ struct RequirementRowView: View {
     var body: some View {
         HStack {
             Image(systemName: isMet ? "checkmark.circle.fill" : "x.circle.fill")
-                .foregroundColor(isMet ? .green : .red)
+                .foregroundColor(isMet ? Color(.dynamicGreen) : Color(.dynamicRed))
             Text(requirement)
+                .foregroundStyle(Color(.dynamicGrey80))
         }
-    }
-}
-
-
-struct MinimumRequirementsView_Previews: PreviewProvider {
-    static var previews: some View {
-        MinimumRequirementsView()
     }
 }

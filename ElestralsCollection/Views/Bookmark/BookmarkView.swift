@@ -50,10 +50,12 @@ struct BookmarkView: View {
                         Spacer()
                         Text("You don't have any bookmarks!")
                             .multilineTextAlignment(.center)
+                            .foregroundStyle(Color(.dynamicGrey80))
                             .font(.headline)
                             .padding(.horizontal)
                         Text("Here are a few ideas for your bookmarks: \"Cards you would like to have\", \"My Powerful Deck\", or \"Stellars\"")
                             .multilineTextAlignment(.center)
+                            .foregroundStyle(Color(.dynamicGrey80))
                             .font(.headline)
                             .padding(.horizontal)
                         Spacer()
@@ -63,9 +65,10 @@ struct BookmarkView: View {
             }
             .frame(maxWidth: .infinity)
             .searchable(text: $searchText, placement: .automatic, prompt: "Search by Name")
+            .foregroundStyle(Color(.dynamicGrey80))
             .autocorrectionDisabled()
             .navigationTitle(navigationTitle)
-            .background(Color("backgroundBase"))
+            .background(Color(.backgroundBase))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {
@@ -76,6 +79,7 @@ struct BookmarkView: View {
                         }
                     }, label: {
                         Image(systemName: "plus")
+                            .foregroundStyle(Color(.dynamicUiBlue))
                     })
                     
                 })
@@ -86,7 +90,7 @@ struct BookmarkView: View {
                             dismiss()
                         }, label: {
                             Text("Done")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(Color(.dynamicUiBlue))
                         })
                     })
                 }

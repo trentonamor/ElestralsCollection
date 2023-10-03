@@ -12,13 +12,13 @@ struct PasswordStrengthMeter: View {
     var foregroundColor: Color {
         switch passwordStrength {
         case .weak:
-            return .red
+            return Color(.dynamicRed)
         case .fair:
-            return .orange
+            return Color(.dynamicOrange)
         case .good:
-            return .blue
+            return Color(.dynamicBlue)
         case .veryStrong:
-            return .green
+            return Color(.dynamicGreen)
         }
     }
     
@@ -40,6 +40,7 @@ struct PasswordStrengthMeter: View {
             HStack {
                 Text("Password Strength:")
                     .font(.headline)
+                    .foregroundStyle(Color(.dynamicGrey80))
                 Text(strengthText)
                     .font(.headline)
                     .foregroundColor(foregroundColor)
@@ -47,16 +48,16 @@ struct PasswordStrengthMeter: View {
             HStack {
                 Rectangle()
                     .frame(height: 10)
-                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.weak.rawValue ? foregroundColor : .gray)
+                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.weak.rawValue ? foregroundColor : Color(.backgroundRecessed))
                 Rectangle()
                     .frame(height: 10)
-                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.fair.rawValue ? foregroundColor : .gray)
+                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.fair.rawValue ? foregroundColor : Color(.backgroundRecessed))
                 Rectangle()
                     .frame(height: 10)
-                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.good.rawValue ? foregroundColor : .gray)
+                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.good.rawValue ? foregroundColor : Color(.backgroundRecessed))
                 Rectangle()
                     .frame(height: 10)
-                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.veryStrong.rawValue ? foregroundColor : .gray)
+                    .foregroundColor(passwordStrength.rawValue >= PasswordStrength.veryStrong.rawValue ? foregroundColor : Color(.backgroundRecessed))
             }
             .cornerRadius(5)
         }

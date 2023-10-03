@@ -15,7 +15,6 @@ struct CardGridView: View {
     
     @State private var currentImageLoaded: String = ""
     @EnvironmentObject var cardStore: CardStore
-    @Environment(\.colorScheme) var colorScheme
     
     private var filteredCards: [ElestralCard] {
         let sortOrder = filtersViewModel.sortOrder
@@ -166,6 +165,6 @@ struct CardGridView: View {
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.automatic)
         .padding([.top, .horizontal])
-        .background(colorScheme == .light ? Color(.backgroundBase) : Color(.backgroundDefault))
+        .background(Color(.backgroundCard))
     }
 }

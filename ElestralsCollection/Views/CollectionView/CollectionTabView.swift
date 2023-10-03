@@ -10,7 +10,6 @@ import SwiftUI
 struct CollectionTabView: View {
     @State private var selectedSegment: CollectionSegment = .normal
     @EnvironmentObject var cardStore: CardStore
-    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         VStack {
@@ -32,7 +31,7 @@ struct CollectionTabView: View {
             .padding(.horizontal)
             .padding(.vertical, 4)
         }
-        .background(colorScheme == .light ? Color(.backgroundBase) : Color(.backgroundTabBar))
+        .background(Color(.backgroundCard))
         .onAppear(perform: {
             UISegmentedControl.appearance().backgroundColor = UIColor(Color(.backgroundRecessed))
         })

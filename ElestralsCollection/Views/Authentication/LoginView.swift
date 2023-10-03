@@ -44,6 +44,7 @@ struct LoginView: View {
                         
                     }, label: {
                         Text("Forgot Password?")
+                            .foregroundStyle(Color(.dynamicUiBlue))
                     })
                     .alert(isPresented: self.$didCompleteForgotPassword, content: {
                         Alert(title: Text("Email Sent"), message: Text("Check your inbox to reset your password"))
@@ -82,7 +83,7 @@ struct LoginView: View {
                             Image(systemName: "arrow.right")
                             Spacer()
                         }
-                        .foregroundColor(Color(.dynamicGrey0))
+                        .foregroundColor(Color(.white))
                         .frame(maxWidth: .infinity, minHeight: 55)
                     } else {
                         HStack {
@@ -94,8 +95,7 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity, minHeight: 55)
                     }
                 })
-                .background(Color(.dynamicUiBlue)
-                    .opacity(formIsValid ? 1.0 : 0.5))
+                .background(Color(.dynamicUiBlue))
                 .cornerRadius(10)
                 .padding(.top)
                 .padding(.horizontal)
@@ -121,7 +121,9 @@ struct LoginView: View {
                 } label: {
                     HStack(spacing: 4) {
                         Text("Don't have an account?")
+                            .foregroundStyle(Color(.dynamicUiBlue))
                         Text("Sign Up")
+                            .foregroundStyle(Color(.dynamicUiBlue))
                             .fontWeight(.bold)
                     }
                     .font(.system(size: 14))

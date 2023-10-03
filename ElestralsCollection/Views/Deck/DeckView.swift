@@ -179,6 +179,7 @@ struct DeckView: View {
                     CollectionView(subset: cardStore.cards, viewTitle: "Search", noResultsText: "We couldn't find any cards based on your search and the current filters.", bookmark: self.bookmark)
                 })
                 .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
+                .foregroundStyle(Color(.dynamicGrey80))
                 .autocorrectionDisabled()
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing, content: {
