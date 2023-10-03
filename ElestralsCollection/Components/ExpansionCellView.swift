@@ -16,18 +16,20 @@ struct ExpansionCellView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(height: 50)
+                .foregroundStyle(Color(.dynamicGrey80))
             
             Text(model.cellText)
                 .fontWeight(.bold)
                 .font(.title2)
                 .padding(16)
                 .lineLimit(2)
+                .foregroundStyle(Color(.dynamicGrey80))
             
             Spacer()
         }
         .padding(8)
         .frame(maxWidth: .infinity)
-        .background(Color.white)
+        .background(Color(.backgroundElevated))
         .cornerRadius(12)
     }
 }

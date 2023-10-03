@@ -69,9 +69,10 @@ struct CardView: View {
                 Circle()
                     .frame(width: 32, height: 32)
                     .foregroundColor(.white)
-                    .shadow(color: Color.black, radius: 16, x: 0, y: 2)
+                    .shadow(color: .black, radius: 16, x: 0, y: 2)
                     .overlay {
                         Image(systemName: "checkmark")
+                            .foregroundStyle(.black)
                     }
                     .transition(.opacity)
                     .animation(Animation.easeIn(duration: 0.8), value: 1)
@@ -84,12 +85,13 @@ struct CardView: View {
                         Circle()
                             .frame(width: 16, height: 16)
                             .foregroundColor(.white)
-                            .shadow(color: Color.black, radius: 4, x: 0, y: 2)
+                            .shadow(color: .black, radius: 4, x: 0, y: 2)
                             .padding([.horizontal, .top], 8)
                             .overlay {
                                 Text(card.numberOwned.description)
                                     .font(.system(size: 10))
                                     .minimumScaleFactor(0.01)
+                                    .foregroundStyle(.black)
                                     .lineLimit(1)
                                     .padding([.horizontal, .top], 8)
                             }

@@ -30,7 +30,6 @@ struct ElestralsCollectionApp: App {
                 .environmentObject(elestralsCardData)
                 .environmentObject(entitlementsManager)
                 .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
-                .environment(\.colorScheme, .light)
         }
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {

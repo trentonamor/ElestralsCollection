@@ -19,7 +19,7 @@ struct CollectionFiltersView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Sort Order") {
+                Section(header: Text("SORT ORDER").foregroundStyle(Color(.dynamicGrey40))) {
                     Toggle(isOn: Binding(
                         get: { self.filters.contains(.ascending) },
                         set: { isOn in
@@ -32,7 +32,9 @@ struct CollectionFiltersView: View {
                         }
                     ), label: {
                         Image(systemName: "arrow.up")
+                            .foregroundStyle(Color(.dynamicGrey80))
                         Text("Ascending")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     
@@ -54,7 +56,7 @@ struct CollectionFiltersView: View {
                     
                 }
                 
-                Section("SORT BY") {
+                Section(header: Text("SORT BY").foregroundStyle(Color(.dynamicGrey40))) {
                     Toggle(isOn: Binding(
                         get: { self.filters.contains(.releaseDate) },
                         set: { isOn in
@@ -113,7 +115,7 @@ struct CollectionFiltersView: View {
                     .toggleStyle(.checklist)
                 }
                 
-                Section("CARD STATE") {
+                Section(header: Text("CARD STATE").foregroundStyle(Color(.dynamicGrey40))) {
                     Toggle(isOn: Binding(
                         get: { self.filters.contains(.both) },
                         set: { isOn in
@@ -196,22 +198,23 @@ struct CollectionFiltersView: View {
                 }
                 
                 Section(header:
-                    HStack {
-                        Text("CARD TYPE")
-                        Spacer()
-                        Button(action: {
-                            let allSelected = Set([.elestral, .spirit, .rune]).isSubset(of: filters)
-                            if allSelected {
-                                filters.subtract(Set([.elestral, .spirit, .rune]))
-                            } else {
-                                filters.formUnion(Set([.elestral, .spirit, .rune]))
-                            }
-                        }, label: {
-                            Text(Set([.elestral, .spirit, .rune]).isSubset(of: filters) ? "Deselect All" : "Select All")
-                                .font(.caption)
-                        })
-                        .foregroundColor(.blue)
-                    }
+                            HStack {
+                    Text("CARD TYPE")
+                        .foregroundStyle(Color(.dynamicGrey40))
+                    Spacer()
+                    Button(action: {
+                        let allSelected = Set([.elestral, .spirit, .rune]).isSubset(of: filters)
+                        if allSelected {
+                            filters.subtract(Set([.elestral, .spirit, .rune]))
+                        } else {
+                            filters.formUnion(Set([.elestral, .spirit, .rune]))
+                        }
+                    }, label: {
+                        Text(Set([.elestral, .spirit, .rune]).isSubset(of: filters) ? "Deselect All" : "Select All")
+                            .font(.caption)
+                    })
+                    .foregroundColor(Color(.dynamicUiBlue))
+                }
                 ) {
                     Toggle(isOn: Binding(
                         get: { self.filters.contains(.elestral) },
@@ -261,22 +264,23 @@ struct CollectionFiltersView: View {
                 
                 if filters.contains(.elestral) || filters.contains(.spirit) {
                     Section(header:
-                        HStack {
-                            Text("Elestral Element")
-                            Spacer()
-                            Button(action: {
-                                let allSelected = Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]).isSubset(of: filters)
-                                if allSelected {
-                                    filters.subtract(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]))
-                                } else {
-                                    filters.formUnion(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]))
-                                }
-                            }, label: {
-                                Text(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]).isSubset(of: filters) ? "Deselect All" : "Select All")
-                                    .font(.caption)
-                            })
-                            .foregroundColor(.blue)
-                        }
+                                HStack {
+                        Text("ELESTRAL ELEMENT")
+                            .foregroundStyle(Color(.dynamicGrey40))
+                        Spacer()
+                        Button(action: {
+                            let allSelected = Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]).isSubset(of: filters)
+                            if allSelected {
+                                filters.subtract(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]))
+                            } else {
+                                filters.formUnion(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]))
+                            }
+                        }, label: {
+                            Text(Set([.earth, .fire, .thunder, .water, .wind, .frost, .rainbow]).isSubset(of: filters) ? "Deselect All" : "Select All")
+                                .font(.caption)
+                        })
+                        .foregroundColor(Color(.dynamicUiBlue))
+                    }
                     ) {
                         
                         Toggle(isOn: Binding(
@@ -401,22 +405,23 @@ struct CollectionFiltersView: View {
                 }
                 
                 Section(header:
-                    HStack {
-                        Text("Rarity")
-                        Spacer()
-                        Button(action: {
-                            let allSelected = Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]).isSubset(of: filters)
-                            if allSelected {
-                                filters.subtract(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]))
-                            } else {
-                                filters.formUnion(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]))
-                            }
-                        }, label: {
-                            Text(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .fullArt]).isSubset(of: filters) ? "Deselect All" : "Select All")
-                                .font(.caption)
-                        })
-                        .foregroundColor(.blue)
-                    }
+                            HStack {
+                    Text("RARITY")
+                        .foregroundStyle(Color(.dynamicGrey40))
+                    Spacer()
+                    Button(action: {
+                        let allSelected = Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]).isSubset(of: filters)
+                        if allSelected {
+                            filters.subtract(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]))
+                        } else {
+                            filters.formUnion(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .alternativeArt, .fullArt]))
+                        }
+                    }, label: {
+                        Text(Set([.common, .uncommon, .rare, .holoRare, .stellarRare, .fullArt]).isSubset(of: filters) ? "Deselect All" : "Select All")
+                            .font(.caption)
+                    })
+                    .foregroundStyle(Color(.dynamicUiBlue))
+                }
                 ) {
                     Toggle(isOn: Binding(
                         get: { self.filters.contains(.common) },
@@ -527,12 +532,20 @@ struct CollectionFiltersView: View {
             .navigationBarTitle("Filters")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
-                leading: Button("Reset") {
-                    resetFilters()
-                },
-                trailing: Button("Done") {
-                    self.presentation.wrappedValue.dismiss()
-                }
+                leading:
+                    Button(action: {
+                        self.resetFilters()
+                    }, label: {
+                        Text("Reset")
+                            .foregroundStyle(Color(.dynamicUiBlue))
+                    }),
+                trailing:
+                    Button(action: {
+                        self.presentation.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Done")
+                            .foregroundStyle(Color(.dynamicUiBlue))
+                    })
             )
         }
     }

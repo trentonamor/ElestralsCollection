@@ -8,7 +8,7 @@ struct ExpansionFiltersView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Sort Order") {
+                Section(header: Text("Sort Order").foregroundStyle(Color(.dynamicGrey40))) {
                     
                     Toggle(isOn: Binding(
                         get: { self.filters.contains(.ascending) },
@@ -44,12 +44,20 @@ struct ExpansionFiltersView: View {
             .navigationBarTitle("Filters")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
-                leading: Button("Reset") {
-                    resetFilters()
-                },
-                trailing: Button("Done") {
-                    self.presentation.wrappedValue.dismiss()
-                }
+                leading:
+                    Button(action: {
+                        self.resetFilters()
+                    }, label: {
+                        Text("Reset")
+                            .foregroundStyle(Color(.dynamicUiBlue))
+                    }),
+                trailing: 
+                    Button(action: {
+                        self.presentation.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Done")
+                            .foregroundStyle(Color(.dynamicUiBlue))
+                    })
             )
         }
     }

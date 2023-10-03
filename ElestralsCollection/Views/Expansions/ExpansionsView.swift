@@ -46,16 +46,16 @@ struct ExpansionsView: View {
                                 ExpansionCellView(model: model)
                                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                             }
-                            .tint(Color.black)
                         }
                     }
                 }
             }
             .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name")
+            .foregroundStyle(Color(.dynamicGrey80))
             .autocorrectionDisabled()
             .navigationTitle("Expansions")
             .navigationBarTitleDisplayMode(.automatic)
-            .background(Color("backgroundBase"))
+            .background(Color(.backgroundBase))
             .sheet(isPresented: $presentFilters, content: {
                 ExpansionFiltersView(filters: $filtersViewModel.filters)
             })
@@ -67,12 +67,14 @@ struct ExpansionsView: View {
                         if filtersViewModel.isDefault() {
                             Image(systemName: "line.3.horizontal.decrease.circle")
                                 .frame(height: 96, alignment: .trailing)
+                                .foregroundStyle(Color(.dynamicUiBlue))
                         } else {
                             Image(systemName: "line.3.horizontal.decrease.circle.fill")
                                 .frame(height: 96, alignment: .trailing)
+                                .foregroundStyle(Color(.dynamicUiBlue))
                         }
                     })
-                    .tint(Color.blue)
+                    .tint(Color(.dynamicUiBlue))
                 })
             }
         }

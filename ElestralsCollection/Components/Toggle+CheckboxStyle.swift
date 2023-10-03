@@ -15,10 +15,11 @@ struct ToggleCheckboxStyle: ToggleStyle {
         }, label: {
             HStack {
                 configuration.label
-                    .foregroundColor(.black)
+                    .foregroundStyle(Color(.dynamicGrey80))
                 Spacer()
                 if configuration.isOn {
                     Image(systemName: "checkmark")
+                        .foregroundStyle(Color(.dynamicUiBlue))
                 } else {
                     Spacer()
                 }

@@ -40,7 +40,7 @@ struct ElestralsView: View {
 //                            .environmentObject(viewModel.stateModel)
 //                            .padding(.top)
                         GenericCardView(data: data, cardType: .progress)
-                            .background(.white)
+                            .background(Color(.backgroundElevated))
                             .cornerRadius(8)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -74,11 +74,13 @@ struct ElestralsView: View {
             .padding([.top, .horizontal])
             .searchable(text: $searchText, placement: .automatic, prompt: "Search by Elestral Name")
             .autocorrectionDisabled()
+            .foregroundStyle(Color(.dynamicGrey80))
             .navigationTitle("Elestrals")
             .navigationBarTitleDisplayMode(.automatic)
-            .background(Color("backgroundBase"))
+            .background(Color(.backgroundBase))
             .sheet(isPresented: $presentFilters, content: {
                 FiltersView(filters: $filtersViewModel.filters, ownedToggleOn: getState(for: .owned), unownedToggleOn: getState(for: .unowned), bothToggleOn: getState(for: .none), earthToggleOn: getState(for: .earth), fireToggleOn: getState(for: .fire), thunderToggleOn: getState(for: .thunder), waterToggleOn: getState(for: .water), windToggleOn: getState(for: .wind), frostToggleOn: getState(for: .frost))
+                    
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
@@ -88,9 +90,11 @@ struct ElestralsView: View {
                         if filtersViewModel.isDefault() {
                             Image(systemName: "line.3.horizontal.decrease.circle")
                                 .frame(height: 96, alignment: .trailing)
+                                .foregroundStyle(Color(.dynamicUiBlue))
                         } else {
                             Image(systemName: "line.3.horizontal.decrease.circle.fill")
                                 .frame(height: 96, alignment: .trailing)
+                                .foregroundStyle(Color(.dynamicUiBlue))
                         }
                     })
                 })

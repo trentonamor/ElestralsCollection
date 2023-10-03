@@ -35,7 +35,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
     
     func getBackgroundColor(isColor: Bool) -> Color {
         if isColor {
-            return .white
+            return Color(.backgroundElevated)
         }
         switch self.elements.first?.lowercased() {
         case "earth":
@@ -52,7 +52,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
             return Color(.frostWhite)
         default:
             print("Error cannot find elements: \(self.elements.first ?? "")")
-            return .white
+            return Color(.backgroundElevated)
         }
     }
     
