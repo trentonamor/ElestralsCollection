@@ -36,7 +36,7 @@ extension BookmarkView {
             return newCardEntity
         }
     }
-
+    
     
     func addOrRemoveCardFromBookmarks() {
         guard let card = cardToAdd else {
@@ -45,7 +45,7 @@ extension BookmarkView {
         }
         
         let cardEntity = ensureCardExistsInCoreData(card: card)
-
+        
         // 1. Add the card to the selected bookmarks
         let request: NSFetchRequest<NSFetchRequestResult> = Bookmark.fetchRequest()
         request.predicate = NSPredicate(format: "id IN %@", selectedBookmarkIDs)
@@ -96,8 +96,8 @@ extension BookmarkView {
         }
         NotificationCenter.default.post(name: .bookmarkDataDidChange, object: nil)
     }
-
-
+    
+    
 }
 
 import SwiftUI
@@ -106,7 +106,7 @@ extension BookmarkView: EditBookmarkViewDelegate {
         // Check if the bookmark already exists
         let request: NSFetchRequest<NSFetchRequestResult> = Bookmark.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", bookmark.id as CVarArg)
-
+        
         let matches = try? managedObjectContext.fetch(request) as? [Bookmark]
         let bookmarkEntity: Bookmark
         if let match = matches?.first {
@@ -117,16 +117,16 @@ extension BookmarkView: EditBookmarkViewDelegate {
             bookmarkEntity = Bookmark(context: managedObjectContext)
             self.bookmarkModels.append(bookmark)
         }
-
+        
         // Map properties from BookmarkModel to Bookmark
         bookmarkEntity.id = bookmark.id
         bookmarkEntity.name = bookmark.name
-
+        
         // Fetch the Card entities using cardIDs
         let cardIDs = Set(bookmark.cards.map { $0.id })
         let cardFetchRequest: NSFetchRequest<NSFetchRequestResult> = Card.fetchRequest()
         cardFetchRequest.predicate = NSPredicate(format: "id IN %@", cardIDs)
-
+        
         if let fetchedCards = try? managedObjectContext.fetch(cardFetchRequest) as? [Card] {
             let cardSet = NSSet(array: fetchedCards)
             bookmarkEntity.cards = cardSet
@@ -134,13 +134,13 @@ extension BookmarkView: EditBookmarkViewDelegate {
             // Handle error in fetching cards
             print("Error fetching cards by ID.")
         }
-
+        
         bookmarkEntity.type = bookmark.type.rawValue
         bookmarkEntity.showOwnedIndicator = bookmark.showOwnedIndicator
         bookmarkEntity.showProgress = bookmark.showProgres
         bookmarkEntity.icon = bookmark.icon
         bookmarkEntity.color = bookmark.color.name
-
+        
         do {
             try managedObjectContext.save()
             if let index = self.bookmarkModels.firstIndex(where: { $0.id == bookmark.id }) {
@@ -152,7 +152,7 @@ extension BookmarkView: EditBookmarkViewDelegate {
         }
         NotificationCenter.default.post(name: .bookmarkDataDidChange, object: nil)
     }
-
+    
     
     func deleteBookmark(_ bookmark: BookmarkModel) {
         withAnimation(.easeIn(duration: 0.3)) {
@@ -177,12 +177,10 @@ extension BookmarkView: EditBookmarkViewDelegate {
 
 extension BookmarkView: BookmarkCellDelegate {
     func selectBookmark(_ bookmark: BookmarkModel, doSelect: Bool) {
-        DispatchQueue.main.async {
-            if doSelect {
-                self.selectedBookmarkIDs.insert(bookmark.id)
-            } else {
-                self.selectedBookmarkIDs.remove(bookmark.id)
-            }
+        if doSelect {
+            self.selectedBookmarkIDs.insert(bookmark.id)
+        } else {
+            self.selectedBookmarkIDs.remove(bookmark.id)
         }
     }
 }
