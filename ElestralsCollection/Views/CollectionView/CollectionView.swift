@@ -64,6 +64,7 @@ struct CollectionView: View {
                 bookmark: self.bookmark
             )
             .searchable(text: $searchText, placement: .toolbar, prompt: "Search by Name, Artist, or Id")
+            .foregroundStyle(Color(.dynamicGrey80))
             .autocorrectionDisabled()
             .sheet(isPresented: $presentFilters, content: {
                 CollectionFiltersView(filters: $filtersViewModel.filters)
@@ -94,12 +95,14 @@ struct FilterButton: View {
             if filtersViewModel.isDefault() {
                 Image(systemName: "line.3.horizontal.decrease.circle")
                     .frame(height: 96, alignment: .trailing)
+                    .foregroundStyle(Color(.dynamicUiBlue))
             } else {
                 Image(systemName: "line.3.horizontal.decrease.circle.fill")
                     .frame(height: 96, alignment: .trailing)
+                    .foregroundStyle(Color(.dynamicUiBlue))
             }
         })
-        .tint(Color.blue)
+        .tint(Color(.dynamicUiBlue))
     }
 }
 

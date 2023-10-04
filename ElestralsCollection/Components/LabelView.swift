@@ -10,7 +10,7 @@ import SwiftUI
 struct LabelView: View {
     let topText: String?
     let mainText: String
-    let backgroundColor: Color = .white
+    let backgroundColor: Color = Color(.backgroundElevated)
     let alignment: HorizontalAlignment = .leading
     
     var body: some View {
@@ -19,10 +19,11 @@ struct LabelView: View {
                 if let topText = topText {
                     Text(topText)
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color(.dynamicGrey40))
                 }
                 Text(mainText)
                     .font(.body)
+                    .foregroundStyle(Color(.dynamicGrey80))
                     .bold()
             }
             .padding(.vertical, 4)

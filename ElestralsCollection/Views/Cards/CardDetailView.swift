@@ -23,10 +23,10 @@ struct CardDetailView: View {
                         .font(.title2)
                         .bold()
                         .italic()
-                        .foregroundColor(.black)
+                        .foregroundColor(Color(.dynamicGrey80))
                         .padding(.horizontal, 8)
                     Text(card.getCardSet())
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color(.dynamicGrey40))
                         .padding(.vertical, 0)
                         .padding(.horizontal, 8)
                     
@@ -43,13 +43,13 @@ struct CardDetailView: View {
                                 Text("-")
                                     .font(.body)
                                     .bold()
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color(.dynamicGrey80))
                             }
                         }
                         .disabled(card.numberOwned == 0)
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
-                        .background(Color(.white))
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         
@@ -57,6 +57,7 @@ struct CardDetailView: View {
                             Spacer()
                             
                             Text(card.getNumberOwned())
+                                .foregroundStyle(Color(.dynamicGrey80))
                                 .font(.body)
                                 .bold()
                                 .padding(.vertical, 4)
@@ -64,7 +65,7 @@ struct CardDetailView: View {
                             
                             Spacer()
                         }
-                        .background(Color(.white))
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         .padding(.horizontal, 4)
@@ -77,12 +78,12 @@ struct CardDetailView: View {
                                 Text("+")
                                     .font(.body)
                                     .bold()
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color(.dynamicGrey80))
                             }
                         }
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
-                        .background(Color(.white))
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                     }
@@ -96,15 +97,15 @@ struct CardDetailView: View {
                             Group {
                                 if card.bookmarks.isEmpty {
                                     Image(systemName: "bookmark")
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 } else {
                                     Image(systemName: "bookmark.fill")
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }
                             }
                             
                             Text(card.getBookmarks())
-                                .foregroundColor(.black)
+                                .foregroundColor(Color(.dynamicGrey80))
                                 .font(.body)
                                 .bold()
                                 .padding(.vertical, 4)
@@ -112,7 +113,7 @@ struct CardDetailView: View {
                             
                             Spacer()
                         }
-                        .background(Color(.white))
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         .padding(.horizontal)
@@ -136,7 +137,7 @@ struct CardDetailView: View {
                     
                 }
             }
-            .background(Color("backgroundBase"))
+            .background(Color(.backgroundCard))
         }
         .sheet(isPresented: $showingBookmarkView) {
             BookmarkView(isViewOnly: true, cardToAdd: self.card)

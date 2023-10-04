@@ -13,27 +13,28 @@ struct CollectionTabView: View {
 
     var body: some View {
         VStack {
-            // The segmented control
-            
-            
-
             // Switch views based on the selected segment
             switch selectedSegment {
             case .normal:
                 CollectionView(subset: self.cardStore.getCards(for: true), showOwnedIndicator: false, showNumberOwned: true)
             case .bookmarks:
-                BookmarkView(isViewOnly: false) // Your new bookmarks view
+                BookmarkView(isViewOnly: false)
             }
             
             Picker("Collection Segment", selection: $selectedSegment) {
                 ForEach(CollectionSegment.allCases, id: \.self) { segment in
                     Text(segment.rawValue).tag(segment)
+                        .foregroundStyle(Color(.backgroundTabBar))
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal)
             .padding(.vertical, 4)
         }
+        .background(Color(.backgroundCard))
+        .onAppear(perform: {
+            UISegmentedControl.appearance().backgroundColor = UIColor(Color(.backgroundRecessed))
+        })
     }
 }
 

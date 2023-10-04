@@ -31,7 +31,7 @@ struct BookmarkCellView: View {
                             .font(.body)
                             .bold()
                             .lineLimit(2)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(.dynamicGrey80))
                         
                         let totalOwned = model.cards.filter { $0.numberOwned >= 1 }.count
                         let cardCount = model.cards.count
@@ -41,21 +41,21 @@ struct BookmarkCellView: View {
                             let cardString = cardCount == 1 ? "Card" : "Cards"
                             Text("\(cardCount) \(cardString)")
                                 .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color(.dynamicGrey40))
                         } else {
                             let percentage: Double = Double(totalOwned) / Double(cardCount)
                             HStack {
                                 if percentage != 1 {
                                     Text("\(totalOwned) of \(cardCount)")
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(Color(.dynamicGrey40))
                                 } else {
                                     Text("\(totalOwned) of \(cardCount)")
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(Color(.dynamicUiBlue))
                                 }
                                 ProgressView(value: percentage)
                                 if percentage == 1 {
                                     Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.green)
+                                        .foregroundColor(Color(.dynamicGreen))
                                 }
                             }
                         }
@@ -65,7 +65,7 @@ struct BookmarkCellView: View {
                     if self.isViewOnly && self.didSelectCell {
                         Spacer()
                         Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color(.dynamicUiBlue))
                     }
                 }
                 
@@ -73,7 +73,7 @@ struct BookmarkCellView: View {
             }
             .padding(8)
             .frame(maxWidth: .infinity)
-            .background(Color.white)
+            .background(Color(.backgroundElevated))
             .cornerRadius(12)
         
         // Conditionally add the tap gesture based on isViewOnly

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     init() {
-        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().backgroundColor = UIColor(Color(.backgroundTabBar))
     }
     
     @State private var selectedTab = 0
@@ -52,7 +52,7 @@ struct ContentView: View {
                 }) {
                     Text("Retry")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color(.dynamicUiBlue))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
@@ -70,7 +70,7 @@ struct ContentView: View {
                 }) {
                     Text("Sign Out")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color(.dynamicUiBlue))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
@@ -81,33 +81,43 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "book.closed")
                             .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
+                            .foregroundStyle(Color(.dynamicGrey80))
                         Text("Elestrals")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     }
                     .tag(0)
                 ExpansionsView(cardStore: cardStore)
                     .tabItem {
                         Image(systemName: "list.bullet.below.rectangle")
+                            .foregroundStyle(Color(.dynamicGrey80))
                         Text("Expansions")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     }
                     .tag(1)
                 CollectionTabView()
                     .tabItem {
                         Image(systemName: "archivebox")
                             .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
+                            .foregroundStyle(Color(.dynamicGrey80))
                         Text("My Collection")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     }
                     .tag(2)
                 SearchView()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
+                            .foregroundStyle(Color(.dynamicGrey80))
                         Text("Search")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     }
                     .tag(3)
                 SettingsView()
                     .tabItem {
                         Image(systemName: "gearshape")
                             .environment(\.symbolVariants, .none)
+                            .foregroundStyle(Color(.dynamicGrey80))
                         Text("Settings")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     }
                     .tag(4)
             }

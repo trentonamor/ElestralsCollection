@@ -22,9 +22,11 @@ struct ProgressCard: View {
                 VStack(alignment: .leading, spacing: 8 ,content: {
                     Text("Elestrals Found")
                         .font(.title2)
+                        .foregroundStyle(Color(.dynamicGrey80))
                         .bold()
                     Text(foundText)
                         .font(.body)
+                        .foregroundStyle(Color(.dynamicGrey80))
                         .padding(.bottom)
                         .onChange(of: self.foundText) { _ in
                             self.progressValue = self.getPercentage()
@@ -33,9 +35,11 @@ struct ProgressCard: View {
                     
                     Text("Cards Owned")
                         .font(.title2)
+                        .foregroundStyle(Color(.dynamicGrey80))
                         .bold()
                     Text("\(self.getNumberCardsOwned(for: nil))")
                         .font(.body)
+                        .foregroundStyle(Color(.dynamicGrey80))
                 })
                 .padding(.trailing)
                 

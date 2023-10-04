@@ -18,7 +18,7 @@ struct FeatureCell: View {
             Image(systemName: imageName)
                 .resizable()
                 .scaledToFill()
-                .foregroundStyle(.white)
+                .foregroundStyle(Color(.dynamicGrey0))
                 .frame(width: 24, height: 24)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 8.0).fill(imageColor))
@@ -26,7 +26,7 @@ struct FeatureCell: View {
             VStack(alignment: .leading) {
                 Text(featureTitle)
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color(.dynamicGrey0))
                 Text(featureDescription)
                     .font(.subheadline)
                     .foregroundStyle(Color(.dynamicGrey20))

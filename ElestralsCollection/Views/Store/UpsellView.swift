@@ -15,6 +15,7 @@ struct UpsellView: View {
     
     @State var userIsSubscribed: Bool = false
     @EnvironmentObject var entitlements: EntitlementsManager
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -74,6 +75,7 @@ struct UpsellView: View {
                                 self.restorePurchases()
                             }, label: {
                                 Text("Restore Purchases")
+                                    .foregroundStyle(Color(.dynamicUiBlue))
                             })
                             .padding(.bottom)
                             
@@ -117,6 +119,7 @@ struct UpsellView: View {
                     .background(Color(.dynamicNavy))
                 }
             }
+            .preferredColorScheme(.light)
         }
         .onAppear {
             self.getUserSubscriptionState()

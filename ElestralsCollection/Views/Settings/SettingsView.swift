@@ -46,7 +46,7 @@ struct SettingsView: View {
                                 Text("You are a Caster Pro Subscriber! 🎉")
                                     .padding(.vertical, 4)
                                     .font(.body)
-                                    .foregroundStyle(Color(.dynamicGrey0))
+                                    .foregroundStyle(Color.white)
                                     .bold()
                                 Spacer()
                             }
@@ -65,7 +65,7 @@ struct SettingsView: View {
                         UpsellView()
                     })
                 }
-                Section(header: Text("Account")) {
+                Section(header: Text("Account").foregroundStyle(Color(.dynamicGrey40))) {
                     List {
                         Button(action: {
                             
@@ -79,10 +79,10 @@ struct SettingsView: View {
                         }) {
                             Label(title: {
                                 Text("Logout")
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "rectangle.portrait.and.arrow.right")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color(.dynamicUiBlue))
                             })
                         }
                         NavigationLink(destination: {
@@ -91,10 +91,10 @@ struct SettingsView: View {
                         }, label: {
                             Label(title: {
                                 Text("Change Password")
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "person.badge.key")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color(.dynamicUiBlue))
                             })
                         })
                         Button(action: {
@@ -110,8 +110,8 @@ struct SettingsView: View {
                         })
                         .alert(isPresented: $isShowingDeleteAlert, content: {
                             Alert(
-                                title: Text("Confirm Account Deletion"),
-                                message: Text("Are you sure you want to delete your account? This will delete all content and settings."),
+                                title: Text("Confirm Account Deletion").foregroundColor(Color(.dynamicGrey80)),
+                                message: Text("Are you sure you want to delete your account? This will delete all content and settings.").foregroundColor(Color(.dynamicGrey80)),
                                 primaryButton: .destructive(Text("Delete")) {
                                     let dataManager = DataManager(context: self.managedObjectContext)
                                     dataManager.deleteAllCardsAndBookmarks()
@@ -125,7 +125,8 @@ struct SettingsView: View {
                         })
                     }
                 }
-                Section(header: Text("Appearance")) {
+                .listRowBackground(Color(.backgroundTabBar))
+                Section(header: Text("Appearance").foregroundStyle(Color(.dynamicGrey40))) {
                     List {
                         Button(action: {
                             if self.entitlementsManager.hasEntitlements {
@@ -139,7 +140,7 @@ struct SettingsView: View {
                                     .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "apps.iphone")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color(.dynamicUiBlue))
                             })
                         }
                         .sheet(isPresented: self.$isShowingIcons, content: {
@@ -147,7 +148,8 @@ struct SettingsView: View {
                         })
                     }
                 }
-                Section(header: Text("About")) {
+                .listRowBackground(Color(.backgroundTabBar))
+                Section(header: Text("About").foregroundStyle(Color(.dynamicGrey40))) {
                     List {
                         Button(action: {
                             rateApp()
@@ -157,7 +159,7 @@ struct SettingsView: View {
                                     .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "star")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color(.dynamicUiBlue))
                             })
                         }
                         
@@ -171,7 +173,7 @@ struct SettingsView: View {
                                     .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "globe")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color(.dynamicUiBlue))
                             })
                         }
                         
@@ -184,7 +186,7 @@ struct SettingsView: View {
                                         .foregroundColor(Color(.dynamicGrey80))
                                 }, icon: {
                                     Image(systemName: "paperplane")
-                                        .foregroundColor(.accentColor)
+                                        .foregroundColor(Color(.dynamicUiBlue))
                                 })
                             }
                             .sheet(isPresented: $isShowingMailView) {
@@ -200,7 +202,7 @@ struct SettingsView: View {
                                         .foregroundColor(Color(.dynamicGrey80))
                                 }, icon: {
                                     Image(systemName: "paperplane")
-                                        .foregroundColor(.accentColor)
+                                        .foregroundColor(Color(.dynamicUiBlue))
                                 })
                             }
                         }
@@ -213,7 +215,7 @@ struct SettingsView: View {
                                     .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "questionmark.circle")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color(.dynamicUiBlue))
                             })
                         }
                         .alert(isPresented: $isShowingAlert) {
@@ -222,6 +224,7 @@ struct SettingsView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(.backgroundTabBar))
             }
             .navigationTitle("Settings")
         }

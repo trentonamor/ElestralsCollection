@@ -16,6 +16,7 @@ struct ElestralsCollectionApp: App {
     @StateObject var authViewModel = AuthenticationViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
+//    @Environment(\.colorScheme) var colorScheme
     
     init() {
         FirebaseApp.configure()
@@ -25,12 +26,21 @@ struct ElestralsCollectionApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(authViewModel)
-                .environmentObject(elestralsCardData)
-                .environmentObject(entitlementsManager)
-                .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
-                .environment(\.colorScheme, .light)
+            if self.entitlementsManager.hasEntitlements {
+                ContentView()
+                    .environmentObject(authViewModel)
+                    .environmentObject(elestralsCardData)
+                    .environmentObject(entitlementsManager)
+                    .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
+            } else {
+                ContentView()
+                    .environmentObject(authViewModel)
+                    .environmentObject(elestralsCardData)
+                    .environmentObject(entitlementsManager)
+                    .environment(\.managedObjectContext, appDelegate.persistentContainer.viewContext)
+                    .preferredColorScheme(.light)
+            }
+
         }
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {

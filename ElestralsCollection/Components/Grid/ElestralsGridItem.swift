@@ -9,7 +9,7 @@ struct ElestralsGridItem: View {
             ZStack {
                 let isOwned = cardStore.getTotalOwned(for: data.name) == 0
                 Rectangle()
-                    .fill(Gradient(colors: [.white, data.getBackgroundColor(isColor: isOwned)]))
+                    .fill(Gradient(colors: [Color(.backgroundElevated), data.getBackgroundColor(isColor: isOwned)]))
                     .cornerRadius(30)
                     .aspectRatio(1, contentMode: .fit)
                 VStack {
@@ -20,7 +20,7 @@ struct ElestralsGridItem: View {
                             .scaledToFit()
                             .padding(.all, 0.0)
                         if isOwned {
-                            Color.gray
+                            Color(.dynamicGrey40)
                                 .blendMode(.color)
                         }
                     }
@@ -29,7 +29,7 @@ struct ElestralsGridItem: View {
                         .bold()
                         .padding(.top, 0.0)
                         .padding([.bottom, .horizontal])
-                        .foregroundColor(.black)
+                        .foregroundColor(Color(.dynamicGrey80))
                 }
                 .aspectRatio(1, contentMode: .fill)
             }

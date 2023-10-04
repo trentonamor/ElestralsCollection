@@ -60,7 +60,6 @@ struct EditBookmarkView: View {
             _icon = State(initialValue: "heart.fill")
             _color = State(initialValue: Color(.dynamicBlue))
         }
-        print("Bookmark in EditBookmarkView: ", model)
     }
     
     func onSaveButtonPressed() {
@@ -78,21 +77,25 @@ struct EditBookmarkView: View {
                 VStack(alignment: .leading, spacing: 32) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Name")
+                            .foregroundStyle(Color(.dynamicGrey80))
                             .bold()
-                        TextField("Name", text: $name, prompt: Text("ex) Whishlist, Burn Deck, Stellar Rares"))
+                        TextField("Name", text: $name, prompt: Text("ex) Whishlist, Burn Deck, Stellar Rares").foregroundColor(Color(.dynamicGrey40)))
+                            .foregroundStyle(Color(.dynamicGrey80))
                             .padding(.all, 12)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .strokeBorder(Color.white, lineWidth: 1)
-                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                                    .strokeBorder(Color(.backgroundElevated), lineWidth: 1)
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(.backgroundElevated)))
                             )
                         
                     }
                     VStack(alignment: .leading, spacing: 8, content: {
                         Text("Settings")
+                            .foregroundStyle(Color(.dynamicGrey80))
                             .bold()
                         HStack {
                             Text("Type")
+                                .foregroundStyle(Color(.dynamicGrey80))
                             Spacer()
                             Menu(content: {
                                 
@@ -126,11 +129,12 @@ struct EditBookmarkView: View {
                             .menuStyle(.automatic)
                         }
                         .padding(12)
-                        .background(.white)
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(10)
                         
                         HStack {
                             Text("Show Owned Indicator")
+                                .foregroundStyle(Color(.dynamicGrey80))
                             Spacer()
                             Toggle("", isOn: self.$showOwnedIndicator)
                                 .labelsHidden()
@@ -138,24 +142,26 @@ struct EditBookmarkView: View {
                                 .disabled(self.type == .deck)
                         }
                         .padding(12)
-                        .background(.white)
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(10)
                         
                         HStack {
                             Text("Show Progress in List")
+                                .foregroundStyle(Color(.dynamicGrey80))
                             Spacer()
                             Toggle("", isOn: self.$showProgressIndicator)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: self.color))
                         }
                         .padding(12)
-                        .background(.white)
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(10)
                     })
                     
                     VStack(alignment: .leading, spacing: 8, content: {
                         Text("Icon")
                             .bold()
+                            .foregroundStyle(Color(.dynamicGrey80))
                         let columns = Array(repeating: GridItem(.adaptive(minimum: 50, maximum: 70), spacing: 8), count: 1)
                         
                         
@@ -167,8 +173,8 @@ struct EditBookmarkView: View {
                                         .scaledToFit()
                                         .frame(minWidth: 24, idealWidth: 24, minHeight: 24, idealHeight: 24)
                                         .padding()
-                                        .foregroundColor(self.icon == icon ? self.color : Color.gray)
-                                        .background(self.icon == icon ? self.color.opacity(0.2) : Color.white)
+                                        .foregroundColor(self.icon == icon ? self.color : Color(.dynamicGrey60))
+                                        .background(self.icon == icon ? self.color.opacity(0.2) : Color(.backgroundElevated))
                                         .cornerRadius(8)
                                         .onTapGesture {
                                             self.icon = icon
@@ -181,6 +187,7 @@ struct EditBookmarkView: View {
                     
                     VStack(alignment: .leading, spacing: 8, content: {
                         Text("Color")
+                            .foregroundStyle(Color(.dynamicGrey80))
                             .bold()
                         
                         let columns = Array(repeating: GridItem(.adaptive(minimum: 50, maximum: 70), spacing: 8), count: 1)
@@ -188,14 +195,12 @@ struct EditBookmarkView: View {
                             LazyVGrid(columns: columns, spacing: 8) {
                                 ForEach(colors, id: \.self) { currentColor in
                                     ZStack {
-                                        Color.white
-                                            .cornerRadius(8)
                                         Circle()
                                             .fill(currentColor)
                                             .frame(width: 24, height: 24)
                                     }
                                     .padding()
-                                    .background(self.color == currentColor ? self.color.opacity(0.2) : Color.white)
+                                    .background(self.color == currentColor ? self.color.opacity(0.2) : Color(.backgroundElevated))
                                     .cornerRadius(8)
                                     .onTapGesture {
                                         self.color = currentColor
@@ -213,7 +218,7 @@ struct EditBookmarkView: View {
                 
             }
             .navigationTitle(navigationTitle)
-            .background(Color("backgroundBase"))
+            .background(Color(.backgroundBase))
             VStack {
                 
                 VStack {
@@ -238,7 +243,7 @@ struct EditBookmarkView: View {
                         }, label: {
                             Text("Delete")
                                 .frame(maxWidth: .infinity)
-                                .foregroundColor(Color.red)
+                                .foregroundColor(Color(.dynamicRed))
                         })
                         .padding(.horizontal)
                     }

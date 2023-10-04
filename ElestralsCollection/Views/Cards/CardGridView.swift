@@ -16,7 +16,6 @@ struct CardGridView: View {
     @State private var currentImageLoaded: String = ""
     @EnvironmentObject var cardStore: CardStore
     
-    
     private var filteredCards: [ElestralCard] {
         let sortOrder = filtersViewModel.sortOrder
         let sortBy = filtersViewModel.sortBy
@@ -129,6 +128,7 @@ struct CardGridView: View {
             if filteredCards.isEmpty {
                 Text(noResultsString)
                     .multilineTextAlignment(.center)
+                    .foregroundStyle(Color(.dynamicGrey80))
                     .font(.headline)
                     .foregroundColor(.black)
                     .padding()
@@ -165,6 +165,6 @@ struct CardGridView: View {
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.automatic)
         .padding([.top, .horizontal])
-        .background(Color("backgroundBase"))
+        .background(Color(.backgroundCard))
     }
 }

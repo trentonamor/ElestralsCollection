@@ -28,9 +28,10 @@ struct FiltersView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("State") {
+                Section(content: {
                     Toggle(isOn: $bothToggleOn, label: {
                         Text("Owned and Unowned")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .onChange(of: bothToggleOn, perform: {
                         newValue in
@@ -49,6 +50,7 @@ struct FiltersView: View {
                     
                     Toggle(isOn: $ownedToggleOn, label: {
                         Text("Owned Only")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: ownedToggleOn, perform: { newValue in
@@ -68,6 +70,7 @@ struct FiltersView: View {
                     
                     Toggle(isOn: $unownedToggleOn, label: {
                         Text("Unowned Only")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: unownedToggleOn, perform: { newValue in
@@ -84,7 +87,13 @@ struct FiltersView: View {
                             self.filters.remove(.unowned)
                         }
                     })
-                }
+                }, header: {
+                    HStack {
+                        Text("State")
+                            .foregroundStyle(Color(.dynamicGrey40))
+                    }
+                })
+                .listRowBackground(Color(.backgroundElevated))
                 
                 Section(content: {
                     Toggle(isOn: $earthToggleOn, label: {
@@ -92,6 +101,7 @@ struct FiltersView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                         Text("Earth")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: earthToggleOn, perform: {
@@ -108,6 +118,7 @@ struct FiltersView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                         Text("Fire")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: fireToggleOn, perform: {
@@ -124,6 +135,7 @@ struct FiltersView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                         Text("Frost")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: frostToggleOn, perform: {
@@ -140,6 +152,7 @@ struct FiltersView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                         Text("Thunder")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: thunderToggleOn, perform: {
@@ -156,6 +169,7 @@ struct FiltersView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                         Text("Water")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: waterToggleOn, perform: {
@@ -172,6 +186,7 @@ struct FiltersView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                         Text("Wind")
+                            .foregroundStyle(Color(.dynamicGrey80))
                     })
                     .toggleStyle(.checklist)
                     .onChange(of: windToggleOn, perform: {
@@ -185,6 +200,7 @@ struct FiltersView: View {
                 }, header: {
                     HStack {
                         Text("Element")
+                            .foregroundStyle(Color(.dynamicGrey40))
                         Spacer()
                         Button(action: {
                             if selectAllButtonTitle == "Select All" {
@@ -197,21 +213,29 @@ struct FiltersView: View {
                         }, label: {
                             Text(selectAllButtonTitle)
                                 .font(.caption)
+                                .foregroundStyle(Color(.dynamicUiBlue))
                         })
                     }
                 })
+                .listRowBackground(Color(.backgroundElevated))
             }
             .navigationTitle("Filters")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading, content: {
-                    Button("Reset", action: {
-                        resetFilters()
+                    Button(action: {
+                        self.resetFilters()
+                    }, label: {
+                        Text("Reset")
+                            .foregroundStyle(Color(.dynamicUiBlue))
                     })
                 })
                 ToolbarItem(placement: .navigationBarTrailing, content: {
-                    Button("Done", action: {
+                    Button(action: {
                         self.presentation.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Done")
+                            .foregroundStyle(Color(.dynamicUiBlue))
                     })
                 })
             }
