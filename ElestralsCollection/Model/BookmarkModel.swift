@@ -101,18 +101,10 @@ class BookmarkModel: ObservableObject, Hashable, Identifiable, CustomStringConve
 
     
     static func == (lhs: BookmarkModel, rhs: BookmarkModel) -> Bool {
-        return lhs.cards == rhs.cards &&
-        lhs.id == rhs.id &&
-        lhs.name == rhs.name &&
-        lhs.type == rhs.type &&
-        lhs.showOwnedIndicator == rhs.showOwnedIndicator &&
-        lhs.showProgres == rhs.showProgres &&
-        lhs.icon == rhs.icon &&
-        lhs.color == rhs.color
+        return lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(cards)
         hasher.combine(id)
         hasher.combine(name)
         hasher.combine(type)
