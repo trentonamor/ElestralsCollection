@@ -174,7 +174,7 @@ struct DeckView: View {
                         })
                     }
                 }
-                .background(Color("backgroundBase"))
+                .background(Color(.backgroundCard))
                 .sheet(isPresented: $presentSearch, content: {
                     CollectionView(subset: cardStore.cards, viewTitle: "Search", noResultsText: "We couldn't find any cards based on your search and the current filters.", bookmark: self.bookmark)
                 })

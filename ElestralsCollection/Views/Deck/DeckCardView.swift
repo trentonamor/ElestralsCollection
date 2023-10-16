@@ -98,6 +98,7 @@ struct DeckCardView: View {
                                 .overlay {
                                     Text(card.cardsInDeck[bookmarkId]?.description ?? "0")
                                         .font(.system(size: 10))
+                                        .foregroundStyle(Color(.black))
                                         .minimumScaleFactor(0.01)
                                         .lineLimit(1)
                                         .padding([.horizontal, .top], 8)

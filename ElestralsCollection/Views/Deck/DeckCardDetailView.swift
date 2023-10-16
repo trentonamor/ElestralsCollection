@@ -34,10 +34,10 @@ struct DeckCardDetailView: View {
                         .font(.title2)
                         .bold()
                         .italic()
-                        .foregroundColor(.black)
+                        .foregroundColor(Color(.dynamicGrey80))
                         .padding(.horizontal, 8)
                     Text(card.getCardSet())
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color(.dynamicGrey40))
                         .padding(.vertical, 0)
                         .padding(.horizontal, 8)
                     
@@ -55,13 +55,13 @@ struct DeckCardDetailView: View {
                                     Text("-")
                                         .font(.body)
                                         .bold()
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }
                             }
                             .disabled(subtrackTotalOwnedDisabled)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
-                            .background(Color(.white))
+                            .background(Color(.backgroundElevated))
                             .cornerRadius(8)
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                             .opacity(subtrackTotalOwnedDisabled ? 0.75 : 1.0)
@@ -70,6 +70,7 @@ struct DeckCardDetailView: View {
                                 Spacer()
                                 
                                 Text(card.getNumberOwned())
+                                    .foregroundStyle(Color(.dynamicGrey80))
                                     .font(.body)
                                     .bold()
                                     .padding(.vertical, 4)
@@ -77,7 +78,7 @@ struct DeckCardDetailView: View {
                                 
                                 Spacer()
                             }
-                            .background(Color(.white))
+                            .background(Color(.backgroundElevated))
                             .cornerRadius(8)
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                             .padding(.horizontal, 4)
@@ -90,12 +91,12 @@ struct DeckCardDetailView: View {
                                     Text("+")
                                         .font(.body)
                                         .bold()
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }
                             }
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
-                            .background(Color(.white))
+                            .background(Color(.backgroundElevated))
                             .cornerRadius(8)
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         }
@@ -114,13 +115,13 @@ struct DeckCardDetailView: View {
                                     Text("-")
                                         .font(.body)
                                         .bold()
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }
                             }
                             .disabled(substrackFromDeckDisabled)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
-                            .background(Color(.white))
+                            .background(Color(.backgroundElevated))
                             .cornerRadius(8)
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                             .opacity(substrackFromDeckDisabled ? 0.75 : 1.0)
@@ -130,13 +131,14 @@ struct DeckCardDetailView: View {
                                 
                                 Text("\(card.getCount(forBookmark: self.bookmarkId)) in Deck")
                                     .font(.body)
+                                    .foregroundStyle(Color(.dynamicGrey80))
                                     .bold()
                                     .padding(.vertical, 4)
                                     .padding(.horizontal, 8)
                                 
                                 Spacer()
                             }
-                            .background(Color(.white))
+                            .background(Color(.backgroundElevated))
                             .cornerRadius(8)
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                             .padding(.horizontal, 4)
@@ -153,14 +155,14 @@ struct DeckCardDetailView: View {
                                     Text("+")
                                         .font(.body)
                                         .bold()
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }
                             }
                             
                             .disabled(addToDeckDisabled)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
-                            .background(Color(.white))
+                            .background(Color(.backgroundElevated))
                             .cornerRadius(8)
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                             .opacity(addToDeckDisabled ? 0.75 : 1.0)
@@ -176,16 +178,16 @@ struct DeckCardDetailView: View {
                             Group {
                                 if card.bookmarks.isEmpty {
                                     Image(systemName: "bookmark")
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 } else {
                                     Image(systemName: "bookmark.fill")
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color(.dynamicGrey80))
                                 }
                             }
                             
                             let bookmarkModel = card.bookmarks.first(where: { $0.id == self.bookmarkId })
                             Text(bookmarkModel?.name ?? "Removed From Deck")
-                                .foregroundColor(.black)
+                                .foregroundColor(Color(.dynamicGrey80))
                                 .font(.body)
                                 .bold()
                                 .padding(.vertical, 4)
@@ -193,7 +195,7 @@ struct DeckCardDetailView: View {
                             
                             Spacer()
                         }
-                        .background(Color(.white))
+                        .background(Color(.backgroundElevated))
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
                         .padding(.horizontal)
@@ -219,7 +221,7 @@ struct DeckCardDetailView: View {
                     }
                 }
             }
-            .background(Color("backgroundBase"))
+            .background(Color(.backgroundCard))
         }
         .sheet(isPresented: $showingBookmarkView) {
             BookmarkView(isViewOnly: true, cardToAdd: self.card)

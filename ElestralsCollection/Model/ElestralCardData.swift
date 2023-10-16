@@ -82,18 +82,7 @@ class ElestralCard : ObservableObject, Hashable, Identifiable {
     }
     
     static func == (lhs: ElestralCard, rhs: ElestralCard) -> Bool {
-        return lhs.name == rhs.name &&
-        lhs.effect == rhs.effect &&
-        lhs.elements == rhs.elements &&
-        lhs.subclasses == rhs.subclasses &&
-        lhs.attack == rhs.attack &&
-        lhs.defense == rhs.defense &&
-        lhs.artist == rhs.artist &&
-        lhs.cardSet == rhs.cardSet &&
-        lhs.cardNumber == rhs.cardNumber &&
-        lhs.rarity == rhs.rarity &&
-        lhs.publishedDate == rhs.publishedDate &&
-        lhs.bookmarks == rhs.bookmarks
+        return lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {

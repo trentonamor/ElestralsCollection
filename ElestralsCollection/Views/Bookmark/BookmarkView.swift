@@ -112,6 +112,13 @@ struct BookmarkView: View {
                     self.loadBookmarks() // Or perform any necessary updates
                     
                 }
+            guard let card = self.cardToAdd else { return }
+            let bookmarksWithCard: [BookmarkModel] = self.cardStore.fetchBookmarksForCard(cardID: card.id, context: self.managedObjectContext).filter { bookmark in
+                bookmark.cards.contains { $0.id == card.id }
+            }
+            for bookmark in bookmarksWithCard {
+                self.selectedBookmarkIDs.insert(bookmark.id)
+            }
         }
         .onDisappear {
             self.addOrRemoveCardFromBookmarks()

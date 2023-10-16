@@ -177,10 +177,12 @@ extension BookmarkView: EditBookmarkViewDelegate {
 
 extension BookmarkView: BookmarkCellDelegate {
     func selectBookmark(_ bookmark: BookmarkModel, doSelect: Bool) {
-        if doSelect {
-            self.selectedBookmarkIDs.insert(bookmark.id)
-        } else {
-            self.selectedBookmarkIDs.remove(bookmark.id)
+        DispatchQueue.main.async {
+            if doSelect {
+                self.selectedBookmarkIDs.insert(bookmark.id)
+            } else {
+                self.selectedBookmarkIDs.remove(bookmark.id)
+            }
         }
     }
 }

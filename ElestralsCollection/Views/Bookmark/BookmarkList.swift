@@ -55,7 +55,7 @@ struct BookmarkList: View {
     @ViewBuilder
     func bookmarkCell(for bookmark: BookmarkModel) -> some View {
         if isViewOnly {
-            BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: self.doSelectCell(bookmark: bookmark), delegate: delegate)
+            BookmarkCellView(model: bookmark, isViewOnly: isViewOnly, didSelectCell: bookmark.cards.contains(where: { $0.id == cardId}), delegate: delegate)
                 .padding(.horizontal)
                 .contextMenu(menuItems: {
                     Button {

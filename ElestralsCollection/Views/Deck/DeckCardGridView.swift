@@ -158,7 +158,7 @@ struct DeckCardGridView: View {
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.automatic)
         .padding([.top, .horizontal])
-        .background(Color("backgroundBase"))
+        .background(Color(.backgroundCard))
     }
 }
 

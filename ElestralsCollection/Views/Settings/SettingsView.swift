@@ -155,7 +155,7 @@ struct SettingsView: View {
                             rateApp()
                         }) {
                             Label(title: {
-                                Text("Review Caster Compendium")
+                                Text("Review Caster Companion")
                                     .foregroundColor(Color(.dynamicGrey80))
                             }, icon: {
                                 Image(systemName: "star")
@@ -218,9 +218,18 @@ struct SettingsView: View {
                                     .foregroundColor(Color(.dynamicUiBlue))
                             })
                         }
+                        /*
+                         [YOU APP] is an unofficial, fan-made application that is provided for free, independently of any affiliation, endorsement, or support from Elestrals LLC.
+
+                         Image Usage: Certain images utilized within this application may be copyrighted material, which is used under the principles of fair use.
+
+                         Trademark Acknowledgment: "Elestrals" and associated character names are registered trademarks of Elestrals LLC. Our use of these trademarks is solely for informational and entertainment purposes, with no intention of copyright infringement.
+
+                         [YOUR APP] is an independent creation and should not be misconstrued as endorsed, sponsored, or affiliated with Elestrals LLC.
+                         */
                         .alert(isPresented: $isShowingAlert) {
                             let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "app"
-                            return Alert(title: Text("Version \(appVersion)"), message: Text("The Caster Compendium app is not owned or operated by Elestrals. This app is entirely fan owned and operated. Any logos, images, or card text are all owned by Elestrals"), dismissButton: .default(Text("OK")))
+                            return Alert(title: Text("Version \(appVersion)"), message: Text("Caster Companion is an unofficial, fan-made application that is provided for free, independently of any affiliation, enodrsement, or support from Elestrals LLC.\n\nImage Usage: Certain images utilized within this application may be copyrighted material, which is used under the principals of fair use.\n\nTrademark Acknowledgement: \"Elestrals\" and associated character names are registered trademarks of Elestrals LLC. Our use of these trademarks is solely for informational and entertainment purposes, with no intention of copyright infringement.\n\nCaster Companion is an independed creation and should not be misconstrued as endoresed, sponsored, or affiliated with Elestrals LLC"), dismissButton: .default(Text("OK")))
                         }
                     }
                 }
